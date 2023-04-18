@@ -18,8 +18,8 @@ export default function Header({ windowSize }) {
 
     return (
         <>
-            <Box bg={useColorModeValue("gray.100", "gray.900")} pl={4}>
-                <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+            <Box bg={useColorModeValue("white", "gray.900")}>
+                <Flex h={20} alignItems={"center"} justifyContent={"space-between"}>
                     <HStack spacing={3} alignItems={"center"}>
                         <Image
                             onClick={navigateHome}
@@ -39,9 +39,12 @@ export default function Header({ windowSize }) {
                             Eridian
                         </Box>
                     </HStack>
-                    <HStack>
+                    <HStack spacing={3}>
                         <Link href={"https://twitter.com/EridianAlpha"} target="_blank">
-                            <IconButton aria-label={"Eridian Twitter Profile"}>
+                            <IconButton
+                                borderRadius={"20px"}
+                                aria-label={"Eridian Twitter Profile"}
+                            >
                                 <FontAwesomeIcon icon={faTwitter} size={"lg"} />
                             </IconButton>
                         </Link>
@@ -49,7 +52,7 @@ export default function Header({ windowSize }) {
                             href={"https://github.com/EridianAlpha/eridianalpha.com"}
                             target="_blank"
                         >
-                            <IconButton aria-label={"View GitHub Source"}>
+                            <IconButton borderRadius={"20px"} aria-label={"View GitHub Source"}>
                                 <FontAwesomeIcon icon={faGithub} size={"lg"} />
                             </IconButton>
                         </Link>

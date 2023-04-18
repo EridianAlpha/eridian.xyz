@@ -8,7 +8,9 @@ export default function ColorModeToggle(props: ButtonProps) {
     return (
         <Flex h="100vh" justifyContent="center" alignItems="center">
             <Button
-                minW={"52px"}
+                marginLeft={"20px"}
+                padding={"0px"}
+                borderRadius={"20px"}
                 aria-label="Toggle Color Mode"
                 onClick={() => {
                     toggleColorMode()
