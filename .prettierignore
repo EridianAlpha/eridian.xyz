@@ -1,0 +1,10 @@
+.env
+node_modules
+README.md
+package.json
+img
+artifacts
+cache
+coverage*
+coverage.json
+gas-report.txt
