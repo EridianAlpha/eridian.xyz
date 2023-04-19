@@ -24,6 +24,7 @@ import {
     faImage,
     faLaptopCode,
     faCodeFork,
+    faHouseChimney,
 } from "@fortawesome/free-solid-svg-icons"
 
 import Link from "next/link"
@@ -33,7 +34,7 @@ export default function Header({ windowSize }) {
 
     return (
         <>
-            <Container bg={useColorModeValue("white", "gray.900")} maxW="1050px" padding={5}>
+            <Container bg={useColorModeValue("white", "gray.900")} maxW="1200px" padding={5}>
                 <Card
                     direction={{ base: "column", md: "row" }}
                     overflow="hidden"
@@ -41,13 +42,11 @@ export default function Header({ windowSize }) {
                     borderRadius={"30px"}
                     borderColor={useColorModeValue("gray.700", "white")}
                     borderWidth={1}
-                    // justifyContent="center"
                 >
                     <Flex
                         alignItems="center"
                         justifyContent="center"
                         flexDirection={{ base: "column", md: "row" }}
-                        // width="100%"
                     >
                         <Image
                             objectFit="cover"
@@ -74,6 +73,7 @@ export default function Header({ windowSize }) {
                                     <HStack py="15px">
                                         <Text as="b">Journey Started:</Text>
                                         <Text>April 2021</Text>
+                                        {/* TODO calculate "(x Days ago)"" number to dynamically update */}
                                     </HStack>
                                 </Flex>
                                 <Text>
@@ -83,7 +83,7 @@ export default function Header({ windowSize }) {
                                 <VStack pt="20px">
                                     <Divider borderColor={useColorModeValue("gray.700", "white")} />
                                     <Heading fontSize={"xl"} py="10px">
-                                        Areas of Focus
+                                        Current Areas of Focus
                                     </Heading>
                                     <Flex
                                         flexDirection={"row"}
@@ -92,7 +92,7 @@ export default function Header({ windowSize }) {
                                         rowGap={"20px"}
                                         justifyContent={"space-around"}
                                     >
-                                        {/* Make it a variable, pass in the name, color, icon and amount */}
+                                        {/* TODO Make into a variable, pass in the name, color, icon and amount */}
                                         <VStack>
                                             <Heading fontSize={"md"}>Staking</Heading>
                                             <HStack spacing={1}>
@@ -119,8 +119,7 @@ export default function Header({ windowSize }) {
                                                 <FontAwesomeIcon
                                                     icon={faServer}
                                                     size={"lg"}
-                                                    color={"gray"}
-                                                    opacity="0.3"
+                                                    color={"blue"}
                                                 />
                                             </HStack>
                                         </VStack>
@@ -145,8 +144,7 @@ export default function Header({ windowSize }) {
                                                 <FontAwesomeIcon
                                                     icon={faMoneyBill}
                                                     size={"lg"}
-                                                    color={"gray"}
-                                                    opacity="0.3"
+                                                    color={"green"}
                                                 />
                                                 <FontAwesomeIcon
                                                     icon={faMoneyBill}
@@ -162,7 +160,8 @@ export default function Header({ windowSize }) {
                                                 <FontAwesomeIcon
                                                     icon={faImage}
                                                     size={"lg"}
-                                                    color={"orange"}
+                                                    color={"gray"}
+                                                    opacity="0.3"
                                                 />
                                                 <FontAwesomeIcon
                                                     icon={faImage}
@@ -201,7 +200,8 @@ export default function Header({ windowSize }) {
                                                 <FontAwesomeIcon
                                                     icon={faLaptopCode}
                                                     size={"lg"}
-                                                    color={"red"}
+                                                    color={"gray"}
+                                                    opacity="0.3"
                                                 />
                                                 <FontAwesomeIcon
                                                     icon={faLaptopCode}
@@ -234,7 +234,14 @@ export default function Header({ windowSize }) {
                                                 <FontAwesomeIcon
                                                     icon={faCodeFork}
                                                     size={"lg"}
-                                                    color={"yellow"}
+                                                    color={"gray"}
+                                                    opacity="0.3"
+                                                />
+                                                <FontAwesomeIcon
+                                                    icon={faCodeFork}
+                                                    size={"lg"}
+                                                    color={"gray"}
+                                                    opacity="0.3"
                                                 />
                                                 <FontAwesomeIcon
                                                     icon={faCodeFork}
@@ -248,8 +255,35 @@ export default function Header({ windowSize }) {
                                                     color={"gray"}
                                                     opacity="0.3"
                                                 />
+                                            </HStack>
+                                        </VStack>
+                                        <VStack>
+                                            <Heading fontSize={"md"}>Personal Life</Heading>
+                                            <HStack spacing={1}>
                                                 <FontAwesomeIcon
-                                                    icon={faCodeFork}
+                                                    icon={faHouseChimney}
+                                                    size={"lg"}
+                                                    color={"purple"}
+                                                />
+                                                <FontAwesomeIcon
+                                                    icon={faHouseChimney}
+                                                    size={"lg"}
+                                                    color={"purple"}
+                                                />
+                                                <FontAwesomeIcon
+                                                    icon={faHouseChimney}
+                                                    size={"lg"}
+                                                    color={"gray"}
+                                                    opacity="0.3"
+                                                />
+                                                <FontAwesomeIcon
+                                                    icon={faHouseChimney}
+                                                    size={"lg"}
+                                                    color={"gray"}
+                                                    opacity="0.3"
+                                                />
+                                                <FontAwesomeIcon
+                                                    icon={faHouseChimney}
                                                     size={"lg"}
                                                     color={"gray"}
                                                     opacity="0.3"
