@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import styles from "./App.module.css"
 import Header from "./Header/Header"
+import Overview from "./Overview"
 
 import { Container, Box, Image } from "@chakra-ui/react"
 import { relative } from "path"
@@ -29,6 +30,7 @@ const App = () => {
     return (
         <Container maxW="1400px">
             <Header windowSize={windowSize} />
+            <Overview windowSize={windowSize} />
         </Container>
     )
 }
