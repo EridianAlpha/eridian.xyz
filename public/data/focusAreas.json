@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Staking",
+        "icon": "faServer",
+        "color": "#4025CD",
+        "count": 5
+    },
+    {
+        "title": "DeFi",
+        "icon": "faMoneyBill",
+        "color": "green",
+        "count": 3
+    },
+    {
+        "title": "NFTs",
+        "icon": "faImage",
+        "color": "gray",
+        "count": 1
+    },
+    {
+        "title": "Solidity",
+        "icon": "faLaptopCode",
+        "color": "red",
+        "count": 2
+    },
+    {
+        "title": "L2s",
+        "icon": "faCodeFork",
+        "color": "orange",
+        "count": 1
+    }
+]

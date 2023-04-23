@@ -12,8 +12,8 @@ config.autoAddCss = false
 const theme = extendTheme({
     colors: {
         gray: {
-            800: "#0b0f1d",
-            900: "#0b0f1d",
+            800: "#131827",
+            900: "#131827",
         },
     },
 })
