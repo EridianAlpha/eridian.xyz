@@ -61,5 +61,5 @@ node dev/update_assets.js
 
 # Pop the stash if there were changes to stash
 if [ "$stash_needed" == "yes" ]; then
-  git stash pop
+  git stash pop > /dev/null 2>&1
 fi
