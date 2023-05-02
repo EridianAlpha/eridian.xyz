@@ -5,7 +5,7 @@
 # This script is useful for testing the static site for every commit in the
 # git history.
 
-# Store any uncommitted changes
+# Store any uncommitted changes on the current branch
 git stash
 
 # Get a list of all commit hashes
@@ -54,5 +54,5 @@ fi
 # Update static asset URLs
 node dev/update_assets.js
 
-# Restore any uncommitted changes
+# Restore any uncommitted changes back to the starting branch
 git stash pop
