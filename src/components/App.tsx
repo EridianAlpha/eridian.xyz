@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import styles from "./App.module.css"
+import VersionDrawer from "./VersionDrawer"
 import Header from "./Header/Header"
 import Overview from "./Overview"
 
@@ -17,8 +18,7 @@ const App = () => {
         height: isSSR ? 0 : window.innerHeight,
     })
     useEffect(() => {
-        const handleResizeWindow = () =>
-            setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+        const handleResizeWindow = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight })
         // subscribe to window resize event "onComponentDidMount"
         window.addEventListener("resize", handleResizeWindow)
         return () => {
@@ -29,6 +29,7 @@ const App = () => {
 
     return (
         <Container maxW="1400px">
+            <VersionDrawer />
             <Header windowSize={windowSize} />
             <Overview windowSize={windowSize} />
         </Container>
