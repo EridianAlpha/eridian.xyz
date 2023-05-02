@@ -6,7 +6,7 @@
 # git history.
 
 # Store any uncommitted changes
-git add .
+git stash
 
 # Get a list of all commit hashes
 # Exclude commits that start with 'DEV' (these are commits that were only
@@ -53,3 +53,6 @@ fi
 
 # Update static asset URLs
 node dev/update_assets.js
+
+# Restore any uncommitted changes
+git stash pop
