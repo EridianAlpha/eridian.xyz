@@ -52,4 +52,4 @@ if [ -f "package.json" ]; then
 fi
 
 # Update static asset URLs
-node dev/update_assets.js $commit out
+node dev/update_assets.js
