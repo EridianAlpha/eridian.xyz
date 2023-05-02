@@ -5,8 +5,13 @@
 # This script is useful for testing the static site for every commit in the
 # git history.
 
-# Store any uncommitted changes on the current branch
-git stash
+# Check if there are any changes to stash
+stash_needed=$(git diff-index --quiet HEAD -- || echo "yes")
+
+# Store any uncommitted changes
+if [ "$stash_needed" == "yes" ]; then
+  git stash
+fi
 
 # Get a list of all commit hashes
 # Exclude commits that start with 'DEV' (these are commits that were only
@@ -54,5 +59,7 @@ fi
 # Update static asset URLs
 node dev/update_assets.js
 
-# Restore any uncommitted changes back to the starting branch
-git stash pop
+# Pop the stash if there were changes to stash
+if [ "$stash_needed" == "yes" ]; then
+  git stash pop
+fi
