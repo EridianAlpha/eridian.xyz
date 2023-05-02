@@ -5,6 +5,9 @@
 # This script is useful for testing the static site for every commit in the
 # git history.
 
+# Store any uncommitted changes
+git add .
+
 # Get a list of all commit hashes
 # Exclude commits that start with 'DEV' (these are commits that were only
 # impact the development environment and do not need to be built)
@@ -20,16 +23,16 @@ for commit in $commits; do
     echo "Checking out commit: $commit"
 
     # Checkout the commit
-    git checkout $commit
+    git checkout --force $commit
 
     # Install dependencies specific to this commit
-    yarn install
+    if [ -f "package.json" ]; then
+      # Install dependencies specific to this commit
+      yarn install
+    fi
 
     # Build the static site
     yarn build && yarn next export
-
-    # Update static asset URLs
-    node dev/update_assets.js $commit out
 
     # Move the generated static site to a folder named with the commit hash
     mkdir -p "versions/$commit"
@@ -41,7 +44,12 @@ for commit in $commits; do
 done
 
 # Return to the original branch
-git checkout $current_branch
+git checkout --force $current_branch
 
 # Re-install dependencies for the original branch
-yarn install
+if [ -f "package.json" ]; then
+  yarn install
+fi
+
+# Update static asset URLs
+node dev/update_assets.js $commit out
