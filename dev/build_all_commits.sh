@@ -45,6 +45,32 @@ for commit in $commits; do
 
     # Clean up the 'out' directory
     rm -rf out
+
+    # Update static asset URLs
+    node -e "$(cat << 'EOF'
+const fs = require("fs")
+const path = require("path")
+const commit = process.argv[1]
+
+const updateAssets = (commit) => {
+  const basePath = path.join(process.cwd(), "versions", commit)
+  const files = fs.readdirSync(basePath)
+
+  files.forEach((file) => {
+    if (file.endsWith(".html")) {
+      const filePath = path.join(basePath, file)
+      let content = fs.readFileSync(filePath, "utf-8")
+
+      content = content.replace(/\/_next\//g, `/${commit}/_next/`)
+
+      fs.writeFileSync(filePath, content)
+    }
+  })
+}
+
+updateAssets(commit)
+EOF
+    )" $commit
   fi
 done
 
@@ -55,9 +81,6 @@ git checkout --force $current_branch
 if [ -f "package.json" ]; then
   yarn install
 fi
-
-# Update static asset URLs
-node dev/update_assets.js
 
 # Pop the stash if there were changes to stash
 if [ "$stash_needed" == "yes" ]; then
