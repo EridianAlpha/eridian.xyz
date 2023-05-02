@@ -47,6 +47,9 @@ for commit in $commits; do
     rm -rf out
 
     # Update static asset URLs
+    # It's easier to have this an an embedded Node.js script
+    # rather than a separate file, otherwise, that other file might be a different version
+    # in the branch that it's reading from
     node -e "$(cat << 'EOF'
 const fs = require("fs")
 const path = require("path")

@@ -10,7 +10,6 @@ const handle = app.getRequestHandler()
 // This tells Next.js to use the `server.js` file
 // for routing instead of the default `pages/index.js` file.
 // This is needed for the development environment to enable routing to previous commits.
-
 app.prepare().then(() => {
     const server = express()
 
