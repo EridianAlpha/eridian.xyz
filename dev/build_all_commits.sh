@@ -6,7 +6,9 @@
 # git history.
 
 # Get a list of all commit hashes
-commits=$(git log --pretty=format:'%h')
+# Exclude commits that start with 'DEV' (these are commits that were only
+# impact the development environment and do not need to be built)
+commits=$(git log --pretty=format:'%h' --invert-grep --grep='^DEV')
 
 # Save the current branch name
 current_branch=$(git symbolic-ref --short HEAD)
@@ -20,7 +22,7 @@ for commit in $commits; do
     # Checkout the commit
     git checkout $commit
 
-    # Install dependencies
+    # Install dependencies specific to this commit
     yarn install
 
     # Build the static site
@@ -41,5 +43,5 @@ done
 # Return to the original branch
 git checkout $current_branch
 
-# Re-install dependencies
+# Re-install dependencies for the original branch
 yarn install
