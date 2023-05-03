@@ -96,7 +96,7 @@ const DiffStats = ({ diff }) => {
 export default function VersionDrawer({ windowSize }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
-    const router = useRouter()
+    const router_VersionDrawer = useRouter()
 
     const [commitHashes, setCommitHashes] = useState([])
 
@@ -155,7 +155,7 @@ export default function VersionDrawer({ windowSize }) {
                                 _hover={{
                                     bg: useColorModeValue("gray.100", "gray.700"),
                                 }}
-                                onClick={() => router.push("/")}
+                                onClick={() => router_VersionDrawer.push("/")}
                             >
                                 <Text fontWeight="bold" fontSize="lg">
                                     Latest version
