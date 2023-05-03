@@ -20,6 +20,12 @@ import {
     HStack,
 } from "@chakra-ui/react"
 
+const handleLatestVersionClick = () => {
+    // const pathMatch = useRouter().asPath.substring(1, 8)
+    const pathAfterCommit = useRouter().asPath.substring(8)
+    useRouter().push(`${pathAfterCommit}`)
+}
+
 const CommitCard = ({ commit, message, date, author, diff }) => {
     const router = useRouter()
 
@@ -96,7 +102,6 @@ const DiffStats = ({ diff }) => {
 export default function VersionDrawer({ windowSize }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
-    const router_VersionDrawer = useRouter()
 
     const [commitHashes, setCommitHashes] = useState([])
 
@@ -155,7 +160,7 @@ export default function VersionDrawer({ windowSize }) {
                                 _hover={{
                                     bg: useColorModeValue("gray.100", "gray.700"),
                                 }}
-                                onClick={() => router_VersionDrawer.push("/")}
+                                onClick={() => handleLatestVersionClick()}
                             >
                                 <Text fontWeight="bold" fontSize="lg">
                                     Latest version
