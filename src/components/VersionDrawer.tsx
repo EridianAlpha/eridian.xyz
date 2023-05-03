@@ -21,9 +21,10 @@ import {
 } from "@chakra-ui/react"
 
 const handleLatestVersionClick = () => {
-    // const pathMatch = useRouter().asPath.substring(1, 8)
-    const pathAfterCommit = useRouter().asPath.substring(8)
-    useRouter().push(`${pathAfterCommit}`)
+    const router_VersionDrawer = useRouter()
+    const pathMatch = router_VersionDrawer.asPath.substring(1, 8)
+    const pathAfterCommit = router_VersionDrawer.asPath.substring(8)
+    router_VersionDrawer.push(`${pathAfterCommit}`)
 }
 
 const CommitCard = ({ commit, message, date, author, diff }) => {
