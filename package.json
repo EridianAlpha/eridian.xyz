@@ -5,6 +5,7 @@
   "scripts": {
     "commits": "./dev/build_all_commits.sh",
     "dev": "node server.js",
+    "dev-commits": "./dev/build_all_commits.sh && node server.js",
     "build": "next build",
     "export": "next export",
     "start": "next build && next start",

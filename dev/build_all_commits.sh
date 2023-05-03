@@ -54,13 +54,15 @@ for commit in $commits; do
     # only if the file exists in the current branch (as it doesn't for the oldest versions)
     if [ -f "src/components/VersionDrawer.tsx" ]; then
       cp tmp_bash_script_files/VersionDrawer.tsx src/components/VersionDrawer.tsx
+      # Change the redirection URL so that it doesn't duplicate the commit path
+      # perl -i -pe 'BEGIN{undef $/;} s/const handleClick = \(\) => \{\n\s+router.push\(`\/\${commit}\${router.asPath}`\)\n\}/const handleClick = () => {\n    \/\/ Extract the part after the domain and any existing commit hash\n    const pathMatch = router.asPath.match(\/\\\/[0-9a-f]{7}(.*)\/);\n    const pathAfterCommit = pathMatch ? pathMatch[1] : "";\n\n    console.log("router.basePath", router.basePath);\n\n    \/\/ Navigate to the new URL with the new commit hash and the path after the commit hash\n    router.push(`/`);\n};/smg' src/components/VersionDrawer.tsx
     fi
 
     # Replace the entire commits api in src/pages/api/commits.ts with the one stored in the temporary file
     # only if the file exists in the current branch (as it doesn't for the oldest versions)
     if [ -f "src/pages/api/commits.ts" ]; then
       cp tmp_bash_script_files/commits.ts src/pages/api/commits.ts
-      # remove the condition that checks if the NODE_ENV is development
+      # Remove the condition that checks if the NODE_ENV is development
       perl -i -p0e 's/\n\s*if \(process.env.NODE_ENV !== "development"\) \{\n\s*res.status\(403\).json\(\{ error: "This API is only available in development mode."\} \)\n\s*return\n\s*\}//s' src/pages/api/commits.ts
     fi
 
@@ -112,6 +114,9 @@ git checkout --force $current_branch
 if [ -f "package.json" ]; then
   yarn install
 fi
+
+# Clean up the tmp_bash_script_files directory
+rm -rf tmp_bash_script_files
 
 # Pop the stash if there were changes to stash
 if [ "$stash_needed" == "yes" ]; then
