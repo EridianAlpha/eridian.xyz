@@ -4,8 +4,7 @@ import VersionDrawer from "./VersionDrawer"
 import Header from "./Header/Header"
 import Overview from "./Overview"
 
-import { Container, Box, Image } from "@chakra-ui/react"
-import { relative } from "path"
+import { Container } from "@chakra-ui/react"
 
 const App = () => {
     // Check if the current render is on the server (Server Side Render) or client
@@ -29,7 +28,7 @@ const App = () => {
 
     return (
         <Container maxW="1400px">
-            <VersionDrawer />
+            {process.env.NODE_ENV === "development" && <VersionDrawer windowSize={windowSize} />}
             <Header windowSize={windowSize} />
             <Overview windowSize={windowSize} />
         </Container>

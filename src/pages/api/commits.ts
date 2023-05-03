@@ -18,25 +18,22 @@ const handler = (_req: NextApiRequest, res: NextApiResponse) => {
         const months = Math.floor(days / 30)
         const years = Math.floor(months / 12)
 
+        let ago = ""
         if (years > 0) {
-            return `${date.toISOString().slice(0, 19).replace("T", " ")} (${years} year${years > 1 ? "s" : ""}, ${months % 12} month${
-                months % 12 > 1 ? "s" : ""
-            }, ${days % 30} day${days % 30 > 1 ? "s" : ""}, ${hours % 24} hour${hours % 24 > 1 ? "s" : ""} ago)`
+            ago = `(${years} year${years > 1 ? "s" : ""}${months % 12 > 0 ? `, ${months % 12} month${months % 12 > 1 ? "s" : ""}` : ""} ago)`
         } else if (months > 0) {
-            return `${date.toISOString().slice(0, 19).replace("T", " ")} (${months} month${months > 1 ? "s" : ""}, ${days % 30} day${
-                days % 30 > 1 ? "s" : ""
-            }, ${hours % 24} hour${hours % 24 > 1 ? "s" : ""} ago)`
+            ago = `(${months} month${months > 1 ? "s" : ""}${days % 30 > 0 ? `, ${days % 30} day${days % 30 > 1 ? "s" : ""}` : ""} ago)`
         } else if (days > 0) {
-            return `${date.toISOString().slice(0, 19).replace("T", " ")} (${days} day${days > 1 ? "s" : ""}, ${hours % 24} hour${
-                hours % 24 > 1 ? "s" : ""
-            } ago)`
+            ago = `(${days} day${days > 1 ? "s" : ""}${hours % 24 > 0 ? `, ${hours % 24} hour${hours % 24 > 1 ? "s" : ""}` : ""} ago)`
         } else if (hours > 0) {
-            return `${date.toISOString().slice(0, 19).replace("T", " ")} (${hours} hour${hours > 1 ? "s" : ""} ago)`
+            ago = `(${hours} hour${hours > 1 ? "s" : ""} ago)`
         } else if (minutes > 0) {
-            return `${date.toISOString().slice(0, 19).replace("T", " ")} (${minutes} minute${minutes > 1 ? "s" : ""} ago)`
+            ago = `(${minutes} minute${minutes > 1 ? "s" : ""} ago)`
         } else {
-            return `${date.toISOString().slice(0, 19).replace("T", " ")} (${seconds} second${seconds > 1 ? "s" : ""} ago)`
+            ago = `(${seconds} second${seconds > 1 ? "s" : ""} ago)`
         }
+
+        return `${date.toISOString().slice(0, 19).replace("T", " ")} ${ago}`
     }
 
     const commits = commitHashes
@@ -46,13 +43,23 @@ const handler = (_req: NextApiRequest, res: NextApiResponse) => {
 
             if (commitStat.isDirectory() && fs.readdirSync(commitPath).length > 0) {
                 try {
+                    const logOutput = execSync(`git log -1 ${commit}`).toString().trim()
                     const message = execSync(`git log -1 --pretty=format:%s ${commit}`).toString().trim()
-                    const date = execSync(`git log -1 --pretty=format:%cI ${commit}`).toString().trim()
+                    const rawDate = execSync(`git log -1 --pretty=format:%cI ${commit}`).toString().trim()
+
+                    const authorRegex = /^Author:\s+(.+?)\s*<.+?>$/m
+                    const authorMatch = logOutput.match(authorRegex)
+                    const author = authorMatch ? authorMatch[1] : ""
+
+                    const diffOutput = execSync(`git diff ${commit}~1 ${commit} --shortstat`).toString().trim()
 
                     return {
                         hash: commit,
                         message,
-                        date: formatDate(new Date(date)),
+                        author,
+                        rawDate,
+                        formattedDate: formatDate(new Date(rawDate)),
+                        diff: diffOutput,
                     }
                 } catch (error) {
                     console.error(`Error fetching commit data: ${error.message}`)
@@ -62,8 +69,18 @@ const handler = (_req: NextApiRequest, res: NextApiResponse) => {
             return null
         })
         .filter(Boolean)
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) // Sort commits by date
-    res.status(200).json(commits)
+        .sort((a, b) => new Date(b.rawDate).getTime() - new Date(a.rawDate).getTime()) // Sort commits by date
+
+    // Replace the rawDate with formattedDate, include author and diff for response
+    const responseCommits = commits.map(({ hash, message, author, formattedDate, diff }) => ({
+        hash,
+        message,
+        author,
+        date: formattedDate,
+        diff,
+    }))
+
+    res.status(200).json(responseCommits)
 }
 
 export default handler
