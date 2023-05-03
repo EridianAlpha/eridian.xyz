@@ -55,7 +55,13 @@ for commit in $commits; do
     if [ -f "src/components/VersionDrawer.tsx" ]; then
       cp tmp_bash_script_files/VersionDrawer.tsx src/components/VersionDrawer.tsx
       # Change the redirection URL so that it doesn't duplicate the commit path
-      # perl -i -pe 'BEGIN{undef $/;} s/const handleClick = \(\) => \{\n\s+router.push\(`\/\${commit}\${router.asPath}`\)\n\}/const handleClick = () => {\n    \/\/ Extract the part after the domain and any existing commit hash\n    const pathMatch = router.asPath.match(\/\\\/[0-9a-f]{7}(.*)\/);\n    const pathAfterCommit = pathMatch ? pathMatch[1] : "";\n\n    console.log("router.basePath", router.basePath);\n\n    \/\/ Navigate to the new URL with the new commit hash and the path after the commit hash\n    router.push(`/`);\n};/smg' src/components/VersionDrawer.tsx
+      perl -i -p0e 's/\n\s*const handleClick = \(\) => \{\n\s*router.push\(`\/\${commit}\${router.asPath}`\)\n\s*\}//s' src/components/VersionDrawer.tsx
+      sed "/const router = useRouter()/a \\
+      const handleClick = () => {\\
+          const pathMatch = router.asPath.substring(1, 8);\\
+          const pathAfterCommit = router.asPath.substring(8);\\
+          router.push(\`/\${commit}\${pathAfterCommit}\`);\\
+      };" src/components/VersionDrawer.tsx > tmpfile && mv tmpfile src/components/VersionDrawer.tsx
     fi
 
     # Replace the entire commits api in src/pages/api/commits.ts with the one stored in the temporary file
