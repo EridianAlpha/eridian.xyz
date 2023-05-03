@@ -4,6 +4,11 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { execSync } from "child_process"
 
 const handler = (_req: NextApiRequest, res: NextApiResponse) => {
+    if (process.env.NODE_ENV !== "development") {
+        res.status(403).json({ error: "This API is only available in development mode." })
+        return
+    }
+
     const basePath = path.join(process.cwd(), "versions")
     const commitHashes = fs.readdirSync(basePath)
 

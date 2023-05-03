@@ -1,3 +1,4 @@
+// Development environment only
 import React, { useState, useEffect } from "react"
 import { useDisclosure } from "@chakra-ui/react"
 import { useRouter } from "next/router"

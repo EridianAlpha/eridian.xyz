@@ -16,7 +16,8 @@ fi
 # Get a list of all commit hashes
 # Exclude commits that start with 'DEV' (these are commits that were only
 # impact the development environment and do not need to be built)
-commits=$(git log --pretty=format:'%h' --invert-grep --grep='^DEV' -- public src theme.ts )
+# Only include the 'public' folder, 'src' folder, and 'theme.ts' file
+commits=$(git log --pretty=format:'%h' --invert-grep --grep='^DEV' -- public src theme.ts)
 
 # Save the current branch name
 current_branch=$(git symbolic-ref --short HEAD)
