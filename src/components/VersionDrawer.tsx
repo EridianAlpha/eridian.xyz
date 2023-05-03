@@ -96,6 +96,7 @@ const DiffStats = ({ diff }) => {
 export default function VersionDrawer({ windowSize }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
+    const router = useRouter()
 
     const [commitHashes, setCommitHashes] = useState([])
 
@@ -145,6 +146,21 @@ export default function VersionDrawer({ windowSize }) {
 
                     <DrawerBody>
                         <VStack spacing={4}>
+                            <Box
+                                borderWidth="1px"
+                                borderRadius="lg"
+                                padding="3"
+                                cursor="pointer"
+                                width="100%"
+                                _hover={{
+                                    bg: useColorModeValue("gray.100", "gray.700"),
+                                }}
+                                onClick={() => router.push("/")}
+                            >
+                                <Text fontWeight="bold" fontSize="lg">
+                                    Latest version
+                                </Text>
+                            </Box>
                             {commitHashes.map(({ hash, message, date, author, diff }) => (
                                 <CommitCard key={hash} commit={hash} message={message} date={date} author={author} diff={diff} />
                             ))}

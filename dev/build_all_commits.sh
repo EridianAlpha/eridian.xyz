@@ -122,7 +122,7 @@ if [ -f "package.json" ]; then
 fi
 
 # Clean up the tmp_bash_script_files directory
-rm -rf tmp_bash_script_files
+# rm -rf tmp_bash_script_files
 
 # Pop the stash if there were changes to stash
 if [ "$stash_needed" == "yes" ]; then
