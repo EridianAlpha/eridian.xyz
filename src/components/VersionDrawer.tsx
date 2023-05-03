@@ -159,7 +159,7 @@ export default function VersionDrawer({ windowSize }) {
                                 }}
                                 onClick={() => {
                                     const pathAfterCommit = router_VersionDrawer.asPath.substring(8)
-                                    router_VersionDrawer.push(`${pathAfterCommit}`)
+                                    router_VersionDrawer.replace(`${pathAfterCommit}`)
                                     if (!isSSR) {
                                         window.location.reload()
                                     }
