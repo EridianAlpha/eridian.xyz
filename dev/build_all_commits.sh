@@ -37,6 +37,14 @@ for commit in $commits; do
       yarn install
     fi
 
+    # Replace the condition in App.tsx file to include VersionDrawer in production build
+    sed -i "s/{process.env.NODE_ENV === \"development\" && <VersionDrawer windowSize={windowSize} />}/{true && <VersionDrawer windowSize={windowSize} />}/g" src/components/App.tsx
+
+    # The API route is also different to get to the versions folder in the built version
+
+    # The API itself has a condition to check if the NODE_ENV is production, which also needs to be removed
+
+
     # Build the static site
     yarn build && yarn next export
 
