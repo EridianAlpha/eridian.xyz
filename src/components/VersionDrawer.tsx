@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useDisclosure } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faClockRotateLeft, faCodeCommit, faFile, faCirclePlus, faCircleMinus } from "@fortawesome/free-solid-svg-icons"
+import { faClockRotateLeft, faCodeCommit, faFile, faCirclePlus, faCircleMinus, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
 import {
     Box,
@@ -21,6 +21,9 @@ import {
 } from "@chakra-ui/react"
 
 const CommitCard = ({ commit, message, date, author, diff }) => {
+    // This line is used by the dev script build_all_commits.sh so needs to remain here
+    // This line also shouldn't be duplicated anywhere in this file, otherwise the script will break
+    // TODO: Find a better way to do this
     const router = useRouter()
 
     const handleClick = () => {
@@ -138,7 +141,7 @@ export default function VersionDrawer({ windowSize }) {
             </Box>
             <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
                 <DrawerOverlay />
-                <DrawerContent bg={useColorModeValue("white", "gray.900")} borderLeftRadius="30px">
+                <DrawerContent bg={useColorModeValue("white", "gray.900")} borderLeftRadius="30px" minW="320px">
                     <DrawerCloseButton mt={2} mr={2} />
                     <DrawerHeader>
                         <Code fontSize={"xl"} borderRadius={6}>
@@ -148,25 +151,44 @@ export default function VersionDrawer({ windowSize }) {
 
                     <DrawerBody>
                         <VStack spacing={4}>
-                            <Box
-                                borderWidth="1px"
-                                borderRadius="lg"
-                                padding="3"
-                                cursor="pointer"
-                                width="100%"
-                                _hover={{
-                                    bg: useColorModeValue("gray.100", "gray.700"),
-                                }}
-                                onClick={async () => {
-                                    const pathAfterCommit = router_VersionDrawer.asPath.substring(8)
-                                    await router_VersionDrawer.push(`${pathAfterCommit}`)
-                                    router_VersionDrawer.reload()
-                                }}
-                            >
-                                <Text fontWeight="bold" fontSize="lg">
-                                    Latest version
-                                </Text>
-                            </Box>
+                            <Flex align="center" flex={1} width={"100%"}>
+                                <Box
+                                    borderWidth="1px"
+                                    borderRadius="lg"
+                                    padding="3"
+                                    cursor="pointer"
+                                    width="100%"
+                                    _hover={{
+                                        bg: useColorModeValue("gray.100", "gray.700"),
+                                    }}
+                                    onClick={async () => {
+                                        const pathAfterCommit = router_VersionDrawer.asPath.substring(8)
+                                        await router_VersionDrawer.push(`${pathAfterCommit}`)
+                                        router_VersionDrawer.reload()
+                                    }}
+                                >
+                                    <Text fontWeight="bold" fontSize="lg">
+                                        ⭐️&nbsp;&nbsp;&nbsp;Latest version
+                                    </Text>
+                                </Box>
+                                <Box
+                                    borderWidth="1px"
+                                    borderRadius="lg"
+                                    padding="3"
+                                    cursor="pointer"
+                                    width="50px"
+                                    height="53px"
+                                    marginLeft="3"
+                                    _hover={{
+                                        bg: useColorModeValue("gray.100", "gray.700"),
+                                    }}
+                                    onClick={() => {
+                                        // handle click event for the square button
+                                    }}
+                                >
+                                    <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
+                                </Box>
+                            </Flex>
                             {commitHashes.map(({ hash, message, date, author, diff }) => (
                                 <CommitCard key={hash} commit={hash} message={message} date={date} author={author} diff={diff} />
                             ))}
