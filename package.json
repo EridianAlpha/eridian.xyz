@@ -6,6 +6,7 @@
     "commits": "./dev/build_all_commits.sh",
     "dev": "node server.js",
     "build": "next build",
+    "export": "next export",
     "start": "next build && next start",
     "lint": "next lint"
   },
