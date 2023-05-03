@@ -157,12 +157,10 @@ export default function VersionDrawer({ windowSize }) {
                                 _hover={{
                                     bg: useColorModeValue("gray.100", "gray.700"),
                                 }}
-                                onClick={() => {
+                                onClick={async () => {
                                     const pathAfterCommit = router_VersionDrawer.asPath.substring(8)
-                                    router_VersionDrawer.replace(`${pathAfterCommit}`)
-                                    if (!isSSR) {
-                                        window.location.reload()
-                                    }
+                                    await router_VersionDrawer.push(`${pathAfterCommit}`)
+                                    router_VersionDrawer.reload()
                                 }}
                             >
                                 <Text fontWeight="bold" fontSize="lg">

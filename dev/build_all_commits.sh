@@ -58,7 +58,6 @@ for commit in $commits; do
       perl -i -p0e 's/\n\s*const handleClick = \(\) => \{\n\s*router.push\(`\/\${commit}\${router.asPath}`\)\n\s*\}//s' src/components/VersionDrawer.tsx
       sed "/const router = useRouter()/a \\
       const handleClick = () => {\\
-          const pathMatch = router.asPath.substring(1, 8);\\
           const pathAfterCommit = router.asPath.substring(8);\\
           router.push(\`/\${commit}\${pathAfterCommit}\`);\\
       };" src/components/VersionDrawer.tsx > tmpfile && mv tmpfile src/components/VersionDrawer.tsx
