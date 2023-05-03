@@ -22,6 +22,16 @@ commits=$(git log --pretty=format:'%h' --invert-grep --grep='^DEV' -- public src
 # Save the current branch name
 current_branch=$(git symbolic-ref --short HEAD)
 
+# Make a temporary non-versioned folder to store the files used in this script
+mkdir -p tmp_bash_script_files
+
+# Before checking out a new branch, store the currnet src/components/VersionDrawer.tsx in the directory tmp_bash_script_files
+cp src/components/VersionDrawer.tsx tmp_bash_script_files/VersionDrawer.tsx
+
+# Before checking out a new branch, store the currnet src/pages/api/commits.ts in in the directory tmp_bash_script_files
+cp src/pages/api/commits.ts tmp_bash_script_files/commits.ts
+
+
 # Iterate through each commit hash
 for commit in $commits; do
   # Check if the folder for this commit already exists
@@ -38,12 +48,21 @@ for commit in $commits; do
     fi
 
     # Replace the condition in App.tsx file to include VersionDrawer in production build
-    sed -i "s/{process.env.NODE_ENV === \"development\" && <VersionDrawer windowSize={windowSize} />}/{true && <VersionDrawer windowSize={windowSize} />}/g" src/components/App.tsx
+    perl -i -pe 's/\{process.env.NODE_ENV === "development" && <VersionDrawer windowSize=\{windowSize\} \/>\}/\{true && <VersionDrawer windowSize=\{windowSize\} \/>\}/g' src/components/App.tsx
 
-    # The API route is also different to get to the versions folder in the built version
+    # Replace the entire VersionDrawer component in src/components/VersionDrawer.tsx with the one stored in the temporary file
+    # only if the file exists in the current branch (as it doesn't for the oldest versions)
+    if [ -f "src/components/VersionDrawer.tsx" ]; then
+      cp tmp_bash_script_files/VersionDrawer.tsx src/components/VersionDrawer.tsx
+    fi
 
-    # The API itself has a condition to check if the NODE_ENV is production, which also needs to be removed
-
+    # Replace the entire commits api in src/pages/api/commits.ts with the one stored in the temporary file
+    # only if the file exists in the current branch (as it doesn't for the oldest versions)
+    if [ -f "src/pages/api/commits.ts" ]; then
+      cp tmp_bash_script_files/commits.ts src/pages/api/commits.ts
+      # remove the condition that checks if the NODE_ENV is development
+      perl -i -p0e 's/\n\s*if \(process.env.NODE_ENV !== "development"\) \{\n\s*res.status\(403\).json\(\{ error: "This API is only available in development mode."\} \)\n\s*return\n\s*\}//s' src/pages/api/commits.ts
+    fi
 
     # Build the static site
     yarn build && yarn next export
