@@ -94,6 +94,8 @@ const DiffStats = ({ diff }) => {
 }
 
 export default function VersionDrawer({ windowSize }) {
+    const isSSR = typeof window === "undefined"
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
     const router_VersionDrawer = useRouter()
@@ -158,6 +160,9 @@ export default function VersionDrawer({ windowSize }) {
                                 onClick={() => {
                                     const pathAfterCommit = router_VersionDrawer.asPath.substring(8)
                                     router_VersionDrawer.push(`${pathAfterCommit}`)
+                                    if (!isSSR) {
+                                        window.location.reload()
+                                    }
                                 }}
                             >
                                 <Text fontWeight="bold" fontSize="lg">
