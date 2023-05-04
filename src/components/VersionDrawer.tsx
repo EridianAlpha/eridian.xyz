@@ -171,7 +171,7 @@ export default function VersionDrawer({ windowSize }) {
 
     useEffect(() => {
         if (!isSSR) {
-            const newUrl = new URL(window.location)
+            const newUrl = new URL(window.location.href)
             if (searchText) {
                 newUrl.searchParams.set("commitSearch", searchText)
             } else {
@@ -179,7 +179,7 @@ export default function VersionDrawer({ windowSize }) {
             }
             router_VersionDrawer.replace(newUrl.toString(), undefined, { shallow: true })
         }
-    }, [searchText])
+    }, [isSSR, router_VersionDrawer, searchText])
 
     return (
         <>
@@ -231,7 +231,7 @@ export default function VersionDrawer({ windowSize }) {
                                 <FontAwesomeIcon icon={faMagnifyingGlass} size="sm" />
                             </Box>
                         </Flex>
-                        <Collapse in={showSearch}>
+                        <Collapse in={Boolean(showSearch)}>
                             <InputGroup mt={3} borderRadius="lg">
                                 <Input placeholder="Search commits..." value={searchText} onChange={(e) => setSearchText(e.target.value)} />
                                 {searchText && (
