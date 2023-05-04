@@ -9,7 +9,7 @@
 # Exclude commits that start with 'DEV' (these are commits that were only
 # impact the development environment and do not need to be built)
 # Only include the 'public' folder, 'src' folder, and 'theme.ts' file
-commits=$(git log --pretty=format:'%h' --invert-grep --grep='^DEV' -- public src theme.ts -- . src/components/VersionDrawer.tsx src/pages/api/commits.ts)
+commits=$(git log --pretty=format:'%h' --invert-grep --grep='^DEV' -- public src theme.ts)
 
 # Save the current branch name
 current_branch=$(git symbolic-ref --short HEAD)
