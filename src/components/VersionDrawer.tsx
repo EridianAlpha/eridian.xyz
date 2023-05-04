@@ -155,7 +155,8 @@ export default function VersionDrawer({ windowSize }) {
                                 <Box
                                     borderWidth="1px"
                                     borderRadius="lg"
-                                    padding="3"
+                                    paddingX="3"
+                                    paddingY="2"
                                     cursor="pointer"
                                     width="100%"
                                     _hover={{
@@ -174,10 +175,11 @@ export default function VersionDrawer({ windowSize }) {
                                 <Box
                                     borderWidth="1px"
                                     borderRadius="lg"
-                                    padding="3"
+                                    paddingX="3"
+                                    paddingY="2"
                                     cursor="pointer"
                                     width="50px"
-                                    height="53px"
+                                    height="45px"
                                     marginLeft="3"
                                     _hover={{
                                         bg: useColorModeValue("gray.100", "gray.700"),
