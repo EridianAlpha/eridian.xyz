@@ -5,14 +5,6 @@
 # This script is useful for testing the static site for every commit in the
 # git history.
 
-# Check if there are any changes to stash
-stash_needed=$(git diff-index --quiet HEAD -- || echo "yes")
-
-# Store any uncommitted changes
-if [ "$stash_needed" == "yes" ]; then
-  git stash
-fi
-
 # Get a list of all commit hashes
 # Exclude commits that start with 'DEV' (these are commits that were only
 # impact the development environment and do not need to be built)
@@ -31,6 +23,13 @@ cp src/components/VersionDrawer.tsx tmp_bash_script_files/VersionDrawer.tsx
 # Before checking out a new branch, store the currnet src/pages/api/commits.ts in in the directory tmp_bash_script_files
 cp src/pages/api/commits.ts tmp_bash_script_files/commits.ts
 
+# Check if there are any changes to stash
+stash_needed=$(git diff-index --quiet HEAD -- || echo "yes")
+
+# Store any uncommitted changes
+if [ "$stash_needed" == "yes" ]; then
+  git stash
+fi
 
 # Iterate through each commit hash
 for commit in $commits; do
