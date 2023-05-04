@@ -2,7 +2,15 @@ import React, { useState, useEffect } from "react"
 import { useDisclosure } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faClockRotateLeft, faCodeCommit, faFile, faCirclePlus, faCircleMinus, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import {
+    faClockRotateLeft,
+    faCodeCommit,
+    faFile,
+    faCirclePlus,
+    faCircleMinus,
+    faMagnifyingGlass,
+    faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons"
 
 import {
     Box,
@@ -18,6 +26,11 @@ import {
     Code,
     Flex,
     HStack,
+    Input,
+    InputGroup,
+    InputRightElement,
+    IconButton,
+    Collapse,
 } from "@chakra-ui/react"
 
 const CommitCard = ({ commit, message, date, author, diff, currentVersion }) => {
@@ -118,6 +131,21 @@ export default function VersionDrawer({ windowSize }) {
     const [commitHashes, setCommitHashes] = useState([])
     const [currentVersion, setCurrentVersion] = useState("")
 
+    const [showSearch, setShowSearch] = useState(() => {
+        if (!isSSR) {
+            const queryParams = new URLSearchParams(window.location.search)
+            return queryParams.get("commitSearch") ? true : false
+        }
+        return ""
+    })
+    const [searchText, setSearchText] = useState(() => {
+        if (!isSSR) {
+            const queryParams = new URLSearchParams(window.location.search)
+            return queryParams.get("commitSearch") || ""
+        }
+        return ""
+    })
+
     const hoverBackgroundColor = useColorModeValue("gray.100", "gray.700")
 
     useEffect(() => {
@@ -140,6 +168,18 @@ export default function VersionDrawer({ windowSize }) {
 
         fetchData()
     }, [router_VersionDrawer.asPath])
+
+    useEffect(() => {
+        if (!isSSR) {
+            const newUrl = new URL(window.location)
+            if (searchText) {
+                newUrl.searchParams.set("commitSearch", searchText)
+            } else {
+                newUrl.searchParams.delete("commitSearch")
+            }
+            router_VersionDrawer.replace(newUrl.toString(), undefined, { shallow: true })
+        }
+    }, [searchText])
 
     return (
         <>
@@ -171,25 +211,41 @@ export default function VersionDrawer({ windowSize }) {
                     <DrawerCloseButton mt={2} mr={2} />
                     <DrawerHeader>
                         <Flex>
-                            <Code cursor={"default"} fontSize={"xl"} borderRadius={6}>
+                            <Code px={3} cursor={"default"} fontSize={"xl"} borderRadius={6}>
                                 Select commit
                             </Code>
                             <Box
                                 borderWidth="1px"
                                 borderRadius="lg"
-                                paddingX="3"
+                                px={3}
                                 cursor="pointer"
-                                marginLeft="5"
+                                marginLeft={3}
                                 _hover={{
                                     bg: useColorModeValue("gray.100", "gray.700"),
                                 }}
                                 onClick={() => {
-                                    // handle click event for the square button
+                                    setSearchText("")
+                                    setShowSearch(!showSearch)
                                 }}
                             >
                                 <FontAwesomeIcon icon={faMagnifyingGlass} size="sm" />
                             </Box>
                         </Flex>
+                        <Collapse in={showSearch}>
+                            <InputGroup mt={3} borderRadius="lg">
+                                <Input placeholder="Search commits..." value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+                                {searchText && (
+                                    <InputRightElement>
+                                        <IconButton
+                                            icon={<FontAwesomeIcon icon={faTimesCircle} />}
+                                            variant="ghost"
+                                            onClick={() => setSearchText("")}
+                                            aria-label="Clear search"
+                                        />
+                                    </InputRightElement>
+                                )}
+                            </InputGroup>
+                        </Collapse>
                     </DrawerHeader>
 
                     <DrawerBody>
@@ -218,17 +274,19 @@ export default function VersionDrawer({ windowSize }) {
                                     {currentVersion == "latest" ? "👀 \u00A0 Viewing latest version" : "⭐️ \u00A0 Latest version"}
                                 </Text>
                             </Box>
-                            {commitHashes.map(({ hash, message, date, author, diff }) => (
-                                <CommitCard
-                                    key={hash}
-                                    commit={hash}
-                                    message={message}
-                                    date={date}
-                                    author={author}
-                                    diff={diff}
-                                    currentVersion={currentVersion}
-                                />
-                            ))}
+                            {commitHashes
+                                .filter(({ message }) => message.toLowerCase().includes(searchText.toLowerCase()))
+                                .map(({ hash, message, date, author, diff }) => (
+                                    <CommitCard
+                                        key={hash}
+                                        commit={hash}
+                                        message={message}
+                                        date={date}
+                                        author={author}
+                                        diff={diff}
+                                        currentVersion={currentVersion}
+                                    />
+                                ))}
                         </VStack>
                     </DrawerBody>
                 </DrawerContent>
