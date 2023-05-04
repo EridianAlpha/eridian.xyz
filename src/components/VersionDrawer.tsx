@@ -20,28 +20,40 @@ import {
     HStack,
 } from "@chakra-ui/react"
 
-const CommitCard = ({ commit, message, date, author, diff }) => {
+const CommitCard = ({ commit, message, date, author, diff, currentVersion }) => {
     // This line is used by the dev script build_all_commits.sh so needs to remain here
     // This line also shouldn't be duplicated anywhere in this file, otherwise the script will break
     // TODO: Find a better way to do this
     const router = useRouter()
 
+    // DON'T MODIFY THIS FUNCTION
+    // It's used by the dev script build_all_commits.sh
+    // TODO: Find a better way to do this
     const handleClick = () => {
         router.push(`/${commit}${router.asPath}`)
     }
 
+    const hoverBackgroundColor = useColorModeValue("gray.100", "gray.700")
+
     return (
         <Box
-            borderWidth="1px"
             borderRadius="lg"
             padding="3"
-            cursor="pointer"
             width="100%"
+            border={currentVersion == commit ? hoverBackgroundColor : ""}
+            borderWidth={currentVersion == commit ? "3px" : "1px"}
+            borderColor={currentVersion == commit ? "green" : ""}
+            cursor={currentVersion == commit ? "default" : "pointer"}
+            onClick={currentVersion == commit ? undefined : handleClick}
             _hover={{
-                bg: useColorModeValue("gray.100", "gray.700"),
+                bg: currentVersion == commit ? "" : hoverBackgroundColor,
             }}
-            onClick={handleClick}
         >
+            {currentVersion == commit && (
+                <Text align={"center"} fontWeight="bold" borderRadius={"10px"} bg="green" mb={3}>
+                    👀 &nbsp; Currently viewing
+                </Text>
+            )}
             <Flex alignItems="center" pb={1} gap={3} justifyContent={"space-between"}>
                 <Flex alignItems="center">
                     <Box as="span" pr={2}>
@@ -104,16 +116,30 @@ export default function VersionDrawer({ windowSize }) {
     const router_VersionDrawer = useRouter()
 
     const [commitHashes, setCommitHashes] = useState([])
+    const [currentVersion, setCurrentVersion] = useState("")
+
+    const hoverBackgroundColor = useColorModeValue("gray.100", "gray.700")
 
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch("/api/commits")
             const data = await response.json()
             setCommitHashes(data)
+
+            const pathMatch = router_VersionDrawer.asPath.substring(1, 8)
+            console.log("pathMatch", pathMatch)
+
+            // If the pathMatch is empty, then you're on the latest version
+            // The regular expression is needed in case there is additional params in the URL
+            if (!pathMatch || !/^[a-f0-9]{7}/.test(pathMatch)) {
+                setCurrentVersion("latest")
+            } else {
+                setCurrentVersion(pathMatch)
+            }
         }
 
         fetchData()
-    }, [])
+    }, [router_VersionDrawer.asPath])
 
     return (
         <>
@@ -144,55 +170,64 @@ export default function VersionDrawer({ windowSize }) {
                 <DrawerContent bg={useColorModeValue("white", "gray.900")} borderLeftRadius="30px" minW="320px">
                     <DrawerCloseButton mt={2} mr={2} />
                     <DrawerHeader>
-                        <Code fontSize={"xl"} borderRadius={6}>
-                            Select commit
-                        </Code>
+                        <Flex>
+                            <Code cursor={"default"} fontSize={"xl"} borderRadius={6}>
+                                Select commit
+                            </Code>
+                            <Box
+                                borderWidth="1px"
+                                borderRadius="lg"
+                                paddingX="3"
+                                cursor="pointer"
+                                marginLeft="5"
+                                _hover={{
+                                    bg: useColorModeValue("gray.100", "gray.700"),
+                                }}
+                                onClick={() => {
+                                    // handle click event for the square button
+                                }}
+                            >
+                                <FontAwesomeIcon icon={faMagnifyingGlass} size="sm" />
+                            </Box>
+                        </Flex>
                     </DrawerHeader>
 
                     <DrawerBody>
                         <VStack spacing={4}>
-                            <Flex align="center" flex={1} width={"100%"}>
-                                <Box
-                                    borderWidth="1px"
-                                    borderRadius="lg"
-                                    paddingX="3"
-                                    paddingY="2"
-                                    cursor="pointer"
-                                    width="100%"
-                                    _hover={{
-                                        bg: useColorModeValue("gray.100", "gray.700"),
-                                    }}
-                                    onClick={async () => {
+                            <Box
+                                borderRadius="lg"
+                                paddingX="3"
+                                paddingY="2"
+                                border={currentVersion == "latest" ? hoverBackgroundColor : ""}
+                                borderWidth={currentVersion == "latest" ? "3px" : "1px"}
+                                borderColor={currentVersion == "latest" ? "green" : ""}
+                                cursor={currentVersion == "latest" ? "default" : "pointer"}
+                                width="100%"
+                                _hover={{
+                                    bg: currentVersion == "latest" ? "" : hoverBackgroundColor,
+                                }}
+                                onClick={async () => {
+                                    if (currentVersion !== "latest") {
                                         const pathAfterCommit = router_VersionDrawer.asPath.substring(8)
                                         await router_VersionDrawer.push(`${pathAfterCommit}`)
                                         router_VersionDrawer.reload()
-                                    }}
-                                >
-                                    <Text fontWeight="bold" fontSize="lg">
-                                        ⭐️&nbsp;&nbsp;&nbsp;Latest version
-                                    </Text>
-                                </Box>
-                                <Box
-                                    borderWidth="1px"
-                                    borderRadius="lg"
-                                    paddingX="3"
-                                    paddingY="2"
-                                    cursor="pointer"
-                                    width="50px"
-                                    height="45px"
-                                    marginLeft="3"
-                                    _hover={{
-                                        bg: useColorModeValue("gray.100", "gray.700"),
-                                    }}
-                                    onClick={() => {
-                                        // handle click event for the square button
-                                    }}
-                                >
-                                    <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
-                                </Box>
-                            </Flex>
+                                    }
+                                }}
+                            >
+                                <Text fontWeight="bold" fontSize="lg">
+                                    {currentVersion == "latest" ? "👀 \u00A0 Viewing latest version" : "⭐️ \u00A0 Latest version"}
+                                </Text>
+                            </Box>
                             {commitHashes.map(({ hash, message, date, author, diff }) => (
-                                <CommitCard key={hash} commit={hash} message={message} date={date} author={author} diff={diff} />
+                                <CommitCard
+                                    key={hash}
+                                    commit={hash}
+                                    message={message}
+                                    date={date}
+                                    author={author}
+                                    diff={diff}
+                                    currentVersion={currentVersion}
+                                />
                             ))}
                         </VStack>
                     </DrawerBody>
