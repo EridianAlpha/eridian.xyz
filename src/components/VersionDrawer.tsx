@@ -133,15 +133,13 @@ export default function VersionDrawer({ windowSize }) {
 
     const [showSearch, setShowSearch] = useState(() => {
         if (!isSSR) {
-            const queryParams = new URLSearchParams(window.location.search)
-            return queryParams.get("commitSearch") ? true : false
+            return window.localStorage.getItem("commitSearch") ? true : false
         }
         return ""
     })
     const [searchText, setSearchText] = useState(() => {
         if (!isSSR) {
-            const queryParams = new URLSearchParams(window.location.search)
-            return queryParams.get("commitSearch") || ""
+            return window.localStorage.getItem("commitSearch") || ""
         }
         return ""
     })
@@ -171,15 +169,13 @@ export default function VersionDrawer({ windowSize }) {
 
     useEffect(() => {
         if (!isSSR) {
-            const newUrl = new URL(window.location.href)
             if (searchText) {
-                newUrl.searchParams.set("commitSearch", searchText)
+                window.localStorage.setItem("commitSearch", searchText)
             } else {
-                newUrl.searchParams.delete("commitSearch")
+                window.localStorage.removeItem("commitSearch")
             }
-            router_VersionDrawer.replace(newUrl.toString(), undefined, { shallow: true })
         }
-    }, [isSSR, router_VersionDrawer, searchText])
+    }, [searchText])
 
     return (
         <>
@@ -233,7 +229,7 @@ export default function VersionDrawer({ windowSize }) {
                         </Flex>
                         <Collapse in={Boolean(showSearch)}>
                             <InputGroup mt={3} borderRadius="lg">
-                                <Input placeholder="Search commits..." value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+                                <Input placeholder="Search commit messages..." value={searchText} onChange={(e) => setSearchText(e.target.value)} />
                                 {searchText && (
                                     <InputRightElement>
                                         <IconButton
