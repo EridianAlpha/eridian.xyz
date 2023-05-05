@@ -131,7 +131,7 @@ export default function VersionDrawer({ windowSize }) {
     const router_VersionDrawer = useRouter()
 
     const [commitHashes, setCommitHashes] = useState([])
-    const [currentVersion, setCurrentVersion] = useState("")
+    const [currentVersion, setCurrentVersion] = useState("latest")
 
     const searchInputRef = useRef(null)
     const [showSearch, setShowSearch] = useState(() => {
@@ -154,6 +154,12 @@ export default function VersionDrawer({ windowSize }) {
     }, [showSearch])
 
     const hoverBackgroundColor = useColorModeValue("gray.100", "gray.700")
+
+    const buttonBackgroundColorLatest = useColorModeValue("gray.100", "#1B2236")
+    const buttonBackgroundHoverLatest = useColorModeValue("gray.200", "gray.700")
+
+    const buttonBackgroundColorActive = useColorModeValue("green.300", "green.500")
+    const buttonBackgroundHoverActive = useColorModeValue("green.400", "green.600")
 
     useEffect(() => {
         const fetchData = async () => {
@@ -197,12 +203,12 @@ export default function VersionDrawer({ windowSize }) {
                 height={windowSize.width > 1500 ? "100vh" : "50px"}
                 borderTopLeftRadius={windowSize.width > 1500 ? "30px" : "20px"}
                 borderBottomLeftRadius={windowSize.width > 1500 ? "30px" : "0px"}
-                backgroundColor={useColorModeValue("gray.100", "#1B2236")}
+                bg={currentVersion == "latest" ? buttonBackgroundColorLatest : buttonBackgroundColorActive}
                 borderColor={windowSize.width > 500 ? "transparent" : "gray"}
                 borderLeftWidth={windowSize.width > 500 ? "0px" : "1px"}
                 borderTopWidth={windowSize.width > 500 ? "0px" : "1px"}
                 _hover={{
-                    backgroundColor: useColorModeValue("gray.200", "gray.700"),
+                    backgroundColor: currentVersion == "latest" ? buttonBackgroundHoverLatest : buttonBackgroundHoverActive,
                     cursor: "pointer",
                 }}
                 onClick={onOpen}
