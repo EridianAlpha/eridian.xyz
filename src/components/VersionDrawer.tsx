@@ -31,6 +31,10 @@ import {
     InputRightElement,
     IconButton,
     Collapse,
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
 } from "@chakra-ui/react"
 
 const CommitCard = ({ commit, message, date, author, diff, currentVersion }) => {
@@ -291,12 +295,25 @@ export default function VersionDrawer({ windowSize }) {
                                     </VStack>
                                 )}
                             {!commitHashes.toString() && (
-                                <VStack spacing={0}>
-                                    <Text fontSize={"xx-large"}>🚧</Text>
-                                    <Text>No commits returned from API</Text>
-                                    <Text pt={5}>
-                                        Run <Code>yarn commits</Code> to build all commit versions before starting the dev server.
-                                    </Text>
+                                <VStack spacing={5}>
+                                    <VStack spacing={0}>
+                                        <Text fontSize={"xx-large"}>🚧</Text>
+                                        <Text>No commits returned from API</Text>
+                                    </VStack>
+                                    <Alert status="info" flexDirection="column" alignItems="flex-start" borderRadius={15}>
+                                        <HStack pb={4}>
+                                            <AlertIcon />
+                                            <AlertTitle fontSize="lg">Server Info</AlertTitle>
+                                        </HStack>
+                                        <AlertDescription>
+                                            <Text>
+                                                Run <Code>yarn commits</Code> to build all commit versions before starting the dev server.
+                                            </Text>
+                                            <Text pt={3}>
+                                                Run <Code>yarn dev-commits</Code> to build all commit versions and automatically start the dev server.
+                                            </Text>
+                                        </AlertDescription>
+                                    </Alert>
                                 </VStack>
                             )}
                         </VStack>
