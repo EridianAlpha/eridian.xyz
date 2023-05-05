@@ -212,7 +212,7 @@ export default function VersionDrawer({ windowSize }) {
             </Box>
             <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
                 <DrawerOverlay />
-                <DrawerContent bg={useColorModeValue("white", "gray.900")} borderLeftRadius="30px" minW="320px">
+                <DrawerContent bg={useColorModeValue("white", "#131827")} borderLeftRadius="30px" minW="320px">
                     <DrawerCloseButton mt={2} mr={2} />
                     <DrawerHeader>
                         <Flex>
