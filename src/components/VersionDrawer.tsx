@@ -283,6 +283,22 @@ export default function VersionDrawer({ windowSize }) {
                                         currentVersion={currentVersion}
                                     />
                                 ))}
+                            {commitHashes.toString() &&
+                                commitHashes.filter(({ message }) => message.toLowerCase().includes(searchText.toLowerCase())).toString() == "" && (
+                                    <VStack spacing={0}>
+                                        <Text fontSize={"xx-large"}>🧐</Text>
+                                        <Text>No commits found for search query</Text>
+                                    </VStack>
+                                )}
+                            {!commitHashes.toString() && (
+                                <VStack spacing={0}>
+                                    <Text fontSize={"xx-large"}>🚧</Text>
+                                    <Text>No commits returned from API</Text>
+                                    <Text pt={5}>
+                                        Run <Code>yarn commits</Code> to build all commit versions before starting the dev server.
+                                    </Text>
+                                </VStack>
+                            )}
                         </VStack>
                     </DrawerBody>
                 </DrawerContent>
