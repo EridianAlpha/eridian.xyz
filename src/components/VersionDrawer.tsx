@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useDisclosure } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -135,6 +135,7 @@ export default function VersionDrawer({ windowSize }) {
     const [commitHashes, setCommitHashes] = useState([])
     const [currentVersion, setCurrentVersion] = useState("")
 
+    const searchInputRef = useRef(null)
     const [showSearch, setShowSearch] = useState(() => {
         if (!isSSR) {
             return window.localStorage.getItem("commitSearch") ? true : false
@@ -147,6 +148,12 @@ export default function VersionDrawer({ windowSize }) {
         }
         return ""
     })
+
+    useEffect(() => {
+        if (showSearch) {
+            searchInputRef.current?.focus()
+        }
+    }, [showSearch])
 
     const hoverBackgroundColor = useColorModeValue("gray.100", "gray.700")
 
@@ -179,7 +186,7 @@ export default function VersionDrawer({ windowSize }) {
                 window.localStorage.removeItem("commitSearch")
             }
         }
-    }, [searchText])
+    }, [searchText, isSSR])
 
     return (
         <>
@@ -233,7 +240,12 @@ export default function VersionDrawer({ windowSize }) {
                         </Flex>
                         <Collapse in={Boolean(showSearch)}>
                             <InputGroup mt={3} borderRadius="lg">
-                                <Input placeholder="Search commit messages..." value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+                                <Input
+                                    ref={searchInputRef}
+                                    placeholder="Search commit messages..."
+                                    value={searchText}
+                                    onChange={(e) => setSearchText(e.target.value)}
+                                />
                                 {searchText && (
                                     <InputRightElement>
                                         <IconButton

@@ -15,7 +15,6 @@ app.prepare().then(() => {
 
     // Custom route to handle static assets for each version
     server.get("/:commit([0-9a-f]{7})/_next/*", (req, res) => {
-        const commit = req.params.commit
         const reqPath = req.path
         const filePath = path.join(__dirname, "versions", reqPath)
         res.sendFile(filePath)
@@ -23,7 +22,6 @@ app.prepare().then(() => {
 
     // Custom route to handle commit hashes in the URL
     server.get("/:commit([0-9a-f]{7})/*", (req, res) => {
-        const commit = req.params.commit
         const reqPath = req.path === "/" ? "/index.html" : req.path
         const filePath = path.join(__dirname, "versions", reqPath)
         res.sendFile(filePath)
