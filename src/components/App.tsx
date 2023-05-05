@@ -4,9 +4,12 @@ import VersionDrawer from "./VersionDrawer"
 import Header from "./Header/Header"
 import Overview from "./Overview"
 
-import { Container } from "@chakra-ui/react"
+import { useTheme, Container, Box, useColorModeValue } from "@chakra-ui/react"
 
 const App = () => {
+    // Import custom color theme
+    const customTheme = useTheme()
+
     // Check if the current render is on the server (Server Side Render) or client
     const isSSR = typeof window === "undefined"
 
@@ -27,11 +30,13 @@ const App = () => {
     }, [])
 
     return (
-        <Container maxW="1400px">
-            {process.env.NODE_ENV === "development" && <VersionDrawer windowSize={windowSize} />}
-            <Header windowSize={windowSize} />
-            <Overview windowSize={windowSize} />
-        </Container>
+        <Box minH="100vh" minW="100vw" bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}>
+            <Container maxW="1400px" bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}>
+                {process.env.NODE_ENV === "development" && <VersionDrawer windowSize={windowSize} />}
+                <Header windowSize={windowSize} />
+                <Overview windowSize={windowSize} />
+            </Container>
+        </Box>
     )
 }
 

@@ -1,4 +1,4 @@
-import { Container, Flex, HStack, useColorModeValue, Image, Card, Stack, CardBody, Heading, Text, VStack, Divider } from "@chakra-ui/react"
+import { useTheme, Container, Flex, HStack, useColorModeValue, Image, Card, Stack, CardBody, Heading, Text, VStack, Divider } from "@chakra-ui/react"
 
 import focusAreasDataImport from "../../public/data/focusAreas.json" // Import the JSON data
 
@@ -14,6 +14,7 @@ const focusAreaIconMapping = {
 }
 
 export default function Overview({ windowSize }) {
+    const customTheme = useTheme()
     const isSSR = typeof window === "undefined"
 
     const focusAreasData = focusAreasDataImport.map((item) => ({
@@ -23,14 +24,14 @@ export default function Overview({ windowSize }) {
 
     return (
         <>
-            <Container bg={useColorModeValue("white", "gray.900")} maxW="1200px" padding={5}>
+            <Container bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)} maxW="1200px" padding={5}>
                 <Card
                     direction={{ base: "column", md: "row" }}
                     overflow="hidden"
                     variant="outline"
                     borderRadius={"30px"}
                     borderWidth={0}
-                    bg={useColorModeValue("gray.100", "#1B2236")}
+                    bg={useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)}
                 >
                     <Flex alignItems="center" justifyContent="center" flexDirection={{ base: "column", md: "row" }} width={"100%"}>
                         <Image
@@ -47,7 +48,11 @@ export default function Overview({ windowSize }) {
                         <Stack flexGrow={1}>
                             <CardBody>
                                 <Flex direction={"row"} wrap={"wrap"} justifyContent={"space-between"} alignItems={"baseline"}>
-                                    <Heading color="#2EBDF7" size="xl" pr="30px">
+                                    <Heading
+                                        color={useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)}
+                                        size="xl"
+                                        pr="30px"
+                                    >
                                         eridian.eth
                                     </Heading>
                                     <Flex py="25px" flexWrap="wrap" gap="10px">
@@ -63,8 +68,12 @@ export default function Overview({ windowSize }) {
                                 </Flex>
                                 <Text>This website is a public tracker of my past and current Ethereum ecosystem projects and ideas.</Text>
                                 <VStack pt="20px">
-                                    <Divider borderColor={useColorModeValue("gray.700", "white")} />
-                                    <Heading color="#2EBDF7" fontSize={"xl"} py="10px">
+                                    <Divider borderColor={useColorModeValue("gray.700", "gray.100")} />
+                                    <Heading
+                                        color={useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)}
+                                        fontSize={"xl"}
+                                        py="10px"
+                                    >
                                         Current Areas of Focus
                                     </Heading>
                                     <Flex flexDirection={"row"} wrap={"wrap"} columnGap={"20px"} rowGap={"20px"} justifyContent={"space-around"}>

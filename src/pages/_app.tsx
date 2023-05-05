@@ -9,20 +9,32 @@ import "@fortawesome/fontawesome-svg-core/styles.css"
 config.autoAddCss = false
 
 // Custom theme colors
-const theme = extendTheme({
-    colors: {
-        gray: {
-            800: "#131827",
-            900: "#131827",
+const customTheme = extendTheme({
+    pageBackground: {
+        light: "white",
+        dark: "#131827",
+    },
+    headingText: {
+        color: {
+            light: "#171923",
+            dark: "#63B3ED",
+        },
+    },
+    contentBackground: {
+        color: {
+            light: "#EDF2F7",
+            dark: "#1B2236",
+        },
+        hoverColor: {
+            light: "#E2E8F0",
+            dark: "#2D3748",
         },
     },
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
-    const isSSR = typeof window === "undefined"
-
     return (
-        <ChakraProvider theme={theme}>
+        <ChakraProvider theme={customTheme}>
             <Component {...pageProps} />
         </ChakraProvider>
     )
