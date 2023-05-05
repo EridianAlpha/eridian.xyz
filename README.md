@@ -15,7 +15,7 @@ This project includes a Bash script `dev/build_all_commits.sh` that builds the s
     - Checks if the folder for this commit already exists. If it does, the script skips to the next commit.
     - Checks out the commit.
     - Installs dependencies specific to this commit using Yarn (if a package.json file is present).
-    - Builds the static site using yarn build && yarn next export.
+    - Builds the static site using `yarn build && yarn next export`.
     - Moves the generated static site to a folder named with the commit hash in the versions directory.
     - Cleans up the 'out' directory.
     - Updates the static asset URLs by running an embedded Node.js script.
@@ -23,7 +23,7 @@ This project includes a Bash script `dev/build_all_commits.sh` that builds the s
 6. Re-installs dependencies for the original branch using Yarn (if a package.json file is present).
 7. If there were changes stashed at the beginning, the script pops the stash.
 
-When the development server is started, the previous versions are selectable in a side drawer on the right side of the screen.
+When the development server is started, the previous versions are selectable in a drawer on the right side of the screen.
 
 ### Development Commands
 
@@ -35,6 +35,9 @@ This command runs the `dev/build_all_commits.sh` script. It builds the static si
 - `yarn dev`<br/>
 This command starts the development server using the `node server.js` script. Use this command during development to see live updates as you make changes to the project.
 
+- `yarn dev-commits`<br/>
+This command is a combination of the `yarn commits` and `yarn dev` commands. It first runs the `yarn commits` command to build the static site for every commit in the git history, excluding commits that start with 'DEV', and saves the generated static sites in the `versions` directory with their corresponding commit hash as the folder name. Then it runs the `yarn dev` command to start the development server. Use this command during development to see live updates as you make changes to the project.
+
 - `yarn lint`<br/>
 This command checks the code quality and adherence to coding standards using the `next lint` command. It is recommended to run this command before committing changes to ensure code consistency and maintainability.
 
@@ -44,7 +47,7 @@ TODO: The site is currently under development and is not ready for production. T
 
 ### Production Commands
 
-This section explains the available scripts in the `package.json` file and their usage during development.
+This section explains the available scripts in the `package.json` file and their usage during production deployments.
 
 - `yarn build`<br/>
 This command builds the static site for production using the `next build` command. It generates an optimized build of the site that is suitable for deployment.
