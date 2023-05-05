@@ -13,31 +13,31 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 
 import {
+    Alert,
+    AlertDescription,
+    AlertIcon,
+    AlertTitle,
     Box,
-    Drawer,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-    DrawerHeader,
-    DrawerBody,
-    useColorModeValue,
-    VStack,
-    Text,
     Code,
+    Collapse,
+    Drawer,
+    DrawerBody,
+    DrawerCloseButton,
+    DrawerContent,
+    DrawerHeader,
+    DrawerOverlay,
     Flex,
     HStack,
+    IconButton,
     Input,
     InputGroup,
     InputRightElement,
-    IconButton,
-    Collapse,
-    Alert,
-    AlertIcon,
-    AlertTitle,
-    AlertDescription,
+    Text,
+    useColorModeValue,
+    VStack,
 } from "@chakra-ui/react"
 
-const CommitCard = ({ commit, message, date, author, diff, currentVersion }) => {
+const CommitCard = ({ commit, message, date, author, diff, currentVersion, hoverBackgroundColor }) => {
     // This line is used by the dev script build_all_commits.sh so needs to remain here
     // This line also shouldn't be duplicated anywhere in this file, otherwise the script will break
     // TODO: Find a better way to do this
@@ -49,8 +49,6 @@ const CommitCard = ({ commit, message, date, author, diff, currentVersion }) => 
     const handleClick = () => {
         router.push(`/${commit}${router.asPath}`)
     }
-
-    const hoverBackgroundColor = useColorModeValue("gray.100", "gray.700")
 
     return (
         <Box
@@ -297,6 +295,7 @@ export default function VersionDrawer({ windowSize }) {
                                         author={author}
                                         diff={diff}
                                         currentVersion={currentVersion}
+                                        hoverBackgroundColor={hoverBackgroundColor}
                                     />
                                 ))}
                             {commitHashes.toString() &&
