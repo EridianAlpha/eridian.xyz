@@ -6,7 +6,7 @@ This is the source code for the [EridianAlpha.com](https://eridianalpha.com) web
 
 ## Development
 
-This project includes a Bash script `dev/build_all_commits.sh` that builds the static site for every commit in the git history where visible content was changed, ignoring commits that start with 'DEV'. The generated static sites are saved in folders named with the corresponding commit hash. This script is useful for testing the static site for every commit in the git history.
+This project includes a Bash script [build_all_commits.sh](/dev/build_all_commits.sh) that builds the static site for every commit in the git history where visible content was changed, ignoring commits that start with 'DEV'. The generated static sites are saved in folders named with the corresponding commit hash. This script is useful for testing the static site for every commit in the git history.
 
 1. If there are any uncommitted changes, the script stashes them.
 2. The script retrieves a list of all commit hashes where visible content was changed, excluding commits that start with 'DEV'.
@@ -25,12 +25,47 @@ This project includes a Bash script `dev/build_all_commits.sh` that builds the s
 
 When the development server is started, the previous versions are selectable in a drawer on the right side of the screen.
 
+### Development Setup Explained
+
+The following files and changes are required to set up a development environment for this project.
+
+- The component [/src/components/VersionDrawer.tsx](/src/components/VersionDrawer.tsx) displays the previous versions in a drawer on the right side of the screen.
+
+- The file [/src/components/App.tsx](/src/components/App.tsx) imports the drawer component.
+```typescript
+import VersionDrawer from "./VersionDrawer"
+
+// ... (other code)
+    return (
+        <Container maxW="1400px">
+            {process.env.NODE_ENV === "development" && <VersionDrawer windowSize={windowSize} />}
+            // ... (other code)
+        </Container>
+    )
+```
+
+- An API route [/src/pages/api/commits.ts](/src/pages/api/commits.ts) retrieves all the previous commits.
+
+- A [server.js](/server.js) file serves the static sites for the previous commits.
+
+- A bash script [/dev/build_all_commits.sh](/dev/build_all_commits.sh) performs the builds and file modifications.
+
+- The [package.json](/package.json) file contains the following scripts:
+```json
+  "scripts": {
+    "commits": "./dev/build_all_commits.sh",
+    "dev": "node server.js",
+    "dev-commits": "./dev/build_all_commits.sh && node server.js",
+    // ... (other scripts)
+```
+
+
 ### Development Commands
 
 This section explains the available scripts in the `package.json` file and their usage during development.
 
 - `yarn commits`<br/>
-This command runs the `dev/build_all_commits.sh` script. It builds the static site for every commit in the git history, excluding commits that start with 'DEV', and saves the generated static sites in the `versions` directory with their corresponding commit hash as the folder name. This script is useful for testing the static site for every commit in the git history.
+This command runs the [build_all_commits.sh](/dev/build_all_commits.sh) script. It builds the static site for every commit in the git history, excluding commits that start with 'DEV', and saves the generated static sites in the `versions` directory with their corresponding commit hash as the folder name. This script is useful for testing the static site for every commit in the git history.
 
 - `yarn dev`<br/>
 This command starts the development server using the `node server.js` script. Use this command during development to see live updates as you make changes to the project.
