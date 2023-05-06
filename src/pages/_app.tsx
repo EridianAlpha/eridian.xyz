@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app"
 import "../styles/globals.css"
 
-import { ChakraProvider } from "@chakra-ui/react"
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react"
 
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -35,6 +35,7 @@ const customTheme = extendTheme({
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <ChakraProvider theme={customTheme}>
+            <ColorModeScript initialColorMode="system" />
             <Component {...pageProps} />
         </ChakraProvider>
     )
