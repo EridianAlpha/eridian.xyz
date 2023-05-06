@@ -129,6 +129,19 @@ export default function VersionDrawer({ windowSize }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
     const router_VersionDrawer = useRouter()
+    useEffect(() => {
+        const handleRouteChange = (url, { shallow }) => {
+            if (!shallow) {
+                window.location.reload()
+            }
+        }
+
+        router_VersionDrawer.events.on("routeChangeComplete", handleRouteChange)
+
+        return () => {
+            router_VersionDrawer.events.off("routeChangeComplete", handleRouteChange)
+        }
+    }, [])
 
     const [commitHashes, setCommitHashes] = useState([])
     const [currentVersion, setCurrentVersion] = useState("latest")
@@ -168,7 +181,6 @@ export default function VersionDrawer({ windowSize }) {
             setCommitHashes(data)
 
             const pathMatch = router_VersionDrawer.asPath.substring(1, 8)
-            console.log("pathMatch", pathMatch)
 
             // If the pathMatch is empty, then you're on the latest version
             // The regular expression is needed in case there is additional params in the URL
