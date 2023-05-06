@@ -24,7 +24,12 @@ export default function Overview({ windowSize }) {
 
     return (
         <>
-            <Container bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)} maxW="1200px" padding={5}>
+            <Container
+                bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}
+                maxW="1200px"
+                padding={5}
+                pb={"100px"}
+            >
                 <Card
                     direction={{ base: "column", md: "row" }}
                     overflow="hidden"
@@ -42,7 +47,7 @@ export default function Overview({ windowSize }) {
                             borderBottomRadius={{ base: "0px", sm: "30px", md: "30px" }}
                             borderTopRightRadius={{ base: "0px", sm: "0px", md: "30px" }}
                             borderBottomRightRadius={{ base: "0px", sm: "30px", md: "30px" }}
-                            borderBottomLeftRadius={{ base: "0px", sm: "30px", md: "00px" }}
+                            borderBottomLeftRadius={{ base: "0px", sm: "30px", md: "0px" }}
                         />
 
                         <Stack flexGrow={1}>

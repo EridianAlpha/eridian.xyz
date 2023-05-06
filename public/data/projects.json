@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Small Card",
+        "startDate": "2023-01-01",
+        "endDate": "In Progress",
+        "description": "The journey of Ethereum solo stakers to distributed validator staking.",
+        "images": ["./481368551588.png", "./481368551588.png"],
+        "externalLinks": "https://www.dvstakers.com",
+        "tags": ["Ethereum", "Staking", "Validator", "Solo Staking", "Distributed Staking", "DVStakers"],
+        "displayConfig": {
+            "cardType": "image",
+            "cardSize": "small",
+            "showTags": true
+        }
+    },
+    {
+        "name": "Medium Card",
+        "description": "Bacon ipsum dolor amet turkey pancetta t-bone swine jerky chislic sausage sirloin leberkas ham hock boudin. Kevin porchetta salami, alcatra ham pork bacon capicola shoulder shankle strip steak pork loin. Tenderloin beef strip steak venison. Short loin spare ribs biltong capicola brisket pork loin. T-bone jowl ribeye sirloin ham hock. Porchetta ham hock andouille shoulder, ham ball tip bresaola brisket alcatra meatloaf burgdoggen doner t-bone cupim filet mignon.",
+        "images": ["./481368551588.png", "./481368551588.png"],
+        "displayConfig": {
+            "cardSize": "medium"
+        }
+    },
+    {
+        "name": "Small Card",
+        "description": "Bacon ipsum dolor amet turkey pancetta t-bone swine jerky chislic sausage sirloin leberkas ham hock boudin. Kevin porchetta salami, alcatra ham pork bacon capicola shoulder shankle strip steak pork loin. Tenderloin beef strip steak venison. Short loin spare ribs biltong capicola brisket pork loin. T-bone jowl ribeye sirloin ham hock. Porchetta ham hock andouille shoulder, ham ball tip bresaola brisket alcatra meatloaf burgdoggen doner t-bone cupim filet mignon.",
+        "displayConfig": {
+            "cardSize": "small"
+        }
+    },
+    {
+        "name": "Large Card",
+        "images": ["./481368551588.png", "./481368551588.png"],
+        "displayConfig": {
+            "cardSize": "large"
+        }
+    },
+    {
+        "name": "Small Card",
+        "displayConfig": {
+            "cardSize": "small"
+        }
+    },
+    {
+        "name": "Large Card",
+        "displayConfig": {
+            "cardSize": "large"
+        }
+    },
+    {
+        "name": "Small Card",
+        "displayConfig": {
+            "cardSize": "small"
+        }
+    },
+    {
+        "name": "Small Card",
+        "displayConfig": {
+            "cardSize": "small"
+        }
+    },
+    {
+        "name": "Medium Card",
+        "displayConfig": {
+            "cardSize": "medium"
+        }
+    }
+]

@@ -3,6 +3,7 @@ import styles from "./App.module.css"
 import VersionDrawer from "./VersionDrawer"
 import Header from "./Header/Header"
 import Overview from "./Overview"
+import ProjectGallery from "./Projects/ProjectGallery"
 
 import { useTheme, Container, Box, useColorModeValue } from "@chakra-ui/react"
 
@@ -35,6 +36,7 @@ const App = () => {
                 {process.env.NODE_ENV === "development" && <VersionDrawer windowSize={windowSize} />}
                 <Header windowSize={windowSize} />
                 <Overview windowSize={windowSize} />
+                <ProjectGallery windowSize={windowSize} />
             </Container>
         </Box>
     )
