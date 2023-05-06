@@ -1,10 +1,20 @@
 [
     {
+        "name": "DVStakers",
+        "images": [
+            { "image": "./images/DVStakersSquareBlackLogo.png", "alt": "test" },
+            { "image": "./images/DVStakers.png", "alt": "test" }
+        ],
+        "displayConfig": {
+            "cardSize": "large"
+        }
+    },
+    {
         "name": "Small Card",
         "startDate": "2023-01-01",
         "endDate": "In Progress",
         "description": "The journey of Ethereum solo stakers to distributed validator staking.",
-        "images": ["./481368551588.png", "./481368551588.png"],
+        "images": [{ "image": "./481368551588.png", "alt": "test" }],
         "externalLinks": "https://www.dvstakers.com",
         "tags": ["Ethereum", "Staking", "Validator", "Solo Staking", "Distributed Staking", "DVStakers"],
         "displayConfig": {
@@ -16,7 +26,7 @@
     {
         "name": "Medium Card",
         "description": "Bacon ipsum dolor amet turkey pancetta t-bone swine jerky chislic sausage sirloin leberkas ham hock boudin. Kevin porchetta salami, alcatra ham pork bacon capicola shoulder shankle strip steak pork loin. Tenderloin beef strip steak venison. Short loin spare ribs biltong capicola brisket pork loin. T-bone jowl ribeye sirloin ham hock. Porchetta ham hock andouille shoulder, ham ball tip bresaola brisket alcatra meatloaf burgdoggen doner t-bone cupim filet mignon.",
-        "images": ["./481368551588.png", "./481368551588.png"],
+        "images": [{ "image": "./481368551588.png", "alt": "test" }],
         "displayConfig": {
             "cardSize": "medium"
         }
@@ -29,14 +39,18 @@
         }
     },
     {
-        "name": "Large Card",
-        "images": ["./481368551588.png", "./481368551588.png"],
+        "name": "Large Card 2",
+        "images": [
+            { "image": "./481368551588.png", "alt": "test" },
+            { "image": "https://images.unsplash.com/photo-1584673961397-be26e009333f", "alt": "test" }
+        ],
         "displayConfig": {
             "cardSize": "large"
         }
     },
     {
         "name": "Small Card",
+        "images": [{ "image": "https://images.unsplash.com/photo-1584673961397-be26e009333f", "alt": "test" }],
         "displayConfig": {
             "cardSize": "small"
         }

@@ -24,9 +24,11 @@ const App = () => {
         const handleResizeWindow = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight })
         // subscribe to window resize event "onComponentDidMount"
         window.addEventListener("resize", handleResizeWindow)
+        window.addEventListener("load", handleResizeWindow)
         return () => {
             // unsubscribe "onComponentDestroy"
             window.removeEventListener("resize", handleResizeWindow)
+            window.removeEventListener("load", handleResizeWindow)
         }
     }, [])
 
