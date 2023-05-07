@@ -6,7 +6,8 @@
         "description": "The journey of Ethereum solo stakers to distributed validator staking.",
         "images": {
             "0": { "image": "./images/DVStakersSquareBlackLogo.png", "alt": "test" },
-            "1": { "image": "./images/DVStakers.png", "alt": "test" }
+            "1": { "image": "./images/DVStakers.png", "alt": "test" },
+            "2": { "image": "./images/DVStakers.png", "alt": "test" }
         },
         "externalLinks": { "0": { "url": "https://www.dvstakers.com", "label": "DV Stakers Website" } },
         "tags": ["Staking"],
@@ -31,11 +32,10 @@
         }
     },
     {
-        "name": "Testing",
-        "images": [
-            { "image": "./images/DVStakersSquareBlackLogo.png", "alt": "test" },
-            { "image": "./images/DVStakers.png", "alt": "test" }
-        ],
+        "name": "Staking Calculator",
+        "startDate": "2023-04-15",
+        "endDate": "2023-04-15",
+        "externalLinks": { "0": { "url": "https://twitter.com/EridianAlpha/status/1647367943724978181", "label": "Tweet" } },
         "displayConfig": {
             "cardSize": "small",
             "cardType": "twitterPost"
