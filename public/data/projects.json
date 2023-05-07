@@ -1,82 +1,44 @@
 [
     {
         "name": "DVStakers",
+        "startDate": "2023-01-01",
+        "endDate": "",
+        "description": "The journey of Ethereum solo stakers to distributed validator staking.",
+        "images": {
+            "0": { "image": "./images/DVStakersSquareBlackLogo.png", "alt": "test" },
+            "1": { "image": "./images/DVStakers.png", "alt": "test" }
+        },
+        "externalLinks": { "0": { "url": "https://www.dvstakers.com", "label": "DV Stakers Website" } },
+        "tags": ["Staking"],
+        "displayConfig": {
+            "cardSize": "large",
+            "cardType": "project"
+        }
+    },
+    {
+        "name": "Staking Spreadsheet",
+        "startDate": "2023-03-22",
+        "endDate": "2023-04-05",
+        "description": "A grant from the EF to build a Spreadsheet showing all the staking options available on Ethereum.",
+        "images": {
+            "0": { "image": "./481368551588.png", "alt": "Eridian Avatar" }
+        },
+        "externalLinks": { "0": { "url": "https://ethereum.org", "label": "Ethereum.org Website" } },
+        "tags": ["Staking"],
+        "displayConfig": {
+            "cardSize": "small",
+            "cardType": "project"
+        }
+    },
+    {
+        "name": "Testing",
         "images": [
             { "image": "./images/DVStakersSquareBlackLogo.png", "alt": "test" },
             { "image": "./images/DVStakers.png", "alt": "test" }
         ],
         "displayConfig": {
-            "cardSize": "large"
-        }
-    },
-    {
-        "name": "Small Card",
-        "startDate": "2023-01-01",
-        "endDate": "In Progress",
-        "description": "The journey of Ethereum solo stakers to distributed validator staking.",
-        "images": [{ "image": "./481368551588.png", "alt": "test" }],
-        "externalLinks": "https://www.dvstakers.com",
-        "tags": ["Ethereum", "Staking", "Validator", "Solo Staking", "Distributed Staking", "DVStakers"],
-        "displayConfig": {
-            "cardType": "image",
             "cardSize": "small",
-            "showTags": true
-        }
-    },
-    {
-        "name": "Medium Card",
-        "description": "Bacon ipsum dolor amet turkey pancetta t-bone swine jerky chislic sausage sirloin leberkas ham hock boudin. Kevin porchetta salami, alcatra ham pork bacon capicola shoulder shankle strip steak pork loin. Tenderloin beef strip steak venison. Short loin spare ribs biltong capicola brisket pork loin. T-bone jowl ribeye sirloin ham hock. Porchetta ham hock andouille shoulder, ham ball tip bresaola brisket alcatra meatloaf burgdoggen doner t-bone cupim filet mignon.",
-        "images": [{ "image": "./481368551588.png", "alt": "test" }],
-        "displayConfig": {
-            "cardSize": "medium"
-        }
-    },
-    {
-        "name": "Small Card",
-        "description": "Bacon ipsum dolor amet turkey pancetta t-bone swine jerky chislic sausage sirloin leberkas ham hock boudin. Kevin porchetta salami, alcatra ham pork bacon capicola shoulder shankle strip steak pork loin. Tenderloin beef strip steak venison. Short loin spare ribs biltong capicola brisket pork loin. T-bone jowl ribeye sirloin ham hock. Porchetta ham hock andouille shoulder, ham ball tip bresaola brisket alcatra meatloaf burgdoggen doner t-bone cupim filet mignon.",
-        "displayConfig": {
-            "cardSize": "small"
-        }
-    },
-    {
-        "name": "Large Card 2",
-        "images": [
-            { "image": "./481368551588.png", "alt": "test" },
-            { "image": "https://images.unsplash.com/photo-1584673961397-be26e009333f", "alt": "test" }
-        ],
-        "displayConfig": {
-            "cardSize": "large"
-        }
-    },
-    {
-        "name": "Small Card",
-        "images": [{ "image": "https://images.unsplash.com/photo-1584673961397-be26e009333f", "alt": "test" }],
-        "displayConfig": {
-            "cardSize": "small"
-        }
-    },
-    {
-        "name": "Large Card",
-        "displayConfig": {
-            "cardSize": "large"
-        }
-    },
-    {
-        "name": "Small Card",
-        "displayConfig": {
-            "cardSize": "small"
-        }
-    },
-    {
-        "name": "Small Card",
-        "displayConfig": {
-            "cardSize": "small"
-        }
-    },
-    {
-        "name": "Medium Card",
-        "displayConfig": {
-            "cardSize": "medium"
+            "cardType": "twitterPost"
         }
     }
 ]
