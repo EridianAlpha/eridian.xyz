@@ -1,7 +1,9 @@
 import type { AppProps } from "next/app"
+import { useState, useEffect } from "react"
+
 import "../styles/globals.css"
 
-import { ChakraProvider, ColorModeScript } from "@chakra-ui/react"
+import { ChakraProvider, ColorModeScript, useColorModeValue } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react"
 
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -33,10 +35,30 @@ const customTheme = extendTheme({
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
+    const [isColorModeReady, setIsColorModeReady] = useState(false)
+    const currentColorMode = useColorModeValue("light", "dark")
+
+    useEffect(() => {
+        if (currentColorMode) {
+            setIsColorModeReady(true)
+        }
+    }, [currentColorMode])
+
+    useEffect(() => {
+        if (isColorModeReady) {
+            const appElement = document.getElementById("app")
+            if (appElement) {
+                appElement.classList.remove("hideUntilReady")
+            }
+        }
+    }, [isColorModeReady])
+
     return (
         <ChakraProvider theme={customTheme}>
-            <ColorModeScript initialColorMode="system" />
-            <Component {...pageProps} />
+            <ColorModeScript initialColorMode="dark" />
+            <div id="app" className="hideUntilReady">
+                <Component {...pageProps} />
+            </div>
         </ChakraProvider>
     )
 }
