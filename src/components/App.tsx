@@ -3,7 +3,7 @@ import styles from "./App.module.css"
 import VersionDrawer from "./VersionDrawer"
 import Header from "./Header/Header"
 import Overview from "./Overview"
-import ProjectGallery from "./Projects/ProjectGallery"
+import ProjectGallery from "./Cards/CardGallery"
 
 import { useTheme, Container, Box, useColorModeValue } from "@chakra-ui/react"
 
