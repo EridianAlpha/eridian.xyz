@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import cardData from "../../../public/data/cardData.json"
-import Masonry from "react-masonry-css"
 
-import { useTheme, useColorModeValue, Card, Box, CardHeader, Heading, Text, CardBody, CardFooter, Image, Flex, Stack, HStack } from "@chakra-ui/react"
+import { Box, Image } from "@chakra-ui/react"
 
 export default function CardImages({ windowSize, cardIndex, imageIndex, image, imageArray, cardRefs, imageRefs }) {
     const [roundedCorners, setRoundedCorners] = useState(cardData.map((_, index) => Object.values(cardData[index].images || {}).map(() => false)))
