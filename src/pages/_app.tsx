@@ -34,16 +34,29 @@ const customTheme = extendTheme({
     },
 })
 
+// Set the HTML background color to match the Chakra UI background color
+const HtmlBackgroundColor = () => {
+    const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
+
+    useEffect(() => {
+        document.documentElement.style.backgroundColor = backgroundColor
+    }, [backgroundColor])
+
+    return null
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
     const [isColorModeReady, setIsColorModeReady] = useState(false)
     const currentColorMode = useColorModeValue("light", "dark")
 
+    // Wait until the color mode value is ready before showing the app
     useEffect(() => {
         if (currentColorMode) {
             setIsColorModeReady(true)
         }
     }, [currentColorMode])
 
+    // Show the app once the color mode value is ready
     useEffect(() => {
         if (isColorModeReady) {
             const appElement = document.getElementById("app")
@@ -55,6 +68,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     return (
         <ChakraProvider theme={customTheme}>
+            <HtmlBackgroundColor />
             <ColorModeScript initialColorMode="dark" />
             <div id="app" className="hideUntilReady">
                 <Component {...pageProps} />
