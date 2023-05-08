@@ -32,6 +32,16 @@ const customTheme = extendTheme({
             dark: "#2D3748",
         },
     },
+    statusColors: {
+        inProgress: {
+            light: "#36A2EB",
+            dark: "#36A2EB",
+        },
+        completed: {
+            light: "#76b63a",
+            dark: "#76b63a",
+        },
+    },
 })
 
 // Set the HTML background color to match the Chakra UI background color

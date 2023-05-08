@@ -61,7 +61,7 @@ export default function CardGallery({ windowSize }) {
                                     <CardDescription cardData={card} />
                                     <CardLinks cardData={card} />
                                 </CardBody>
-                                <Box paddingX={2} paddingY={5}>
+                                <Box p={2}>
                                     <CardStatus cardData={card} />
                                 </Box>
                                 {Object.values(card?.images || {})
