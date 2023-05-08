@@ -5,7 +5,7 @@ import Header from "./Header/Header"
 import Overview from "./Overview"
 import ProjectGallery from "./Cards/CardGallery"
 
-import { useTheme, Container, Box, useColorModeValue } from "@chakra-ui/react"
+import { useTheme, useColorModeValue, Container, Box, Flex } from "@chakra-ui/react"
 
 const App = () => {
     // Import custom color theme
@@ -34,11 +34,21 @@ const App = () => {
 
     return (
         <Box minH="100vh" minW="100vw" bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}>
-            <Container maxW="1400px" bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}>
+            <Container
+                maxW="100%"
+                bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}
+                px={{ base: "16px", xl: "60px" }}
+            >
                 {process.env.NODE_ENV === "development" && <VersionDrawer windowSize={windowSize} />}
-                <Header windowSize={windowSize} />
-                <Overview windowSize={windowSize} />
-                <ProjectGallery windowSize={windowSize} />
+                <Flex direction="column" justifyContent="center" alignItems="center">
+                    <Box width="100%" maxW="1400px">
+                        <Header windowSize={windowSize} />
+                        <Overview windowSize={windowSize} />
+                    </Box>
+                    <Box maxW="100%">
+                        <ProjectGallery windowSize={windowSize} />
+                    </Box>
+                </Flex>
             </Container>
         </Box>
     )

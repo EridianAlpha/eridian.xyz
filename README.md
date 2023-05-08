@@ -37,7 +37,7 @@ import VersionDrawer from "./VersionDrawer"
 
 // ... (other code)
     return (
-        <Container maxW="1400px">
+        <Container maxW="100%">
             {process.env.NODE_ENV === "development" && <VersionDrawer windowSize={windowSize} />}
             // ... (other code)
         </Container>
