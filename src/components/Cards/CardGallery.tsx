@@ -2,7 +2,7 @@ import React, { useMemo } from "react"
 import cardData from "../../../public/data/cardData.json"
 import Masonry from "react-masonry-css"
 
-import { useTheme, useColorModeValue, Card, Box, CardHeader, Heading, CardBody, Image, Flex, Stack, HStack } from "@chakra-ui/react"
+import { useTheme, useColorModeValue, Card, Box, CardHeader, Heading, CardBody, Image, Flex, Stack, HStack, Text } from "@chakra-ui/react"
 
 import CardDescription from "./CardDescription"
 import CardLinks from "./CardLinks"
@@ -12,6 +12,8 @@ import CardStatus from "./CardStatus"
 export default function CardGallery({ windowSize }) {
     const customTheme = useTheme()
     const cardBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
+    const headingColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
+
     const cardRefs = useMemo(() => cardData.map(() => React.createRef<HTMLDivElement>()), [])
     const imageRefs = useMemo(
         () => cardData.map((_, index) => Object.values(cardData[index].images || {}).map(() => React.createRef<HTMLImageElement>())),
@@ -40,7 +42,7 @@ export default function CardGallery({ windowSize }) {
                     >
                         <Flex alignItems="center" justifyContent="center" flexDirection={{ base: "column", md: "row" }} width={"100%"}>
                             <Stack flexGrow={1} width="100%">
-                                <HStack>
+                                <HStack alignItems={"top"}>
                                     {card?.images?.[0] && (
                                         <Image
                                             objectFit="contain"
@@ -53,17 +55,20 @@ export default function CardGallery({ windowSize }) {
                                             borderBottomLeftRadius={{ base: "0px" }}
                                         />
                                     )}
-                                    <CardHeader>
-                                        <Heading size="md">{card.name}</Heading>
-                                    </CardHeader>
+                                    <Box px={1} paddingTop={3}>
+                                        <Heading size="md" pb={2} color={headingColor}>
+                                            {card.name}
+                                        </Heading>
+                                        <Text>{card?.summary}</Text>
+                                    </Box>
                                 </HStack>
+                                <Box px={2} pt={5}>
+                                    <CardStatus cardData={card} />
+                                </Box>
                                 <CardBody>
                                     <CardDescription cardData={card} />
                                     <CardLinks cardData={card} />
                                 </CardBody>
-                                <Box p={2}>
-                                    <CardStatus cardData={card} />
-                                </Box>
                                 {Object.values(card?.images || {})
                                     .slice(1)
                                     .map((image, imageIndex, imageArray) => (
