@@ -10,7 +10,12 @@
             "1": { "image": "./images/DVStakers.png", "alt": "test" },
             "2": { "image": "./images/DVStakers.png", "alt": "test" }
         },
-        "externalLinks": { "0": { "url": "https://www.dvstakers.com", "label": "DV Stakers Website" } },
+        "externalLinks": {
+            "0": { "url": "https://www.dvstakers.com", "label": "DVStakers.com", "type": "website" },
+            "1": { "url": "https://twitter.com/DVStakers", "label": "@DVStakers", "type": "twitter" },
+            "2": { "url": "https://discord.gg/VbVwqgSdFD", "label": "DVStakers", "type": "discord" },
+            "3": { "url": "https://github.com/DVStakers", "label": "DVStakers", "type": "github" }
+        },
         "tags": ["Staking"],
         "displayConfig": {
             "cardSize": "large",
@@ -21,12 +26,12 @@
         "name": "Staking Spreadsheet",
         "startDate": "2023-03-22",
         "endDate": "2023-04-05",
-        "summary": "The journey of Ethereum solo stakers to distributed validator staking. The journey of Ethereum solo stakers to distributed validator staking.",
+        "summary": "The journey of Ethereum solo stakers to distributed validator staking.",
         "description": "A grant from the EF to build a Spreadsheet showing all the staking options available on Ethereum.",
         "images": {
             "0": { "image": "./481368551588.png", "alt": "Eridian Avatar" }
         },
-        "externalLinks": { "0": { "url": "https://ethereum.org", "label": "Ethereum.org Website" } },
+        "externalLinks": { "0": { "url": "https://ethereum.org", "label": "Ethereum.org" } },
         "tags": ["Staking"],
         "displayConfig": {
             "cardSize": "small",

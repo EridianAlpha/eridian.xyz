@@ -23,7 +23,7 @@ export default function CardGallery({ windowSize }) {
     const breakpointCols = {
         default: 3,
         1400: 2,
-        700: 1,
+        900: 1,
     }
 
     return (
@@ -67,7 +67,9 @@ export default function CardGallery({ windowSize }) {
                                 </Box>
                                 <CardBody>
                                     <CardDescription cardData={card} />
-                                    <CardLinks cardData={card} />
+                                    <Box pt={5}>
+                                        <CardLinks cardData={card} />
+                                    </Box>
                                 </CardBody>
                                 {Object.values(card?.images || {})
                                     .slice(1)
