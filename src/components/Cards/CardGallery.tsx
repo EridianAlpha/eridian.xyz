@@ -43,18 +43,16 @@ export default function CardGallery({ windowSize }) {
                         <Flex alignItems="center" justifyContent="center" flexDirection={{ base: "column", md: "row" }} width={"100%"}>
                             <Stack flexGrow={1} width="100%">
                                 <HStack alignItems={"top"}>
-                                    {card?.images?.[0] && (
-                                        <Image
-                                            objectFit="contain"
-                                            width="100px"
-                                            height="100px"
-                                            src={card?.images?.[0].image}
-                                            alt={card?.images?.[0].alt}
-                                            borderTopRightRadius={{ base: "0px" }}
-                                            borderBottomRightRadius={{ base: "30px" }}
-                                            borderBottomLeftRadius={{ base: "0px" }}
-                                        />
-                                    )}
+                                    <Image
+                                        objectFit="contain"
+                                        width="100px"
+                                        height="100px"
+                                        src={card?.images?.[0].image ? card?.images?.[0].image : "./481368551588.png"}
+                                        alt={card?.images?.[0].alt}
+                                        borderTopRightRadius={{ base: "0px" }}
+                                        borderBottomRightRadius={{ base: "30px" }}
+                                        borderBottomLeftRadius={{ base: "0px" }}
+                                    />
                                     <Box px={1} paddingTop={3}>
                                         <Heading size="md" pb={2} color={headingColor}>
                                             {card.name}
