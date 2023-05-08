@@ -26,10 +26,16 @@ export default function CardGallery({ windowSize }) {
         900: 1,
     }
 
+    const sortedCardData = [...cardData].sort((a, b) => {
+        const dateA = new Date(a.startDate)
+        const dateB = new Date(b.startDate)
+        return dateB.getTime() - dateA.getTime()
+    })
+
     return (
         <Box width="100%">
             <Masonry breakpointCols={breakpointCols} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
-                {cardData.map((card, cardIndex) => (
+                {sortedCardData.map((card, cardIndex) => (
                     <Card
                         key={cardIndex}
                         ref={cardRefs[cardIndex]}
