@@ -66,24 +66,33 @@ export default function CardGallery({ windowSize }) {
                                     <CardStatus cardData={card} />
                                 </Box>
                                 <CardBody>
-                                    <CardDescription cardData={card} />
-                                    <Box pt={5}>
+                                    <Box>
+                                        <CardDescription index={0} cardData={card} />
+                                    </Box>
+                                    <Box pt={5} mt={2}>
                                         <CardLinks cardData={card} />
                                     </Box>
                                 </CardBody>
                                 {Object.values(card?.images || {})
                                     .slice(1)
                                     .map((image, imageIndex, imageArray) => (
-                                        <CardImages
-                                            key={imageIndex}
-                                            windowSize={windowSize}
-                                            cardIndex={cardIndex}
-                                            imageIndex={imageIndex}
-                                            image={image}
-                                            imageArray={imageArray}
-                                            cardRefs={cardRefs}
-                                            imageRefs={imageRefs}
-                                        />
+                                        <>
+                                            <CardImages
+                                                key={imageIndex}
+                                                windowSize={windowSize}
+                                                cardIndex={cardIndex}
+                                                imageIndex={imageIndex}
+                                                image={image}
+                                                imageArray={imageArray}
+                                                cardRefs={cardRefs}
+                                                imageRefs={imageRefs}
+                                            />
+                                            {card?.description[imageIndex + 1] ? (
+                                                <CardBody>
+                                                    <CardDescription index={imageIndex} cardData={card} />
+                                                </CardBody>
+                                            ) : null}
+                                        </>
                                     ))}
                             </Stack>
                         </Flex>

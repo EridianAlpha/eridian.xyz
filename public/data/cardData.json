@@ -4,11 +4,16 @@
         "startDate": "2023-01-01",
         "endDate": "",
         "summary": "The journey of Ethereum solo stakers to distributed validator staking.",
-        "description": "Bacon ipsum dolor amet turkey pancetta t-bone swine jerky chislic sausage sirloin leberkas ham hock boudin. Kevin porchetta salami, alcatra ham pork bacon capicola shoulder shankle strip steak pork loin. Tenderloin beef strip steak venison. Short loin spare ribs biltong capicola brisket pork loin. T-bone jowl ribeye sirloin ham hock. Porchetta ham hock andouille shoulder, ham ball tip bresaola brisket alcatra meatloaf burgdoggen doner t-bone cupim filet mignon.",
+        "description": {
+            "0": "Bacon ipsum dolor amet turkey pancetta t-bone swine jerky chislic sausage sirloin leberkas ham hock boudin. Kevin porchetta salami, alcatra ham pork bacon capicola shoulder shankle strip steak pork loin. Tenderloin beef strip steak venison.",
+            "1": "Short loin spare ribs biltong capicola brisket pork loin. T-bone jowl ribeye sirloin ham hock. Porchetta ham hock andouille shoulder, ham ball tip bresaola brisket alcatra meatloaf burgdoggen doner t-bone cupim filet mignon.",
+            "2": "Short loin spare ribs biltong capicola brisket pork loin. T-bone jowl ribeye sirloin ham hock. Porchetta ham hock andouille shoulder, ham ball tip bresaola brisket alcatra meatloaf burgdoggen doner t-bone cupim filet mignon."
+        },
         "images": {
             "0": { "image": "./images/DVStakersSquareBlackLogo.png", "alt": "test" },
             "1": { "image": "./images/DVStakers.png", "alt": "test" },
-            "2": { "image": "./images/DVStakers.png", "alt": "test" }
+            "2": { "image": "./images/DVStakers.png", "alt": "test" },
+            "3": { "image": "./images/DVStakers.png", "alt": "test" }
         },
         "externalLinks": {
             "0": { "url": "https://www.dvstakers.com", "label": "DVStakers.com", "type": "website" },
@@ -27,7 +32,9 @@
         "startDate": "2023-03-22",
         "endDate": "2023-04-05",
         "summary": "The journey of Ethereum solo stakers to distributed validator staking.",
-        "description": "A grant from the EF to build a Spreadsheet showing all the staking options available on Ethereum.",
+        "description": {
+            "0": "A grant from the EF to build a Spreadsheet showing all the staking options available on Ethereum."
+        },
         "images": {
             "0": { "image": "./481368551588.png", "alt": "Eridian Avatar" }
         },
