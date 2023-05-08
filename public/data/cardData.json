@@ -11,9 +11,9 @@
         },
         "images": {
             "0": { "image": "./images/DVStakersSquareBlackLogo.png", "alt": "test" },
-            "1": { "image": "./images/DVStakers.png", "alt": "test" },
+            "1": { "image": "https://images.unsplash.com/photo-1584673961397-be26e009333f", "alt": "test" },
             "2": { "image": "./images/DVStakers.png", "alt": "test" },
-            "3": { "image": "./images/DVStakers.png", "alt": "test" }
+            "3": { "image": "https://images.unsplash.com/photo-1584673961397-be26e009333f", "alt": "test" }
         },
         "externalLinks": {
             "0": { "url": "https://www.dvstakers.com", "label": "DVStakers.com", "type": "website" },
