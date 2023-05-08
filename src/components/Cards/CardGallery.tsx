@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useMemo } from "react"
 import cardData from "../../../public/data/cardData.json"
 import Masonry from "react-masonry-css"
 
@@ -7,11 +7,16 @@ import { useTheme, useColorModeValue, Card, Box, CardHeader, Heading, CardBody, 
 import CardDescription from "./CardDescription"
 import CardLinks from "./CardLinks"
 import CardImages from "./CardImages"
+import CardStatus from "./CardStatus"
 
 export default function CardGallery({ windowSize }) {
     const customTheme = useTheme()
-    const cardRefs = cardData.map(() => useRef(null))
-    const imageRefs = cardData.map((_, index) => Object.values(cardData[index].images || {}).map(() => useRef(null)))
+    const cardBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
+    const cardRefs = useMemo(() => cardData.map(() => React.createRef<HTMLDivElement>()), [])
+    const imageRefs = useMemo(
+        () => cardData.map((_, index) => Object.values(cardData[index].images || {}).map(() => React.createRef<HTMLImageElement>())),
+        []
+    )
 
     const breakpointCols = {
         default: 3,
@@ -27,7 +32,7 @@ export default function CardGallery({ windowSize }) {
                         key={cardIndex}
                         ref={cardRefs[cardIndex]}
                         maxW={"100%"}
-                        bg={useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)}
+                        bg={cardBackground}
                         overflow="hidden"
                         variant="outline"
                         borderRadius={"30px"}
@@ -56,10 +61,14 @@ export default function CardGallery({ windowSize }) {
                                     <CardDescription cardData={card} />
                                     <CardLinks cardData={card} />
                                 </CardBody>
+                                <Box paddingX={2} paddingY={5}>
+                                    <CardStatus cardData={card} />
+                                </Box>
                                 {Object.values(card?.images || {})
                                     .slice(1)
                                     .map((image, imageIndex, imageArray) => (
                                         <CardImages
+                                            key={imageIndex}
                                             windowSize={windowSize}
                                             cardIndex={cardIndex}
                                             imageIndex={imageIndex}

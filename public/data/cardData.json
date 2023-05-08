@@ -3,7 +3,8 @@
         "name": "DVStakers",
         "startDate": "2023-01-01",
         "endDate": "",
-        "description": "The journey of Ethereum solo stakers to distributed validator staking.",
+        "summary": "The journey of Ethereum solo stakers to distributed validator staking.",
+        "description": "Longer description...",
         "images": {
             "0": { "image": "./images/DVStakersSquareBlackLogo.png", "alt": "test" },
             "1": { "image": "./images/DVStakers.png", "alt": "test" },
