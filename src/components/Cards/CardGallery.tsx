@@ -17,6 +17,8 @@ export default function CardGallery({ windowSize }) {
     }
 
     const customTheme = useTheme()
+    const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
+    const linkHoverColor = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
     const cardBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
     const headingColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
 
@@ -124,9 +126,19 @@ export default function CardGallery({ windowSize }) {
                                                 ))}
                                         </Collapse>
                                         {/* TODO: Fix this by making a fully custom button using Box */}
-                                        <Button mt={0} sx={{ marginTop: "0 !important" }} onClick={() => toggleShowMore(cardIndex)}>
-                                            {showMore[cardIndex] ? "Show less" : "Show more"}
-                                        </Button>
+                                        <CardBody paddingTop={0} sx={{ marginTop: "0 !important" }}>
+                                            <Button
+                                                bg={backgroundColor}
+                                                _hover={{
+                                                    bg: linkHoverColor,
+                                                }}
+                                                borderRadius={"30px"}
+                                                onClick={() => toggleShowMore(cardIndex)}
+                                                width={"100%"}
+                                            >
+                                                {showMore[cardIndex] ? "Show less" : "Show more"}
+                                            </Button>
+                                        </CardBody>
                                     </>
                                 )}
                             </Stack>
