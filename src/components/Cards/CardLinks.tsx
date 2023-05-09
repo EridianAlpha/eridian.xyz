@@ -12,47 +12,57 @@ interface LinkObject {
     type: string
 }
 
-export default function CardLinks({ cardData }) {
-    const customTheme = useTheme()
-    const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
-    const linkHoverColor = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
+const CardLink = ({ link, index, backgroundColor, linkHoverColor }) => {
+    return (
+        <Link key={index} as={NextLink} href={link?.url} isExternal>
+            <Box
+                borderStyle="solid"
+                borderRadius="50px"
+                bg={backgroundColor}
+                display="inline-flex"
+                _hover={{
+                    bg: linkHoverColor,
+                }}
+            >
+                <Flex alignItems={"center"} py={1} px={2}>
+                    <FontAwesomeIcon
+                        icon={link?.type == "twitter" ? faTwitter : link?.type == "github" ? faGithub : link?.type == "discord" ? faDiscord : faLink}
+                        size={"lg"}
+                    />
+                    <Text pl={2} pr={1}>
+                        {link?.label}
+                    </Text>
+                </Flex>
+            </Box>
+        </Link>
+    )
+}
 
+export default function CardLinks({ cardData, backgroundColor, linkHoverColor }) {
     if (cardData.externalLinks) {
         const linksArray: LinkObject[] = Object.values(cardData.externalLinks)
 
         return (
-            <Flex flexDirection={"row"} wrap={"wrap"} columnGap={"20px"} rowGap={"10px"} justifyContent={"space-evenly"}>
-                {linksArray.map((link, index) => (
-                    <Link key={index} as={NextLink} href={link?.url} isExternal>
-                        <Box
-                            borderStyle="solid"
-                            borderRadius="50px"
-                            bg={backgroundColor}
-                            display="inline-flex"
-                            _hover={{
-                                bg: linkHoverColor,
-                            }}
-                        >
-                            <Flex alignItems={"center"} py={1} px={2}>
-                                <FontAwesomeIcon
-                                    icon={
-                                        link?.type == "twitter"
-                                            ? faTwitter
-                                            : link?.type == "github"
-                                            ? faGithub
-                                            : link?.type == "discord"
-                                            ? faDiscord
-                                            : faLink
-                                    }
-                                    size={"lg"}
+            <Flex flexDirection={"row"} wrap={"wrap"} columnGap={"20px"} rowGap={"10px"} justifyContent={"center"}>
+                {linksArray.map((link, index) => {
+                    if (index === linksArray.length - 2) {
+                        return (
+                            <Flex wrap={"wrap"} columnGap={"20px"} rowGap={"10px"} justifyContent={"center"} key={index}>
+                                <CardLink link={link} index={index} backgroundColor={backgroundColor} linkHoverColor={linkHoverColor} />
+                                <CardLink
+                                    link={linksArray[index + 1]}
+                                    index={index + 1}
+                                    backgroundColor={backgroundColor}
+                                    linkHoverColor={linkHoverColor}
                                 />
-                                <Text pl={2} pr={1}>
-                                    {link?.label}
-                                </Text>
                             </Flex>
-                        </Box>
-                    </Link>
-                ))}
+                        )
+                    }
+
+                    if (index == 0 || index !== linksArray.length - 1) {
+                        return <CardLink key={index} link={link} index={index} backgroundColor={backgroundColor} linkHoverColor={linkHoverColor} />
+                    }
+                })}
             </Flex>
         )
     }

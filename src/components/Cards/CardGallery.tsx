@@ -78,7 +78,7 @@ export default function CardGallery({ windowSize }) {
                                 </Box>
                                 <CardBody>
                                     <Box>
-                                        <CardLinks cardData={card} />
+                                        <CardLinks cardData={card} backgroundColor={backgroundColor} linkHoverColor={linkHoverColor} />
                                     </Box>
                                     <Box pt={5} mt={2}>
                                         <CardDescription index={0} cardData={card} />

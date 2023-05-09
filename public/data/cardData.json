@@ -38,7 +38,11 @@
         "images": {
             "0": { "image": "./481368551588.png", "alt": "Eridian Avatar" }
         },
-        "externalLinks": { "0": { "url": "https://ethereum.org", "label": "Ethereum.org" } },
+        "externalLinks": {
+            "0": { "url": "https://ethereum.org", "label": "Ethereum.org" },
+            "1": { "url": "https://twitter.com/DVStakers", "label": "@DVStakers", "type": "twitter" },
+            "2": { "url": "https://discord.gg/VbVwqgSdFD", "label": "DVStakers", "type": "discord" }
+        },
         "tags": ["Staking"],
         "displayConfig": {
             "cardSize": "small",
