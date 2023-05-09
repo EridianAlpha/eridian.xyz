@@ -38,6 +38,7 @@ const App = () => {
                 maxW="100%"
                 bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}
                 px={{ base: "16px", xl: "60px" }}
+                pb={"1000px"}
             >
                 {process.env.NODE_ENV === "development" && <VersionDrawer windowSize={windowSize} />}
                 <Flex direction="column" justifyContent="center" alignItems="center">

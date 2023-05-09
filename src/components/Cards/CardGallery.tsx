@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react"
+import React, { useState, useEffect, useMemo, useCallback, useRef } from "react"
 import cardData from "../../../public/data/cardData.json"
 import Masonry from "react-masonry-css"
 
@@ -28,10 +28,17 @@ export default function CardGallery({ windowSize }) {
         return dateB.getTime() - dateA.getTime()
     })
 
+    const showMoreButtonRef = useRef(null)
+    const [showMoreButtonWidth, setShowMoreButtonWidth] = useState(0)
     const [showMore, setShowMore] = useState(Array(sortedCardData.length).fill(false))
     const toggleShowMore = useCallback((cardIndex: number) => {
         setShowMore((prevState) => prevState.map((value, index) => (index === cardIndex ? !value : value)))
     }, [])
+    useEffect(() => {
+        if (showMoreButtonRef.current) {
+            setShowMoreButtonWidth(showMoreButtonRef.current.offsetWidth)
+        }
+    }, [windowSize.width, showMoreButtonRef.current, showMore])
 
     const cardRefs = useMemo(() => sortedCardData.map(() => React.createRef<HTMLDivElement>()), [])
     const imageRefs = useMemo(
@@ -131,20 +138,28 @@ export default function CardGallery({ windowSize }) {
                                                 ))}
                                         </Collapse>
                                         {/* TODO: Fix this by making a fully custom button using Box */}
-                                        <CardBody paddingTop={0} sx={{ marginTop: "0 !important" }}>
+                                        <CardBody paddingTop={0} sx={{ marginTop: "0 !important" }} paddingBottom={{ base: "10px", md: "20px" }}>
                                             <Flex grow={1} direction={"column"} alignItems={"center"}>
                                                 <Button
+                                                    ref={showMoreButtonRef}
                                                     bg={backgroundColor}
                                                     _hover={{
                                                         bg: linkHoverColor,
                                                     }}
-                                                    borderRadius={"30px"}
+                                                    borderTopRadius={
+                                                        !showMore[cardIndex] && imageWidths[cardIndex][1] < showMoreButtonWidth
+                                                            ? "30px"
+                                                            : showMore[cardIndex] && imageWidths[cardIndex][imageWidths.length] < showMoreButtonWidth
+                                                            ? "30px"
+                                                            : "0px"
+                                                    }
+                                                    borderBottomRadius="30px"
                                                     onClick={() => toggleShowMore(cardIndex)}
                                                     width={"100%"}
                                                     minWidth={
                                                         !showMore[cardIndex]
                                                             ? `${imageWidths[cardIndex][1]}px`
-                                                            : `${imageWidths[cardIndex][imageWidths.length - 1]}px`
+                                                            : `${imageWidths[cardIndex][imageWidths.length]}px`
                                                     }
                                                 >
                                                     {showMore[cardIndex] ? "Show less" : "Show more"}
