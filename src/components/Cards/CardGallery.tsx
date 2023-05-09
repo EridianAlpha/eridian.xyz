@@ -38,6 +38,7 @@ export default function CardGallery({ windowSize }) {
         () => sortedCardData.map((_, index) => Object.values(sortedCardData[index].images || {}).map(() => React.createRef<HTMLImageElement>())),
         []
     )
+    const [imageWidths, setImageWidths] = useState(sortedCardData.map((_, index) => Object.values(sortedCardData[index].images || {}).map(() => 0)))
 
     return (
         <Box width="100%">
@@ -86,16 +87,18 @@ export default function CardGallery({ windowSize }) {
                                 </CardBody>
                                 {card?.images?.[1] && (
                                     <CardImages
-                                        key={1}
+                                        // key={1}
                                         windowSize={windowSize}
                                         cardIndex={cardIndex}
-                                        imageIndex={2}
+                                        imageIndex={1}
                                         image={card?.images?.[1]}
                                         imageArray={Object.values(card?.images || {})}
                                         cardRefs={cardRefs}
                                         imageRefs={imageRefs}
                                         sortedCardData={sortedCardData}
                                         showMore={showMore}
+                                        imageWidths={imageWidths}
+                                        setImageWidths={setImageWidths}
                                     />
                                 )}
                                 {(card?.description?.[1] || card?.images?.[2]) && (
@@ -111,33 +114,42 @@ export default function CardGallery({ windowSize }) {
                                                             </CardBody>
                                                         ) : null}
                                                         <CardImages
-                                                            key={imageIndex}
+                                                            key={imageIndex + 2}
                                                             windowSize={windowSize}
                                                             cardIndex={cardIndex}
-                                                            imageIndex={imageIndex}
+                                                            imageIndex={imageIndex + 2}
                                                             image={image}
                                                             imageArray={imageArray}
                                                             cardRefs={cardRefs}
                                                             imageRefs={imageRefs}
                                                             sortedCardData={sortedCardData}
                                                             showMore={showMore}
+                                                            imageWidths={imageWidths}
+                                                            setImageWidths={setImageWidths}
                                                         />
                                                     </>
                                                 ))}
                                         </Collapse>
                                         {/* TODO: Fix this by making a fully custom button using Box */}
                                         <CardBody paddingTop={0} sx={{ marginTop: "0 !important" }}>
-                                            <Button
-                                                bg={backgroundColor}
-                                                _hover={{
-                                                    bg: linkHoverColor,
-                                                }}
-                                                borderRadius={"30px"}
-                                                onClick={() => toggleShowMore(cardIndex)}
-                                                width={"100%"}
-                                            >
-                                                {showMore[cardIndex] ? "Show less" : "Show more"}
-                                            </Button>
+                                            <Flex grow={1} direction={"column"} alignItems={"center"}>
+                                                <Button
+                                                    bg={backgroundColor}
+                                                    _hover={{
+                                                        bg: linkHoverColor,
+                                                    }}
+                                                    borderRadius={"30px"}
+                                                    onClick={() => toggleShowMore(cardIndex)}
+                                                    width={"100%"}
+                                                    minWidth={
+                                                        !showMore[cardIndex]
+                                                            ? `${imageWidths[cardIndex][1]}px`
+                                                            : `${imageWidths[cardIndex][imageWidths.length - 1]}px`
+                                                    }
+                                                >
+                                                    {showMore[cardIndex] ? "Show less" : "Show more"}
+                                                </Button>
+                                            </Flex>
                                         </CardBody>
                                     </>
                                 )}

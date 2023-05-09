@@ -11,6 +11,8 @@ export default function CardImages({
     imageRefs,
     sortedCardData,
     showMore,
+    imageWidths,
+    setImageWidths,
 }: {
     windowSize: { width: number; height: number }
     cardIndex: number
@@ -21,29 +23,47 @@ export default function CardImages({
     imageRefs: Array<Array<React.RefObject<HTMLImageElement>>>
     sortedCardData: Array<any>
     showMore: Array<boolean>
+    imageWidths: Array<Array<number>>
+    setImageWidths: React.Dispatch<React.SetStateAction<Array<any>>>
 }) {
     const [roundedCorners, setRoundedCorners] = useState(
         sortedCardData.map((_, index) => Object.values(sortedCardData[index].images || {}).map(() => false))
     )
 
+    const calculateImageWidths = () => {
+        return sortedCardData.map((card, cardIndex) =>
+            Object.values(card?.images || {}).map((_, imageIndex) => {
+                if (!cardRefs[cardIndex]?.current || !imageRefs[cardIndex][imageIndex]?.current) {
+                    return 0
+                }
+                const imageWidth = imageRefs[cardIndex][imageIndex].current.offsetWidth
+                return imageWidth
+            })
+        )
+    }
+
     useEffect(() => {
+        // Calculate image widths
+        const newImageWidths = calculateImageWidths()
+        if (JSON.stringify(newImageWidths) !== JSON.stringify(imageWidths)) {
+            setImageWidths(newImageWidths)
+        }
+
         const newRoundedCorners = sortedCardData.map((card, cardIndex) =>
-            Object.values(card?.images || {})
-                .slice(1)
-                .map((_, imageIndex) => {
-                    if (!cardRefs[cardIndex]?.current || !imageRefs[cardIndex][imageIndex]?.current) {
-                        return false
-                    }
-                    const cardWidth = cardRefs[cardIndex].current.offsetWidth
-                    const imageWidth = imageRefs[cardIndex][imageIndex].current.offsetWidth
-                    return cardWidth > imageWidth
-                })
+            Object.values(card?.images || {}).map((_, imageIndex) => {
+                if (!cardRefs[cardIndex]?.current || !imageRefs[cardIndex][imageIndex]?.current) {
+                    return false
+                }
+                const cardWidth = cardRefs[cardIndex].current.offsetWidth
+                const imageWidth = imageRefs[cardIndex][imageIndex].current.offsetWidth
+                return cardWidth > imageWidth
+            })
         )
 
         if (JSON.stringify(newRoundedCorners) !== JSON.stringify(roundedCorners)) {
             setRoundedCorners(newRoundedCorners)
         }
-    }, [windowSize.width, imageRefs, sortedCardData, roundedCorners, cardRefs])
+    }, [windowSize.width, imageRefs, sortedCardData, roundedCorners, cardRefs, imageWidths, showMore])
 
     return (
         <Box width="100%" display="flex" alignItems="center" justifyContent="center">
@@ -54,15 +74,9 @@ export default function CardImages({
                 maxH={"30vh"}
                 src={image.image}
                 alt={image.alt}
-                borderTopRadius={
-                    imageIndex === imageArray.length - 1 && roundedCorners[cardIndex][imageIndex]
-                        ? "30px"
-                        : roundedCorners[cardIndex][imageIndex]
-                        ? "30px"
-                        : "0px"
-                }
+                borderTopRadius={roundedCorners[cardIndex][imageIndex] ? "30px" : "0px"}
                 borderBottomRadius={
-                    imageIndex === imageArray.length - 1 || (imageIndex === 2 && !showMore[cardIndex])
+                    imageIndex === imageArray.length + 1 || (imageIndex === 1 && !showMore[cardIndex])
                         ? "0px"
                         : roundedCorners[cardIndex][imageIndex]
                         ? "30px"
