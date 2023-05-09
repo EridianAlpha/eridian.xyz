@@ -43,11 +43,11 @@ export default function CardLinks({ cardData, backgroundColor, linkHoverColor })
         const linksArray: LinkObject[] = Object.values(cardData.externalLinks)
 
         return (
-            <Flex flexDirection={"row"} wrap={"wrap"} columnGap={"20px"} rowGap={"10px"} justifyContent={"center"}>
+            <Flex flexDirection={"row"} wrap={"wrap"} columnGap={"20px"} rowGap={"20px"} justifyContent={"center"}>
                 {linksArray.map((link, index) => {
                     if (index === linksArray.length - 2) {
                         return (
-                            <Flex wrap={"wrap"} columnGap={"20px"} rowGap={"10px"} justifyContent={"center"} key={index}>
+                            <Flex wrap={"wrap"} columnGap={"20px"} rowGap={"20px"} justifyContent={"center"} key={index}>
                                 <CardLink link={link} index={index} backgroundColor={backgroundColor} linkHoverColor={linkHoverColor} />
                                 <CardLink
                                     link={linksArray[index + 1]}
