@@ -26,6 +26,7 @@ export default function CardGallery({ windowSize }) {
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
     const contentBackgroundHover = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
     const headingColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
+    const statusColorInProgress = useColorModeValue(customTheme.statusColors.inProgress.light, customTheme.statusColors.inProgress.dark)
 
     const sortedCardData = [...cardData].sort((a, b) => {
         const dateA = new Date(a.startDate)
@@ -69,18 +70,24 @@ export default function CardGallery({ windowSize }) {
                                         borderBottomRightRadius={{ base: "30px" }}
                                         borderBottomLeftRadius={{ base: "0px" }}
                                     />
-                                    <Flex direction={"column"}>
+                                    <Flex direction={"column"} grow={1} width="100%">
                                         <Flex direction={"row"} justifyContent={"space-between"}>
                                             <Heading size="md" color={headingColor} pt={3} px={1} pb={2}>
                                                 {card.name}
                                             </Heading>
                                             {process.env.NODE_ENV === "development" && (
                                                 <IconButton
-                                                    bg={contentBackground}
+                                                    bg={backgroundColor}
                                                     _hover={{
                                                         bg: contentBackgroundHover,
                                                     }}
                                                     borderBottomLeftRadius={"10px"}
+                                                    borderTopRightRadius={"30px"}
+                                                    borderTopLeftRadius={"0px"}
+                                                    borderBottomRightRadius={"0px"}
+                                                    borderTop={"6px solid"}
+                                                    borderRight={"6px solid"}
+                                                    borderColor={contentBackground}
                                                     aria-label={"View GitHub Source"}
                                                 >
                                                     <Box mt={1} mr={1}>
@@ -89,7 +96,7 @@ export default function CardGallery({ windowSize }) {
                                                 </IconButton>
                                             )}
                                         </Flex>
-                                        <Box px={1} pt={1}>
+                                        <Box pl={1} pr={3} pt={1}>
                                             <Text fontWeight={"medium"}>{card?.summary}</Text>
                                         </Box>
                                     </Flex>
