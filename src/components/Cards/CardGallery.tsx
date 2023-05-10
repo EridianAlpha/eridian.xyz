@@ -100,7 +100,7 @@ export default function CardGallery({ windowSize }) {
                                 )}
                                 {(card?.description?.[1] || card?.images?.[2]) && (
                                     <>
-                                        <Collapse in={showMore[cardIndex]}>
+                                        <Collapse in={showMore[cardIndex]} style={{ marginTop: 0 }}>
                                             {Array.from({
                                                 length: Math.max(
                                                     Object.values(card?.description || {})?.length || 0,
