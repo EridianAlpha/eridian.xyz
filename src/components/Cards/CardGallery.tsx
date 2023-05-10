@@ -26,7 +26,6 @@ export default function CardGallery({ windowSize }) {
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
     const contentBackgroundHover = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
     const headingColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
-    const statusColorInProgress = useColorModeValue(customTheme.statusColors.inProgress.light, customTheme.statusColors.inProgress.dark)
 
     const sortedCardData = [...cardData].sort((a, b) => {
         const dateA = new Date(a.startDate)
@@ -35,6 +34,11 @@ export default function CardGallery({ windowSize }) {
     })
 
     const [showMore, setShowMore] = useState(Array(sortedCardData.length).fill(false))
+
+    // Updating this state causes the contents of the Collapse component to re-render
+    // which is needed to update the image radiuses and button border radius
+    // TODO: It's a hacky solution, but I couldn't find anything else that worked right now
+    const [collapseReRender, setCollapseReRender] = useState(false)
 
     const cardRefs = useMemo(() => sortedCardData.map(() => React.createRef<HTMLDivElement>()), [])
     const imageRefs = useMemo(
@@ -169,6 +173,7 @@ export default function CardGallery({ windowSize }) {
                                             linkHoverColor={linkHoverColor}
                                             showMore={showMore}
                                             setShowMore={setShowMore}
+                                            setCollapseReRender={setCollapseReRender}
                                         />
                                     </>
                                 )}

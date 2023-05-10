@@ -10,6 +10,7 @@ export default function CardShowMoreButton({
     linkHoverColor,
     showMore,
     setShowMore,
+    setCollapseReRender,
 }: {
     cardIndex: number
     imageWidths: any
@@ -18,6 +19,7 @@ export default function CardShowMoreButton({
     linkHoverColor: string
     showMore: any
     setShowMore: any
+    setCollapseReRender: any
 }) {
     const showMoreButtonRef = useRef(null)
     const [showMoreButtonWidth, setShowMoreButtonWidth] = useState(0)
@@ -62,7 +64,15 @@ export default function CardShowMoreButton({
                     }}
                     borderTopRadius={calculateTopBorderRadius()}
                     borderBottomRadius="30px"
-                    onClick={() => toggleShowMore(cardIndex)}
+                    onClick={() => {
+                        toggleShowMore(cardIndex)
+                        // Hacky way to make the content of the collapse rerender after opening
+                        for (let delay = 50; delay <= 250; delay += 50) {
+                            setTimeout(() => {
+                                setCollapseReRender((prevState: boolean) => !prevState)
+                            }, delay)
+                        }
+                    }}
                     width={"100%"}
                     minWidth={!showMore[cardIndex] ? `${imageWidths[cardIndex][1]}px` : `${imageWidths[cardIndex][imageWidths.length]}px`}
                 >
