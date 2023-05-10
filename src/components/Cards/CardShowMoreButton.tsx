@@ -30,9 +30,29 @@ export default function CardShowMoreButton({
         }
     }, [windowSize.width, showMoreButtonRef.current, showMore])
 
+    // Dynamic calculation of the top border radius of the showMore button
+    const calculateTopBorderRadius = () => {
+        const borderRadius = 10
+        if (!showMore[cardIndex]) {
+            if (imageWidths[cardIndex][1] >= showMoreButtonWidth - borderRadius) {
+                return `${showMoreButtonWidth - imageWidths[cardIndex][1]}px`
+            } else {
+                return `${borderRadius}px`
+            }
+        } else if (showMore[cardIndex]) {
+            if (imageWidths[cardIndex][imageWidths.length] > showMoreButtonWidth - borderRadius) {
+                return `${showMoreButtonWidth - imageWidths[cardIndex][imageWidths.length]}px`
+            } else {
+                return `${borderRadius}px`
+            }
+        } else {
+            return `${borderRadius}px`
+        }
+    }
+
     return (
         // TODO: Fix this by making a fully custom button using Box
-        <CardBody paddingTop={0} sx={{ marginTop: "0 !important" }} paddingBottom={{ base: "10px", md: "20px" }}>
+        <CardBody paddingTop={0} sx={{ marginTop: "0 !important" }} paddingBottom={3}>
             <Flex grow={1} direction={"column"} alignItems={"center"}>
                 <Button
                     ref={showMoreButtonRef}
@@ -40,13 +60,7 @@ export default function CardShowMoreButton({
                     _hover={{
                         bg: linkHoverColor,
                     }}
-                    borderTopRadius={
-                        !showMore[cardIndex] && imageWidths[cardIndex][1] < showMoreButtonWidth
-                            ? "30px"
-                            : showMore[cardIndex] && imageWidths[cardIndex][imageWidths.length] < showMoreButtonWidth
-                            ? "30px"
-                            : "0px"
-                    }
+                    borderTopRadius={calculateTopBorderRadius()}
                     borderBottomRadius="30px"
                     onClick={() => toggleShowMore(cardIndex)}
                     width={"100%"}
