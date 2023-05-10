@@ -2,7 +2,10 @@ import React, { useState, useMemo } from "react"
 import cardData from "../../../public/data/cardData.json"
 import Masonry from "react-masonry-css"
 
-import { useTheme, useColorModeValue, Card, Box, Heading, CardBody, Image, Flex, Stack, HStack, Text, Collapse } from "@chakra-ui/react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEdit } from "@fortawesome/free-solid-svg-icons"
+
+import { useTheme, useColorModeValue, Card, Box, Heading, CardBody, Image, Flex, Stack, HStack, Text, Collapse, IconButton } from "@chakra-ui/react"
 
 import CardDescription from "./CardDescription"
 import CardLinks from "./CardLinks"
@@ -20,7 +23,8 @@ export default function CardGallery({ windowSize }) {
     const customTheme = useTheme()
     const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
     const linkHoverColor = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
-    const cardBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
+    const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
+    const contentBackgroundHover = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
     const headingColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
 
     const sortedCardData = [...cardData].sort((a, b) => {
@@ -46,7 +50,7 @@ export default function CardGallery({ windowSize }) {
                         key={cardIndex}
                         ref={cardRefs[cardIndex]}
                         maxW={"100%"}
-                        bg={cardBackground}
+                        bg={contentBackground}
                         overflow="hidden"
                         variant="outline"
                         borderRadius={"30px"}
@@ -65,12 +69,30 @@ export default function CardGallery({ windowSize }) {
                                         borderBottomRightRadius={{ base: "30px" }}
                                         borderBottomLeftRadius={{ base: "0px" }}
                                     />
-                                    <Box px={1} paddingTop={3}>
-                                        <Heading size="md" pb={2} color={headingColor}>
-                                            {card.name}
-                                        </Heading>
-                                        <Text>{card?.summary}</Text>
-                                    </Box>
+                                    <Flex direction={"column"}>
+                                        <Flex direction={"row"} justifyContent={"space-between"}>
+                                            <Heading size="md" color={headingColor} pt={3} px={1} pb={2}>
+                                                {card.name}
+                                            </Heading>
+                                            {process.env.NODE_ENV === "development" && (
+                                                <IconButton
+                                                    bg={contentBackground}
+                                                    _hover={{
+                                                        bg: contentBackgroundHover,
+                                                    }}
+                                                    borderBottomLeftRadius={"10px"}
+                                                    aria-label={"View GitHub Source"}
+                                                >
+                                                    <Box mt={1} mr={1}>
+                                                        <FontAwesomeIcon icon={faEdit} size={"lg"} />
+                                                    </Box>
+                                                </IconButton>
+                                            )}
+                                        </Flex>
+                                        <Box px={1} pt={1}>
+                                            <Text fontWeight={"medium"}>{card?.summary}</Text>
+                                        </Box>
+                                    </Flex>
                                 </HStack>
                                 <Box px={2} pt={5}>
                                     <CardStatus cardData={card} />
