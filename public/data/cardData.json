@@ -33,7 +33,9 @@
         "endDate": "2023-04-05",
         "summary": "The journey of Ethereum solo stakers to distributed validator staking.",
         "description": {
-            "0": "A grant from the EF to build a Spreadsheet showing all the staking options available on Ethereum."
+            "0": "A grant from the EF to build a Spreadsheet showing all the staking options available on Ethereum.",
+            "1": "Short loin spare ribs biltong capicola brisket pork loin. T-bone jowl ribeye sirloin ham hock. Porchetta ham hock andouille shoulder, ham ball tip bresaola brisket alcatra meatloaf burgdoggen doner t-bone cupim filet mignon.",
+            "2": "Short loin spare ribs biltong capicola brisket pork loin. T-bone jowl ribeye sirloin ham hock. Porchetta ham hock andouille shoulder, ham ball tip bresaola brisket alcatra meatloaf burgdoggen doner t-bone cupim filet mignon."
         },
         "images": {
             "0": { "image": "./481368551588.png", "alt": "Eridian Avatar" }

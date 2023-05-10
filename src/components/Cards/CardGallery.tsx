@@ -101,22 +101,26 @@ export default function CardGallery({ windowSize }) {
                                 {(card?.description?.[1] || card?.images?.[2]) && (
                                     <>
                                         <Collapse in={showMore[cardIndex]}>
-                                            {Object.values(card?.images || {})
-                                                .slice(2)
-                                                .map((image, imageIndex, imageArray) => (
-                                                    <>
-                                                        {card?.description[imageIndex + 1] ? (
-                                                            <CardBody>
-                                                                <CardDescription index={imageIndex} cardData={card} />
-                                                            </CardBody>
-                                                        ) : null}
+                                            {Array.from({
+                                                length: Math.max(
+                                                    Object.values(card?.description || {})?.length || 0,
+                                                    Object.values(card?.images || {})?.length - 2 || 0
+                                                ),
+                                            }).map((_, index) => (
+                                                <>
+                                                    {card?.description[index + 1] && (
+                                                        <CardBody>
+                                                            <CardDescription index={index + 1} cardData={card} />
+                                                        </CardBody>
+                                                    )}
+                                                    {card?.images[index + 2] && (
                                                         <CardImages
-                                                            key={imageIndex + 2}
+                                                            key={index + 2}
                                                             windowSize={windowSize}
                                                             cardIndex={cardIndex}
-                                                            imageIndex={imageIndex + 2}
-                                                            image={image}
-                                                            imageArray={imageArray}
+                                                            imageIndex={index + 2}
+                                                            image={card?.images[index + 2]}
+                                                            imageArray={Object.values(card?.images || {})}
                                                             cardRefs={cardRefs}
                                                             imageRefs={imageRefs}
                                                             sortedCardData={sortedCardData}
@@ -124,8 +128,9 @@ export default function CardGallery({ windowSize }) {
                                                             imageWidths={imageWidths}
                                                             setImageWidths={setImageWidths}
                                                         />
-                                                    </>
-                                                ))}
+                                                    )}
+                                                </>
+                                            ))}
                                         </Collapse>
                                         <CardShowMoreButton
                                             cardIndex={cardIndex}

@@ -76,7 +76,7 @@ export default function CardImages({
                 alt={image.alt}
                 borderTopRadius={roundedCorners[cardIndex][imageIndex] ? "30px" : "0px"}
                 borderBottomRadius={
-                    imageIndex === imageArray.length + 1 || (imageIndex === 1 && !showMore[cardIndex])
+                    imageIndex === imageArray.length - 1 || (imageIndex === 1 && !showMore[cardIndex])
                         ? "0px"
                         : roundedCorners[cardIndex][imageIndex]
                         ? "30px"
