@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react"
 import axios from "axios"
+import { set } from "lodash"
 
 import {
     useTheme,
@@ -17,32 +18,70 @@ import {
     Input,
 } from "@chakra-ui/react"
 
-const updateCardData = (cardData, cardEditorData, input1Ref): Promise<void> => {
-    return new Promise<void>(async (resolve, reject) => {
-        if (input1Ref?.current?.value != cardEditorData?.name) {
-            const updatedCardData = cardData.map((card) => {
-                if (card.name === cardEditorData?.name) {
-                    return { ...card, name: input1Ref?.current.value }
+const renderInputs = (cardEditorData) => {
+    if (!cardEditorData) {
+        return { inputs: [], inputRefs: new Map() }
+    }
+
+    const inputRefs = new Map()
+
+    const renderInput = (key, value, path) => {
+        if (typeof value === "object") {
+            return Object.entries(value).map(([nestedKey, nestedValue]) =>
+                renderInput(nestedKey, nestedValue, path ? `${path}.${nestedKey}` : nestedKey)
+            )
+        } else {
+            const ref = React.createRef()
+            inputRefs.set(path, ref)
+            return <Input key={path} ref={ref} placeholder={`Add ${key}...`} defaultValue={value} />
+        }
+    }
+
+    const inputs = Object.entries(cardEditorData).map(([key, value]) => renderInput(key, value, key))
+
+    return { inputs, inputRefs }
+}
+
+const getUpdatedCardData = (cardData, inputRefs, cardEditorData) => {
+    const updatedCardData = cardData.map((card) => {
+        if (card.id === cardEditorData?.id) {
+            let updatedCard = { ...card }
+
+            inputRefs.forEach((inputRef, key) => {
+                const inputValue = inputRef?.current?.value
+                const originalValue = key.split(".").reduce((obj, k) => (obj && obj[k] !== undefined ? obj[k] : null), card)
+
+                if (inputValue !== originalValue) {
+                    set(updatedCard, key, inputValue)
                 }
-                return card
             })
 
-            try {
-                const response = await axios.post("/api/updateData", updatedCardData)
-                console.log(response.data.message)
-                resolve()
-            } catch (error) {
-                console.error("Error updating data:", error)
-                reject()
-            }
-        } else {
+            return updatedCard
+        }
+
+        return card
+    })
+
+    return updatedCardData
+}
+
+const updateCardData = (cardData, inputRefs, cardEditorData): Promise<void> => {
+    return new Promise<void>(async (resolve, reject) => {
+        const updatedCardData = getUpdatedCardData(cardData, inputRefs, cardEditorData)
+
+        try {
+            const response = await axios.post("/api/updateData", updatedCardData)
+            console.log(response.data.message)
             resolve()
+        } catch (error) {
+            console.error("Error updating data:", error)
+            reject()
         }
     })
 }
 
 export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData, cardData }) {
-    const input1Ref = useRef(null)
+    const { inputs, inputRefs } = renderInputs(cardEditorData)
 
     const toast = useToast()
 
@@ -55,14 +94,12 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             <ModalContent bg={contentBackground} minW="50vw" minH="80vh" maxH={"90vh"} borderRadius={"30px"}>
                 <ModalHeader>Edit: {cardEditorData?.name}</ModalHeader>
                 <ModalCloseButton />
-                <ModalBody>
-                    <Input ref={input1Ref} placeholder="Add title..." defaultValue={cardEditorData?.name} />
-                </ModalBody>
+                <ModalBody>{inputs}</ModalBody>
                 <ModalFooter>
                     <Button
                         onClick={async () => {
                             try {
-                                await updateCardData(cardData, cardEditorData, input1Ref)
+                                await updateCardData(cardData, inputRefs, cardEditorData)
                                 onClose()
                             } catch (error) {
                                 toast({
