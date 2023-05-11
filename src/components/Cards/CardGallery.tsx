@@ -12,6 +12,7 @@ import CardLinks from "./CardLinks"
 import CardImages from "./CardImages"
 import CardStatus from "./CardStatus"
 import CardShowMoreButton from "./CardShowMoreButton"
+import CardEditor from "./CardEditor"
 
 export default function CardGallery({ windowSize }) {
     const breakpointCols = {
@@ -33,8 +34,10 @@ export default function CardGallery({ windowSize }) {
         return dateB.getTime() - dateA.getTime()
     })
 
-    const [showMore, setShowMore] = useState(Array(sortedCardData.length).fill(false))
+    const [isCardEditorOpen, setIsCardEditorOpen] = useState(false)
+    const [cardEditorData, setCardEditorData] = useState(null)
 
+    const [showMore, setShowMore] = useState(Array(sortedCardData.length).fill(false))
     // Updating this state causes the contents of the Collapse component to re-render
     // which is needed to update the image radiuses and button border radius
     // TODO: It's a hacky solution, but I couldn't find anything else that worked right now
@@ -93,6 +96,10 @@ export default function CardGallery({ windowSize }) {
                                                     borderRight={"6px solid"}
                                                     borderColor={contentBackground}
                                                     aria-label={"View GitHub Source"}
+                                                    onClick={() => {
+                                                        setIsCardEditorOpen(true)
+                                                        setCardEditorData(card)
+                                                    }}
                                                 >
                                                     <Box mt={1} mr={1}>
                                                         <FontAwesomeIcon icon={faEdit} size={"lg"} />
@@ -182,6 +189,14 @@ export default function CardGallery({ windowSize }) {
                     </Card>
                 ))}
             </Masonry>
+            {process.env.NODE_ENV === "development" && (
+                <CardEditor
+                    windowSize={windowSize}
+                    isOpen={isCardEditorOpen}
+                    onClose={() => setIsCardEditorOpen(false)}
+                    cardEditorData={cardEditorData}
+                />
+            )}
         </Box>
     )
 }
