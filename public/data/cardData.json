@@ -10,18 +10,48 @@
             "2": "Short loin spare ribs biltong capicola brisket pork loin. T-bone jowl ribeye sirloin ham hock. Porchetta ham hock andouille shoulder, ham ball tip bresaola brisket alcatra meatloaf burgdoggen doner t-bone cupim filet mignon."
         },
         "images": {
-            "0": { "image": "./images/DVStakersSquareBlackLogo.png", "alt": "Image 0" },
-            "3": { "image": "https://images.unsplash.com/photo-1584673961397-be26e009333f", "alt": "Image 1" },
-            "1": { "image": "./images/DVStakers.png", "alt": "Image 2" },
-            "2": { "image": "./images/DVStakers.png", "alt": "Image 3" }
+            "0": {
+                "image": "./images/DVStakersSquareBlackLogo.png",
+                "alt": "Image 0"
+            },
+            "1": {
+                "image": "./images/DVStakers.png",
+                "alt": "Image 2"
+            },
+            "2": {
+                "image": "./images/DVStakers.png",
+                "alt": "Image 3"
+            },
+            "3": {
+                "image": "https://images.unsplash.com/photo-1584673961397-be26e009333f",
+                "alt": "Image 1"
+            }
         },
         "externalLinks": {
-            "0": { "url": "https://www.dvstakers.com", "label": "DVStakers.com", "type": "website" },
-            "1": { "url": "https://twitter.com/DVStakers", "label": "@DVStakers", "type": "twitter" },
-            "2": { "url": "https://discord.gg/VbVwqgSdFD", "label": "DVStakers", "type": "discord" },
-            "3": { "url": "https://github.com/DVStakers", "label": "DVStakers", "type": "github" }
+            "0": {
+                "url": "https://www.dvstakers.com",
+                "label": "DVStakers.com",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/DVStakers",
+                "label": "@DVStakers",
+                "type": "twitter"
+            },
+            "2": {
+                "url": "https://discord.gg/VbVwqgSdFD",
+                "label": "DVStakers",
+                "type": "discord"
+            },
+            "3": {
+                "url": "https://github.com/DVStakers",
+                "label": "DVStakers",
+                "type": "github"
+            }
         },
-        "tags": ["Staking"],
+        "tags": [
+            "Staking"
+        ],
         "displayConfig": {
             "cardSize": "large",
             "cardType": "project"
@@ -38,14 +68,30 @@
             "2": "Short loin spare ribs biltong capicola brisket pork loin. T-bone jowl ribeye sirloin ham hock. Porchetta ham hock andouille shoulder, ham ball tip bresaola brisket alcatra meatloaf burgdoggen doner t-bone cupim filet mignon."
         },
         "images": {
-            "0": { "image": "./481368551588.png", "alt": "Eridian Avatar" }
+            "0": {
+                "image": "./481368551588.png",
+                "alt": "Eridian Avatar"
+            }
         },
         "externalLinks": {
-            "0": { "url": "https://ethereum.org", "label": "Ethereum.org" },
-            "1": { "url": "https://twitter.com/DVStakers", "label": "@DVStakers", "type": "twitter" },
-            "2": { "url": "https://discord.gg/VbVwqgSdFD", "label": "DVStakers", "type": "discord" }
+            "0": {
+                "url": "https://ethereum.org",
+                "label": "Ethereum.org"
+            },
+            "1": {
+                "url": "https://twitter.com/DVStakers",
+                "label": "@DVStakers",
+                "type": "twitter"
+            },
+            "2": {
+                "url": "https://discord.gg/VbVwqgSdFD",
+                "label": "DVStakers",
+                "type": "discord"
+            }
         },
-        "tags": ["Staking"],
+        "tags": [
+            "Staking"
+        ],
         "displayConfig": {
             "cardSize": "small",
             "cardType": "project"
@@ -56,7 +102,12 @@
         "startDate": "2023-04-15",
         "endDate": "2023-04-15",
         "summary": "The journey of Ethereum solo stakers to distributed validator staking.",
-        "externalLinks": { "0": { "url": "https://twitter.com/EridianAlpha/status/1647367943724978181", "label": "Tweet" } },
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1647367943724978181",
+                "label": "Tweet"
+            }
+        },
         "displayConfig": {
             "cardSize": "small",
             "cardType": "twitterPost"

@@ -195,6 +195,7 @@ export default function CardGallery({ windowSize }) {
                     isOpen={isCardEditorOpen}
                     onClose={() => setIsCardEditorOpen(false)}
                     cardEditorData={cardEditorData}
+                    cardData={cardData}
                 />
             )}
         </Box>
