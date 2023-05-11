@@ -1,0 +1,31 @@
+[
+    {
+        "id": "",
+        "name": "",
+        "startDate": "",
+        "endDate": "",
+        "summary": "",
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            }
+        },
+        "externalLinks": {
+            "0": {
+                "url": "",
+                "label": "",
+                "type": ""
+            }
+        },
+        "tags": {
+            "0": ""
+        },
+        "displayConfig": {
+            "cardType": ""
+        }
+    }
+]

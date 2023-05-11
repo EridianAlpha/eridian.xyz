@@ -1,11 +1,28 @@
 import React, { useState, useMemo } from "react"
 import cardData from "../../../public/data/cardData.json"
+import cardDataTemplate from "../../../public/data/cardDataTemplate.json"
+
 import Masonry from "react-masonry-css"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit } from "@fortawesome/free-solid-svg-icons"
 
-import { useTheme, useColorModeValue, Card, Box, Heading, CardBody, Image, Flex, Stack, HStack, Text, Collapse, IconButton } from "@chakra-ui/react"
+import {
+    useTheme,
+    useColorModeValue,
+    Card,
+    Box,
+    Heading,
+    CardBody,
+    Image,
+    Flex,
+    Stack,
+    HStack,
+    Text,
+    Collapse,
+    IconButton,
+    Button,
+} from "@chakra-ui/react"
 
 import CardDescription from "./CardDescription"
 import CardLinks from "./CardLinks"
@@ -52,6 +69,19 @@ export default function CardGallery({ windowSize }) {
 
     return (
         <Box width="100%">
+            {process.env.NODE_ENV === "development" && (
+                <Button
+                    aria-label={"Create new card"}
+                    onClick={() => {
+                        setIsCardEditorOpen(true)
+                        setCardEditorData(cardDataTemplate[0])
+                    }}
+                >
+                    <Box mt={1} mr={1}>
+                        Create new card
+                    </Box>
+                </Button>
+            )}
             <Masonry breakpointCols={breakpointCols} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
                 {sortedCardData.map((card, cardIndex) => (
                     <Card
@@ -95,7 +125,7 @@ export default function CardGallery({ windowSize }) {
                                                     borderTop={"6px solid"}
                                                     borderRight={"6px solid"}
                                                     borderColor={contentBackground}
-                                                    aria-label={"View GitHub Source"}
+                                                    aria-label={"Edit card"}
                                                     onClick={() => {
                                                         setIsCardEditorOpen(true)
                                                         setCardEditorData(card)

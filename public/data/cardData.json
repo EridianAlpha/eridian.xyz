@@ -50,9 +50,9 @@
                 "type": "github"
             }
         },
-        "tags": [
-            "Staking"
-        ],
+        "tags": {
+            "0": "Staking"
+        },
         "displayConfig": {
             "cardSize": "large",
             "cardType": "project"
@@ -91,9 +91,10 @@
                 "type": "discord"
             }
         },
-        "tags": [
-            "Staking"
-        ],
+        "tags": {
+            "0": "Staking",
+            "1": "DVT"
+        },
         "displayConfig": {
             "cardSize": "small",
             "cardType": "project"
