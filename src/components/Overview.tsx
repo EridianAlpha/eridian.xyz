@@ -13,7 +13,7 @@ const focusAreaIconMapping = {
     faCodeFork,
 }
 
-export default function Overview({ windowSize }) {
+export default function Overview({ windowSize, environment }) {
     const customTheme = useTheme()
     const isSSR = typeof window === "undefined"
 

@@ -1,14 +1,19 @@
-import { useTheme, Box, Flex, HStack, IconButton, useColorModeValue, Image } from "@chakra-ui/react"
+import cardDataTemplate from "../../../public/data/cardDataTemplate.json"
+
+import { useTheme, Box, Flex, HStack, IconButton, useColorModeValue, Image, Button, Text } from "@chakra-ui/react"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
 
 import ColorModeToggle from "./ColorModeToggle"
 import Link from "next/link"
 
-export default function Header({ windowSize }) {
+export default function Header({ windowSize, environment, setIsCardEditorOpen, setCardEditorData }) {
     const customTheme = useTheme()
     const isSSR = typeof window === "undefined"
+
+    const completedTheme = useColorModeValue(customTheme.statusColors.completed.light, customTheme.statusColors.completed.dark)
 
     function navigateHome() {
         if (!isSSR) {
@@ -34,6 +39,43 @@ export default function Header({ windowSize }) {
                         <Box pr={2} minW="120px" fontWeight="bold" fontSize="xl" sx={{ cursor: "default" }}>
                             Eridian
                         </Box>
+                        {environment === "development" && (
+                            <Button
+                                aria-label="Create new card"
+                                variant="outline"
+                                borderColor={completedTheme}
+                                borderWidth={2}
+                                color={completedTheme}
+                                borderRadius={10}
+                                onClick={() => {
+                                    setIsCardEditorOpen(true)
+                                    setCardEditorData(cardDataTemplate[0])
+                                }}
+                                _hover={{
+                                    backgroundColor: "transparent",
+                                    "> div > div": {
+                                        maxWidth: "200px",
+                                        opacity: "1",
+                                    },
+                                }}
+                                px={0}
+                            >
+                                <Box display="flex" alignItems="center">
+                                    <Box width="40px">
+                                        <FontAwesomeIcon icon={faCirclePlus} size="lg" />
+                                    </Box>
+                                    <Box
+                                        overflow="hidden"
+                                        whiteSpace="nowrap"
+                                        maxWidth="0"
+                                        opacity="0"
+                                        transition="max-width 0.3s ease, opacity 0.3s ease"
+                                    >
+                                        <Text pr={2}>Create new card</Text>
+                                    </Box>
+                                </Box>
+                            </Button>
+                        )}
                     </HStack>
                     <HStack spacing={3}>
                         <Link href={"https://twitter.com/EridianAlpha"} target="_blank">

@@ -16,6 +16,11 @@ const App = () => {
     // Check if the current render is on the server (Server Side Render) or client
     const isSSR = typeof window === "undefined"
 
+    // Allow card editor to be opened and closed from the header
+    // TODO: Is this something that Redux could handle?
+    const [isCardEditorOpen, setIsCardEditorOpen] = useState(false)
+    const [cardEditorData, setCardEditorData] = useState(null)
+
     // Rerender when window size changes and save
     // window size to state to allow conditional rendering
     const [windowSize, setWindowSize] = useState({
@@ -45,11 +50,23 @@ const App = () => {
                 {environment === "development" && <VersionDrawer windowSize={windowSize} />}
                 <Flex direction="column" justifyContent="center" alignItems="center">
                     <Box width="100%" maxW="1400px">
-                        <Header windowSize={windowSize} />
-                        <Overview windowSize={windowSize} />
+                        <Header
+                            windowSize={windowSize}
+                            environment={environment}
+                            setIsCardEditorOpen={setIsCardEditorOpen}
+                            setCardEditorData={setCardEditorData}
+                        />
+                        <Overview windowSize={windowSize} environment={environment} />
                     </Box>
                     <Box maxW="100%">
-                        <ProjectGallery windowSize={windowSize} environment={environment} />
+                        <ProjectGallery
+                            windowSize={windowSize}
+                            environment={environment}
+                            isCardEditorOpen={isCardEditorOpen}
+                            setIsCardEditorOpen={setIsCardEditorOpen}
+                            cardEditorData={cardEditorData}
+                            setCardEditorData={setCardEditorData}
+                        />
                     </Box>
                 </Flex>
             </Container>
