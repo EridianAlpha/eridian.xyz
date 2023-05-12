@@ -31,7 +31,7 @@ import CardStatus from "./CardStatus"
 import CardShowMoreButton from "./CardShowMoreButton"
 import CardEditor from "./CardEditor"
 
-export default function CardGallery({ windowSize }) {
+export default function CardGallery({ windowSize, environment }) {
     const breakpointCols = {
         default: 3,
         1400: 2,
@@ -69,7 +69,7 @@ export default function CardGallery({ windowSize }) {
 
     return (
         <Box width="100%">
-            {process.env.NODE_ENV === "development" && (
+            {environment === "development" && (
                 <Button
                     aria-label={"Create new card"}
                     onClick={() => {
@@ -112,7 +112,7 @@ export default function CardGallery({ windowSize }) {
                                             <Heading size="md" color={headingColor} pt={3} px={1} pb={2}>
                                                 {card.name}
                                             </Heading>
-                                            {process.env.NODE_ENV === "development" && (
+                                            {environment === "development" && (
                                                 <IconButton
                                                     bg={backgroundColor}
                                                     _hover={{
@@ -219,7 +219,7 @@ export default function CardGallery({ windowSize }) {
                     </Card>
                 ))}
             </Masonry>
-            {process.env.NODE_ENV === "development" && (
+            {environment === "development" && (
                 <CardEditor
                     windowSize={windowSize}
                     isOpen={isCardEditorOpen}

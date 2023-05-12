@@ -8,6 +8,8 @@ import ProjectGallery from "./Cards/CardGallery"
 import { useTheme, useColorModeValue, Container, Box, Flex } from "@chakra-ui/react"
 
 const App = () => {
+    const environment = process.env.NODE_ENV
+
     // Import custom color theme
     const customTheme = useTheme()
 
@@ -40,14 +42,14 @@ const App = () => {
                 px={{ base: "16px", xl: "60px" }}
                 pb={"1000px"}
             >
-                {process.env.NODE_ENV === "development" && <VersionDrawer windowSize={windowSize} />}
+                {environment === "development" && <VersionDrawer windowSize={windowSize} />}
                 <Flex direction="column" justifyContent="center" alignItems="center">
                     <Box width="100%" maxW="1400px">
                         <Header windowSize={windowSize} />
                         <Overview windowSize={windowSize} />
                     </Box>
                     <Box maxW="100%">
-                        <ProjectGallery windowSize={windowSize} />
+                        <ProjectGallery windowSize={windowSize} environment={environment} />
                     </Box>
                 </Flex>
             </Container>

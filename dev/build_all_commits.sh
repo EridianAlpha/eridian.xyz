@@ -46,7 +46,10 @@ for commit in $commits; do
       yarn install
     fi
 
-    # Replace the condition in App.tsx file to include VersionDrawer in production build
+    # Replace the condition in App.tsx file to include all dev features in production build
+    perl -i -pe 's/const environment = process\.env\.NODE_ENV/const environment = "development"/g' src/components/App.tsx
+
+    # This is needed for the oldest versions of the site that didn't have a separate environment variable
     perl -i -pe 's/\{process.env.NODE_ENV === "development" && <VersionDrawer windowSize=\{windowSize\} \/>\}/\{true && <VersionDrawer windowSize=\{windowSize\} \/>\}/g' src/components/App.tsx
 
     # Replace the entire VersionDrawer component in src/components/VersionDrawer.tsx with the one stored in the temporary file
