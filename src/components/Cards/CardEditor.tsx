@@ -11,12 +11,12 @@ import {
     ModalOverlay,
     ModalContent,
     ModalHeader,
-    ModalCloseButton,
     ModalBody,
     ModalFooter,
     Text,
     Input,
     Textarea,
+    Flex,
 } from "@chakra-ui/react"
 
 export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData, cardData }) {
@@ -215,14 +215,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
     const [hasChanged, setHasChanged] = useState(false)
     useEffect(() => {
         const updatedCardData = getUpdatedCardData(cardData, inputRefs, cardEditorData)
-        if (isEqual(updatedCardData, cardData)) {
-            console.log("Data is equal - Setting false")
-            setHasChanged(false)
-        } else {
-            console.log("Data is not equal - Setting true")
-            setHasChanged(true)
-        }
-        console.log("hasChanged:", hasChanged)
+        isEqual(updatedCardData, cardData) ? setHasChanged(false) : setHasChanged(true)
     }, [inputChanged])
 
     useEffect(() => {
@@ -252,43 +245,55 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         >
             <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
             <ModalContent bg={contentBackground} minW="50vw" minH="80vh" maxH={"90vh"} borderRadius={"30px"}>
-                <ModalHeader>Edit: {cardEditorData?.name}</ModalHeader>
-                <ModalCloseButton
-                    onClick={() => {
-                        setHasChanged(false)
-                        onClose()
-                    }}
-                />
+                <ModalHeader>
+                    <Flex justifyContent="space-between" alignItems="center">
+                        {cardEditorData?.id != "NEW_CARD" ? (
+                            <>
+                                <Text>Edit: {cardEditorData?.name}</Text>
+                                <Button
+                                    colorScheme="red"
+                                    onClick={async () => {
+                                        try {
+                                            // Clear the id field to delete the card
+                                            inputRefs?.get("id").current ? (inputRefs.get("id").current.value = "") : null
+                                            await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
+                                            onClose()
+                                        } catch (error) {
+                                            toast({
+                                                title: "Error deleting data",
+                                                status: "error",
+                                                isClosable: true,
+                                                position: "top",
+                                                description: error.message || "Unknown error 😞 Please try again later.",
+                                                duration: 3000,
+                                            })
+                                            console.error("Error deleting data:", error)
+                                        }
+                                    }}
+                                >
+                                    Delete
+                                </Button>
+                            </>
+                        ) : (
+                            <Text>Create new card</Text>
+                        )}
+                    </Flex>
+                </ModalHeader>
                 <ModalBody>{inputs}</ModalBody>
                 <ModalFooter>
                     <Button
                         mr={5}
-                        colorScheme="red"
-                        onClick={async () => {
-                            try {
-                                // Clear the id field
-                                if (inputRefs.get("id") && inputRefs.get("id").current) {
-                                    inputRefs.get("id").current.value = ""
-                                }
-                                await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
-                                onClose()
-                            } catch (error) {
-                                toast({
-                                    title: "Error deleting data",
-                                    status: "error",
-                                    isClosable: true,
-                                    position: "top",
-                                    description: error.message || "Unknown error 😞 Please try again later.",
-                                    duration: 3000,
-                                })
-                                console.error("Error deleting data:", error)
-                            }
+                        colorScheme="blue"
+                        onClick={() => {
+                            setHasChanged(false)
+                            onClose()
                         }}
                     >
-                        Delete
+                        Cancel
                     </Button>
+
                     <Button
-                        colorScheme="blue"
+                        colorScheme="green"
                         onClick={async () => {
                             try {
                                 await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
