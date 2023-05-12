@@ -29,6 +29,7 @@ export default function Header({ windowSize }) {
                             objectFit={"cover"}
                             src={"./481368551588.png"}
                             borderRadius={"5px"}
+                            alt={"Eridian Avatar"}
                         />
                         <Box pr={2} minW="120px" fontWeight="bold" fontSize="xl" sx={{ cursor: "default" }}>
                             Eridian

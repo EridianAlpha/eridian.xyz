@@ -31,8 +31,6 @@ function generateRandomId(): string {
     return result
 }
 
-console.log("randomId", generateRandomId())
-
 export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData, cardData }) {
     const toast = useToast()
 

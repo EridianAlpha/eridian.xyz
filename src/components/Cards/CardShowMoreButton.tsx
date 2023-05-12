@@ -23,14 +23,17 @@ export default function CardShowMoreButton({
 }) {
     const showMoreButtonRef = useRef(null)
     const [showMoreButtonWidth, setShowMoreButtonWidth] = useState(0)
-    const toggleShowMore = useCallback((cardIndex: number) => {
-        setShowMore((prevState: any) => prevState.map((value: boolean, index: number) => (index === cardIndex ? !value : value)))
-    }, [])
+    const toggleShowMore = useCallback(
+        (cardIndex: number) => {
+            setShowMore((prevState: any) => prevState.map((value: boolean, index: number) => (index === cardIndex ? !value : value)))
+        },
+        [setShowMore]
+    )
     useEffect(() => {
         if (showMoreButtonRef.current) {
             setShowMoreButtonWidth(showMoreButtonRef.current.offsetWidth)
         }
-    }, [windowSize.width, showMoreButtonRef.current, showMore])
+    }, [windowSize.width, showMore])
 
     // Dynamic calculation of the top border radius of the showMore button
     const calculateTopBorderRadius = () => {

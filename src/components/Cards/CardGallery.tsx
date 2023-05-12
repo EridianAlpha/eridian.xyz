@@ -60,10 +60,10 @@ export default function CardGallery({ windowSize, environment }) {
     // TODO: It's a hacky solution, but I couldn't find anything else that worked right now
     const [collapseReRender, setCollapseReRender] = useState(false)
 
-    const cardRefs = useMemo(() => sortedCardData.map(() => React.createRef<HTMLDivElement>()), [])
+    const cardRefs = useMemo(() => sortedCardData.map(() => React.createRef<HTMLDivElement>()), [sortedCardData])
     const imageRefs = useMemo(
         () => sortedCardData.map((_, index) => Object.values(sortedCardData[index].images || {}).map(() => React.createRef<HTMLImageElement>())),
-        []
+        [sortedCardData]
     )
     const [imageWidths, setImageWidths] = useState(sortedCardData.map((_, index) => Object.values(sortedCardData[index].images || {}).map(() => 0)))
 
@@ -85,7 +85,7 @@ export default function CardGallery({ windowSize, environment }) {
             <Masonry breakpointCols={breakpointCols} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
                 {sortedCardData.map((card, cardIndex) => (
                     <Card
-                        key={cardIndex}
+                        key={card.id}
                         ref={cardRefs[cardIndex]}
                         maxW={"100%"}
                         bg={contentBackground}
@@ -177,7 +177,7 @@ export default function CardGallery({ windowSize, environment }) {
                                                     Object.values(card?.images || {})?.length - 2 || 0
                                                 ),
                                             }).map((_, index) => (
-                                                <>
+                                                <React.Fragment key={index}>
                                                     {card?.description[index + 1] && (
                                                         <CardBody>
                                                             <CardDescription index={index + 1} cardData={card} />
@@ -199,7 +199,7 @@ export default function CardGallery({ windowSize, environment }) {
                                                             setImageWidths={setImageWidths}
                                                         />
                                                     )}
-                                                </>
+                                                </React.Fragment>
                                             ))}
                                         </Collapse>
                                         <CardShowMoreButton

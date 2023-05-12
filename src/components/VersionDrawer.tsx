@@ -141,7 +141,7 @@ export default function VersionDrawer({ windowSize }) {
         return () => {
             router_VersionDrawer.events.off("routeChangeComplete", handleRouteChange)
         }
-    }, [])
+    }, [router_VersionDrawer.events])
 
     const [commitHashes, setCommitHashes] = useState([])
     const [currentVersion, setCurrentVersion] = useState("latest")

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import { Box, Image } from "@chakra-ui/react"
 
 export default function CardImages({
@@ -30,7 +30,7 @@ export default function CardImages({
         sortedCardData.map((_, index) => Object.values(sortedCardData[index].images || {}).map(() => false))
     )
 
-    const calculateImageWidths = () => {
+    const calculateImageWidths = useCallback(() => {
         return sortedCardData.map((card, cardIndex) =>
             Object.values(card?.images || {}).map((_, imageIndex) => {
                 if (!cardRefs[cardIndex]?.current || !imageRefs[cardIndex][imageIndex]?.current) {
@@ -40,7 +40,7 @@ export default function CardImages({
                 return imageWidth
             })
         )
-    }
+    }, [sortedCardData, cardRefs, imageRefs])
 
     useEffect(() => {
         // Calculate image widths
@@ -63,7 +63,7 @@ export default function CardImages({
         if (JSON.stringify(newRoundedCorners) !== JSON.stringify(roundedCorners)) {
             setRoundedCorners(newRoundedCorners)
         }
-    }, [windowSize.width, imageRefs, sortedCardData, roundedCorners, cardRefs, imageWidths, showMore])
+    }, [windowSize.width, imageRefs, sortedCardData, roundedCorners, cardRefs, imageWidths, showMore, calculateImageWidths, setImageWidths])
 
     return (
         <Box width="100%" display="flex" alignItems="center" justifyContent="center">
