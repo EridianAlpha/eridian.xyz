@@ -216,9 +216,6 @@ export default function VersionDrawer({ windowSize }) {
                 borderTopLeftRadius={windowSize.width > 1500 ? "30px" : "20px"}
                 borderBottomLeftRadius={windowSize.width > 1500 ? "30px" : "0px"}
                 bg={currentVersion == "latest" ? buttonBackgroundColorLatest : buttonBackgroundColorActive}
-                borderColor={windowSize.width > 500 ? "transparent" : "gray"}
-                borderLeftWidth={windowSize.width > 500 ? "0px" : "1px"}
-                borderTopWidth={windowSize.width > 500 ? "0px" : "1px"}
                 _hover={{
                     backgroundColor: currentVersion == "latest" ? buttonBackgroundHoverLatest : buttonBackgroundHoverActive,
                     cursor: "pointer",
