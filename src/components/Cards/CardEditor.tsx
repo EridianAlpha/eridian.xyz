@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from "react"
 import axios from "axios"
 import { set, isEqual } from "lodash"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
+
 import {
     useTheme,
     useToast,
@@ -17,6 +20,15 @@ import {
     Input,
     Textarea,
     Flex,
+    Box,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverArrow,
+    PopoverCloseButton,
+    PopoverHeader,
+    PopoverBody,
+    Heading,
 } from "@chakra-ui/react"
 
 function generateRandomId(): string {
@@ -36,6 +48,8 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
 
     const customTheme = useTheme()
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
+    const contentBackgroundLighter = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
+
     const labelColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
 
     const renderInputs = (cardEditorData) => {
@@ -206,6 +220,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
 
     return (
         <Modal
+            isCentered
             closeOnOverlayClick={true}
             onClose={() => {
                 if (!isEqual(getUpdatedCardData(cardData, inputRefs, cardEditorData), cardData)) {
@@ -226,67 +241,85 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         >
             <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
             <ModalContent bg={contentBackground} minW="50vw" minH="80vh" maxH={"90vh"} borderRadius={"30px"}>
-                <ModalHeader>
+                <ModalHeader bg={contentBackgroundLighter} borderTopRadius={"30px"}>
                     <Flex justifyContent="space-between" alignItems="center">
-                        {cardEditorData?.id != "NEW_CARD" ? (
-                            <>
-                                <Text>Edit: {cardEditorData?.name}</Text>
-                                <Button
-                                    colorScheme="red"
-                                    onClick={async () => {
-                                        try {
-                                            // Clear the id field to delete the card
-                                            inputRefs?.get("id").current ? (inputRefs.get("id").current.value = "") : null
-                                            await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
-                                            onClose()
-                                        } catch (error) {
-                                            toast({
-                                                title: "Error deleting data",
-                                                status: "error",
-                                                isClosable: true,
-                                                position: "top",
-                                                description: error.message || "Unknown error 😞 Please try again later.",
-                                                duration: 3000,
-                                            })
-                                            console.error("Error deleting data:", error)
-                                        }
-                                    }}
-                                >
-                                    Delete
-                                </Button>
-                            </>
-                        ) : (
-                            <Text>Create new card</Text>
-                        )}
+                        {cardEditorData?.id != "NEW_CARD" ? <Text>Edit: {cardEditorData?.name}</Text> : <Text>Create new card</Text>}
                     </Flex>
                 </ModalHeader>
                 <ModalBody>{inputs}</ModalBody>
-                <ModalFooter>
-                    <Button mr={5} colorScheme="blue" onClick={() => onClose()}>
-                        Cancel
-                    </Button>
-
-                    <Button
-                        colorScheme="green"
-                        onClick={async () => {
-                            try {
-                                await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
-                                onClose()
-                            } catch (error) {
-                                toast({
-                                    title: "Error saving data",
-                                    status: "error",
-                                    isClosable: true,
-                                    position: "top",
-                                    description: error.message || "Unknown error 😞 Please try again later.",
-                                    duration: 3000,
-                                })
-                                console.error("Error saving data:", error)
-                            }
-                        }}
-                    >
-                        Save
-                    </Button>
+                <ModalFooter bg={contentBackgroundLighter} borderBottomRadius={"30px"}>
+                    <Flex grow={1} justifyContent={"space-between"}>
+                        {cardEditorData?.id != "NEW_CARD" ? (
+                            <Popover>
+                                <PopoverTrigger>
+                                    <Button variant="outline" colorScheme="red">
+                                        <FontAwesomeIcon icon={faTrashCan} size={"lg"} />
+                                    </Button>
+                                </PopoverTrigger>
+                                <PopoverContent borderWidth={3} borderRadius={"30px"} bg={contentBackground}>
+                                    <PopoverArrow />
+                                    <PopoverBody pb={10}>
+                                        <Flex direction={"column"} alignItems={"center"}>
+                                            <Heading fontSize={"xl"} pb={5} pt={3}>
+                                                Are you sure...?
+                                            </Heading>
+                                            <Button
+                                                colorScheme="red"
+                                                onClick={async () => {
+                                                    try {
+                                                        // Clear the id field to delete the card
+                                                        inputRefs?.get("id").current ? (inputRefs.get("id").current.value = "") : null
+                                                        await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
+                                                        onClose()
+                                                    } catch (error) {
+                                                        toast({
+                                                            title: "Error deleting data",
+                                                            status: "error",
+                                                            isClosable: true,
+                                                            position: "top",
+                                                            description: error.message || "Unknown error 😞 Please try again later.",
+                                                            duration: 3000,
+                                                        })
+                                                        console.error("Error deleting data:", error)
+                                                    }
+                                                }}
+                                            >
+                                                Yes, I&apos;m sure - kill it!
+                                            </Button>
+                                        </Flex>
+                                    </PopoverBody>
+                                </PopoverContent>
+                            </Popover>
+                        ) : (
+                            <Box></Box>
+                        )}
+                        <Box>
+                            <Button mr={5} colorScheme="blue" onClick={() => onClose()}>
+                                Cancel
+                            </Button>
+                            <Button
+                                colorScheme="green"
+                                onClick={async () => {
+                                    try {
+                                        await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
+                                        onClose()
+                                    } catch (error) {
+                                        toast({
+                                            title: "Error saving data",
+                                            status: "error",
+                                            isClosable: true,
+                                            position: "top",
+                                            description: error.message || "Unknown error 😞 Please try again later.",
+                                            duration: 3000,
+                                        })
+                                        console.error("Error saving data:", error)
+                                    }
+                                }}
+                            >
+                                Save
+                            </Button>
+                        </Box>
+                    </Flex>
                 </ModalFooter>
             </ModalContent>
         </Modal>

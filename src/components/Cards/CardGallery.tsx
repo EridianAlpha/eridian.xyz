@@ -5,7 +5,7 @@ import cardDataTemplate from "../../../public/data/cardDataTemplate.json"
 import Masonry from "react-masonry-css"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEdit } from "@fortawesome/free-solid-svg-icons"
+import { faEdit, faCirclePlus } from "@fortawesome/free-solid-svg-icons"
 
 import {
     useTheme,
@@ -22,6 +22,7 @@ import {
     Collapse,
     IconButton,
     Button,
+    Container,
 } from "@chakra-ui/react"
 
 import CardDescription from "./CardDescription"
@@ -44,6 +45,7 @@ export default function CardGallery({ windowSize, environment }) {
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
     const contentBackgroundHover = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
     const headingColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
+    const completedTheme = useColorModeValue(customTheme.statusColors.completed.light, customTheme.statusColors.completed.dark)
 
     const sortedCardData = [...cardData].sort((a, b) => {
         const dateA = new Date(a.startDate)
@@ -72,16 +74,21 @@ export default function CardGallery({ windowSize, environment }) {
             {environment === "development" && (
                 <Button
                     aria-label={"Create new card"}
+                    variant="outline"
+                    borderColor={completedTheme}
+                    borderWidth={2}
+                    color={completedTheme}
+                    borderRadius={10}
                     onClick={() => {
                         setIsCardEditorOpen(true)
                         setCardEditorData(cardDataTemplate[0])
                     }}
                 >
-                    <Box mt={1} mr={1}>
-                        Create new card
-                    </Box>
+                    <FontAwesomeIcon icon={faCirclePlus} size={"lg"} />
+                    <Text pl={2}>Create new card</Text>
                 </Button>
             )}
+
             <Masonry breakpointCols={breakpointCols} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
                 {sortedCardData.map((card, cardIndex) => (
                     <Card
