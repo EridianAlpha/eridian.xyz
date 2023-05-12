@@ -19,10 +19,22 @@ import {
     Flex,
 } from "@chakra-ui/react"
 
+function generateRandomId(): string {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    let result = ""
+
+    for (let i = 0; i < 6; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length)
+        result += characters.charAt(randomIndex)
+    }
+
+    return result
+}
+
+console.log("randomId", generateRandomId())
+
 export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData, cardData }) {
     const toast = useToast()
-
-    const [inputChanged, setInputChanged] = useState(false)
 
     const customTheme = useTheme()
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
@@ -48,13 +60,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         const cardIdInput = (
             <>
                 <InputLabel htmlFor={"id"}>Card Id</InputLabel>
-                <Input
-                    id="cardId"
-                    ref={cardIdRef}
-                    disabled={true}
-                    defaultValue={cardEditorData?.id}
-                    onChange={() => setInputChanged(!inputChanged)}
-                />
+                <Input id="cardId" ref={cardIdRef} disabled={true} defaultValue={cardEditorData?.id} />
             </>
         )
 
@@ -63,13 +69,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         const nameInput = (
             <>
                 <InputLabel htmlFor={"name"}>Name</InputLabel>
-                <Input
-                    id="name"
-                    ref={nameRef}
-                    placeholder="Add name..."
-                    defaultValue={cardEditorData.name}
-                    onChange={() => setInputChanged(!inputChanged)}
-                />
+                <Input id="name" ref={nameRef} placeholder="Add name..." defaultValue={cardEditorData.name} />
             </>
         )
 
@@ -78,13 +78,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         const summaryInput = (
             <>
                 <InputLabel htmlFor={"summary"}>Summary</InputLabel>
-                <Input
-                    id="summary"
-                    ref={summaryRef}
-                    placeholder="Add summary..."
-                    defaultValue={cardEditorData.summary}
-                    onChange={() => setInputChanged(!inputChanged)}
-                />
+                <Input id="summary" ref={summaryRef} placeholder="Add summary..." defaultValue={cardEditorData.summary} />
             </>
         )
 
@@ -93,13 +87,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         const startDateInput = (
             <>
                 <InputLabel htmlFor={"startDate"}>Start Date</InputLabel>
-                <Input
-                    id="startDate"
-                    ref={startDateRef}
-                    placeholder="Add start date..."
-                    defaultValue={cardEditorData.startDate}
-                    onChange={() => setInputChanged(!inputChanged)}
-                />
+                <Input id="startDate" ref={startDateRef} placeholder="Add start date..." defaultValue={cardEditorData.startDate} />
             </>
         )
 
@@ -108,13 +96,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         const endDateInput = (
             <>
                 <InputLabel htmlFor={"endDate"}>End Date</InputLabel>
-                <Input
-                    id="endDate"
-                    ref={endDateRef}
-                    placeholder="Add end date..."
-                    defaultValue={cardEditorData.endDate}
-                    onChange={() => setInputChanged(!inputChanged)}
-                />
+                <Input id="endDate" ref={endDateRef} placeholder="Add end date..." defaultValue={cardEditorData.endDate} />
             </>
         )
 
@@ -138,7 +120,6 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                     placeholder={`Add description ${Number(key) + 1}...`}
                                     defaultValue={value as string}
                                     mb="8px"
-                                    onChange={() => setInputChanged(!inputChanged)}
                                 />
                             </>
                         )
@@ -194,13 +175,27 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         })
 
         if (!idExists) {
-            let newCard = { id: cardEditorData?.id }
+            // Generate a unique ID for the new card
+            // Check all the existing IDs to confirm that the new ID is unique
+            // If the new ID is not unique, generate a new ID until it is unique
+            const newId = () => {
+                const isUniqueId = (randomId: string): boolean => {
+                    return !cardData.some((card) => card.id === randomId)
+                }
+                let randomId = generateRandomId()
+                while (!isUniqueId(randomId)) {
+                    randomId = generateRandomId()
+                }
+                return randomId
+            }
 
+            let newCard = { id: newId() }
             inputRefs.forEach((inputRef, key) => {
-                const inputValue = inputRef?.current?.value
-                set(newCard, key, inputValue)
+                if (key !== "id") {
+                    const inputValue = inputRef?.current?.value
+                    set(newCard, key, inputValue)
+                }
             })
-
             updatedCardData.push(newCard)
         }
 
@@ -211,22 +206,11 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         return updatedCardData
     }
 
-    // When an input changes, check to see if the card data has changed
-    const [hasChanged, setHasChanged] = useState(false)
-    useEffect(() => {
-        const updatedCardData = getUpdatedCardData(cardData, inputRefs, cardEditorData)
-        isEqual(updatedCardData, cardData) ? setHasChanged(false) : setHasChanged(true)
-    }, [inputChanged])
-
-    useEffect(() => {
-        setHasChanged(false)
-    }, [isOpen])
-
     return (
         <Modal
             closeOnOverlayClick={true}
             onClose={() => {
-                if (hasChanged) {
+                if (!isEqual(getUpdatedCardData(cardData, inputRefs, cardEditorData), cardData)) {
                     toast({
                         title: "Data has changed",
                         status: "warning",
@@ -236,7 +220,6 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                         duration: 3000,
                     })
                 } else {
-                    setHasChanged(false)
                     onClose()
                 }
             }}
@@ -281,14 +264,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                 </ModalHeader>
                 <ModalBody>{inputs}</ModalBody>
                 <ModalFooter>
-                    <Button
-                        mr={5}
-                        colorScheme="blue"
-                        onClick={() => {
-                            setHasChanged(false)
-                            onClose()
-                        }}
-                    >
+                    <Button mr={5} colorScheme="blue" onClick={() => onClose()}>
                         Cancel
                     </Button>
 
