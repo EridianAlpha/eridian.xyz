@@ -54,7 +54,6 @@
             "0": "Staking"
         },
         "displayConfig": {
-            "cardSize": "large",
             "cardType": "project"
         }
     },
@@ -78,7 +77,8 @@
         "externalLinks": {
             "0": {
                 "url": "https://ethereum.org",
-                "label": "Ethereum.org"
+                "label": "Ethereum.org",
+                "type": "website"
             },
             "1": {
                 "url": "https://twitter.com/DVStakers",
@@ -96,7 +96,6 @@
             "1": "DVT"
         },
         "displayConfig": {
-            "cardSize": "small",
             "cardType": "project"
         }
     },
@@ -112,11 +111,11 @@
         "externalLinks": {
             "0": {
                 "url": "https://twitter.com/EridianAlpha/status/1647367943724978181",
-                "label": "Tweet"
+                "label": "Tweet",
+                "type": "twitter"
             }
         },
         "displayConfig": {
-            "cardSize": "small",
             "cardType": "twitterPost"
         }
     }
