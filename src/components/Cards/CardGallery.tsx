@@ -132,14 +132,20 @@ export default function CardGallery({ windowSize, environment, isCardEditorOpen,
                                 <Box px={2} pt={5}>
                                     <CardStatus cardData={card} />
                                 </Box>
-                                <CardBody>
-                                    <Box>
-                                        <CardLinks cardData={card} backgroundColor={backgroundColor} linkHoverColor={linkHoverColor} />
-                                    </Box>
-                                    <Box pt={5} mt={2}>
-                                        <CardDescription index={0} cardData={card} />
-                                    </Box>
-                                </CardBody>
+                                {card?.externalLinks?.[0] || card?.description?.[0] ? (
+                                    <CardBody>
+                                        {card?.externalLinks?.[0] && (
+                                            <Box>
+                                                <CardLinks cardData={card} backgroundColor={backgroundColor} linkHoverColor={linkHoverColor} />
+                                            </Box>
+                                        )}
+                                        {card?.description?.[0] && (
+                                            <Box pt={5} mt={2}>
+                                                <CardDescription index={0} cardData={card} />
+                                            </Box>
+                                        )}
+                                    </CardBody>
+                                ) : null}
                                 {card?.images?.[1] && (
                                     <CardImages
                                         windowSize={windowSize}
@@ -165,12 +171,12 @@ export default function CardGallery({ windowSize, environment, isCardEditorOpen,
                                                 ),
                                             }).map((_, index) => (
                                                 <React.Fragment key={index}>
-                                                    {card?.description[index + 1] && (
+                                                    {card?.description?.[index + 1] && (
                                                         <CardBody>
                                                             <CardDescription index={index + 1} cardData={card} />
                                                         </CardBody>
                                                     )}
-                                                    {card?.images[index + 2] && (
+                                                    {card?.images?.[index + 2] && (
                                                         <CardImages
                                                             key={index + 2}
                                                             windowSize={windowSize}
@@ -212,6 +218,7 @@ export default function CardGallery({ windowSize, environment, isCardEditorOpen,
                     isOpen={isCardEditorOpen}
                     onClose={() => setIsCardEditorOpen(false)}
                     cardEditorData={cardEditorData}
+                    setCardEditorData={setCardEditorData}
                     cardData={cardData}
                 />
             )}

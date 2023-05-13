@@ -59,13 +59,15 @@ function customSet(obj, path, value) {
     }
 }
 
-export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData, cardData }) {
+export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData, setCardEditorData, cardData }) {
     const toast = useToast()
 
     const customTheme = useTheme()
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
     const contentBackgroundLighter = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
     const labelColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
+
+    // const [editorDataTemp, setEditorDataTemp] = useState(cardEditorData)
 
     const renderInputs = (cardEditorData) => {
         if (!cardEditorData) {
@@ -127,6 +129,17 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             </>
         )
 
+        const handleAddDescription = () => {
+            const nextKey = Object.keys(cardEditorData?.description || {}).length
+            const newDescription = { [nextKey]: "" }
+            setCardEditorData((prevState) => ({
+                ...prevState,
+                description: {
+                    ...(prevState?.description || {}),
+                    ...newDescription,
+                },
+            }))
+        }
         const descriptionInputs = () => {
             if (Object.entries(cardEditorData?.description || {}).length > 0) {
                 return [
@@ -138,38 +151,37 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                         const fullPathKey = `description.${key}`
                         inputRefs.set(fullPathKey, descriptionRef)
                         return (
-                            <>
+                            <React.Fragment key={`description-fragment-${key}`}>
                                 <InputLabel htmlFor={`description-${key}`}>Description {key}</InputLabel>
                                 <Textarea
                                     id={`description-${key}`}
-                                    key={key}
+                                    key={`description-${key}`}
                                     ref={descriptionRef}
-                                    placeholder={`Add description ${Number(key) + 1}...`}
+                                    placeholder={`Add description ${key}...`}
                                     defaultValue={value as string}
                                     mb="8px"
                                 />
-                            </>
+                            </React.Fragment>
                         )
                     }),
+                    <Button onClick={handleAddDescription} key="add-description-button" mt="8px">
+                        Add Description
+                    </Button>,
                 ]
-            } else {
-                // Show an empty description 0 input if there are no descriptions
-                const descriptionRef = React.createRef<HTMLTextAreaElement>()
-                const fullPathKey = "description.0"
-                inputRefs.set(fullPathKey, descriptionRef)
-                return (
-                    <>
-                        <InputLabel key="description-heading" htmlFor="descriptions">
-                            Descriptions
-                        </InputLabel>
-                        <InputLabel htmlFor={"description-0"}>Description 0</InputLabel>
-                        <Textarea id={"description-0"} key={"description-0"} ref={descriptionRef} placeholder={`Add description 0...`} mb="8px" />
-                    </>
-                )
             }
         }
 
-        return { inputs: [cardIdInput, nameInput, summaryInput, startDateInput, endDateInput, descriptionInputs()], inputRefs }
+        return {
+            inputs: [
+                <React.Fragment key="card-id-input">{cardIdInput}</React.Fragment>,
+                <React.Fragment key="name-input">{nameInput}</React.Fragment>,
+                <React.Fragment key="summary-input">{summaryInput}</React.Fragment>,
+                <React.Fragment key="start-date-input">{startDateInput}</React.Fragment>,
+                <React.Fragment key="end-date-input">{endDateInput}</React.Fragment>,
+                <React.Fragment key="description-inputs">{descriptionInputs()}</React.Fragment>,
+            ],
+            inputRefs,
+        }
     }
 
     const { inputs, inputRefs } = renderInputs(cardEditorData)

@@ -39,7 +39,7 @@ export default function CardShowMoreButton({
     const calculateTopBorderRadius = () => {
         const borderRadius = 10
         if (!showMore[cardIndex]) {
-            if (imageWidths[cardIndex][1] >= showMoreButtonWidth - borderRadius) {
+            if (imageWidths[cardIndex]?.[1] >= showMoreButtonWidth - borderRadius) {
                 return `${showMoreButtonWidth - imageWidths[cardIndex][1]}px`
             } else {
                 return `${borderRadius}px`
