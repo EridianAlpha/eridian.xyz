@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState } from "react"
 import axios from "axios"
 import { unset, isEqual } from "lodash"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import { faTrashCan, faRefresh } from "@fortawesome/free-solid-svg-icons"
 
 import {
     useTheme,
@@ -27,6 +27,9 @@ import {
     PopoverArrow,
     PopoverBody,
     Heading,
+    Image,
+    InputGroup,
+    InputLeftAddon,
 } from "@chakra-ui/react"
 
 function generateRandomId(): string {
@@ -60,14 +63,14 @@ function customSet(obj, path, value) {
 }
 
 export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData, setCardEditorData, cardData }) {
+    const [inputVisibility, setInputVisibility] = React.useState<{ [key: string]: boolean }>({})
+    const [imageSrcs, setImageSrcs] = useState({})
     const toast = useToast()
 
     const customTheme = useTheme()
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
     const contentBackgroundLighter = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
     const labelColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
-
-    // const [editorDataTemp, setEditorDataTemp] = useState(cardEditorData)
 
     const renderInputs = (cardEditorData) => {
         if (!cardEditorData) {
@@ -182,6 +185,20 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                 },
             }))
         }
+        const handleRefreshImage = (key: string, src: string) => {
+            setImageSrcs((prevSrcs) => ({
+                ...prevSrcs,
+                [key]: src,
+            }))
+        }
+        const deleteImage = (key: string, imageRef: React.RefObject<HTMLInputElement>, altRef: React.RefObject<HTMLInputElement>) => {
+            imageRef.current ? (imageRef.current.value = "") : null
+            altRef.current ? (altRef.current.value = "") : null
+            setInputVisibility((prevState) => ({
+                ...prevState,
+                [key]: false,
+            }))
+        }
         const imageInputs = () => {
             interface ImageData {
                 image: string
@@ -200,26 +217,70 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                         const altFullPathKey = `images.${key}.alt`
                         inputRefs.set(imageFullPathKey, imageRef)
                         inputRefs.set(altFullPathKey, altRef)
+                        const isVisible = inputVisibility[key] !== false
                         return (
                             <React.Fragment key={`images-fragment-${key}`}>
-                                <InputLabel htmlFor={`images-${key}`}>Image {key}</InputLabel>
-                                <Input
-                                    id={`images-${key}`}
-                                    key={`images-${key}`}
-                                    ref={imageRef}
-                                    placeholder={`Add image ${key}...`}
-                                    defaultValue={imageData.image}
-                                    mb="8px"
-                                />
-                                <InputLabel htmlFor={`alt-${key}`}>Alt Text {key}</InputLabel>
-                                <Input
-                                    id={`alt-${key}`}
-                                    key={`alt-${key}`}
-                                    ref={altRef}
-                                    placeholder={`Add alt text ${key}...`}
-                                    defaultValue={imageData.alt}
-                                    mb="8px"
-                                />
+                                <Box style={{ display: isVisible ? null : "none" }}>
+                                    <Flex alignItems={"baseline"} columnGap={2}>
+                                        <InputLabel htmlFor={`images-${key}`}>
+                                            {key === "0" ? "Icon Image" : key === "1" ? "Cover Image" : "Additional Image"}
+                                            {key != "0" && (
+                                                <Button
+                                                    onClick={() => deleteImage(key, imageRef, altRef)}
+                                                    size="sm"
+                                                    borderRadius={"20px"}
+                                                    colorScheme={"red"}
+                                                    variant="ghost"
+                                                    mb={1}
+                                                >
+                                                    <FontAwesomeIcon icon={faTrashCan} size={"lg"} />
+                                                </Button>
+                                            )}
+                                        </InputLabel>
+                                    </Flex>
+                                    <Flex alignItems={"center"}>
+                                        <Image
+                                            id={`images-${key}-preview`}
+                                            key={`images-${key}-preview`}
+                                            objectFit="contain"
+                                            width="90px"
+                                            src={imageSrcs[key] || imageData.image}
+                                            alt={imageData.alt}
+                                            borderRadius={"10px"}
+                                        />
+                                        <Button
+                                            onClick={() => handleRefreshImage(key, imageRef.current?.value)}
+                                            size="sm"
+                                            ml="8px"
+                                            borderRadius={"20px"}
+                                        >
+                                            <FontAwesomeIcon icon={faRefresh} size={"lg"} />
+                                            <Text pl={3}>Refresh image</Text>
+                                        </Button>
+                                    </Flex>
+                                    <InputGroup>
+                                        <InputLeftAddon width="90px">Source</InputLeftAddon>
+                                        <Input
+                                            id={`images-${key}`}
+                                            key={`images-${key}`}
+                                            ref={imageRef}
+                                            placeholder={`Add image ${key}...`}
+                                            defaultValue={imageData.image}
+                                            mb="8px"
+                                        />
+                                    </InputGroup>
+                                    <InputGroup>
+                                        <InputLeftAddon width="90px">Alt Text</InputLeftAddon>
+                                        <Input
+                                            id={`alt-${key}`}
+                                            key={`alt-${key}`}
+                                            ref={altRef}
+                                            placeholder={`Add alt text ${key}...`}
+                                            defaultValue={imageData.alt}
+                                            mb="8px"
+                                        />
+                                    </InputGroup>
+                                </Box>
                             </React.Fragment>
                         )
                     }),
@@ -264,7 +325,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                         deleteCard = true
                     } else if (key != "description.0" && key.includes("description") && inputValue === "") {
                         unset(updatedCard, key)
-                    } else if (!key.includes("images.0" || "images.1") && key.includes("images") && inputValue === "") {
+                    } else if (key.includes("images") && !(key.includes("images.0") || key.includes("images.1")) && inputValue === "") {
                         unset(updatedCard, key.split(".").slice(0, 2).join("."))
                     } else if (inputValue !== originalValue) {
                         customSet(updatedCard, key, inputValue)
@@ -307,6 +368,13 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         return updatedCardData
     }
 
+    function closeEditor() {
+        toast.closeAll()
+        setImageSrcs({})
+        setInputVisibility({})
+        onClose()
+    }
+
     return (
         <Modal
             isCentered
@@ -325,8 +393,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                         })
                     }
                 } else {
-                    toast.closeAll()
-                    onClose()
+                    closeEditor()
                 }
             }}
             isOpen={isOpen}
@@ -363,8 +430,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                                         // Clear the id field to delete the card
                                                         inputRefs?.get("id").current ? (inputRefs.get("id").current.value = "") : null
                                                         await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
-                                                        toast.closeAll()
-                                                        onClose()
+                                                        closeEditor()
                                                     } catch (error) {
                                                         if (!toast.isActive("error-deleting-data")) {
                                                             toast({
@@ -394,8 +460,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                 mr={5}
                                 colorScheme="blue"
                                 onClick={() => {
-                                    toast.closeAll()
-                                    onClose()
+                                    closeEditor()
                                 }}
                             >
                                 Cancel
@@ -405,8 +470,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                 onClick={async () => {
                                     try {
                                         await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
-                                        toast.closeAll()
-                                        onClose()
+                                        closeEditor()
                                     } catch (error) {
                                         if (!toast.isActive("error-saving-data")) {
                                             toast({
