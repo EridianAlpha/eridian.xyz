@@ -171,6 +171,65 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             }
         }
 
+        const handleAddImage = () => {
+            const nextKey = Object.keys(cardEditorData?.images || {}).length
+            const newImage = { [nextKey]: "" }
+            setCardEditorData((prevState) => ({
+                ...prevState,
+                images: {
+                    ...(prevState?.images || {}),
+                    ...newImage,
+                },
+            }))
+        }
+        const imageInputs = () => {
+            interface ImageData {
+                image: string
+                alt: string
+            }
+            if (Object.entries(cardEditorData?.images || {}).length > 0) {
+                return [
+                    <InputLabel key="images-heading" htmlFor="images">
+                        Images
+                    </InputLabel>,
+                    ...Object.entries(cardEditorData?.images).map(([key, value]) => {
+                        const imageData = value as ImageData
+                        const imageRef = React.createRef<HTMLInputElement>()
+                        const altRef = React.createRef<HTMLInputElement>()
+                        const imageFullPathKey = `images.${key}.image`
+                        const altFullPathKey = `images.${key}.alt`
+                        inputRefs.set(imageFullPathKey, imageRef)
+                        inputRefs.set(altFullPathKey, altRef)
+                        return (
+                            <React.Fragment key={`images-fragment-${key}`}>
+                                <InputLabel htmlFor={`images-${key}`}>Image {key}</InputLabel>
+                                <Input
+                                    id={`images-${key}`}
+                                    key={`images-${key}`}
+                                    ref={imageRef}
+                                    placeholder={`Add image ${key}...`}
+                                    defaultValue={imageData.image}
+                                    mb="8px"
+                                />
+                                <InputLabel htmlFor={`alt-${key}`}>Alt Text {key}</InputLabel>
+                                <Input
+                                    id={`alt-${key}`}
+                                    key={`alt-${key}`}
+                                    ref={altRef}
+                                    placeholder={`Add alt text ${key}...`}
+                                    defaultValue={imageData.alt}
+                                    mb="8px"
+                                />
+                            </React.Fragment>
+                        )
+                    }),
+                    <Button onClick={handleAddImage} key="add-image-button" mt="8px">
+                        Add Image
+                    </Button>,
+                ]
+            }
+        }
+
         return {
             inputs: [
                 <React.Fragment key="card-id-input">{cardIdInput}</React.Fragment>,
@@ -179,6 +238,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                 <React.Fragment key="start-date-input">{startDateInput}</React.Fragment>,
                 <React.Fragment key="end-date-input">{endDateInput}</React.Fragment>,
                 <React.Fragment key="description-inputs">{descriptionInputs()}</React.Fragment>,
+                <React.Fragment key="image-inputs">{imageInputs()}</React.Fragment>,
             ],
             inputRefs,
         }
