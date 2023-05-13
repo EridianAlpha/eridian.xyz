@@ -25,8 +25,6 @@ import {
     PopoverTrigger,
     PopoverContent,
     PopoverArrow,
-    PopoverCloseButton,
-    PopoverHeader,
     PopoverBody,
     Heading,
 } from "@chakra-ui/react"
@@ -224,15 +222,19 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             closeOnOverlayClick={true}
             onClose={() => {
                 if (!isEqual(getUpdatedCardData(cardData, inputRefs, cardEditorData), cardData)) {
-                    toast({
-                        title: "Data has changed",
-                        status: "warning",
-                        isClosable: true,
-                        position: "top",
-                        description: "Save or cancel the changes",
-                        duration: 3000,
-                    })
+                    if (!toast.isActive("data-changed")) {
+                        toast({
+                            id: "data-changed",
+                            title: "Data has changed",
+                            status: "warning",
+                            isClosable: true,
+                            position: "top",
+                            description: "Save or cancel the changes",
+                            duration: 3000,
+                        })
+                    }
                 } else {
+                    toast.closeAll()
                     onClose()
                 }
             }}
@@ -270,17 +272,20 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                                         // Clear the id field to delete the card
                                                         inputRefs?.get("id").current ? (inputRefs.get("id").current.value = "") : null
                                                         await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
+                                                        toast.closeAll()
                                                         onClose()
                                                     } catch (error) {
-                                                        toast({
-                                                            title: "Error deleting data",
-                                                            status: "error",
-                                                            isClosable: true,
-                                                            position: "top",
-                                                            description: error.message || "Unknown error 😞 Please try again later.",
-                                                            duration: 3000,
-                                                        })
-                                                        console.error("Error deleting data:", error)
+                                                        if (!toast.isActive("error-deleting-data")) {
+                                                            toast({
+                                                                id: "error-deleting-data",
+                                                                title: "Error deleting data",
+                                                                status: "error",
+                                                                isClosable: true,
+                                                                position: "top",
+                                                                description: error.message || "Unknown error 😞 Please try again later.",
+                                                                duration: 3000,
+                                                            })
+                                                        }
                                                     }
                                                 }}
                                             >
@@ -294,7 +299,14 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                             <Box></Box>
                         )}
                         <Box>
-                            <Button mr={5} colorScheme="blue" onClick={() => onClose()}>
+                            <Button
+                                mr={5}
+                                colorScheme="blue"
+                                onClick={() => {
+                                    toast.closeAll()
+                                    onClose()
+                                }}
+                            >
                                 Cancel
                             </Button>
                             <Button
@@ -302,17 +314,20 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                 onClick={async () => {
                                     try {
                                         await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
+                                        toast.closeAll()
                                         onClose()
                                     } catch (error) {
-                                        toast({
-                                            title: "Error saving data",
-                                            status: "error",
-                                            isClosable: true,
-                                            position: "top",
-                                            description: error.message || "Unknown error 😞 Please try again later.",
-                                            duration: 3000,
-                                        })
-                                        console.error("Error saving data:", error)
+                                        if (!toast.isActive("error-saving-data")) {
+                                            toast({
+                                                id: "error-saving-data",
+                                                title: "Error saving data",
+                                                status: "error",
+                                                isClosable: true,
+                                                position: "top",
+                                                description: error.message || "Unknown error 😞 Please try again later.",
+                                                duration: 3000,
+                                            })
+                                        }
                                     }
                                 }}
                             >
