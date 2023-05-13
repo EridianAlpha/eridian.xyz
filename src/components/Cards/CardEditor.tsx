@@ -65,32 +65,21 @@ function customSet(obj, path, value) {
 function updateKeys(obj, path, value, inputId = null) {
     const pathParts = Array.isArray(path) ? path : path.split(".")
 
-    console.log("pathParts", pathParts)
-    console.log("inputId", inputId)
-
     let oldKey
     if (inputId && inputId.includes("descriptionKey")) {
         oldKey = inputId.split("-")[1]
     }
 
     if (oldKey != value && pathParts.length === 1) {
-        console.log("oldKey", oldKey)
-        console.log("newKey", value)
         if (pathParts[0].includes("descriptionKey")) {
             obj["description"] = obj["description"] || {}
-            console.log("HERE2")
-            // console.log(`obj["description"]`, obj["description"])
             if (oldKey) {
-                // console.log(`obj["description"][pathParts[1]]`, obj["description"][pathParts[1]])
-
                 obj["description"][value] = obj["description"][oldKey]
-
-                console.log(`1 obj["description"][oldKey]`, obj["description"][oldKey])
                 delete obj["description"][oldKey]
-                console.log(`2 obj["description"][oldKey]`, obj["description"][oldKey])
-            } else if (!oldKey) {
-                obj["description"][path] = value
             }
+            //  else if (!oldKey) {
+            //     obj["description"][path] = value
+            // }
         }
     }
 }
@@ -382,37 +371,27 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
 
     const { inputs, inputRefs } = renderInputs(cardEditorData)
 
-    const getUpdatedCardIndex = (cardData, inputRefs, cardEditorData) => {
-        // console.log("HERE1")
-        // console.log("inputRefs", inputRefs)
+    const getUpdatedCardIndex = (inputRefs, cardEditorData) => {
+        console.log("cardEditorData", cardEditorData)
 
-        const updatedCardData = cloneDeep(cardData)
+        const updatedCardData = cloneDeep(cardEditorData)
 
-        updatedCardData.map((card, index) => {
-            if (card.id === cardEditorData?.id) {
-                let updatedCard = { ...card }
-
-                inputRefs.forEach((inputRef, key) => {
-                    const inputValue = inputRef?.current?.value
-                    const inputId = inputRef?.current?.id
-
-                    // console.log("inputRef", inputRef)
-                    // console.log("key", key)
-
-                    // console.log("HERE inputValue", inputValue)
-                    // console.log("HERE inputId", inputId)
-
-                    if (key.includes("descriptionKey")) {
-                        // Update the description key
-                        // console.log("HERE123")
-                        updateKeys(updatedCard, key, inputValue, inputId)
-                    }
-                })
-                updatedCardData[index] = updatedCard
+        // updatedCardData.map((card, index) => {
+        // if (card.id === cardEditorData?.id) {
+        let updatedCard = { ...cardEditorData }
+        inputRefs.forEach((inputRef, key) => {
+            if (key.includes("descriptionKey")) {
+                const inputValue = inputRef?.current?.value
+                const inputId = inputRef?.current?.id
+                updateKeys(updatedCard, key, inputValue, inputId)
             }
         })
+        // updatedCardData = updatedCard
+        // }
+        // })
 
-        return updatedCardData
+        // setCardEditorData(updatedCardData)
+        return updatedCard
     }
 
     const getUpdatedCardData = (cardData, inputRefs, cardEditorData) => {
@@ -421,8 +400,6 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
 
         const updatedCardData = cloneDeep(cardData)
 
-        console.log("UPDATING CARD CARD DATA")
-
         updatedCardData.map((card, index) => {
             if (card.id === cardEditorData?.id) {
                 idExists = true
@@ -430,7 +407,6 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
 
                 inputRefs.forEach((inputRef, key) => {
                     const inputValue = inputRef?.current?.value
-                    const inputId = inputRef?.current?.id
                     const originalValue = key.split(".").reduce((obj, k) => (obj && obj[k] !== undefined ? obj[k] : null), card)
 
                     if (key === "id" && inputValue === "") {
@@ -446,8 +422,6 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                         unset(updatedCard, key.split(".").slice(0, 2).join("."))
                     } else if (inputValue !== originalValue) {
                         // Update the card data if the input value has changed
-                        console.log("CUSTOM SET")
-                        console.log("inputId", inputId)
                         customSet(updatedCard, key, inputValue)
                     }
                 })
@@ -615,7 +589,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                 colorScheme="yellow"
                                 onClick={async () => {
                                     try {
-                                        await axios.post("/api/updateData", getUpdatedCardIndex(cardData, inputRefs, cardEditorData))
+                                        await axios.post("/api/updateData", getUpdatedCardIndex(inputRefs, cardEditorData))
                                         // closeEditor()
                                     } catch (error) {
                                         if (!toast.isActive("error-saving-data")) {
