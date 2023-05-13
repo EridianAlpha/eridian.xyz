@@ -161,7 +161,8 @@ export default function CardGallery({ windowSize, environment, isCardEditorOpen,
                                         setImageWidths={setImageWidths}
                                     />
                                 )}
-                                {(card?.description?.[1] || card?.images?.[2]) && (
+                                {(Object.entries(card?.description || {}).some(([key]) => key !== "0") ||
+                                    Object.entries(card?.images || {}).some(([key]) => key !== ("0" || "1"))) && (
                                     <>
                                         <Collapse in={showMore[cardIndex]} style={{ marginTop: 0 }}>
                                             {Array.from({

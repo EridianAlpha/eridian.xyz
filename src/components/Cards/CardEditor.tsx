@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
 import axios from "axios"
-import { set, isEqual } from "lodash"
+import { unset, isEqual } from "lodash"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
@@ -262,9 +262,11 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                     // Delete a card by setting its id to an empty string
                     if (key === "id" && inputValue === "") {
                         deleteCard = true
-                    }
-
-                    if (inputValue !== originalValue) {
+                    } else if (key != "description.0" && key.includes("description") && inputValue === "") {
+                        unset(updatedCard, key)
+                    } else if (!key.includes("images.0" || "images.1") && key.includes("images") && inputValue === "") {
+                        unset(updatedCard, key.split(".").slice(0, 2).join("."))
+                    } else if (inputValue !== originalValue) {
                         customSet(updatedCard, key, inputValue)
                     }
                 })
