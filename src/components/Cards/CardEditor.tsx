@@ -41,13 +41,30 @@ function generateRandomId(): string {
     return result
 }
 
+function customSet(obj, path, value) {
+    const pathParts = Array.isArray(path) ? path : path.split(".")
+
+    if (pathParts.length === 1) {
+        if (pathParts[0].includes("description.")) {
+            const descriptionKey = pathParts[0].split(".")[1]
+            obj["description"] = obj["description"] || {}
+            obj["description"][descriptionKey] = value
+        } else {
+            obj[pathParts[0]] = value
+        }
+    } else {
+        const [head, ...rest] = pathParts
+        obj[head] = obj[head] || {}
+        customSet(obj[head], rest, value)
+    }
+}
+
 export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData, cardData }) {
     const toast = useToast()
 
     const customTheme = useTheme()
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
     const contentBackgroundLighter = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
-
     const labelColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
 
     const renderInputs = (cardEditorData) => {
@@ -176,7 +193,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                     }
 
                     if (inputValue !== originalValue) {
-                        set(updatedCard, key, inputValue)
+                        customSet(updatedCard, key, inputValue)
                     }
                 })
                 return updatedCard
@@ -203,7 +220,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             inputRefs.forEach((inputRef, key) => {
                 if (key !== "id") {
                     const inputValue = inputRef?.current?.value
-                    set(newCard, key, inputValue)
+                    customSet(newCard, key, inputValue)
                 }
             })
             updatedCardData.push(newCard)
