@@ -106,6 +106,9 @@
         "startDate": "2023-04-15",
         "endDate": "2023-04-15",
         "summary": "The journey of Ethereum solo stakers to distributed validator staking.",
+        "description": {
+            "0": ""
+        },
         "externalLinks": {
             "0": {
                 "url": "https://twitter.com/EridianAlpha/status/1647367943724978181",
