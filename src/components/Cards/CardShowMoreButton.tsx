@@ -77,7 +77,7 @@ export default function CardShowMoreButton({
                         }
                     }}
                     width={"100%"}
-                    minWidth={!showMore[cardIndex] ? `${imageWidths[cardIndex][1]}px` : `${imageWidths[cardIndex][imageWidths.length]}px`}
+                    minWidth={!showMore[cardIndex] ? `${imageWidths[cardIndex]?.[1]}px` : `${imageWidths[cardIndex][imageWidths.length]}px`}
                 >
                     {showMore[cardIndex] ? "Show less" : "Show more"}
                 </Button>

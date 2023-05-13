@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import axios from "axios"
-import { unset, isEqual } from "lodash"
+import { set, unset, isEqual, cloneDeep } from "lodash"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashCan, faRefresh } from "@fortawesome/free-solid-svg-icons"
@@ -48,8 +48,8 @@ function customSet(obj, path, value) {
     const pathParts = Array.isArray(path) ? path : path.split(".")
 
     if (pathParts.length === 1) {
-        if (pathParts[0].includes("description.")) {
-            const descriptionKey = pathParts[0].split(".")[1]
+        if (pathParts[0] === "description") {
+            const descriptionKey = pathParts[1]
             obj["description"] = obj["description"] || {}
             obj["description"][descriptionKey] = value
         } else {
@@ -244,7 +244,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                             key={`images-${key}-preview`}
                                             objectFit="contain"
                                             width="90px"
-                                            src={imageSrcs[key] || imageData.image}
+                                            src={imageSrcs[key] || imageData.image || "./481368551588.png"}
                                             alt={imageData.alt}
                                             borderRadius={"10px"}
                                         />
@@ -285,7 +285,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                         )
                     }),
                     <Button onClick={handleAddImage} key="add-image-button" mt="8px">
-                        Add Image
+                        Add another image
                     </Button>,
                 ]
             }
@@ -311,7 +311,9 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         let idExists = false
         let deleteCard = false
 
-        const updatedCardData = cardData.map((card) => {
+        const updatedCardData = cloneDeep(cardData)
+
+        updatedCardData.map((card, index) => {
             if (card.id === cardEditorData?.id) {
                 idExists = true
                 let updatedCard = { ...card }
@@ -331,9 +333,8 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                         customSet(updatedCard, key, inputValue)
                     }
                 })
-                return updatedCard
+                updatedCardData[index] = updatedCard
             }
-            return card
         })
 
         if (!idExists) {
@@ -353,8 +354,12 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
 
             let newCard = { id: newId() }
             inputRefs.forEach((inputRef, key) => {
-                if (key !== "id") {
-                    const inputValue = inputRef?.current?.value
+                const inputValue = inputRef?.current?.value
+                if (key != "description.0" && key.includes("description") && inputValue === "") {
+                    unset(newCard, key)
+                } else if (key.includes("images") && !(key.includes("images.0") || key.includes("images.1")) && inputValue === "") {
+                    unset(newCard, key.split(".").slice(0, 2).join("."))
+                } else if (key !== "id") {
                     customSet(newCard, key, inputValue)
                 }
             })

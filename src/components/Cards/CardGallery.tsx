@@ -51,9 +51,6 @@ export default function CardGallery({ windowSize, environment, isCardEditorOpen,
         return dateB.getTime() - dateA.getTime()
     })
 
-    // const [isCardEditorOpen, setIsCardEditorOpen] = useState(false)
-    // const [cardEditorData, setCardEditorData] = useState(null)
-
     const [showMore, setShowMore] = useState(Array(sortedCardData.length).fill(false))
     // Updating this state causes the contents of the Collapse component to re-render
     // which is needed to update the image radiuses and button border radius
@@ -162,7 +159,7 @@ export default function CardGallery({ windowSize, environment, isCardEditorOpen,
                                     />
                                 )}
                                 {(Object.entries(card?.description || {}).some(([key]) => key !== "0") ||
-                                    Object.entries(card?.images || {}).some(([key]) => key !== ("0" || "1"))) && (
+                                    Object.entries(card?.images || {}).some(([key]) => key !== "0" && key !== "1")) && (
                                     <>
                                         <Collapse in={showMore[cardIndex]} style={{ marginTop: 0 }}>
                                             {Array.from({
