@@ -1,6 +1,6 @@
 import cardDataTemplate from "../../../public/data/cardDataTemplate.json"
 
-import { useTheme, Box, Flex, HStack, IconButton, useColorModeValue, Image, Button, Text } from "@chakra-ui/react"
+import { useTheme, useBreakpointValue, Box, Flex, HStack, IconButton, useColorModeValue, Image, Button, Text } from "@chakra-ui/react"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons"
@@ -21,6 +21,8 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
             window.location.reload()
         }
     }
+
+    const shouldExpandOnHover = useBreakpointValue({ base: false, md: true })
 
     return (
         <>
@@ -51,13 +53,17 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                                     setIsCardEditorOpen(true)
                                     setCardEditorData(cardDataTemplate[0])
                                 }}
-                                _hover={{
-                                    backgroundColor: "transparent",
-                                    "> div > div": {
-                                        maxWidth: "200px",
-                                        opacity: "1",
-                                    },
-                                }}
+                                _hover={
+                                    shouldExpandOnHover
+                                        ? {
+                                              backgroundColor: "transparent",
+                                              "> div > div": {
+                                                  maxWidth: "200px",
+                                                  opacity: "1",
+                                              },
+                                          }
+                                        : {}
+                                }
                                 px={0}
                             >
                                 <Box display="flex" alignItems="center">
