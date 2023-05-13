@@ -62,6 +62,39 @@ function customSet(obj, path, value) {
     }
 }
 
+function updateKeys(obj, path, value, inputId = null) {
+    const pathParts = Array.isArray(path) ? path : path.split(".")
+
+    console.log("pathParts", pathParts)
+    console.log("inputId", inputId)
+
+    let oldKey
+    if (inputId && inputId.includes("descriptionKey")) {
+        oldKey = inputId.split("-")[1]
+    }
+
+    if (oldKey != value && pathParts.length === 1) {
+        console.log("oldKey", oldKey)
+        console.log("newKey", value)
+        if (pathParts[0].includes("descriptionKey")) {
+            obj["description"] = obj["description"] || {}
+            console.log("HERE2")
+            // console.log(`obj["description"]`, obj["description"])
+            if (oldKey) {
+                // console.log(`obj["description"][pathParts[1]]`, obj["description"][pathParts[1]])
+
+                obj["description"][value] = obj["description"][oldKey]
+
+                console.log(`1 obj["description"][oldKey]`, obj["description"][oldKey])
+                delete obj["description"][oldKey]
+                console.log(`2 obj["description"][oldKey]`, obj["description"][oldKey])
+            } else if (!oldKey) {
+                obj["description"][path] = value
+            }
+        }
+    }
+}
+
 export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData, setCardEditorData, cardData }) {
     const [inputVisibility, setInputVisibility] = React.useState<{ [key: string]: boolean }>({})
     const [imageSrcs, setImageSrcs] = useState({})
@@ -143,6 +176,13 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                 },
             }))
         }
+        const deleteDescription = (key: string, descriptionRef: React.RefObject<HTMLTextAreaElement>) => {
+            descriptionRef.current ? (descriptionRef.current.value = "") : null
+            setInputVisibility((prevState) => ({
+                ...prevState,
+                [key]: false,
+            }))
+        }
         const descriptionInputs = () => {
             if (Object.entries(cardEditorData?.description || {}).length > 0) {
                 return [
@@ -150,20 +190,55 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                         Descriptions
                     </InputLabel>,
                     ...Object.entries(cardEditorData?.description).map(([key, value]) => {
+                        const descriptionKeyRef = React.createRef<HTMLInputElement>()
                         const descriptionRef = React.createRef<HTMLTextAreaElement>()
                         const fullPathKey = `description.${key}`
+                        inputRefs.set(`descriptionKey-${key}`, descriptionKeyRef)
                         inputRefs.set(fullPathKey, descriptionRef)
+                        const isVisible = inputVisibility[key] !== false
                         return (
                             <React.Fragment key={`description-fragment-${key}`}>
-                                <InputLabel htmlFor={`description-${key}`}>Description {key}</InputLabel>
-                                <Textarea
-                                    id={`description-${key}`}
-                                    key={`description-${key}`}
-                                    ref={descriptionRef}
-                                    placeholder={`Add description ${key}...`}
-                                    defaultValue={value as string}
-                                    mb="8px"
-                                />
+                                <Box style={{ display: isVisible ? null : "none" }}>
+                                    <Flex alignItems={"baseline"} columnGap={2}>
+                                        <InputLabel htmlFor={`images-${key}`}>
+                                            {key === "0" ? "Main Description" : "Additional Description"}
+                                            {key != "0" && (
+                                                <>
+                                                    <Button
+                                                        onClick={() => deleteDescription(key, descriptionRef)}
+                                                        size="sm"
+                                                        borderRadius={"20px"}
+                                                        colorScheme={"red"}
+                                                        variant="ghost"
+                                                        mb={1}
+                                                    >
+                                                        <FontAwesomeIcon icon={faTrashCan} size={"lg"} />
+                                                    </Button>
+                                                </>
+                                            )}
+                                        </InputLabel>
+                                        {key != "0" && (
+                                            <InputGroup maxW={"150px"}>
+                                                <InputLeftAddon>Key</InputLeftAddon>
+                                                <Input
+                                                    id={`descriptionKey-${key}`}
+                                                    key={`descriptionKey-${key}`}
+                                                    ref={descriptionKeyRef}
+                                                    defaultValue={key}
+                                                    mb="8px"
+                                                />
+                                            </InputGroup>
+                                        )}
+                                    </Flex>
+                                    <Textarea
+                                        id={`description-${key}`}
+                                        key={`description-${key}`}
+                                        ref={descriptionRef}
+                                        placeholder={`Add description ${key}...`}
+                                        defaultValue={value as string}
+                                        mb="8px"
+                                    />
+                                </Box>
                             </React.Fragment>
                         )
                     }),
@@ -307,11 +382,46 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
 
     const { inputs, inputRefs } = renderInputs(cardEditorData)
 
+    const getUpdatedCardIndex = (cardData, inputRefs, cardEditorData) => {
+        // console.log("HERE1")
+        // console.log("inputRefs", inputRefs)
+
+        const updatedCardData = cloneDeep(cardData)
+
+        updatedCardData.map((card, index) => {
+            if (card.id === cardEditorData?.id) {
+                let updatedCard = { ...card }
+
+                inputRefs.forEach((inputRef, key) => {
+                    const inputValue = inputRef?.current?.value
+                    const inputId = inputRef?.current?.id
+
+                    // console.log("inputRef", inputRef)
+                    // console.log("key", key)
+
+                    // console.log("HERE inputValue", inputValue)
+                    // console.log("HERE inputId", inputId)
+
+                    if (key.includes("descriptionKey")) {
+                        // Update the description key
+                        // console.log("HERE123")
+                        updateKeys(updatedCard, key, inputValue, inputId)
+                    }
+                })
+                updatedCardData[index] = updatedCard
+            }
+        })
+
+        return updatedCardData
+    }
+
     const getUpdatedCardData = (cardData, inputRefs, cardEditorData) => {
         let idExists = false
         let deleteCard = false
 
         const updatedCardData = cloneDeep(cardData)
+
+        console.log("UPDATING CARD CARD DATA")
 
         updatedCardData.map((card, index) => {
             if (card.id === cardEditorData?.id) {
@@ -320,16 +430,24 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
 
                 inputRefs.forEach((inputRef, key) => {
                     const inputValue = inputRef?.current?.value
+                    const inputId = inputRef?.current?.id
                     const originalValue = key.split(".").reduce((obj, k) => (obj && obj[k] !== undefined ? obj[k] : null), card)
 
-                    // Delete a card by setting its id to an empty string
                     if (key === "id" && inputValue === "") {
+                        // Delete a card by setting its id to an empty string
                         deleteCard = true
                     } else if (key != "description.0" && key.includes("description") && inputValue === "") {
+                        // Delete a description by setting its value to an empty string
                         unset(updatedCard, key)
+                    } else if (key.includes("descriptionKey")) {
+                        console.log("Do nothing")
                     } else if (key.includes("images") && !(key.includes("images.0") || key.includes("images.1")) && inputValue === "") {
+                        // Delete an image by setting its value to an empty string
                         unset(updatedCard, key.split(".").slice(0, 2).join("."))
                     } else if (inputValue !== originalValue) {
+                        // Update the card data if the input value has changed
+                        console.log("CUSTOM SET")
+                        console.log("inputId", inputId)
                         customSet(updatedCard, key, inputValue)
                     }
                 })
@@ -492,6 +610,29 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                 }}
                             >
                                 Save
+                            </Button>
+                            <Button
+                                colorScheme="yellow"
+                                onClick={async () => {
+                                    try {
+                                        await axios.post("/api/updateData", getUpdatedCardIndex(cardData, inputRefs, cardEditorData))
+                                        // closeEditor()
+                                    } catch (error) {
+                                        if (!toast.isActive("error-saving-data")) {
+                                            toast({
+                                                id: "error-updating-index",
+                                                title: "Error updating index",
+                                                status: "error",
+                                                isClosable: true,
+                                                position: "top",
+                                                description: error.message || "Unknown error 😞 Please try again later.",
+                                                duration: 3000,
+                                            })
+                                        }
+                                    }
+                                }}
+                            >
+                                Update Index
                             </Button>
                         </Box>
                     </Flex>
