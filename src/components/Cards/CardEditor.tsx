@@ -62,28 +62,6 @@ function customSet(obj, path, value) {
     }
 }
 
-function updateKeys(obj, path, value, inputId = null) {
-    const pathParts = Array.isArray(path) ? path : path.split(".")
-
-    let oldKey
-    if (inputId && inputId.includes("descriptionKey")) {
-        oldKey = inputId.split("-")[1]
-    }
-
-    if (oldKey != value && pathParts.length === 1) {
-        if (pathParts[0].includes("descriptionKey")) {
-            obj["description"] = obj["description"] || {}
-            if (oldKey) {
-                obj["description"][value] = obj["description"][oldKey]
-                delete obj["description"][oldKey]
-            }
-            //  else if (!oldKey) {
-            //     obj["description"][path] = value
-            // }
-        }
-    }
-}
-
 export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData, setCardEditorData, cardData }) {
     const [inputVisibility, setInputVisibility] = React.useState<{ [key: string]: boolean }>({})
     const [imageSrcs, setImageSrcs] = useState({})
@@ -371,31 +349,41 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
 
     const { inputs, inputRefs } = renderInputs(cardEditorData)
 
-    const getUpdatedCardIndex = (inputRefs, cardEditorData) => {
-        console.log("cardEditorData", cardEditorData)
+    const updatedCardIndexes = (cardData, inputRefs, cardEditorData) => {
+        const updatedCardData = cloneDeep(cardData)
 
-        const updatedCardData = cloneDeep(cardEditorData)
+        updatedCardData.map((card, index) => {
+            if (card.id === cardEditorData?.id) {
+                getEditorData(cardData, inputRefs, cardEditorData)
 
-        // updatedCardData.map((card, index) => {
-        // if (card.id === cardEditorData?.id) {
-        let updatedCard = { ...cardEditorData }
-        inputRefs.forEach((inputRef, key) => {
-            if (key.includes("descriptionKey")) {
-                const inputValue = inputRef?.current?.value
-                const inputId = inputRef?.current?.id
-                updateKeys(updatedCard, key, inputValue, inputId)
+                let updatedCard = { ...cardEditorData }
+
+                inputRefs.forEach((inputRef, key) => {
+                    if (key.includes("descriptionKey")) {
+                        const pathParts = Array.isArray(key) ? key : key.split(".")
+
+                        let oldKey
+                        if (inputRef?.current?.id && inputRef?.current?.id.includes("descriptionKey")) {
+                            oldKey = inputRef?.current?.id.split("-")[1]
+                        }
+                        if (oldKey != inputRef?.current?.value && pathParts.length === 1) {
+                            if (pathParts[0].includes("descriptionKey")) {
+                                updatedCard["description"] = updatedCard["description"] || {}
+                                if (oldKey) {
+                                    updatedCard["description"][inputRef?.current?.value] = updatedCard["description"][oldKey]
+                                    delete updatedCard["description"][oldKey]
+                                }
+                            }
+                        }
+                    }
+                })
             }
         })
-        // updatedCardData = updatedCard
-        // }
-        // })
-
-        // setCardEditorData(updatedCardData)
-        return updatedCard
     }
 
-    const getUpdatedCardData = (cardData, inputRefs, cardEditorData) => {
+    const getEditorData = (cardData, inputRefs, cardEditorData) => {
         let idExists = false
+        let cardIndex
         let deleteCard = false
 
         const updatedCardData = cloneDeep(cardData)
@@ -403,7 +391,8 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         updatedCardData.map((card, index) => {
             if (card.id === cardEditorData?.id) {
                 idExists = true
-                let updatedCard = { ...card }
+                cardIndex = index
+                let updatedCard = { ...cardEditorData }
 
                 inputRefs.forEach((inputRef, key) => {
                     const inputValue = inputRef?.current?.value
@@ -416,13 +405,14 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                         // Delete a description by setting its value to an empty string
                         unset(updatedCard, key)
                     } else if (key.includes("descriptionKey")) {
-                        console.log("Do nothing")
+                        // Do nothing
                     } else if (key.includes("images") && !(key.includes("images.0") || key.includes("images.1")) && inputValue === "") {
                         // Delete an image by setting its value to an empty string
                         unset(updatedCard, key.split(".").slice(0, 2).join("."))
                     } else if (inputValue !== originalValue) {
                         // Update the card data if the input value has changed
                         customSet(updatedCard, key, inputValue)
+                        console.log("cardData[cardIndex]", cardData[cardIndex])
                     }
                 })
                 updatedCardData[index] = updatedCard
@@ -462,6 +452,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             // Remove the card with the matching ID if an empty ID is submitted
             return cardData.filter((card) => card.id !== cardEditorData.id)
         }
+        setCardEditorData(updatedCardData[cardIndex])
         return updatedCardData
     }
 
@@ -477,7 +468,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             isCentered
             closeOnOverlayClick={true}
             onClose={() => {
-                if (!isEqual(getUpdatedCardData(cardData, inputRefs, cardEditorData), cardData)) {
+                if (!isEqual(getEditorData(cardData, inputRefs, cardEditorData), cardData)) {
                     if (!toast.isActive("data-changed")) {
                         toast({
                             id: "data-changed",
@@ -526,7 +517,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                                     try {
                                                         // Clear the id field to delete the card
                                                         inputRefs?.get("id").current ? (inputRefs.get("id").current.value = "") : null
-                                                        await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
+                                                        await axios.post("/api/updateData", getEditorData(cardData, inputRefs, cardEditorData))
                                                         closeEditor()
                                                     } catch (error) {
                                                         if (!toast.isActive("error-deleting-data")) {
@@ -566,7 +557,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                 colorScheme="green"
                                 onClick={async () => {
                                     try {
-                                        await axios.post("/api/updateData", getUpdatedCardData(cardData, inputRefs, cardEditorData))
+                                        await axios.post("/api/updateData", getEditorData(cardData, inputRefs, cardEditorData))
                                         closeEditor()
                                     } catch (error) {
                                         if (!toast.isActive("error-saving-data")) {
@@ -589,7 +580,8 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                 colorScheme="yellow"
                                 onClick={async () => {
                                     try {
-                                        await axios.post("/api/updateData", getUpdatedCardIndex(inputRefs, cardEditorData))
+                                        updatedCardIndexes(cardData, inputRefs, cardEditorData)
+                                        // await axios.post("/api/updateData", updatedCardIndexes(cardData, inputRefs, cardEditorData))
                                         // closeEditor()
                                     } catch (error) {
                                         if (!toast.isActive("error-saving-data")) {
