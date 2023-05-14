@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import axios from "axios"
-import { set, unset, isEqual, cloneDeep } from "lodash"
+import { unset, cloneDeep } from "lodash"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashCan, faRefresh } from "@fortawesome/free-solid-svg-icons"
@@ -412,7 +412,6 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                     } else if (inputValue !== originalValue) {
                         // Update the card data if the input value has changed
                         customSet(updatedCard, key, inputValue)
-                        console.log("cardData[cardIndex]", cardData[cardIndex])
                     }
                 })
                 updatedCardData[index] = updatedCard
@@ -456,6 +455,27 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         return updatedCardData
     }
 
+    const checkEditorDataChanges = (cardData, inputRefs, cardEditorData) => {
+        const updatedCardData = cloneDeep(cardData)
+
+        updatedCardData.map((card, index) => {
+            if (card.id === cardEditorData?.id) {
+                let updatedCard = { ...card }
+
+                inputRefs.forEach((inputRef, key) => {
+                    const inputValue = inputRef?.current?.value
+                    const originalValue = key.split(".").reduce((obj, k) => (obj && obj[k] !== undefined ? obj[k] : null), card)
+
+                    if (inputValue !== originalValue) {
+                        customSet(updatedCard, key, inputValue)
+                    }
+                })
+                updatedCardData[index] = updatedCard
+            }
+        })
+        return updatedCardData
+    }
+
     function closeEditor() {
         toast.closeAll()
         setImageSrcs({})
@@ -468,7 +488,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             isCentered
             closeOnOverlayClick={true}
             onClose={() => {
-                if (!isEqual(getEditorData(cardData, inputRefs, cardEditorData), cardData)) {
+                if (!(JSON.stringify(checkEditorDataChanges(cardData, inputRefs, cardEditorData)) === JSON.stringify(cardData))) {
                     if (!toast.isActive("data-changed")) {
                         toast({
                             id: "data-changed",
