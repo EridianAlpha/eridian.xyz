@@ -148,6 +148,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                 <Select id="cardType" ref={cardTypeRef} defaultValue={cardEditorData.displayConfig.cardType}>
                     <option value="project">Project</option>
                     <option value="tweet">Tweet</option>
+                    <option value="event">Event</option>
                 </Select>
             </>
         )
