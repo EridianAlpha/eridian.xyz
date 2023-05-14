@@ -185,16 +185,39 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                             )}
                                         </InputLabel>
                                         {key != "0" && (
-                                            <InputGroup maxW={"150px"}>
-                                                <InputLeftAddon>Key</InputLeftAddon>
-                                                <Input
-                                                    id={`descriptionKey-${key}`}
-                                                    key={`descriptionKey-${key}`}
-                                                    ref={descriptionKeyRef}
-                                                    defaultValue={key}
-                                                    mb="8px"
-                                                />
-                                            </InputGroup>
+                                            <>
+                                                <InputGroup maxW={"150px"}>
+                                                    <InputLeftAddon>Key</InputLeftAddon>
+                                                    <Input
+                                                        id={`descriptionKey-${key}`}
+                                                        key={`descriptionKey-${key}`}
+                                                        ref={descriptionKeyRef}
+                                                        defaultValue={key}
+                                                        mb="8px"
+                                                    />
+                                                </InputGroup>
+                                                <Button
+                                                    onClick={async () => {
+                                                        try {
+                                                            updatedCardIndexes(cardData, inputRefs, cardEditorData)
+                                                        } catch (error) {
+                                                            if (!toast.isActive("error-saving-data")) {
+                                                                toast({
+                                                                    id: "error-updating-index",
+                                                                    title: "Error updating index",
+                                                                    status: "error",
+                                                                    isClosable: true,
+                                                                    position: "top",
+                                                                    description: error.message || "Unknown error 😞 Please try again later.",
+                                                                    duration: 3000,
+                                                                })
+                                                            }
+                                                        }
+                                                    }}
+                                                >
+                                                    Update Index
+                                                </Button>
+                                            </>
                                         )}
                                     </Flex>
                                     <Textarea
@@ -215,7 +238,6 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                 ]
             }
         }
-
         const handleAddImage = () => {
             const nextKey = Object.keys(cardEditorData?.images || {}).length
             const newImage = { [nextKey]: "" }
@@ -595,30 +617,6 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                 }}
                             >
                                 Save
-                            </Button>
-                            <Button
-                                colorScheme="yellow"
-                                onClick={async () => {
-                                    try {
-                                        updatedCardIndexes(cardData, inputRefs, cardEditorData)
-                                        // await axios.post("/api/updateData", updatedCardIndexes(cardData, inputRefs, cardEditorData))
-                                        // closeEditor()
-                                    } catch (error) {
-                                        if (!toast.isActive("error-saving-data")) {
-                                            toast({
-                                                id: "error-updating-index",
-                                                title: "Error updating index",
-                                                status: "error",
-                                                isClosable: true,
-                                                position: "top",
-                                                description: error.message || "Unknown error 😞 Please try again later.",
-                                                duration: 3000,
-                                            })
-                                        }
-                                    }
-                                }}
-                            >
-                                Update Index
                             </Button>
                         </Box>
                     </Flex>

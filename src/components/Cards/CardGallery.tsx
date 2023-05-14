@@ -147,6 +147,7 @@ export default function CardGallery({ windowSize, environment, isCardEditorOpen,
                                     <CardImages
                                         windowSize={windowSize}
                                         cardIndex={cardIndex}
+                                        card={card}
                                         imageIndex={1}
                                         image={card?.images?.[1]}
                                         imageArray={Object.values(card?.images || {})}
@@ -178,6 +179,7 @@ export default function CardGallery({ windowSize, environment, isCardEditorOpen,
                                                         <CardImages
                                                             key={index + 2}
                                                             windowSize={windowSize}
+                                                            card={card}
                                                             cardIndex={cardIndex}
                                                             imageIndex={index + 2}
                                                             image={card?.images[index + 2]}

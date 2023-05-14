@@ -3,6 +3,7 @@ import { Box, Image } from "@chakra-ui/react"
 
 export default function CardImages({
     windowSize,
+    card,
     cardIndex,
     imageIndex,
     image,
@@ -15,6 +16,7 @@ export default function CardImages({
     setImageWidths,
 }: {
     windowSize: { width: number; height: number }
+    card: any
     cardIndex: number
     imageIndex: number
     image: { image: string; alt: string }
@@ -76,13 +78,17 @@ export default function CardImages({
                 alt={image.alt}
                 borderTopRadius={roundedCorners[cardIndex][imageIndex] ? "30px" : "0px"}
                 borderBottomRadius={
-                    imageIndex === imageArray.length - 1 || (imageIndex === 1 && !showMore[cardIndex])
+                    (imageIndex === imageArray.length - 1 &&
+                        Object.values(card?.description || {})?.length < Object.values(card?.images || {})?.length) ||
+                    (imageIndex === 1 && !showMore[cardIndex])
                         ? "0px"
                         : roundedCorners[cardIndex][imageIndex]
                         ? "30px"
                         : "0px"
                 }
             />
+            {Object.values(card?.description || {})?.length}
+            {Object.values(card?.images || {})?.length}
         </Box>
     )
 }
