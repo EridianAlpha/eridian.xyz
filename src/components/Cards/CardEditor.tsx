@@ -132,6 +132,124 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             </>
         )
 
+        const handleAddLink = () => {
+            const nextKey = Object.keys(cardEditorData?.externalLinks || {}).length
+            const newLink = { [nextKey]: "" }
+            setCardEditorData((prevState) => ({
+                ...prevState,
+                externalLinks: {
+                    ...(prevState?.externalLinks || {}),
+                    ...newLink,
+                },
+            }))
+        }
+        const deleteLink = (
+            key: string,
+            linkRef: React.RefObject<HTMLInputElement>,
+            labelRef: React.RefObject<HTMLInputElement>,
+            typeRef: React.RefObject<HTMLInputElement>
+        ) => {
+            linkRef.current ? (linkRef.current.value = "") : null
+            setInputVisibility((prevState) => ({
+                ...prevState,
+                [key]: false,
+            }))
+            labelRef.current ? (labelRef.current.value = "") : null
+            setInputVisibility((prevState) => ({
+                ...prevState,
+                [key]: false,
+            }))
+            typeRef.current ? (typeRef.current.value = "") : null
+            setInputVisibility((prevState) => ({
+                ...prevState,
+                [key]: false,
+            }))
+        }
+        const linkInputs = () => {
+            interface LinkData {
+                url: string
+                label: string
+                type: string
+            }
+            if (Object.entries(cardEditorData?.externalLinks || {}).length > 0) {
+                return [
+                    <InputLabel key="links-heading" htmlFor="links">
+                        Links
+                    </InputLabel>,
+                    ...Object.entries(cardEditorData?.externalLinks).map(([key, value]) => {
+                        const linkData = value as LinkData
+                        const linksRef = React.createRef<HTMLInputElement>()
+                        const labelRef = React.createRef<HTMLInputElement>()
+                        const typeRef = React.createRef<HTMLInputElement>()
+                        const urlFullPathKey = `externalLinks.${key}.url`
+                        const labelFullPathKey = `externalLinks.${key}.label`
+                        const typeFullPathKey = `externalLinks.${key}.type`
+                        inputRefs.set(urlFullPathKey, linksRef)
+                        inputRefs.set(labelFullPathKey, labelRef)
+                        inputRefs.set(typeFullPathKey, typeRef)
+
+                        const isVisible = inputVisibility[key] !== false
+                        return (
+                            <React.Fragment key={`links-fragment-${key}`}>
+                                <Box style={{ display: isVisible ? null : "none" }}>
+                                    <Flex alignItems={"baseline"} columnGap={2}>
+                                        <InputLabel htmlFor={`links-${key}`}>
+                                            Link
+                                            <Button
+                                                onClick={() => deleteLink(key, linksRef, labelRef, typeRef)}
+                                                size="sm"
+                                                borderRadius={"20px"}
+                                                colorScheme={"red"}
+                                                variant="ghost"
+                                                mb={1}
+                                            >
+                                                <FontAwesomeIcon icon={faTrashCan} size={"lg"} />
+                                            </Button>
+                                        </InputLabel>
+                                    </Flex>
+                                    <InputGroup>
+                                        <InputLeftAddon width="90px">URL</InputLeftAddon>
+                                        <Input
+                                            id={`url-${key}`}
+                                            key={`url-${key}`}
+                                            ref={linksRef}
+                                            placeholder={`Add link URL ${key}...`}
+                                            defaultValue={linkData.url}
+                                            mb="8px"
+                                        />
+                                    </InputGroup>
+                                    <InputGroup>
+                                        <InputLeftAddon width="90px">Label</InputLeftAddon>
+                                        <Input
+                                            id={`label-${key}`}
+                                            key={`label-${key}`}
+                                            ref={labelRef}
+                                            placeholder={`Add link label ${key}...`}
+                                            defaultValue={linkData.label}
+                                            mb="8px"
+                                        />
+                                    </InputGroup>
+                                    <InputGroup>
+                                        <InputLeftAddon width="90px">Type</InputLeftAddon>
+                                        <Input
+                                            id={`type-${key}`}
+                                            key={`type-${key}`}
+                                            ref={typeRef}
+                                            placeholder={`Add link type ${key}...`}
+                                            defaultValue={linkData.type}
+                                            mb="8px"
+                                        />
+                                    </InputGroup>
+                                </Box>
+                            </React.Fragment>
+                        )
+                    }),
+                    <Button onClick={handleAddLink} key="add-links-button" mt="8px">
+                        Add Link
+                    </Button>,
+                ]
+            }
+        }
         const handleAddDescription = () => {
             const nextKey = Object.keys(cardEditorData?.description || {}).length
             const newDescription = { [nextKey]: "" }
@@ -167,7 +285,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                             <React.Fragment key={`description-fragment-${key}`}>
                                 <Box style={{ display: isVisible ? null : "none" }}>
                                     <Flex alignItems={"baseline"} columnGap={2}>
-                                        <InputLabel htmlFor={`images-${key}`}>
+                                        <InputLabel htmlFor={`description-${key}`}>
                                             {key === "0" ? "Main Description" : "Additional Description"}
                                             {key != "0" && (
                                                 <>
@@ -362,6 +480,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                 <React.Fragment key="summary-input">{summaryInput}</React.Fragment>,
                 <React.Fragment key="start-date-input">{startDateInput}</React.Fragment>,
                 <React.Fragment key="end-date-input">{endDateInput}</React.Fragment>,
+                <React.Fragment key="link-inputs">{linkInputs()}</React.Fragment>,
                 <React.Fragment key="description-inputs">{descriptionInputs()}</React.Fragment>,
                 <React.Fragment key="image-inputs">{imageInputs()}</React.Fragment>,
             ],
@@ -429,6 +548,10 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                     } else if (key.includes("descriptionKey")) {
                         // Do nothing
                     } else if (key.includes("images") && !(key.includes("images.0") || key.includes("images.1")) && inputValue === "") {
+                        // Delete an image by setting its value to an empty string
+                        unset(updatedCard, key.split(".").slice(0, 2).join("."))
+                    } else if (key.includes("externalLinks") && inputValue === "") {
+                        console.log("HERE1")
                         // Delete an image by setting its value to an empty string
                         unset(updatedCard, key.split(".").slice(0, 2).join("."))
                     } else if (inputValue !== originalValue) {

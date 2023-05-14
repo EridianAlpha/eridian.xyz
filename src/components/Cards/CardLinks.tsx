@@ -42,6 +42,8 @@ export default function CardLinks({ cardData, backgroundColor, linkHoverColor })
     if (cardData.externalLinks) {
         const linksArray: LinkObject[] = Object.values(cardData.externalLinks)
 
+        console.log("linksArray", linksArray)
+
         return (
             <Flex flexDirection={"row"} wrap={"wrap"} columnGap={"20px"} rowGap={"20px"} justifyContent={"center"}>
                 {linksArray.map((link, index) => {
