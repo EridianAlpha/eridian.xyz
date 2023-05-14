@@ -30,11 +30,6 @@
         },
         "externalLinks": {
             "0": {
-                "url": "https://www.dvstakers.com",
-                "label": "DVStakers.com",
-                "type": "website"
-            },
-            "1": {
                 "url": "https://twitter.com/DVStakers",
                 "label": "@DVStakers",
                 "type": "twitter"
@@ -44,10 +39,15 @@
                 "label": "DVStakers",
                 "type": "discord"
             },
-            "3": {
+            "5": {
+                "url": "123",
+                "label": "123",
+                "type": "website"
+            },
+            "6": {
                 "url": "https://github.com/DVStakers",
                 "label": "DVStakers",
-                "type": "github"
+                "type": "website"
             }
         },
         "tags": {

@@ -30,6 +30,7 @@ import {
     Image,
     InputGroup,
     InputLeftAddon,
+    Select,
 } from "@chakra-ui/react"
 
 function generateRandomId(): string {
@@ -42,6 +43,40 @@ function generateRandomId(): string {
     }
 
     return result
+}
+
+function compareObjects(obj1, obj2, parentKey = "") {
+    let differences = []
+
+    for (const key in obj1) {
+        const currentKey = parentKey ? `${parentKey}.${key}` : key
+
+        if (typeof obj1[key] === "object" && obj1[key] !== null && !Array.isArray(obj1[key])) {
+            differences = [...differences, ...compareObjects(obj1[key], obj2[key], currentKey)]
+        } else if (obj1[key] !== obj2[key]) {
+            differences.push({
+                key: currentKey,
+                value1: obj1[key],
+                value2: obj2[key],
+            })
+        }
+    }
+
+    for (const key in obj2) {
+        const currentKey = parentKey ? `${parentKey}.${key}` : key
+
+        if (typeof obj2[key] === "object" && obj2[key] !== null && !Array.isArray(obj2[key]) && !(key in obj1)) {
+            differences = [...differences, ...compareObjects(obj1[key], obj2[key], currentKey)]
+        } else if (!(key in obj1)) {
+            differences.push({
+                key: currentKey,
+                value1: undefined,
+                value2: obj2[key],
+            })
+        }
+    }
+
+    return differences
 }
 
 function customSet(obj, path, value) {
@@ -105,6 +140,18 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             </>
         )
 
+        const cardTypeRef = React.createRef<HTMLSelectElement>()
+        inputRefs.set("displayConfig.cardType", cardTypeRef)
+        const cardTypeInput = (
+            <>
+                <InputLabel htmlFor={"cardType"}>Type</InputLabel>
+                <Select id="cardType" ref={cardTypeRef} defaultValue={cardEditorData.displayConfig.cardType}>
+                    <option value="project">Project</option>
+                    <option value="tweet">Tweet</option>
+                </Select>
+            </>
+        )
+
         const summaryRef = React.createRef<HTMLInputElement>()
         inputRefs.set("summary", summaryRef)
         const summaryInput = (
@@ -147,7 +194,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             key: string,
             linkRef: React.RefObject<HTMLInputElement>,
             labelRef: React.RefObject<HTMLInputElement>,
-            typeRef: React.RefObject<HTMLInputElement>
+            typeRef: React.RefObject<HTMLSelectElement>
         ) => {
             linkRef.current ? (linkRef.current.value = "") : null
             setInputVisibility((prevState) => ({
@@ -180,7 +227,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                         const linkData = value as LinkData
                         const linksRef = React.createRef<HTMLInputElement>()
                         const labelRef = React.createRef<HTMLInputElement>()
-                        const typeRef = React.createRef<HTMLInputElement>()
+                        const typeRef = React.createRef<HTMLSelectElement>()
                         const urlFullPathKey = `externalLinks.${key}.url`
                         const labelFullPathKey = `externalLinks.${key}.label`
                         const typeFullPathKey = `externalLinks.${key}.type`
@@ -231,14 +278,19 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                     </InputGroup>
                                     <InputGroup>
                                         <InputLeftAddon width="90px">Type</InputLeftAddon>
-                                        <Input
+                                        <Select
                                             id={`type-${key}`}
                                             key={`type-${key}`}
                                             ref={typeRef}
-                                            placeholder={`Add link type ${key}...`}
                                             defaultValue={linkData.type}
                                             mb="8px"
-                                        />
+                                            borderLeftRadius="0px"
+                                        >
+                                            <option value="website">Website</option>
+                                            <option value="twitter">Twitter</option>
+                                            <option value="discord">Discord</option>
+                                            <option value="github">Github</option>
+                                        </Select>
                                     </InputGroup>
                                 </Box>
                             </React.Fragment>
@@ -477,6 +529,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             inputs: [
                 <React.Fragment key="card-id-input">{cardIdInput}</React.Fragment>,
                 <React.Fragment key="name-input">{nameInput}</React.Fragment>,
+                <React.Fragment key="cardType-input">{cardTypeInput}</React.Fragment>,
                 <React.Fragment key="summary-input">{summaryInput}</React.Fragment>,
                 <React.Fragment key="start-date-input">{startDateInput}</React.Fragment>,
                 <React.Fragment key="end-date-input">{endDateInput}</React.Fragment>,
@@ -608,11 +661,13 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                 let updatedCard = { ...card }
 
                 inputRefs.forEach((inputRef, key) => {
-                    const inputValue = inputRef?.current?.value
-                    const originalValue = key.split(".").reduce((obj, k) => (obj && obj[k] !== undefined ? obj[k] : null), card)
+                    if (!key.includes("descriptionKey")) {
+                        const inputValue = inputRef?.current?.value
+                        const originalValue = key.split(".").reduce((obj, k) => (obj && obj[k] !== undefined ? obj[k] : null), card)
 
-                    if (inputValue !== originalValue) {
-                        customSet(updatedCard, key, inputValue)
+                        if (inputValue !== originalValue) {
+                            customSet(updatedCard, key, inputValue)
+                        }
                     }
                 })
                 updatedCardData[index] = updatedCard

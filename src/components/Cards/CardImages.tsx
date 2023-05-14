@@ -87,8 +87,6 @@ export default function CardImages({
                         : "0px"
                 }
             />
-            {Object.values(card?.description || {})?.length}
-            {Object.values(card?.images || {})?.length}
         </Box>
     )
 }

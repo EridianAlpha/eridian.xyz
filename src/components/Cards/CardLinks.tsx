@@ -41,10 +41,8 @@ const CardLink = ({ link, index, backgroundColor, linkHoverColor }) => {
 export default function CardLinks({ cardData, backgroundColor, linkHoverColor }) {
     if (cardData.externalLinks) {
         const linksArray: LinkObject[] = Object.values(cardData.externalLinks)
-
-        console.log("linksArray", linksArray)
-
         return (
+            // This complex solution is required to get the links to wrap properly
             <Flex flexDirection={"row"} wrap={"wrap"} columnGap={"20px"} rowGap={"20px"} justifyContent={"center"}>
                 {linksArray.map((link, index) => {
                     if (index === linksArray.length - 2) {
