@@ -77,6 +77,7 @@ export default function CardGallery({ windowSize, environment, isCardEditorOpen,
                         variant="outline"
                         borderRadius={"30px"}
                         borderWidth={0}
+                        mx={{ base: "0px", sm: "10px", md: "20px", xl: "30px" }}
                     >
                         <Flex alignItems="center" justifyContent="center" flexDirection={{ base: "column", md: "row" }} width={"100%"}>
                             <Stack flexGrow={1} width="100%">
