@@ -300,21 +300,27 @@
         "displayConfig": {
             "cardType": "event"
         },
-        "summary": "",
-        "startDate": "",
-        "endDate": "",
-        "externalLinks": {},
+        "summary": "Attended my first Ethereum conference in Bogota.",
+        "startDate": "2022-10-11",
+        "endDate": "2022-10-14",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1579900040394706944",
+                "label": "Day 1",
+                "type": "twitter"
+            }
+        },
         "description": {
             "0": ""
         },
         "images": {
             "0": {
-                "image": "",
-                "alt": ""
+                "image": "./images/DevCon2022Logo.png",
+                "alt": "DevCon 2022 Logo"
             },
             "1": {
-                "image": "",
-                "alt": ""
+                "image": "./images/DevCon2022Cover.png",
+                "alt": "DevCon 2022 Cover"
             }
         }
     },
@@ -374,6 +380,111 @@
             "1": {
                 "image": "",
                 "alt": ""
+            }
+        }
+    },
+    {
+        "id": "RAX70W",
+        "name": "ETH+",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A reward-generating Ethereum Liquid Staking Token basket with over-collateralized protection.",
+        "startDate": "2023-04-20",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://register.app/#/overview?token=0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8",
+                "label": "Token Register",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/ETHPlus_",
+                "label": "@ETHPlus_",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "I started this project at the Reserve Hackathon in ETHDenver 2023. I won the hackathon presentation and continued to work on deploying the token."
+        },
+        "images": {
+            "0": {
+                "image": "./images/ETHPlus.png",
+                "alt": "ETHPlus Logo"
+            },
+            "1": {
+                "image": "/images/ETHPlusCoverImage.png",
+                "alt": "ETHPlus Mandate"
+            }
+        }
+    },
+    {
+        "id": "NURRGV",
+        "name": "lsdETH",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Reserve hackathon winner at ETHDenver 2023.",
+        "startDate": "2023-03-01",
+        "endDate": "2023-03-01",
+        "externalLinks": {
+            "0": {
+                "url": "https://docs.google.com/presentation/d/1GTvRFy6Cvpf4KwY-nVkl3xIgn81x7ehmZ0zyUJrBijg",
+                "label": "Presentation",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/reserveprotocol/status/1631423393227763712?s=20",
+                "label": "1st Place Tweet",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "I designed a community-supported Ethereum Liquid Staking Token (LST) basket."
+        },
+        "images": {
+            "0": {
+                "image": "./images/lsdETHLogo.png",
+                "alt": "lsdETH Logo"
+            },
+            "1": {
+                "image": "./images/lsdETHPresentation.png",
+                "alt": "lsdETH Presentation"
+            }
+        }
+    },
+    {
+        "id": "H0BEU5",
+        "name": "StakeWise V3 Testnet",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Contributed to testing StakeWise V3 Vaults.",
+        "startDate": "2023-03-01",
+        "endDate": "2023-04-10",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1636027791228428289",
+                "label": "DVT Validator",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://twitter.com/EridianAlpha/status/1636526676317470720",
+                "label": "Valut DVT attestations",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "During this trial, I set up the vault \"Eridian Staked ETH\" with the token EridianETH. I then added a number of validators to the vault, each of which ran on a different platform. One ran on a vanilla validator on my home machine, one ran on a local Obol DVT cluster, and one ran on a distributed DVStakers Obol DVT cluster."
+        },
+        "images": {
+            "0": {
+                "image": "./images/StakeWiseLogo.png",
+                "alt": "StakeWise Logo"
+            },
+            "1": {
+                "image": "./images/StakeWiseV3TestnetCover.png",
+                "alt": "EridianETH Vault"
             }
         }
     }

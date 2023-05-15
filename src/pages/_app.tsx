@@ -25,7 +25,7 @@ const customTheme = extendTheme({
     contentBackground: {
         color: {
             light: "#EDF2F7",
-            dark: "#1B2236",
+            dark: "#1e2743",
         },
         hoverColor: {
             light: "#E2E8F0",

@@ -82,6 +82,7 @@ export default function CardGallery({ windowSize, environment, isCardEditorOpen,
                             <Stack flexGrow={1} width="100%">
                                 <HStack alignItems={"top"}>
                                     <Image
+                                        bg={"#102026"}
                                         objectFit="contain"
                                         width="100px"
                                         height="100px"
