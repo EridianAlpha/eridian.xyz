@@ -23,7 +23,7 @@ import {
     Container,
 } from "@chakra-ui/react"
 
-export default function CardDateDisplay({ windowSize, environment, cardData, sortedCardData }) {
+export default function CardDateSlider({ windowSize, environment, cardData, sortedCardData }) {
     const customTheme = useTheme()
     const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
     const linkHoverColor = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
