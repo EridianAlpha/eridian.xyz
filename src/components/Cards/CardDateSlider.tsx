@@ -6,6 +6,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons"
 import {
     useTheme,
     useColorModeValue,
+    Heading,
     Box,
     Flex,
     Text,
@@ -19,6 +20,7 @@ export default function CardDateSlider({ windowSize, environment, cardData, sort
     const customTheme = useTheme()
     const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
+    const headingColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
 
     const findEarliestDate = () => {
         let earliestDate = new Date(cardData[0].startDate)
@@ -111,10 +113,14 @@ export default function CardDateSlider({ windowSize, environment, cardData, sort
     return (
         <Box width="100%">
             <Flex direction={"row"} justifyContent={"center"}>
-                <Flex direction="row" width="21%" justifyContent={"end"}></Flex>
+                <Flex direction="row" width="21%" justifyContent={"end"}>
+                    <Heading pr={"30px"} color={headingColor} fontSize={"3xl"} display={"flex"} alignItems={"center"}>
+                        🗓️ Timeline View
+                    </Heading>
+                </Flex>
                 <Flex direction="row" width="79%" bg={contentBackground} borderRadius={"30px"} py={"12px"} px={"150px"}>
                     <RangeSlider value={sliderValues} min={0} max={sliderMax} step={1} onChange={handleSliderChange} borderX={"3px solid"}>
-                        <RangeSliderTrack ref={sliderTrackRef} borderRadius={0}>
+                        <RangeSliderTrack ref={sliderTrackRef} borderRadius={0} bg={backgroundColor} height={"10px"}>
                             <RangeSliderFilledTrack />
                         </RangeSliderTrack>
                         <RangeSliderThumb boxSize={7} index={0}>
