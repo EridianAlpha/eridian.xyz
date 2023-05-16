@@ -23,7 +23,7 @@ import {
     Container,
 } from "@chakra-ui/react"
 
-export default function CardDateDisplay({ windowSize, environment, cardData, sortedCardData }) {
+export default function CardDateDisplay({ windowSize, environment, cardData, sortedCardData, dateDisplayStartDate, dateDisplayEndDate }) {
     const customTheme = useTheme()
     const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
     const linkHoverColor = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
@@ -32,11 +32,6 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
     const headingColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
     const inProgressTheme = useColorModeValue(customTheme.statusColors.inProgress.light, customTheme.statusColors.inProgress.dark)
     const completedTheme = useColorModeValue(customTheme.statusColors.completed.light, customTheme.statusColors.completed.dark)
-
-    // TODO: These dates will be given from the filtering options in the filter bar
-    // but are just hardcoded for now
-    const displayStartDate = new Date("2022-07-01")
-    const displayEndDate = new Date("2023-06-01")
 
     const displayRef = useRef(null)
     const [displayWidth, setDisplayWidth] = useState(0)
@@ -49,7 +44,7 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
     }, [windowSize.width])
 
     function getTimeDifference(startDate, endDate) {
-        return endDate.getTime() - startDate.getTime()
+        return endDate?.getTime() - startDate?.getTime()
     }
 
     function getDaysDifference(startDate, endDate) {
@@ -57,7 +52,7 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
         return Math.ceil(timeDifference / (24 * 60 * 60 * 1000))
     }
 
-    const displayDays = getDaysDifference(displayStartDate, displayEndDate)
+    const displayDays = getDaysDifference(dateDisplayStartDate, dateDisplayEndDate)
     const pixelsPerDay = displayWidth / displayDays
 
     const getBarWidth = (startDate, endDate) => {
@@ -67,7 +62,7 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
 
     const shouldShowCircle = (startDate, endDate) => {
         const width = pixelsPerDay * getDaysDifference(startDate, endDate)
-        return width < 50
+        return width < 20
     }
 
     const getBackground = (index) => {
@@ -103,19 +98,19 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
                         </Text>
                     </Flex>
                     <Flex ref={displayRef} bg={getBackground(cardIndex)} direction="row" width="79%">
-                        <Flex width={getBarWidth(displayStartDate, new Date(card.startDate))}></Flex>
+                        <Flex width={getBarWidth(dateDisplayStartDate, new Date(card.startDate))}></Flex>
                         {card?.endDate && shouldShowCircle(new Date(card.startDate), new Date(card.endDate)) ? (
                             <Box borderRadius={"100%"} my={"2px"} bg={completedTheme} width="20px" />
                         ) : (
                             <Box
-                                borderLeftRadius={"20px"}
-                                borderRightRadius={!card?.endDate || new Date(card?.endDate) > displayEndDate ? "0px" : "20px"}
+                                borderRightRadius={!card?.endDate || new Date(card?.endDate) > dateDisplayEndDate ? "0px" : "20px"}
+                                borderLeftRadius={new Date(card?.startDate) < dateDisplayStartDate ? "0px" : "20px"}
                                 my={"2px"}
                                 bg={card?.endDate ? completedTheme : inProgressTheme}
                                 width={
                                     card?.endDate
                                         ? getBarWidth(new Date(card.startDate), new Date(card.endDate))
-                                        : getBarWidth(new Date(card.startDate), displayEndDate)
+                                        : getBarWidth(new Date(card.startDate), dateDisplayEndDate)
                                 }
                             />
                         )}

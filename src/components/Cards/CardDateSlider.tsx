@@ -8,22 +8,16 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons"
 import {
     useTheme,
     useColorModeValue,
-    Card,
     Box,
-    Heading,
-    CardBody,
-    Image,
     Flex,
-    Stack,
-    HStack,
     Text,
-    Collapse,
-    IconButton,
-    Button,
-    Container,
+    RangeSlider,
+    RangeSliderFilledTrack,
+    RangeSliderThumb,
+    RangeSliderTrack,
 } from "@chakra-ui/react"
 
-export default function CardDateSlider({ windowSize, environment, cardData, sortedCardData }) {
+export default function CardDateSlider({ windowSize, environment, cardData, sortedCardData, setDateDisplayStartDate, setDateDisplayEndDate }) {
     const customTheme = useTheme()
     const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
     const linkHoverColor = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
@@ -33,97 +27,88 @@ export default function CardDateSlider({ windowSize, environment, cardData, sort
     const inProgressTheme = useColorModeValue(customTheme.statusColors.inProgress.light, customTheme.statusColors.inProgress.dark)
     const completedTheme = useColorModeValue(customTheme.statusColors.completed.light, customTheme.statusColors.completed.dark)
 
-    // TODO: These dates will be given from the filtering options in the filter bar
-    // but are just hardcoded for now
-    const displayStartDate = new Date("2022-07-01")
-    const displayEndDate = new Date("2023-06-01")
+    const findEarliestDate = () => {
+        let earliestDate = new Date(cardData[0].startDate)
 
-    const displayRef = useRef(null)
-    const [displayWidth, setDisplayWidth] = useState(0)
+        cardData.forEach((card) => {
+            const cardStartDate = new Date(card.startDate)
+            cardStartDate < earliestDate ? (earliestDate = cardStartDate) : null
+        })
 
-    useEffect(() => {
-        if (displayRef.current) {
-            const width = displayRef.current.offsetWidth
-            setDisplayWidth(width)
+        earliestDate.setDate(1)
+        return earliestDate
+    }
+
+    const formatDate = (date: Date) => {
+        return date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
+    }
+    const formatDateMonth = (date: Date) => {
+        return date.toLocaleDateString("en-GB", { month: "short", year: "numeric" })
+    }
+
+    const monthDiff = (date1: Date, date2: Date): number => {
+        const months = (date2.getFullYear() - date1.getFullYear()) * 12 + (date2.getMonth() - date1.getMonth())
+        return months
+    }
+
+    const earliestStartDate = findEarliestDate()
+    const sliderMax = monthDiff(earliestStartDate, new Date())
+    const [sliderValues, setSliderValues] = useState([0, sliderMax])
+
+    const handleSliderChange = (newValues) => {
+        let [firstValue, secondValue] = newValues
+
+        if (secondValue - firstValue < 1) {
+            if (sliderValues[0] === firstValue) {
+                secondValue = firstValue + 1
+            } else {
+                firstValue = secondValue - 1
+            }
         }
-    }, [windowSize.width])
-
-    function getTimeDifference(startDate, endDate) {
-        return endDate.getTime() - startDate.getTime()
+        setSliderValues([firstValue, secondValue])
+        setDateDisplayStartDate(addMonths(earliestStartDate, firstValue))
+        setDateDisplayEndDate(addMonths(earliestStartDate, secondValue))
     }
 
-    function getDaysDifference(startDate, endDate) {
-        const timeDifference = getTimeDifference(startDate, endDate)
-        return Math.ceil(timeDifference / (24 * 60 * 60 * 1000))
-    }
+    // Render slider dates on initial render
+    useEffect(() => {
+        setDateDisplayStartDate(addMonths(earliestStartDate, sliderValues[0]))
+        setDateDisplayEndDate(addMonths(earliestStartDate, sliderValues[1]))
+    }, [])
 
-    const displayDays = getDaysDifference(displayStartDate, displayEndDate)
-    const pixelsPerDay = displayWidth / displayDays
-
-    const getBarWidth = (startDate, endDate) => {
-        const width = pixelsPerDay * getDaysDifference(startDate, endDate)
-        return `${width}px`
+    const addMonths = (date: Date, months: number): Date => {
+        const newDate = new Date(date)
+        newDate.setMonth(newDate.getMonth() + months)
+        return newDate
     }
-
-    const shouldShowCircle = (startDate, endDate) => {
-        const width = pixelsPerDay * getDaysDifference(startDate, endDate)
-        return width < 50
-    }
-
-    const getBackground = (index) => {
-        return index % 2 === 0 ? backgroundColor : null
-    }
+    const thumbStartDate = addMonths(earliestStartDate, sliderValues[0])
+    const thumbEndDate = addMonths(earliestStartDate, sliderValues[1])
 
     return (
         <Box width="100%" bg={contentBackground} borderRadius={"30px"} p={"15px"}>
-            {sortedCardData.map((card, cardIndex) => (
-                <Flex key={cardIndex} direction={"row"} justifyContent={"center"}>
-                    <Flex direction="row" width="20%" borderRight="2px solid">
-                        <Image
-                            bg={"#102026"}
-                            objectFit="contain"
-                            width="26px"
-                            height="26px"
-                            src={card?.images?.[0].image ? card?.images?.[0].image : "./481368551588.png"}
-                            alt={card?.images?.[0].alt}
-                            borderLeftRadius={"8px"}
-                        />
-                        <Text
-                            px={"15px"}
-                            py={"1px"}
-                            bg={getBackground(cardIndex)}
-                            fontWeight={"bold"}
-                            width="100%"
-                            overflow="hidden"
-                            whiteSpace="nowrap"
-                            textOverflow="ellipsis"
-                            textColor={card?.endDate ? completedTheme : inProgressTheme}
-                        >
-                            {card.name}
-                        </Text>
-                    </Flex>
-                    <Flex ref={displayRef} bg={getBackground(cardIndex)} direction="row" width="79%">
-                        <Flex width={getBarWidth(displayStartDate, new Date(card.startDate))}></Flex>
-                        {card?.endDate && shouldShowCircle(new Date(card.startDate), new Date(card.endDate)) ? (
-                            <Box borderRadius={"100%"} my={"2px"} bg={completedTheme} width="20px" />
-                        ) : (
-                            <Box
-                                borderLeftRadius={"20px"}
-                                borderRightRadius={!card?.endDate || new Date(card?.endDate) > displayEndDate ? "0px" : "20px"}
-                                my={"2px"}
-                                bg={card?.endDate ? completedTheme : inProgressTheme}
-                                width={
-                                    card?.endDate
-                                        ? getBarWidth(new Date(card.startDate), new Date(card.endDate))
-                                        : getBarWidth(new Date(card.startDate), displayEndDate)
-                                }
-                            />
-                        )}
-                        <Flex grow={1} />
-                    </Flex>
-                    <Box borderLeft="2px solid"></Box>
+            <Flex direction={"row"} justifyContent={"center"}>
+                <Flex direction="row" width="20%" borderRight="2px solid" justifyContent={"end"} px={"10px"}>
+                    {formatDate(earliestStartDate)}
                 </Flex>
-            ))}
+                <Flex direction="row" width="79%">
+                    <RangeSlider value={sliderValues} min={0} max={sliderMax} step={1} onChange={handleSliderChange}>
+                        <RangeSliderTrack bg="red.100" borderRadius={0}>
+                            <RangeSliderFilledTrack bg="tomato" />
+                        </RangeSliderTrack>
+                        <RangeSliderThumb boxSize={6} index={0} width={"90px"}>
+                            <Text color="blue" align={"center"} fontFamily="monospace" fontWeight="bold" fontSize={"sm"}>
+                                {formatDateMonth(thumbStartDate)}
+                            </Text>
+                        </RangeSliderThumb>
+                        <RangeSliderThumb boxSize={6} index={1} width={"90px"}>
+                            <Text color="blue" align={"center"} fontFamily="monospace" fontWeight="bold" fontSize={"sm"}>
+                                {formatDateMonth(thumbEndDate)}
+                            </Text>
+                        </RangeSliderThumb>
+                    </RangeSlider>
+                </Flex>
+                <Box borderLeft="2px solid"></Box>
+            </Flex>
         </Box>
     )
 }

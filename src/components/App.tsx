@@ -3,6 +3,7 @@ import styles from "./App.module.css"
 import VersionDrawer from "./VersionDrawer"
 import Header from "./Header/Header"
 import Overview from "./Overview"
+import CardDateSlider from "./Cards/CardDateSlider"
 import CardDateDisplay from "./Cards/CardDateDisplay"
 import ProjectGallery from "./Cards/CardGallery"
 import cardData from "../../public/data/cardData.json"
@@ -23,6 +24,10 @@ const App = () => {
     const [isCardEditorOpen, setIsCardEditorOpen] = useState(false)
     const [cardEditorData, setCardEditorData] = useState(null)
 
+    // Store the dateDisplayStartDate and dateDisplayEndDate in state
+    const [dateDisplayStartDate, setDateDisplayStartDate] = useState<Date | null>(null)
+    const [dateDisplayEndDate, setDateDisplayEndDate] = useState<Date | null>(null)
+
     // Rerender when window size changes and save
     // window size to state to allow conditional rendering
     const [windowSize, setWindowSize] = useState({
@@ -41,7 +46,25 @@ const App = () => {
         }
     }, [])
 
-    const sortedCardData = [...cardData].sort((a, b) => {
+    const filteredCardData = [...cardData].filter((card) => {
+        if (dateDisplayStartDate && dateDisplayEndDate) {
+            if (card.endDate && card.startDate == card.endDate) {
+                // If the start date is before the range and the end date is after the range, remove the card
+                return new Date(card.startDate) >= dateDisplayStartDate && new Date(card.endDate) <= dateDisplayEndDate
+            } else if (card.endDate) {
+                const startOrEndDateInsideRange = new Date(card.startDate) >= dateDisplayStartDate && new Date(card.startDate) <= dateDisplayEndDate
+
+                const wasInProgressDuringEntireRange = new Date(card.startDate) < dateDisplayStartDate && new Date(card.endDate) > dateDisplayEndDate
+                return startOrEndDateInsideRange || wasInProgressDuringEntireRange
+            } else {
+                // If the start date is after the display end date, remove the card
+                return new Date(card.startDate) <= dateDisplayEndDate
+            }
+        }
+        return true
+    })
+
+    const sortedCardData = filteredCardData.sort((a, b) => {
         const dateA = new Date(a.startDate)
         const dateB = new Date(b.startDate)
         return dateB.getTime() - dateA.getTime()
@@ -66,8 +89,25 @@ const App = () => {
                         />
                         <Overview windowSize={windowSize} environment={environment} />
                     </Box>
+                    <Box width="100%" maxW="1400px">
+                        <CardDateSlider
+                            windowSize={windowSize}
+                            environment={environment}
+                            cardData={cardData}
+                            sortedCardData={sortedCardData}
+                            setDateDisplayStartDate={setDateDisplayStartDate}
+                            setDateDisplayEndDate={setDateDisplayEndDate}
+                        />
+                    </Box>
                     <Box width="100%" maxW="1400px" my="40px">
-                        <CardDateDisplay windowSize={windowSize} environment={environment} cardData={cardData} sortedCardData={sortedCardData} />
+                        <CardDateDisplay
+                            windowSize={windowSize}
+                            environment={environment}
+                            cardData={cardData}
+                            sortedCardData={sortedCardData}
+                            dateDisplayStartDate={dateDisplayStartDate}
+                            dateDisplayEndDate={dateDisplayEndDate}
+                        />
                     </Box>
                     <Box maxW="100%">
                         <ProjectGallery
