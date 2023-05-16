@@ -46,10 +46,10 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
     }
 
     return (
-        <Box width="100%" bg={contentBackground} borderRadius={"30px"} p={"15px"}>
+        <Box width="100%" bg={contentBackground} borderBottomRadius={"30px"} px={"15px"}>
             {sortedCardData.map((card, cardIndex) => (
                 <Flex key={cardIndex} direction={"row"} justifyContent={"center"}>
-                    <Flex direction="row" width="20%" borderRight="2px solid">
+                    <Flex direction="row" width="20%">
                         <Image
                             bg={"#102026"}
                             objectFit="contain"
@@ -73,7 +73,7 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
                             {card.name}
                         </Text>
                     </Flex>
-                    <Flex ref={displayRef} bg={getBackground(cardIndex)} direction="row" width="79%">
+                    <Flex ref={displayRef} bg={getBackground(cardIndex)} direction="row" width="79%" borderLeft="5px solid">
                         <Flex width={getBarWidth(dateDisplayStartDate, new Date(card.startDate))}></Flex>
                         {card?.endDate && shouldShowCircle(new Date(card.startDate), new Date(card.endDate)) ? (
                             <Box borderRadius={"100%"} my={"2px"} bg={completedTheme} width="20px" />
@@ -92,9 +92,24 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
                         )}
                         <Flex grow={1} />
                     </Flex>
-                    <Box borderLeft="2px solid"></Box>
+                    <Box borderLeft="5px solid"></Box>
                 </Flex>
             ))}
+            <Flex direction={"row"} justifyContent={"center"} height={"30px"}>
+                <Flex direction="row" width="20%"></Flex>
+                <Flex
+                    ref={displayRef}
+                    bg={getBackground(1)}
+                    direction="row"
+                    width="calc(79% + 5px)"
+                    borderRight="5px solid"
+                    borderLeft="5px solid"
+                    borderBottom="5px solid"
+                    borderBottomRadius={"30px"}
+                >
+                    <Flex grow={1} />
+                </Flex>
+            </Flex>
         </Box>
     )
 }

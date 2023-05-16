@@ -89,7 +89,7 @@ const App = () => {
                         />
                         <Overview windowSize={windowSize} environment={environment} />
                     </Box>
-                    <Box width="100%" maxW="1400px" mb="20px">
+                    <Box width="100%" maxW="1400px">
                         <CardDateSlider
                             windowSize={windowSize}
                             environment={environment}
@@ -99,7 +99,7 @@ const App = () => {
                             setDateDisplayEndDate={setDateDisplayEndDate}
                         />
                     </Box>
-                    <Box width="100%" maxW="1400px" my="40px">
+                    <Box width="100%" maxW="1400px" mb="40px">
                         <CardDateDisplay
                             windowSize={windowSize}
                             environment={environment}
