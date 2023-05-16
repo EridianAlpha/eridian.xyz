@@ -99,13 +99,15 @@ export default function CardDateSlider({ windowSize, environment, cardData, sort
         )
     }
 
+    const sliderTrackRef = useRef(null)
+
     return (
-        <Box width="100%">
+        <Box width="100%" bg="blue">
             <Flex direction={"row"} justifyContent={"center"}>
-                <Flex direction="row" width="20%" justifyContent={"end"} px={"10px"}></Flex>
+                <Flex direction="row" width="21%" justifyContent={"end"} bg={"yellow"}></Flex>
                 <Flex direction="row" width="79%" bg={contentBackground} borderRadius={"30px"} py={"12px"} px={"150px"}>
                     <RangeSlider value={sliderValues} min={0} max={sliderMax} onChange={handleSliderChange} borderX={"3px solid"}>
-                        <RangeSliderTrack borderRadius={0}>
+                        <RangeSliderTrack ref={sliderTrackRef} borderRadius={0}>
                             <RangeSliderFilledTrack bg="orange" />
                         </RangeSliderTrack>
                         <RangeSliderThumb boxSize={7} index={0}>
@@ -122,7 +124,42 @@ export default function CardDateSlider({ windowSize, environment, cardData, sort
                         </RangeSliderThumb>
                     </RangeSlider>
                 </Flex>
-                <Box></Box>
+            </Flex>
+            {/* This could be its own component */}
+            <Flex direction={"row"} justifyContent={"center"} height={"50px"}>
+                <Flex direction="row" width="21%" justifyContent={"end"} bg={"yellow"}></Flex>
+                <Box bg="green" width={"30px"} />
+                <Box
+                    bg="blue"
+                    width={"125px"}
+                    borderRight={"5px solid"}
+                    borderBottom={"5px solid"}
+                    borderBottomRightRadius={"30px"}
+                    marginBottom="-5px"
+                    zIndex={2}
+                />
+                <Flex direction={"row"} justifyContent={"center"} grow={1}>
+                    <Box bg="orange" width={"100%"} />
+                </Flex>
+                <Box
+                    bg="blue"
+                    width={"125px"}
+                    borderLeft={"5px solid"}
+                    borderBottom={"5px solid"}
+                    borderBottomLeftRadius={"30px"}
+                    marginBottom="-5px"
+                    zIndex={2}
+                />
+
+                <Box bg="green" width={"30px"} />
+            </Flex>
+            <Flex direction={"row"} justifyContent={"center"} height={"50px"}>
+                <Flex direction="row" width="21%" justifyContent={"end"} bg={"yellow"}></Flex>
+                <Box bg="blue" width={"30px"} borderLeft={"5px solid"} borderTop={"5px solid"} borderTopLeftRadius={"30px"} />
+                <Flex direction={"row"} justifyContent={"center"} grow={1}>
+                    <Box bg="orange" width={"100%"} />
+                </Flex>
+                <Box bg="blue" width={"30px"} borderRight={"5px solid"} borderTop={"5px solid"} borderTopRightRadius={"30px"} />
             </Flex>
         </Box>
     )
