@@ -3,7 +3,9 @@ import styles from "./App.module.css"
 import VersionDrawer from "./VersionDrawer"
 import Header from "./Header/Header"
 import Overview from "./Overview"
+import CardDateDisplay from "./Cards/CardDateDisplay"
 import ProjectGallery from "./Cards/CardGallery"
+import cardData from "../../public/data/cardData.json"
 
 import { useTheme, useColorModeValue, Container, Box, Flex } from "@chakra-ui/react"
 
@@ -39,6 +41,12 @@ const App = () => {
         }
     }, [])
 
+    const sortedCardData = [...cardData].sort((a, b) => {
+        const dateA = new Date(a.startDate)
+        const dateB = new Date(b.startDate)
+        return dateB.getTime() - dateA.getTime()
+    })
+
     return (
         <Box minH="100vh" minW="100vw" bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}>
             <Container
@@ -58,10 +66,15 @@ const App = () => {
                         />
                         <Overview windowSize={windowSize} environment={environment} />
                     </Box>
+                    <Box width="100%" maxW="1400px" my="40px">
+                        <CardDateDisplay windowSize={windowSize} environment={environment} cardData={cardData} sortedCardData={sortedCardData} />
+                    </Box>
                     <Box maxW="100%">
                         <ProjectGallery
                             windowSize={windowSize}
                             environment={environment}
+                            cardData={cardData}
+                            sortedCardData={sortedCardData}
                             isCardEditorOpen={isCardEditorOpen}
                             setIsCardEditorOpen={setIsCardEditorOpen}
                             cardEditorData={cardEditorData}

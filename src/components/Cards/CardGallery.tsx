@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from "react"
-import cardData from "../../../public/data/cardData.json"
 
 import Masonry from "react-masonry-css"
 
@@ -31,7 +30,16 @@ import CardStatus from "./CardStatus"
 import CardShowMoreButton from "./CardShowMoreButton"
 import CardEditor from "./CardEditor"
 
-export default function CardGallery({ windowSize, environment, isCardEditorOpen, setIsCardEditorOpen, cardEditorData, setCardEditorData }) {
+export default function CardGallery({
+    windowSize,
+    environment,
+    cardData,
+    sortedCardData,
+    isCardEditorOpen,
+    setIsCardEditorOpen,
+    cardEditorData,
+    setCardEditorData,
+}) {
     const breakpointCols = {
         default: 3,
         1400: 2,
@@ -44,12 +52,6 @@ export default function CardGallery({ windowSize, environment, isCardEditorOpen,
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
     const contentBackgroundHover = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
     const headingColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
-
-    const sortedCardData = [...cardData].sort((a, b) => {
-        const dateA = new Date(a.startDate)
-        const dateB = new Date(b.startDate)
-        return dateB.getTime() - dateA.getTime()
-    })
 
     const [showMore, setShowMore] = useState(Array(sortedCardData.length).fill(false))
     // Updating this state causes the contents of the Collapse component to re-render
