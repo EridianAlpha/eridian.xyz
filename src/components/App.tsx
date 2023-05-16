@@ -89,7 +89,7 @@ const App = () => {
                         />
                         <Overview windowSize={windowSize} environment={environment} />
                     </Box>
-                    <Box width="100%" maxW="1400px">
+                    <Box width="100%" maxW="1400px" mb="20px">
                         <CardDateSlider
                             windowSize={windowSize}
                             environment={environment}

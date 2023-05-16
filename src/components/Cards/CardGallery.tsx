@@ -40,10 +40,21 @@ export default function CardGallery({
     cardEditorData,
     setCardEditorData,
 }) {
-    const breakpointCols = {
-        default: 3,
-        1400: 2,
-        900: 1,
+    let breakpointCols
+    if (sortedCardData.length == 1) {
+        breakpointCols = {
+            default: 1,
+        }
+    } else if (sortedCardData.length == 2) {
+        breakpointCols = {
+            default: 2,
+        }
+    } else {
+        breakpointCols = {
+            default: 3,
+            1400: 2,
+            900: 1,
+        }
     }
 
     const customTheme = useTheme()

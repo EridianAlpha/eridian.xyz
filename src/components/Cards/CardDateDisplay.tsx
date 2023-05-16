@@ -1,35 +1,11 @@
 import React, { useState, useEffect, useRef } from "react"
 
-import Masonry from "react-masonry-css"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEdit } from "@fortawesome/free-solid-svg-icons"
-
-import {
-    useTheme,
-    useColorModeValue,
-    Card,
-    Box,
-    Heading,
-    CardBody,
-    Image,
-    Flex,
-    Stack,
-    HStack,
-    Text,
-    Collapse,
-    IconButton,
-    Button,
-    Container,
-} from "@chakra-ui/react"
+import { useTheme, useColorModeValue, Box, Image, Flex, Text } from "@chakra-ui/react"
 
 export default function CardDateDisplay({ windowSize, environment, cardData, sortedCardData, dateDisplayStartDate, dateDisplayEndDate }) {
     const customTheme = useTheme()
     const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
-    const linkHoverColor = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
-    const contentBackgroundHover = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
-    const headingColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
     const inProgressTheme = useColorModeValue(customTheme.statusColors.inProgress.light, customTheme.statusColors.inProgress.dark)
     const completedTheme = useColorModeValue(customTheme.statusColors.completed.light, customTheme.statusColors.completed.dark)
 
