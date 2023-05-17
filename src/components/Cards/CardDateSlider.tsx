@@ -112,13 +112,13 @@ export default function CardDateSlider({ windowSize, environment, cardData, sort
 
     return (
         <Box width="100%">
-            <Flex direction={"row"} justifyContent={"center"}>
+            <Flex direction={"row"} justifyContent={"center"} alignItems="flex-end">
                 <Flex direction="row" width="21%" justifyContent={"end"}>
                     <Heading pr={"30px"} color={headingColor} fontSize={"3xl"} display={"flex"} alignItems={"center"}>
                         🗓️ Timeline View
                     </Heading>
                 </Flex>
-                <Flex direction="row" width="79%" bg={contentBackground} borderRadius={"30px"} py={"12px"} px={"150px"}>
+                <Flex direction="row" width="79%" bg={contentBackground} borderRadius={"30px"} py={"12px"} px={"150px"} height={"50px"}>
                     <RangeSlider value={sliderValues} min={0} max={sliderMax} step={1} onChange={handleSliderChange} borderX={"3px solid"}>
                         <RangeSliderTrack ref={sliderTrackRef} borderRadius={0} bg={backgroundColor} height={"10px"}>
                             <RangeSliderFilledTrack />
@@ -163,19 +163,19 @@ export default function CardDateSlider({ windowSize, environment, cardData, sort
                             marginBottom="-5px"
                             zIndex={2}
                         />
-                        <Box width={"30px"} />
+                        <Box width={"27px"} />
                     </Flex>
                 </Flex>
             </Box>
             <Box bg={contentBackground} width="100%" px={"15px"} borderTopRadius={"30px"}>
                 <Flex direction={"row"} justifyContent={"center"} height={"30px"}>
-                    <Flex direction="row" width="20%" justifyContent={"end"}></Flex>
+                    <Flex direction="row" width="20%" justifyContent={"end"} />
                     <Flex width="79%">
                         <Box width={"32px"} borderLeft={"5px solid"} borderTop={"5px solid"} borderTopLeftRadius={"30px"} ml={"-2px"} />
                         <Flex direction={"row"} justifyContent={"center"} grow={1}>
                             <Box width={"100%"} />
                         </Flex>
-                        <Box width={"32px"} borderRight={"5px solid"} borderTop={"5px solid"} borderTopRightRadius={"30px"} mr={"-2px"} />
+                        <Box width={"30px"} borderRight={"5px solid"} borderTop={"5px solid"} borderTopRightRadius={"30px"} mr={"-3px"} />
                     </Flex>
                 </Flex>
             </Box>
