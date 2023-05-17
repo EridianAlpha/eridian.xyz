@@ -59,7 +59,7 @@
         "endDate": "2023-04-05",
         "summary": "A grant from the EF to build a Spreadsheet showing all the staking options available on Ethereum.",
         "description": {
-            "0": "Currently being reviewed by the EF and will be released soon."
+            "0": "Currently being reviewed by the EF."
         },
         "images": {
             "0": {
@@ -195,13 +195,7 @@
         "summary": "",
         "startDate": "2023-04-13",
         "endDate": "",
-        "externalLinks": {
-            "0": {
-                "url": "123",
-                "label": "123",
-                "type": "website"
-            }
-        },
+        "externalLinks": {},
         "description": {
             "0": ""
         },
@@ -222,7 +216,7 @@
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "DVT Home Staking.",
+        "summary": "DVT Home Staking. Decentralizing Ethereum one node at a time!",
         "startDate": "2023-05-12",
         "endDate": "",
         "externalLinks": {
@@ -241,8 +235,8 @@
                 "alt": "Ether.fi Logo"
             },
             "1": {
-                "image": "",
-                "alt": ""
+                "image": "./images/EtherFiSoloStakerMeme.png",
+                "alt": "Ether.fi Solo Staker Meme"
             }
         }
     },
@@ -413,8 +407,8 @@
                 "alt": ""
             },
             "1": {
-                "image": "",
-                "alt": ""
+                "image": "./images/DateSliderDesigns.png",
+                "alt": "Date Slider Designs"
             }
         }
     },

@@ -70,6 +70,11 @@ const App = () => {
         return dateB.getTime() - dateA.getTime()
     })
 
+    const [shouldRenderDateComponents, setShouldDateRenderComponents] = useState(true)
+    useEffect(() => {
+        setShouldDateRenderComponents(windowSize.width >= 1400)
+    }, [windowSize.width])
+
     return (
         <Box minH="100vh" minW="100vw" bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}>
             <Container
@@ -89,26 +94,30 @@ const App = () => {
                         />
                         <Overview windowSize={windowSize} environment={environment} />
                     </Box>
-                    <Box width="100%" maxW="100%">
-                        <CardDateSlider
-                            windowSize={windowSize}
-                            environment={environment}
-                            cardData={cardData}
-                            sortedCardData={sortedCardData}
-                            setDateDisplayStartDate={setDateDisplayStartDate}
-                            setDateDisplayEndDate={setDateDisplayEndDate}
-                        />
-                    </Box>
-                    <Box width="100%" maxW="100%" mb="40px">
-                        <CardDateDisplay
-                            windowSize={windowSize}
-                            environment={environment}
-                            cardData={cardData}
-                            sortedCardData={sortedCardData}
-                            dateDisplayStartDate={dateDisplayStartDate}
-                            dateDisplayEndDate={dateDisplayEndDate}
-                        />
-                    </Box>
+                    {shouldRenderDateComponents && (
+                        <>
+                            <Box width="100%" maxW="100%">
+                                <CardDateSlider
+                                    windowSize={windowSize}
+                                    environment={environment}
+                                    cardData={cardData}
+                                    sortedCardData={sortedCardData}
+                                    setDateDisplayStartDate={setDateDisplayStartDate}
+                                    setDateDisplayEndDate={setDateDisplayEndDate}
+                                />
+                            </Box>
+                            <Box width="100%" maxW="100%" mb="40px">
+                                <CardDateDisplay
+                                    windowSize={windowSize}
+                                    environment={environment}
+                                    cardData={cardData}
+                                    sortedCardData={sortedCardData}
+                                    dateDisplayStartDate={dateDisplayStartDate}
+                                    dateDisplayEndDate={dateDisplayEndDate}
+                                />
+                            </Box>
+                        </>
+                    )}
                     <Box maxW="100%">
                         <ProjectGallery
                             windowSize={windowSize}

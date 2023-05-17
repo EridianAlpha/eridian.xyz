@@ -28,7 +28,7 @@ export default function Overview({ windowSize, environment }) {
                 bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}
                 maxW="1200px"
                 padding={5}
-                pb={"100px"}
+                pb={"50px"}
             >
                 <Card
                     direction={{ base: "column", md: "row" }}
