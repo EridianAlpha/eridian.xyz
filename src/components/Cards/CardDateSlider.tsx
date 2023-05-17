@@ -112,7 +112,7 @@ export default function CardDateSlider({ windowSize, environment, cardData, sort
 
     return (
         <Box width="100%">
-            <Flex direction={"row"} justifyContent={"center"} alignItems="flex-end">
+            <Flex direction={"row"} justifyContent={"center"} alignItems="center">
                 <Flex direction="row" width="21%" justifyContent={"end"}>
                     <Heading pr={"30px"} color={headingColor} fontSize={"3xl"} display={"flex"} alignItems={"center"}>
                         🗓️ Timeline View
