@@ -224,10 +224,15 @@
                 "url": "https://twitter.com/ether_fi/status/1657028498786070531",
                 "label": "Announcement Tweet",
                 "type": "twitter"
+            },
+            "1": {
+                "url": "https://etherfi.gitbook.io/etherfi/operation-solo-staker",
+                "label": "Documentation",
+                "type": "website"
             }
         },
         "description": {
-            "0": ""
+            "0": "As a Solo Staker ambassador for Ether.fi I wrote the documentation for the program."
         },
         "images": {
             "0": {
