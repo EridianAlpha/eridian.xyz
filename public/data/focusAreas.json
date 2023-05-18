@@ -8,25 +8,25 @@
     {
         "title": "DeFi",
         "icon": "faMoneyBill",
-        "color": "green",
-        "count": 3
+        "color": "#76b63a",
+        "count": 2
     },
     {
         "title": "NFTs",
         "icon": "faImage",
-        "color": "gray",
+        "color": "#36A2EB",
         "count": 1
     },
     {
-        "title": "Solidity",
+        "title": "Coding",
         "icon": "faLaptopCode",
-        "color": "red",
-        "count": 2
+        "color": "#E53E3E",
+        "count": 3
     },
     {
         "title": "L2s",
         "icon": "faCodeFork",
-        "color": "orange",
+        "color": "#ED8936",
         "count": 1
     }
 ]

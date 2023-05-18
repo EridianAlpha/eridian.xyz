@@ -266,12 +266,12 @@
         },
         "images": {
             "0": {
-                "image": "./images/ETHStakerKBLogo.png",
-                "alt": "ETHStaker Logo"
+                "image": "./images/EthStakerKBLogo.png",
+                "alt": "EthStaker Logo"
             },
             "1": {
-                "image": "./images/ETHStakerKB.png",
-                "alt": "ETHStaker KB"
+                "image": "./images/EthStakerKB.png",
+                "alt": "EthStaker KB"
             }
         }
     },
@@ -290,11 +290,11 @@
         },
         "images": {
             "0": {
-                "image": "./images/EthDenverLogo.png",
+                "image": "./images/ETHDenverLogo.png",
                 "alt": "EthDenver Logo"
             },
             "1": {
-                "image": "./images/EthDenver2023.png",
+                "image": "./images/ETHDenver2023.png",
                 "alt": "Eth Denver 2023"
             }
         }
