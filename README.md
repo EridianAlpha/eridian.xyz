@@ -2,7 +2,7 @@
 
 This is the source code for the [EridianAlpha.com](https://eridianalpha.com) website. The site is a Next.js static site.
 
-> 🏗️ The site is currently under development and is not ready for production.
+> 🏗️ The site is currently under active development as I try out new design ideas 🏗️
 
 ## Development
 
@@ -77,8 +77,6 @@ This command is a combination of the `yarn commits` and `yarn dev` commands. It 
 This command checks the code quality and adherence to coding standards using the `next lint` command. It is recommended to run this command before committing changes to ensure code consistency and maintainability.
 
 ## Production
-
-TODO: The site is currently under development and is not ready for production. This section will be updated when a production deployment plan is created.
 
 ### Production Commands
 
