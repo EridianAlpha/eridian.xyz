@@ -14,13 +14,28 @@ import {
     RangeSliderFilledTrack,
     RangeSliderThumb,
     RangeSliderTrack,
+    Stack,
+    Button,
 } from "@chakra-ui/react"
 
-export default function CardDateSlider({ windowSize, environment, cardData, sortedCardData, setDateDisplayStartDate, setDateDisplayEndDate }) {
+export default function CardDateSlider({
+    windowSize,
+    environment,
+    cardData,
+    sortedCardData,
+    setDateDisplayStartDate,
+    setDateDisplayEndDate,
+    isFilterOngoingSelected,
+    isFilterDoneSelected,
+    setIsFilterOngoingSelected,
+    setIsFilterDoneSelected,
+}) {
     const customTheme = useTheme()
     const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
     const headingColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
+    const inProgressTheme = useColorModeValue(customTheme.statusColors.inProgress.light, customTheme.statusColors.inProgress.dark)
+    const completedTheme = useColorModeValue(customTheme.statusColors.completed.light, customTheme.statusColors.completed.dark)
 
     const findEarliestDate = () => {
         let earliestDate = new Date(cardData[0].startDate)
@@ -114,7 +129,7 @@ export default function CardDateSlider({ windowSize, environment, cardData, sort
         <Box width="100%">
             <Flex direction={"row"} justifyContent={"center"} alignItems="center">
                 <Flex direction="row" width="21%" justifyContent={"end"}>
-                    <Heading pr={"30px"} color={headingColor} fontSize={"3xl"} display={"flex"} alignItems={"center"}>
+                    <Heading pr={"30px"} color={headingColor} fontSize={"2xl"} display={"flex"} alignItems={"center"}>
                         🗓️ Timeline View
                     </Heading>
                 </Flex>
@@ -141,7 +156,49 @@ export default function CardDateSlider({ windowSize, environment, cardData, sort
             {/* TODO: This could be its own component */}
             <Box width="100%" px={"15px"}>
                 <Flex direction={"row"} justifyContent={"center"} height={"40px"}>
-                    <Flex direction="row" width="20%" justifyContent={"end"}></Flex>
+                    <Flex direction="row" width="20%" justifyContent={"end"}>
+                        <Stack direction="row" pr={"25px"}>
+                            <Button
+                                onClick={() => {
+                                    setIsFilterOngoingSelected(true)
+                                    setIsFilterDoneSelected(true)
+                                }}
+                                size="sm"
+                                borderRadius={"20px"}
+                                variant={isFilterOngoingSelected && isFilterDoneSelected ? "solid" : "ghost"}
+                            >
+                                All
+                            </Button>
+                            <Button
+                                onClick={() => {
+                                    setIsFilterOngoingSelected(true)
+                                    setIsFilterDoneSelected(false)
+                                }}
+                                size="sm"
+                                borderRadius={"20px"}
+                                color={isFilterDoneSelected ? inProgressTheme : "white"}
+                                bg={isFilterOngoingSelected && !isFilterDoneSelected ? inProgressTheme : null}
+                                _hover={{ bg: isFilterDoneSelected ? inProgressTheme : null, color: "white" }}
+                                variant="ghost"
+                            >
+                                Ongoing
+                            </Button>
+                            <Button
+                                onClick={() => {
+                                    setIsFilterOngoingSelected(false)
+                                    setIsFilterDoneSelected(true)
+                                }}
+                                size="sm"
+                                borderRadius={"20px"}
+                                color={isFilterOngoingSelected ? completedTheme : "white"}
+                                bg={!isFilterOngoingSelected && isFilterDoneSelected ? completedTheme : null}
+                                _hover={{ bg: isFilterOngoingSelected ? completedTheme : null, color: "white" }}
+                                variant="ghost"
+                            >
+                                Done
+                            </Button>
+                        </Stack>
+                    </Flex>
                     <Flex width="79%">
                         <Box width={"30px"} />
                         <Box

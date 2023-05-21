@@ -46,7 +46,20 @@ const App = () => {
         }
     }, [])
 
+    const [isFilterOngoingSelected, setIsFilterOngoingSelected] = useState(true)
+    const [isFilterDoneSelected, setIsFilterDoneSelected] = useState(true)
+
     const filteredCardData = [...cardData].filter((card) => {
+        // If both filters are selected, continue with filter logic
+        // If neither filter is selected, continue with filter logic
+        if (!(isFilterOngoingSelected && isFilterDoneSelected)) {
+            // If the card is ongoing and the ongoing filter is selected, continue with filter logic
+            // If the card is done and the done filter is selected, continue with filter logic
+            if ((isFilterOngoingSelected && card?.endDate) || (isFilterDoneSelected && !card?.endDate)) {
+                return false
+            }
+        }
+
         if (dateDisplayStartDate && dateDisplayEndDate) {
             if (card.endDate && card.startDate == card.endDate) {
                 // If the start date is before the range and the end date is after the range, remove the card
@@ -61,6 +74,7 @@ const App = () => {
                 return new Date(card.startDate) <= dateDisplayEndDate
             }
         }
+
         return true
     })
 
@@ -72,7 +86,7 @@ const App = () => {
 
     const [shouldRenderDateComponents, setShouldDateRenderComponents] = useState(true)
     useEffect(() => {
-        setShouldDateRenderComponents(windowSize.width >= 1400)
+        setShouldDateRenderComponents(windowSize.width >= 1200)
     }, [windowSize.width])
 
     return (
@@ -104,6 +118,10 @@ const App = () => {
                                     sortedCardData={sortedCardData}
                                     setDateDisplayStartDate={setDateDisplayStartDate}
                                     setDateDisplayEndDate={setDateDisplayEndDate}
+                                    isFilterOngoingSelected={isFilterOngoingSelected}
+                                    isFilterDoneSelected={isFilterDoneSelected}
+                                    setIsFilterOngoingSelected={setIsFilterOngoingSelected}
+                                    setIsFilterDoneSelected={setIsFilterDoneSelected}
                                 />
                             </Box>
                             <Box width="100%" maxW="100%" mb="40px">
