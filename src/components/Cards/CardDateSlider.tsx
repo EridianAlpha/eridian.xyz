@@ -228,7 +228,7 @@ export default function CardDateSlider({
                 <Flex direction={"row"} justifyContent={"center"} height={"30px"}>
                     <Flex direction="row" width="20%" justifyContent={"end"} />
                     <Flex width="79%">
-                        <Box width={"32px"} borderLeft={"5px solid"} borderTop={"5px solid"} borderTopLeftRadius={"30px"} ml={"-2px"} />
+                        <Box width={"33px"} borderLeft={"5px solid"} borderTop={"5px solid"} borderTopLeftRadius={"30px"} ml={"-3px"} />
                         <Flex direction={"row"} justifyContent={"center"} grow={1}>
                             <Box width={"100%"} />
                         </Flex>

@@ -625,5 +625,65 @@
                 "alt": "NFT Image Locator Results"
             }
         }
+    },
+    {
+        "id": "2OUY9K",
+        "name": "DVStakers - GPT4 Updater",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Using Chat GPT-4 to automatically update the docker-compose.yaml image versions.",
+        "startDate": "2023-04-29",
+        "endDate": "2023-05-04",
+        "externalLinks": {
+            "0": {
+                "url": "https://github.com/DVStakers/gpt-updates",
+                "label": "Repo",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/DVStakersSquareBlackLogo.png",
+                "alt": "DVStakers Logo"
+            },
+            "1": {
+                "image": "./images/DVStakersGPT4Updater.png",
+                "alt": "GPT4 Prompt"
+            }
+        }
+    },
+    {
+        "id": "2PNOBX",
+        "name": "DVStakers - Charon Docker Fork",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A customized fork of the Charon Docker cluster running a 6/9 threshold.",
+        "startDate": "2023-03-23",
+        "endDate": "2023-04-26",
+        "externalLinks": {
+            "0": {
+                "url": "https://github.com/DVStakers/charon-distributed-validator-cluster",
+                "label": "Repo",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/DVStakersSquareBlackLogo.png",
+                "alt": "DVStakers Logo"
+            },
+            "1": {
+                "image": "./images/DVStakersCharonDockerFork.png",
+                "alt": "DVStakers Charon Docker Fork"
+            }
+        }
     }
 ]
