@@ -67,57 +67,93 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
         return index % 2 === 0 ? backgroundColor : null
     }
 
+    const [isScrollable, setIsScrollable] = useState(false)
+    const [isScrolledToBottom, setIsScrolledToBottom] = useState(false)
+    const scrollBoxRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        setIsScrollable(scrollBoxRef.current?.scrollHeight > scrollBoxRef.current?.clientHeight)
+    }, [sortedCardData])
+
+    const handleScroll = () => {
+        const { scrollTop, scrollHeight, clientHeight } = scrollBoxRef.current
+        const atBottom = scrollHeight - scrollTop === clientHeight
+        setIsScrolledToBottom(atBottom)
+    }
+
+    useEffect(() => {
+        setIsScrollable(scrollBoxRef.current?.scrollHeight > scrollBoxRef.current?.clientHeight)
+    }, [sortedCardData])
+
+    const handleBottomScrollClick = () => {
+        if (scrollBoxRef.current) {
+            scrollBoxRef.current.scrollTop += 100
+        }
+    }
+
     return (
         <Box width="100%" bg={contentBackground} borderBottomRadius={"30px"} px={"15px"}>
-            {sortedCardData.map((card, cardIndex) => (
-                <Flex key={cardIndex} direction={"row"} justifyContent={"center"}>
-                    <Flex direction="row" width="20%">
-                        <Image
-                            bg={"#102026"}
-                            objectFit="contain"
-                            width="26px"
-                            height="26px"
-                            src={card?.images?.[0].image ? card?.images?.[0].image : "./481368551588.png"}
-                            alt={card?.images?.[0].alt}
-                            borderLeftRadius={"8px"}
-                        />
-                        <Text
-                            px={"15px"}
-                            py={"1px"}
-                            bg={getBackground(cardIndex)}
-                            fontWeight={"bold"}
-                            width="100%"
-                            overflow="hidden"
-                            whiteSpace="nowrap"
-                            textOverflow="ellipsis"
-                            textColor={card?.endDate ? completedTheme : inProgressTheme}
-                        >
-                            {card.name}
-                        </Text>
-                    </Flex>
-                    <Flex ref={displayRef} bg={getBackground(cardIndex)} direction="row" width="79%" borderLeft="5px solid">
-                        <Flex width={getSpacerWidth(dateDisplayStartDate, new Date(card.startDate))}></Flex>
-                        {card?.endDate && shouldShowCircle(new Date(card.startDate), new Date(card.endDate)) ? (
-                            <Box borderRadius={"100%"} my={"2px"} bg={completedTheme} width="20px" />
-                        ) : (
-                            <Box
-                                borderRightRadius={!card?.endDate || new Date(card?.endDate) > dateDisplayEndDate ? "0px" : "20px"}
-                                borderLeftRadius={
-                                    new Date(new Date(card?.startDate).setDate(new Date(card?.startDate).getDate() + 1)) <= dateDisplayStartDate
-                                        ? "0px"
-                                        : "20px"
-                                }
-                                my={"2px"}
-                                bg={card?.endDate ? completedTheme : inProgressTheme}
-                                width={getBarWidth(new Date(card.startDate), new Date(card?.endDate), dateDisplayStartDate, dateDisplayEndDate)}
+            <Box ref={scrollBoxRef} onScroll={handleScroll} maxH="60vh" overflow={"auto"}>
+                {sortedCardData.map((card, cardIndex) => (
+                    <Flex key={cardIndex} direction={"row"} justifyContent={"center"}>
+                        <Flex direction="row" width="20%">
+                            <Image
+                                bg={"#102026"}
+                                objectFit="contain"
+                                width="26px"
+                                height="26px"
+                                src={card?.images?.[0].image ? card?.images?.[0].image : "./481368551588.png"}
+                                alt={card?.images?.[0].alt}
+                                borderLeftRadius={"8px"}
                             />
-                        )}
-                        <Flex grow={1} />
+                            <Text
+                                px={"15px"}
+                                py={"1px"}
+                                bg={getBackground(cardIndex)}
+                                fontWeight={"bold"}
+                                width="100%"
+                                overflow="hidden"
+                                whiteSpace="nowrap"
+                                textOverflow="ellipsis"
+                                textColor={card?.endDate ? completedTheme : inProgressTheme}
+                            >
+                                {card.name}
+                            </Text>
+                        </Flex>
+                        <Flex ref={displayRef} bg={getBackground(cardIndex)} direction="row" width="79%" borderLeft="5px solid">
+                            <Flex width={getSpacerWidth(dateDisplayStartDate, new Date(card.startDate))}></Flex>
+                            {card?.endDate && shouldShowCircle(new Date(card.startDate), new Date(card.endDate)) ? (
+                                <Box borderRadius={"100%"} my={"2px"} bg={completedTheme} width="20px" />
+                            ) : (
+                                <Box
+                                    borderRightRadius={!card?.endDate || new Date(card?.endDate) > dateDisplayEndDate ? "0px" : "20px"}
+                                    borderLeftRadius={
+                                        new Date(new Date(card?.startDate).setDate(new Date(card?.startDate).getDate() + 1)) <= dateDisplayStartDate
+                                            ? "0px"
+                                            : "20px"
+                                    }
+                                    my={"2px"}
+                                    bg={card?.endDate ? completedTheme : inProgressTheme}
+                                    width={getBarWidth(new Date(card.startDate), new Date(card?.endDate), dateDisplayStartDate, dateDisplayEndDate)}
+                                />
+                            )}
+                            <Flex grow={1} />
+                        </Flex>
+                        <Box borderLeft="5px solid"></Box>
                     </Flex>
-                    <Box borderLeft="5px solid"></Box>
-                </Flex>
-            ))}
-            <Flex direction={"row"} justifyContent={"center"} height={"30px"}>
+                ))}
+            </Box>
+            <Flex
+                direction={"row"}
+                justifyContent={"center"}
+                height={"30px"}
+                onClick={handleBottomScrollClick}
+                transition={"background-color 0.2s ease-in-out"}
+                bg={isScrollable ? (isScrolledToBottom ? "null" : "rgba(255, 255, 255, 0.2)") : contentBackground}
+                cursor={isScrollable && !isScrolledToBottom ? "pointer" : "null"}
+                borderBottomRadius={"30px"}
+                borderTopRadius={"10px"}
+            >
                 <Flex direction="row" width="20%"></Flex>
                 <Flex
                     ref={displayRef}
