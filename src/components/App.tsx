@@ -62,19 +62,22 @@ const App = () => {
 
         if (dateDisplayStartDate && dateDisplayEndDate) {
             if (card.endDate && card.startDate == card.endDate) {
-                // If the start date is before the range and the end date is after the range, remove the card
+                // If it's a single day card, remove the card if it's not in the range
                 return new Date(card.startDate) >= dateDisplayStartDate && new Date(card.endDate) <= dateDisplayEndDate
-            } else if (card.endDate) {
-                const startOrEndDateInsideRange = new Date(card.startDate) >= dateDisplayStartDate && new Date(card.startDate) <= dateDisplayEndDate
+            } else if (card?.endDate) {
+                // If the start date is before the range and the end date is after the range, remove the card
+                const startDateInsideRange = new Date(card.startDate) >= dateDisplayStartDate && new Date(card.startDate) <= dateDisplayEndDate
+
+                //TODO: This is comparing UTC and local time, and I can't get it to just be UTC
+                const endDateInsideRange = new Date(card.endDate) >= dateDisplayStartDate && new Date(card.endDate) <= dateDisplayEndDate
 
                 const wasInProgressDuringEntireRange = new Date(card.startDate) < dateDisplayStartDate && new Date(card.endDate) > dateDisplayEndDate
-                return startOrEndDateInsideRange || wasInProgressDuringEntireRange
+                return startDateInsideRange || endDateInsideRange || wasInProgressDuringEntireRange
             } else {
                 // If the start date is after the display end date, remove the card
                 return new Date(card.startDate) <= dateDisplayEndDate
             }
         }
-
         return true
     })
 

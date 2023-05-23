@@ -31,8 +31,30 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
     const displayDays = getDaysDifference(dateDisplayStartDate, dateDisplayEndDate)
     const pixelsPerDay = displayWidth / displayDays
 
-    const getBarWidth = (startDate, endDate) => {
-        const width = pixelsPerDay * getDaysDifference(startDate, endDate)
+    const getBarWidth = (cardStartDate, cardEndDate, displayStartDate, displayEndDate) => {
+        let width = pixelsPerDay
+
+        if (cardEndDate == "Invalid Date") {
+            // If the card has no end date, it's ongoing and should take up the space until the end of the display
+            width = pixelsPerDay * getDaysDifference(cardStartDate, displayEndDate)
+        } else if (cardStartDate >= displayStartDate && cardEndDate <= displayEndDate) {
+            // If the card has an end date, and all both the card start and end dates are within the display, show it normally
+            width = pixelsPerDay * getDaysDifference(cardStartDate, cardEndDate)
+        } else if (cardStartDate < displayStartDate && cardEndDate > displayEndDate) {
+            // If the card has an end date, but the start and end are both outside the display, show it covering the whole display
+            width = pixelsPerDay * getDaysDifference(displayStartDate, displayEndDate)
+        } else if (cardStartDate < displayStartDate && cardEndDate > displayStartDate) {
+            // If the card has an end date, but the start date is before the display start date, show it from the display start date
+            width = pixelsPerDay * getDaysDifference(displayStartDate, cardEndDate)
+        } else if (cardEndDate >= displayEndDate && cardStartDate < displayEndDate) {
+            // If the card has an end date, but the end date is after the display end date, show it from the display end date
+            width = pixelsPerDay * getDaysDifference(cardStartDate, displayEndDate)
+        }
+        return `${width}px`
+    }
+
+    const getSpacerWidth = (displayStartDate, cardStartDate) => {
+        const width = pixelsPerDay * getDaysDifference(displayStartDate, cardStartDate)
         return `${width}px`
     }
 
@@ -74,20 +96,20 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
                         </Text>
                     </Flex>
                     <Flex ref={displayRef} bg={getBackground(cardIndex)} direction="row" width="79%" borderLeft="5px solid">
-                        <Flex width={getBarWidth(dateDisplayStartDate, new Date(card.startDate))}></Flex>
+                        <Flex width={getSpacerWidth(dateDisplayStartDate, new Date(card.startDate))}></Flex>
                         {card?.endDate && shouldShowCircle(new Date(card.startDate), new Date(card.endDate)) ? (
                             <Box borderRadius={"100%"} my={"2px"} bg={completedTheme} width="20px" />
                         ) : (
                             <Box
                                 borderRightRadius={!card?.endDate || new Date(card?.endDate) > dateDisplayEndDate ? "0px" : "20px"}
-                                borderLeftRadius={new Date(card?.startDate) < dateDisplayStartDate ? "0px" : "20px"}
+                                borderLeftRadius={
+                                    new Date(new Date(card?.startDate).setDate(new Date(card?.startDate).getDate() + 1)) <= dateDisplayStartDate
+                                        ? "0px"
+                                        : "20px"
+                                }
                                 my={"2px"}
                                 bg={card?.endDate ? completedTheme : inProgressTheme}
-                                width={
-                                    card?.endDate
-                                        ? getBarWidth(new Date(card.startDate), new Date(card.endDate))
-                                        : getBarWidth(new Date(card.startDate), dateDisplayEndDate)
-                                }
+                                width={getBarWidth(new Date(card.startDate), new Date(card?.endDate), dateDisplayStartDate, dateDisplayEndDate)}
                             />
                         )}
                         <Flex grow={1} />
