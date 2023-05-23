@@ -87,6 +87,16 @@ const App = () => {
         return dateB.getTime() - dateA.getTime()
     })
 
+    const [selectedCard, setSelectedCard] = useState(null)
+    const galleryCardData = () => {
+        // If a single item is selected, just pass that, else pass the whole array
+        if (selectedCard) {
+            return sortedCardData.filter((card) => card.id === selectedCard)
+        } else {
+            return sortedCardData
+        }
+    }
+
     const [shouldRenderDateComponents, setShouldDateRenderComponents] = useState(true)
     useEffect(() => {
         setShouldDateRenderComponents(windowSize.width >= 1200)
@@ -135,6 +145,8 @@ const App = () => {
                                     sortedCardData={sortedCardData}
                                     dateDisplayStartDate={dateDisplayStartDate}
                                     dateDisplayEndDate={dateDisplayEndDate}
+                                    selectedCard={selectedCard}
+                                    setSelectedCard={setSelectedCard}
                                 />
                             </Box>
                         </>
@@ -144,7 +156,7 @@ const App = () => {
                             windowSize={windowSize}
                             environment={environment}
                             cardData={cardData}
-                            sortedCardData={sortedCardData}
+                            sortedCardData={galleryCardData()}
                             isCardEditorOpen={isCardEditorOpen}
                             setIsCardEditorOpen={setIsCardEditorOpen}
                             cardEditorData={cardEditorData}

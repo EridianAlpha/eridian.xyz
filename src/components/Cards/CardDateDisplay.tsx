@@ -2,7 +2,16 @@ import React, { useState, useEffect, useRef } from "react"
 
 import { useTheme, useColorModeValue, Box, Image, Flex, Text } from "@chakra-ui/react"
 
-export default function CardDateDisplay({ windowSize, environment, cardData, sortedCardData, dateDisplayStartDate, dateDisplayEndDate }) {
+export default function CardDateDisplay({
+    windowSize,
+    environment,
+    cardData,
+    sortedCardData,
+    dateDisplayStartDate,
+    dateDisplayEndDate,
+    selectedCard,
+    setSelectedCard,
+}) {
     const customTheme = useTheme()
     const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
@@ -91,9 +100,30 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
         }
     }
 
+    const handleRangeClick = (cardId) => {
+        if (selectedCard == cardId) {
+            setSelectedCard(null)
+        } else {
+            setSelectedCard(cardId)
+        }
+    }
+
+    const clearSelectedCard = () => {
+        setSelectedCard(null)
+    }
+
     return (
-        <Box width="100%" bg={contentBackground} borderBottomRadius={"30px"} px={"15px"}>
-            <Box ref={scrollBoxRef} onScroll={handleScroll} maxH="60vh" overflow={"auto"}>
+        <Box
+            width="100%"
+            bg={contentBackground}
+            borderBottomRadius={"30px"}
+            px={"15px"}
+            onClick={() => {
+                clearSelectedCard()
+            }}
+        >
+            {/* TODO: Set maxH="60vh" on Box to enable scroll */}
+            <Box ref={scrollBoxRef} onScroll={handleScroll} overflow={"auto"}>
                 {sortedCardData.map((card, cardIndex) => (
                     <Flex key={cardIndex} direction={"row"} justifyContent={"center"}>
                         <Flex direction="row" width="20%">
@@ -123,9 +153,26 @@ export default function CardDateDisplay({ windowSize, environment, cardData, sor
                         <Flex ref={displayRef} bg={getBackground(cardIndex)} direction="row" width="79%" borderLeft="5px solid">
                             <Flex width={getSpacerWidth(dateDisplayStartDate, new Date(card.startDate))}></Flex>
                             {card?.endDate && shouldShowCircle(new Date(card.startDate), new Date(card.endDate)) ? (
-                                <Box borderRadius={"100%"} my={"2px"} bg={completedTheme} width="20px" />
+                                <Box
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        handleRangeClick(card.id)
+                                    }}
+                                    cursor="pointer"
+                                    borderRadius={"100%"}
+                                    my={"2px"}
+                                    bg={completedTheme}
+                                    // TODO: Fade out other colors when not selected
+                                    // bg={selectedCard && selectedCard != card.id ? "blue" : completedTheme}
+                                    width="20px"
+                                />
                             ) : (
                                 <Box
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        handleRangeClick(card.id)
+                                    }}
+                                    cursor="pointer"
                                     borderRightRadius={!card?.endDate || new Date(card?.endDate) > dateDisplayEndDate ? "0px" : "20px"}
                                     borderLeftRadius={
                                         new Date(new Date(card?.startDate).setDate(new Date(card?.startDate).getDate() + 1)) <= dateDisplayStartDate

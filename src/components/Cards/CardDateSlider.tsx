@@ -60,7 +60,17 @@ export default function CardDateSlider({
 
     const earliestStartDate = findEarliestDate()
     const sliderMax = dayDiff(earliestStartDate, new Date())
-    const [sliderValues, setSliderValues] = useState([0, sliderMax])
+    const [sliderValues, setSliderValues] = useState([
+        dayDiff(
+            ((d) => {
+                // Subtract 6 months from today for the slider starting value
+                d.setMonth(d.getMonth() - 6)
+                return d
+            })(new Date()),
+            new Date()
+        ),
+        sliderMax,
+    ])
 
     const handleSliderChange = (newValues) => {
         let [firstValue, secondValue] = newValues

@@ -78,19 +78,24 @@ export default function CardGallery({
     const [imageWidths, setImageWidths] = useState(sortedCardData.map((_, index) => Object.values(sortedCardData[index].images || {}).map(() => 0)))
 
     return (
-        <Box width="100%">
+        <Flex width="100%">
             <Masonry breakpointCols={breakpointCols} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
                 {sortedCardData.map((card, cardIndex) => (
                     <Card
                         key={card.id}
                         ref={cardRefs[cardIndex]}
-                        maxW={"100%"}
+                        // maxW={sortedCardData?.length > 1 ? "100%" : { base: "100%", lg: "80%", xl: "75%" }}
+                        maxW="100%"
                         bg={contentBackground}
                         overflow="hidden"
                         variant="outline"
                         borderRadius={"30px"}
                         borderWidth={0}
-                        mx={{ base: "0px", sm: "10px", md: "20px", xl: "30px" }}
+                        mx={
+                            sortedCardData?.length > 1
+                                ? { base: "0px", sm: "10px", md: "20px", xl: "30px" }
+                                : { base: "0px", sm: "10px", md: "10%", xl: "15%" }
+                        }
                     >
                         <Flex alignItems="center" justifyContent="center" flexDirection={{ base: "column", md: "row" }} width={"100%"}>
                             <Stack flexGrow={1} width="100%">
@@ -237,6 +242,6 @@ export default function CardGallery({
                     cardData={cardData}
                 />
             )}
-        </Box>
+        </Flex>
     )
 }
