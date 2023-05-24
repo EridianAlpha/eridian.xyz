@@ -99,7 +99,7 @@ const App = () => {
 
     const [shouldRenderDateComponents, setShouldDateRenderComponents] = useState(true)
     useEffect(() => {
-        setShouldDateRenderComponents(windowSize.width >= 1200)
+        setShouldDateRenderComponents(windowSize.width >= 1100)
     }, [windowSize.width])
 
     return (
