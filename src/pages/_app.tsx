@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app"
+import { Analytics } from "@vercel/analytics/react"
 import { useState, useEffect } from "react"
 
 import "../styles/globals.css"
@@ -82,6 +83,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <ColorModeScript initialColorMode="dark" />
             <div id="app" className="hideUntilReady">
                 <Component {...pageProps} />
+                <Analytics />
             </div>
         </ChakraProvider>
     )
