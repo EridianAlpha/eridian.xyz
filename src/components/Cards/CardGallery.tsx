@@ -78,7 +78,7 @@ export default function CardGallery({
     const [imageWidths, setImageWidths] = useState(sortedCardData.map((_, index) => Object.values(sortedCardData[index].images || {}).map(() => 0)))
 
     return (
-        <Flex width="100%">
+        <Box width="100%">
             <Masonry breakpointCols={breakpointCols} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
                 {sortedCardData.map((card, cardIndex) => (
                     <Card
@@ -242,6 +242,6 @@ export default function CardGallery({
                     cardData={cardData}
                 />
             )}
-        </Flex>
+        </Box>
     )
 }
