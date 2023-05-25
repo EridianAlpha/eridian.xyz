@@ -164,7 +164,7 @@
         },
         "summary": "",
         "startDate": "2023-03-14",
-        "endDate": "",
+        "endDate": "2023-05-25",
         "externalLinks": {
             "0": {
                 "url": "https://twitter.com/DVStakers/status/1641095639399297025",
@@ -683,6 +683,36 @@
             "1": {
                 "image": "./images/DVStakersCharonDockerFork.png",
                 "alt": "DVStakers Charon Docker Fork"
+            }
+        }
+    },
+    {
+        "id": "JFVN21",
+        "name": "Ether.fi - Docs",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Updating the Ether.fi Documentation GitBook",
+        "startDate": "2023-05-18",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://etherfi.gitbook.io/etherfi/operation-solo-staker",
+                "label": "Ether.fi Docs",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Mainly focused on Operation Solo Staker documentation, but I also updated the other pages and standardized the content style."
+        },
+        "images": {
+            "0": {
+                "image": "./images/EtherFiLogo.png",
+                "alt": "Ether.fi Logo"
+            },
+            "1": {
+                "image": "./images/EtherFiDocs.png",
+                "alt": "Ether.fi Docs"
             }
         }
     }
