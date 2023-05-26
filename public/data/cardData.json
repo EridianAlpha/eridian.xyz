@@ -425,7 +425,7 @@
         },
         "summary": "A reward-generating Ethereum Liquid Staking Token basket with over-collateralized protection.",
         "startDate": "2023-04-20",
-        "endDate": "",
+        "endDate": "2023-05-15",
         "externalLinks": {
             "0": {
                 "url": "https://register.app/#/overview?token=0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8",
@@ -436,10 +436,15 @@
                 "url": "https://twitter.com/ETHPlus_",
                 "label": "@ETHPlus_",
                 "type": "twitter"
+            },
+            "2": {
+                "url": "https://forum.reserve.org/t/rfc-introducing-eth/386/14",
+                "label": "ETH+ RFC",
+                "type": "website"
             }
         },
         "description": {
-            "0": "I started this project at the Reserve Hackathon in ETHDenver 2023. I won the hackathon presentation and continued to work on deploying the token."
+            "0": "I started this project at the Reserve Hackathon in ETHDenver 2023. I won the hackathon presentation and continued to work on deploying the token. This was a great opportunity to learn about DeFi and LSTs."
         },
         "images": {
             "0": {
