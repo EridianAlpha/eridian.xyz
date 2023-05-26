@@ -697,7 +697,7 @@
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "Updating the Ether.fi Documentation GitBook",
+        "summary": "Updating the Ether.fi Documentation GitBook.",
         "startDate": "2023-05-18",
         "endDate": "",
         "externalLinks": {
@@ -718,6 +718,41 @@
             "1": {
                 "image": "./images/EtherFiDocs.png",
                 "alt": "Ether.fi Docs"
+            }
+        }
+    },
+    {
+        "id": "YGX5XP",
+        "name": "SSV - Docs",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Updating the installation documentation for SSV.",
+        "startDate": "2023-05-26",
+        "endDate": "2023-05-26",
+        "externalLinks": {
+            "0": {
+                "url": "https://docs.ssv.network/run-a-node/operator-node/installation",
+                "label": "Installation Docs",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://github.com/bloxapp/gitbook-docs/pull/1",
+                "label": "PR",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/SSVLogo.png",
+                "alt": "SSV Logo"
+            },
+            "1": {
+                "image": "./images/SSVInstallationDocs.png",
+                "alt": "SSV Installation Docs"
             }
         }
     }
