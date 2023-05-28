@@ -546,6 +546,11 @@
                 "url": "https://twitter.com/EridianAlpha/status/1635039986688098304",
                 "label": "Tweet Thread",
                 "type": "twitter"
+            },
+            "2": {
+                "url": "/blog/A6U2PC/",
+                "label": "Local Post",
+                "type": "website"
             }
         },
         "description": {
