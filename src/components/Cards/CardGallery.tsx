@@ -3,7 +3,7 @@ import React, { useState, useMemo } from "react"
 import Masonry from "react-masonry-css"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEdit } from "@fortawesome/free-solid-svg-icons"
+import { faEdit, faXmark } from "@fortawesome/free-solid-svg-icons"
 
 import {
     useTheme,
@@ -39,6 +39,8 @@ export default function CardGallery({
     setIsCardEditorOpen,
     cardEditorData,
     setCardEditorData,
+    selectedCard,
+    setSelectedCard,
 }) {
     let breakpointCols
     if (sortedCardData.length == 1) {
@@ -116,7 +118,7 @@ export default function CardGallery({
                                             <Heading size="md" color={headingColor} pt={3} px={1} pb={2}>
                                                 {card.name}
                                             </Heading>
-                                            {environment === "development" && (
+                                            {(environment === "development" || selectedCard == card.id) && (
                                                 <IconButton
                                                     bg={backgroundColor}
                                                     _hover={{
@@ -131,12 +133,20 @@ export default function CardGallery({
                                                     borderColor={contentBackground}
                                                     aria-label={"Edit card"}
                                                     onClick={() => {
-                                                        setIsCardEditorOpen(true)
-                                                        setCardEditorData(card)
+                                                        if (environment != "development" && selectedCard == card.id) {
+                                                            setSelectedCard(null)
+                                                        } else {
+                                                            setIsCardEditorOpen(true)
+                                                            setCardEditorData(card)
+                                                        }
                                                     }}
                                                 >
                                                     <Box mt={1} mr={1}>
-                                                        <FontAwesomeIcon icon={faEdit} size={"lg"} />
+                                                        {environment != "development" && selectedCard == card.id ? (
+                                                            <FontAwesomeIcon icon={faXmark} size={"lg"} />
+                                                        ) : (
+                                                            <FontAwesomeIcon icon={faEdit} size={"lg"} />
+                                                        )}
                                                     </Box>
                                                 </IconButton>
                                             )}

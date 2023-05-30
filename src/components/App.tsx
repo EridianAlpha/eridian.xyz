@@ -5,7 +5,7 @@ import Header from "./Header/Header"
 import Overview from "./Overview"
 import CardDateSlider from "./Cards/CardDateSlider"
 import CardDateDisplay from "./Cards/CardDateDisplay"
-import ProjectGallery from "./Cards/CardGallery"
+import CardGallery from "./Cards/CardGallery"
 import cardData from "../../public/data/cardData.json"
 
 import { useTheme, useColorModeValue, Container, Box, Flex } from "@chakra-ui/react"
@@ -135,6 +135,7 @@ const App = () => {
                                     isFilterDoneSelected={isFilterDoneSelected}
                                     setIsFilterOngoingSelected={setIsFilterOngoingSelected}
                                     setIsFilterDoneSelected={setIsFilterDoneSelected}
+                                    setSelectedCard={setSelectedCard}
                                 />
                             </Box>
                             <Box width="100%" maxW="100%" mb="40px">
@@ -152,7 +153,7 @@ const App = () => {
                         </>
                     )}
                     <Box maxW="100%">
-                        <ProjectGallery
+                        <CardGallery
                             windowSize={windowSize}
                             environment={environment}
                             cardData={cardData}
@@ -161,6 +162,8 @@ const App = () => {
                             setIsCardEditorOpen={setIsCardEditorOpen}
                             cardEditorData={cardEditorData}
                             setCardEditorData={setCardEditorData}
+                            selectedCard={selectedCard}
+                            setSelectedCard={setSelectedCard}
                         />
                     </Box>
                 </Flex>

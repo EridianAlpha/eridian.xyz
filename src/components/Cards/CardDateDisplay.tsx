@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from "react"
 
 import { useTheme, useColorModeValue, Box, Image, Flex, Text } from "@chakra-ui/react"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
+
 export default function CardDateDisplay({
     windowSize,
     environment,
@@ -112,6 +115,35 @@ export default function CardDateDisplay({
         setSelectedCard(null)
     }
 
+    const changeOpacity = (hexCode, opacity) => {
+        const hexToRgb = (hex) => {
+            const bigint = parseInt(hex.substring(1), 16)
+            const r = (bigint >> 16) & 255
+            const g = (bigint >> 8) & 255
+            const b = bigint & 255
+            return [r, g, b]
+        }
+
+        const [r, g, b] = hexToRgb(hexCode)
+        return `rgba(${r}, ${g}, ${b}, ${opacity})`
+    }
+
+    const cardBackgroundColor = (card) => {
+        if (card?.endDate) {
+            if (!selectedCard || selectedCard == card.id) {
+                return completedTheme
+            } else {
+                return changeOpacity(completedTheme, "0.3")
+            }
+        } else {
+            if (!selectedCard || selectedCard == card.id) {
+                return inProgressTheme
+            } else {
+                return changeOpacity(inProgressTheme, "0.3")
+            }
+        }
+    }
+
     return (
         <Box
             width="100%"
@@ -122,11 +154,17 @@ export default function CardDateDisplay({
                 clearSelectedCard()
             }}
         >
-            {/* TODO: Set maxH="60vh" on Box to enable scroll */}
-            <Box ref={scrollBoxRef} onScroll={handleScroll} overflow={"auto"}>
+            <Box ref={scrollBoxRef} onScroll={handleScroll} overflow={"auto"} maxH="403px">
                 {sortedCardData.map((card, cardIndex) => (
                     <Flex key={cardIndex} direction={"row"} justifyContent={"center"}>
-                        <Flex direction="row" width="20%">
+                        <Flex
+                            direction="row"
+                            width="20%"
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                handleRangeClick(card.id)
+                            }}
+                        >
                             <Image
                                 bg={"#102026"}
                                 objectFit="contain"
@@ -146,9 +184,23 @@ export default function CardDateDisplay({
                                 whiteSpace="nowrap"
                                 textOverflow="ellipsis"
                                 textColor={card?.endDate ? completedTheme : inProgressTheme}
+                                cursor={"pointer"}
                             >
                                 {card.name}
                             </Text>
+                            {selectedCard == card.id && (
+                                <Box
+                                    mr={1}
+                                    bg={getBackground(cardIndex)}
+                                    cursor="pointer"
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        handleRangeClick(card.id)
+                                    }}
+                                >
+                                    <FontAwesomeIcon icon={faCircleXmark} size={"lg"} />
+                                </Box>
+                            )}
                         </Flex>
                         <Flex ref={displayRef} bg={getBackground(cardIndex)} direction="row" width="79%" borderLeft="5px solid">
                             <Flex width={getSpacerWidth(dateDisplayStartDate, new Date(card.startDate))}></Flex>
@@ -161,9 +213,7 @@ export default function CardDateDisplay({
                                     cursor="pointer"
                                     borderRadius={"100%"}
                                     my={"2px"}
-                                    bg={completedTheme}
-                                    // TODO: Fade out other colors when not selected
-                                    // bg={selectedCard && selectedCard != card.id ? "blue" : completedTheme}
+                                    bg={cardBackgroundColor(card)}
                                     width="20px"
                                 />
                             ) : (
@@ -180,7 +230,7 @@ export default function CardDateDisplay({
                                             : "20px"
                                     }
                                     my={"2px"}
-                                    bg={card?.endDate ? completedTheme : inProgressTheme}
+                                    bg={cardBackgroundColor(card)}
                                     width={getBarWidth(new Date(card.startDate), new Date(card?.endDate), dateDisplayStartDate, dateDisplayEndDate)}
                                 />
                             )}
@@ -194,10 +244,11 @@ export default function CardDateDisplay({
                 direction={"row"}
                 justifyContent={"center"}
                 height={"30px"}
-                onClick={handleBottomScrollClick}
-                transition={"background-color 0.2s ease-in-out"}
-                bg={isScrollable ? (isScrolledToBottom ? "null" : "rgba(255, 255, 255, 0.2)") : contentBackground}
-                cursor={isScrollable && !isScrolledToBottom ? "pointer" : "null"}
+                // TODO: Use this button as a "Show/hide all" button that will need to adjust the maxH of the parent Box
+                // onClick={handleBottomScrollClick}
+                // transition={"background-color 0.2s ease-in-out"}
+                // bg={isScrollable ? (isScrolledToBottom ? "null" : "rgba(255, 255, 255, 0.2)") : contentBackground}
+                // cursor={isScrollable && !isScrolledToBottom ? "pointer" : "null"}
                 borderBottomRadius={"30px"}
                 borderTopRadius={"10px"}
             >

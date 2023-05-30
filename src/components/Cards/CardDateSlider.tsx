@@ -29,6 +29,7 @@ export default function CardDateSlider({
     isFilterDoneSelected,
     setIsFilterOngoingSelected,
     setIsFilterDoneSelected,
+    setSelectedCard,
 }) {
     const customTheme = useTheme()
     const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
@@ -172,6 +173,7 @@ export default function CardDateSlider({
                                 onClick={() => {
                                     setIsFilterOngoingSelected(true)
                                     setIsFilterDoneSelected(true)
+                                    setSelectedCard(null)
                                 }}
                                 size="sm"
                                 borderRadius={"20px"}
@@ -183,6 +185,7 @@ export default function CardDateSlider({
                                 onClick={() => {
                                     setIsFilterOngoingSelected(true)
                                     setIsFilterDoneSelected(false)
+                                    setSelectedCard(null)
                                 }}
                                 size="sm"
                                 borderRadius={"20px"}
@@ -197,6 +200,7 @@ export default function CardDateSlider({
                                 onClick={() => {
                                     setIsFilterOngoingSelected(false)
                                     setIsFilterDoneSelected(true)
+                                    setSelectedCard(null)
                                 }}
                                 size="sm"
                                 borderRadius={"20px"}
