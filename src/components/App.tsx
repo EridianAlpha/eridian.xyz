@@ -152,7 +152,7 @@ const App = () => {
                             </Box>
                         </>
                     ) : (
-                        <Card mb={10} p={3} borderRadius={20} textAlign={"center"} fontWeight={"bold"}>
+                        <Card mb={10} px={3} pb={3} pt={1} borderRadius={20} textAlign={"center"} fontWeight={"bold"}>
                             <Text fontSize={"2xl"}>🖥️ 👀</Text>
                             View this website on a larger screen to use the timeline slider
                         </Card>
