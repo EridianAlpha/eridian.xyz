@@ -74,9 +74,6 @@ export default function Overview({ windowSize, environment }) {
                                 <Text>
                                     This website is a public tracker of my past and current Ethereum ecosystem projects and ideas. It is built and
                                     maintained by me using Next.js and Chakra UI, and is deployed on Vercel.
-                                    <br />
-                                    <br />
-                                    It is currently under active development as I try out new design ideas 🏗️
                                 </Text>
                                 <VStack pt="20px">
                                     <Divider borderColor={useColorModeValue("gray.700", "gray.100")} />

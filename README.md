@@ -2,8 +2,6 @@
 
 This is the source code for the [EridianAlpha.com](https://eridianalpha.com) website. The site is a Next.js static site.
 
-> 🏗️ The site is currently under active development as I try out new design ideas 🏗️
-
 ## Development
 
 This project includes a Bash script [build_all_commits.sh](/dev/build_all_commits.sh) that builds the static site for every commit in the git history where visible content was changed, ignoring commits that start with 'DEV'. The generated static sites are saved in folders named with the corresponding commit hash. This script is useful for testing the static site for every commit in the git history.

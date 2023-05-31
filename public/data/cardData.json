@@ -760,5 +760,35 @@
                 "alt": "SSV Installation Docs"
             }
         }
+    },
+    {
+        "id": "T7JOWJ",
+        "name": "Stealth Project",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A new project under development...",
+        "startDate": "2023-05-22",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://xkcd.com/2021/",
+                "label": "🔧",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/EmojiLaptop.png",
+                "alt": ""
+            },
+            "1": {
+                "image": "",
+                "alt": ""
+            }
+        }
     }
 ]

@@ -8,7 +8,7 @@ import CardDateDisplay from "./Cards/CardDateDisplay"
 import CardGallery from "./Cards/CardGallery"
 import cardData from "../../public/data/cardData.json"
 
-import { useTheme, useColorModeValue, Container, Box, Flex } from "@chakra-ui/react"
+import { useTheme, useColorModeValue, Container, Box, Flex, Card, Text } from "@chakra-ui/react"
 
 const App = () => {
     const environment = process.env.NODE_ENV
@@ -121,7 +121,7 @@ const App = () => {
                         />
                         <Overview windowSize={windowSize} environment={environment} />
                     </Box>
-                    {shouldRenderDateComponents && (
+                    {shouldRenderDateComponents ? (
                         <>
                             <Box width="100%" maxW="100%">
                                 <CardDateSlider
@@ -151,6 +151,11 @@ const App = () => {
                                 />
                             </Box>
                         </>
+                    ) : (
+                        <Card mb={10} p={3} borderRadius={20} textAlign={"center"} fontWeight={"bold"}>
+                            <Text fontSize={"2xl"}>🖥️ 👀</Text>
+                            View this website on a larger screen to use the timeline slider
+                        </Card>
                     )}
                     <Box maxW="100%">
                         <CardGallery
