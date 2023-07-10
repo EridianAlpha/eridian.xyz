@@ -441,6 +441,11 @@
                 "url": "https://forum.reserve.org/t/rfc-introducing-eth/386/14",
                 "label": "ETH+ RFC",
                 "type": "website"
+            },
+            "3": {
+                "url": "https://twitter.com/EridianAlpha/status/1648779583406080003",
+                "label": "Twitter Spaces",
+                "type": "twitter"
             }
         },
         "description": {
@@ -784,6 +789,136 @@
             "0": {
                 "image": "./images/EmojiLaptop.png",
                 "alt": ""
+            },
+            "1": {
+                "image": "",
+                "alt": ""
+            }
+        }
+    },
+    {
+        "id": "0P0DRF",
+        "name": "EthStaker - Interview",
+        "displayConfig": {
+            "cardType": "tweet"
+        },
+        "summary": "Talking about the EthStaker Educator role & DVStakers",
+        "startDate": "2023-06-18",
+        "endDate": "2023-06-18",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/Didacticjd/status/1673000133527732224",
+                "label": "Full Interview",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "An interview with EthStaker talking about the educator role as well as what DVStakers is and a quick explanation of DVT."
+        },
+        "images": {
+            "0": {
+                "image": "./images/EthStakerKBLogo.png",
+                "alt": "EthStaker Logo"
+            },
+            "1": {
+                "image": "",
+                "alt": ""
+            }
+        }
+    },
+    {
+        "id": "6R4D7J",
+        "name": "Diva - LST Spaces",
+        "displayConfig": {
+            "cardType": "tweet"
+        },
+        "summary": "Talking about DVT protocols and Diva",
+        "startDate": "2023-06-28",
+        "endDate": "2023-06-28",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/ethStaker/status/1673449840599269376",
+                "label": "Twitter Spaces",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://twitter.com/divastaking/status/1671867930106277888",
+                "label": "Announcement Tweet",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "A Twitter Spaces hosted by EthStaker talking about the launch of the Diva LST protocol."
+        },
+        "images": {
+            "0": {
+                "image": "./images/DivaLogo.png",
+                "alt": ""
+            },
+            "1": {
+                "image": "",
+                "alt": ""
+            }
+        }
+    },
+    {
+        "id": "CQEM2M",
+        "name": "DVStakers - Kenya Node",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Setting up an Ethereum node in Kenya",
+        "startDate": "2023-07-02",
+        "endDate": "2023-07-09",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.dvstakers.com/dvstakers-global/kenya-node",
+                "label": "Docs",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/DVStakers/status/1676905275280744448",
+                "label": "Announcement Tweet",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "DVStakers helped to set up a proof of concept Ethereum DVT node in Nairobi."
+        },
+        "images": {
+            "0": {
+                "image": "./images/DVStakersSquareBlackLogo.png",
+                "alt": "DVStakers Logo"
+            },
+            "1": {
+                "image": "./images/DVStakersKenyaNode.png",
+                "alt": "DVStakers Kenya Node"
+            }
+        }
+    },
+    {
+        "id": "GFRITX",
+        "name": "Ether.fi - Ether.fan Launch",
+        "displayConfig": {
+            "cardType": "tweet"
+        },
+        "summary": "Twitter spaces launching ether.fan NFTs",
+        "startDate": "2023-07-10",
+        "endDate": "2023-07-10",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/ethStaker/status/1676675908202123279",
+                "label": "Twitter Spaces",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/EtherFiLogo.png",
+                "alt": "EtherFi Logo"
             },
             "1": {
                 "image": "",
