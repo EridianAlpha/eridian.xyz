@@ -194,7 +194,7 @@
         },
         "summary": "",
         "startDate": "2023-04-13",
-        "endDate": "",
+        "endDate": "2023-07-14",
         "externalLinks": {},
         "description": {
             "0": ""
@@ -709,7 +709,7 @@
         },
         "summary": "Updating the Ether.fi Documentation GitBook.",
         "startDate": "2023-05-18",
-        "endDate": "",
+        "endDate": "2023-07-15",
         "externalLinks": {
             "0": {
                 "url": "https://etherfi.gitbook.io/etherfi/operation-solo-staker",
@@ -768,31 +768,46 @@
     },
     {
         "id": "T7JOWJ",
-        "name": "Stealth Project",
+        "name": "Staking Directory",
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "A new project under development...",
+        "summary": "A community-maintained directory of Ethereum staking providers.",
         "startDate": "2023-05-22",
         "endDate": "",
         "externalLinks": {
             "0": {
-                "url": "https://xkcd.com/2021/",
-                "label": "🔧",
+                "url": "https://staking.directory",
+                "label": "staking.directory",
                 "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/StakeDirectory/status/1679772937988046848",
+                "label": "Launch Tweet",
+                "type": "twitter"
             }
         },
         "description": {
-            "0": ""
+            "0": "",
+            "1": "View all the Ethereum staking providers (active and in development) in one place.",
+            "2": "View detailed information about each staking provider."
         },
         "images": {
             "0": {
-                "image": "./images/EmojiLaptop.png",
-                "alt": ""
+                "image": "./images/StakingDirectoryLogo.png",
+                "alt": "Staking Directory Logo"
             },
             "1": {
-                "image": "",
-                "alt": ""
+                "image": "./images/StakingDirectoryCover.png",
+                "alt": "Staking Directory Cover"
+            },
+            "2": {
+                "image": "./images/StakingDirectoryCover2.png",
+                "alt": "Staking Directory Table"
+            },
+            "3": {
+                "image": "./images/StakingDirectoryCover3.png",
+                "alt": "Staking Directory Row"
             }
         }
     },
@@ -802,7 +817,7 @@
         "displayConfig": {
             "cardType": "tweet"
         },
-        "summary": "Talking about the EthStaker Educator role & DVStakers",
+        "summary": "Talking about the EthStaker Educator role & DVStakers.",
         "startDate": "2023-06-18",
         "endDate": "2023-06-18",
         "externalLinks": {
@@ -832,7 +847,7 @@
         "displayConfig": {
             "cardType": "tweet"
         },
-        "summary": "Talking about DVT protocols and Diva",
+        "summary": "Talking about DVT protocols and Diva.",
         "startDate": "2023-06-28",
         "endDate": "2023-06-28",
         "externalLinks": {
@@ -863,11 +878,11 @@
     },
     {
         "id": "CQEM2M",
-        "name": "DVStakers - Kenya Node",
+        "name": "DVStakers - Kenya Node 🇰🇪",
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "Setting up an Ethereum node in Kenya",
+        "summary": "Setting up an Ethereum node in Kenya.",
         "startDate": "2023-07-02",
         "endDate": "2023-07-09",
         "externalLinks": {
@@ -902,7 +917,7 @@
         "displayConfig": {
             "cardType": "tweet"
         },
-        "summary": "Twitter spaces launching ether.fan NFTs",
+        "summary": "Twitter spaces launching ether.fan NFTs.",
         "startDate": "2023-07-10",
         "endDate": "2023-07-10",
         "externalLinks": {
@@ -921,8 +936,8 @@
                 "alt": "EtherFi Logo"
             },
             "1": {
-                "image": "",
-                "alt": ""
+                "image": "./images/EtherFanCover.png",
+                "alt": "EtherFan Cover"
             }
         }
     }
