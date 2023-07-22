@@ -913,7 +913,7 @@
     },
     {
         "id": "GFRITX",
-        "name": "Ether.fi - Ether.fan Launch",
+        "name": "Ether.fi - Ether.fan Twitter Spaces",
         "displayConfig": {
             "cardType": "tweet"
         },
@@ -928,7 +928,7 @@
             }
         },
         "description": {
-            "0": ""
+            "0": "Speaking as a DVT solo staking community member on the Ether.fi Twitter Spaces for their ether.fan launch."
         },
         "images": {
             "0": {
@@ -938,6 +938,36 @@
             "1": {
                 "image": "./images/EtherFanCover.png",
                 "alt": "EtherFan Cover"
+            }
+        }
+    },
+    {
+        "id": "WUU2WI",
+        "name": "EthCC[6] - Paris",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "A week in Paris meeting teams focused on staking and DVT.",
+        "startDate": "2023-07-17",
+        "endDate": "2023-07-21",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1682030253781422082",
+                "label": "EthCC",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/EthCCLogo.png",
+                "alt": "EthCC Logo"
+            },
+            "1": {
+                "image": "./images/EthCCCover.jpg",
+                "alt": "EthCC Cover"
             }
         }
     }
