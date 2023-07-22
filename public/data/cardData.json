@@ -1,13 +1,87 @@
 [
     {
-        "id": "3UWCI6",
-        "name": "DVStakers",
-        "startDate": "2023-03-01",
-        "endDate": "",
-        "summary": "The journey of Ethereum solo stakers to distributed validator staking.",
+        "id": "WUU2WI",
+        "name": "EthCC[6] - Paris",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "A week in Paris meeting teams focused on staking and DVT.",
+        "startDate": "2023-07-17",
+        "endDate": "2023-07-21",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1682030253781422082",
+                "label": "EthCC",
+                "type": "twitter"
+            }
+        },
         "description": {
-            "0": "Join us on an adventure as dedicated Ethereum solo stakers prepare to run Distributed Validator Technology (DVT) on the Ethereum mainnet. We aim to document of our journey, offering valuable insights, sharing our experiences, and fostering a supportive community for enthusiasts and experts alike.",
-            "1": "We are long-time cryptocurrency enthusiasts and experienced Ethereum solo stakers. Our contributors write and maintain the EthStaker Knowledge Base, providing an unbiased, open-source collection of useful information and concepts about Ethereum staking."
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/EthCCLogo.png",
+                "alt": "EthCC Logo"
+            },
+            "1": {
+                "image": "./images/EthCCCover.jpg",
+                "alt": "EthCC Cover"
+            }
+        }
+    },
+    {
+        "id": "GFRITX",
+        "name": "Ether.fi - Ether.fan Twitter Spaces",
+        "displayConfig": {
+            "cardType": "tweet"
+        },
+        "summary": "Twitter spaces fir ether.fan NFTs.",
+        "startDate": "2023-07-10",
+        "endDate": "2023-07-10",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/ethStaker/status/1676675908202123279",
+                "label": "Twitter Spaces",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "Speaking as a DVT solo staking community member on the Ether.fi Twitter Spaces for their ether.fan launch."
+        },
+        "images": {
+            "0": {
+                "image": "./images/EtherFiLogo.png",
+                "alt": "EtherFi Logo"
+            },
+            "1": {
+                "image": "./images/EtherFanCover.png",
+                "alt": "EtherFan Cover"
+            }
+        }
+    },
+    {
+        "id": "CQEM2M",
+        "name": "DVStakers - Kenya Node 🇰🇪",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Setting up an Ethereum node in Kenya.",
+        "startDate": "2023-07-02",
+        "endDate": "2023-07-09",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.dvstakers.com/dvstakers-global/kenya-node",
+                "label": "Docs",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/DVStakers/status/1676905275280744448",
+                "label": "Announcement Tweet",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "DVStakers helped to set up a proof of concept Ethereum DVT node in Nairobi."
         },
         "images": {
             "0": {
@@ -15,259 +89,64 @@
                 "alt": "DVStakers Logo"
             },
             "1": {
-                "image": "./images/DVStakers.png",
-                "alt": "DVStakers Infrastructure"
-            },
-            "2": {
-                "image": "./images/DVStakersGrafana.png",
-                "alt": "DVStakers Grafana"
+                "image": "./images/DVStakersKenyaNode.png",
+                "alt": "DVStakers Kenya Node"
             }
-        },
-        "externalLinks": {
-            "0": {
-                "url": "https://www.dvstakers.com",
-                "label": "DVStakers.com",
-                "type": "website"
-            },
-            "1": {
-                "url": "https://twitter.com/DVStakers",
-                "label": "@DVStakers",
-                "type": "twitter"
-            },
-            "2": {
-                "url": "https://discord.gg/VbVwqgSdFD",
-                "label": "DVStakers",
-                "type": "discord"
-            },
-            "3": {
-                "url": "https://github.com/DVStakers",
-                "label": "DVStakers",
-                "type": "github"
-            }
-        },
-        "tags": {
-            "0": "Staking"
-        },
-        "displayConfig": {
-            "cardType": "project"
         }
     },
     {
-        "id": "DLV1A2",
-        "name": "Staking Spreadsheet",
-        "startDate": "2023-03-22",
-        "endDate": "2023-04-05",
-        "summary": "A grant from the EF to build a Spreadsheet showing all the staking options available on Ethereum.",
-        "description": {
-            "0": "Currently being reviewed by the EF."
-        },
-        "images": {
-            "0": {
-                "image": "./images/EFLogo.jpg",
-                "alt": "EF Logo"
-            },
-            "1": {
-                "image": "./images/StakingSpreadsheet.png",
-                "alt": "Staking Spreadsheet"
-            }
-        },
-        "externalLinks": {
-            "0": {
-                "url": "https://ethereum.org",
-                "label": "Ethereum.org",
-                "type": "website"
-            }
-        },
-        "tags": {
-            "0": "Staking",
-            "1": "DVT"
-        },
+        "id": "6R4D7J",
+        "name": "Diva - LST Spaces",
         "displayConfig": {
-            "cardType": "project"
-        }
-    },
-    {
-        "id": "DLN6KN",
-        "name": "Staking Calculator",
-        "startDate": "2023-04-15",
-        "endDate": "2023-04-15",
-        "summary": "Comparing ETH staking rewards over 20 years by customizing the initial conditions.",
-        "description": {
-            "0": ""
+            "cardType": "tweet"
         },
-        "images": {
-            "0": {
-                "image": "./481368551588.png",
-                "alt": "Eridian Avatar"
-            },
-            "1": {
-                "image": "./images/StakingCalculator.png",
-                "alt": "Staking Calculator"
-            }
-        },
+        "summary": "Talking about DVT protocols and Diva.",
+        "startDate": "2023-06-28",
+        "endDate": "2023-06-28",
         "externalLinks": {
             "0": {
-                "url": "https://twitter.com/EridianAlpha/status/1647367943724978181",
-                "label": "Tweet",
+                "url": "https://twitter.com/ethStaker/status/1673449840599269376",
+                "label": "Twitter Spaces",
                 "type": "twitter"
             },
             "1": {
-                "url": "https://docs.google.com/spreadsheets/d/1AexsOVWH-aBmJBIdkTD_qAtdVk_taeuNwpg-15kBLmA",
-                "label": "Staking Calculator",
-                "type": "website"
-            }
-        },
-        "displayConfig": {
-            "cardType": "project"
-        }
-    },
-    {
-        "id": "913EJZ",
-        "name": "Obol Docs Review",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "Updating Obol documentation.",
-        "startDate": "2023-02-10",
-        "endDate": "2023-03-20",
-        "externalLinks": {
-            "0": {
-                "url": "https://docs.obol.tech",
-                "label": "Obol Docs",
-                "type": "website"
-            },
-            "1": {
-                "url": "https://github.com/ObolNetwork/obol-docs/pulls?q=is%3Apr+author%3Aeridianalpha",
-                "label": "GitHub PRs",
-                "type": "github"
+                "url": "https://twitter.com/divastaking/status/1671867930106277888",
+                "label": "Announcement Tweet",
+                "type": "twitter"
             }
         },
         "description": {
-            "0": ""
+            "0": "A Twitter Spaces hosted by EthStaker talking about the launch of the Diva LST protocol."
         },
         "images": {
             "0": {
-                "image": "./images/ObolLogo.png",
+                "image": "./images/DivaLogo.png",
                 "alt": ""
             },
             "1": {
-                "image": "./images/ObolDocsExample.png",
-                "alt": "Obol Docs Example"
+                "image": "",
+                "alt": ""
             }
         }
     },
     {
-        "id": "AEI23E",
-        "name": "Lido - Obol DVT Trial",
+        "id": "0P0DRF",
+        "name": "EthStaker - Interview",
         "displayConfig": {
-            "cardType": "project"
+            "cardType": "tweet"
         },
-        "summary": "",
-        "startDate": "2023-03-14",
-        "endDate": "2023-05-25",
+        "summary": "Talking about the EthStaker Educator role & DVStakers.",
+        "startDate": "2023-06-18",
+        "endDate": "2023-06-18",
         "externalLinks": {
             "0": {
-                "url": "https://twitter.com/DVStakers/status/1641095639399297025",
-                "label": "Community Trial",
+                "url": "https://twitter.com/Didacticjd/status/1673000133527732224",
+                "label": "Full Interview",
                 "type": "twitter"
             }
         },
         "description": {
-            "0": ""
-        },
-        "images": {
-            "0": {
-                "image": "./images/LidoLogo.png",
-                "alt": "Lido Logo"
-            },
-            "1": {
-                "image": "./images/LidoObolDVTCover.png",
-                "alt": "Lido Obol DVT"
-            }
-        }
-    },
-    {
-        "id": "UB47BG",
-        "name": "Lido - SSV DVT Trial",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "",
-        "startDate": "2023-04-13",
-        "endDate": "2023-07-14",
-        "externalLinks": {},
-        "description": {
-            "0": ""
-        },
-        "images": {
-            "0": {
-                "image": "./images/LidoLogo.png",
-                "alt": "Lido Logo"
-            },
-            "1": {
-                "image": "./images/LidoSSVDVT.png",
-                "alt": "Lido SSV DVT"
-            }
-        }
-    },
-    {
-        "id": "17DJZM",
-        "name": "Ether.fi - Operation Solo Staker",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "DVT Home Staking. Decentralizing Ethereum one node at a time!",
-        "startDate": "2023-05-12",
-        "endDate": "",
-        "externalLinks": {
-            "0": {
-                "url": "https://twitter.com/ether_fi/status/1657028498786070531",
-                "label": "Announcement Tweet",
-                "type": "twitter"
-            },
-            "1": {
-                "url": "https://etherfi.gitbook.io/etherfi/operation-solo-staker",
-                "label": "Documentation",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": "As a Solo Staker ambassador for Ether.fi I wrote the documentation for the program."
-        },
-        "images": {
-            "0": {
-                "image": "./images/EtherFiLogo.png",
-                "alt": "Ether.fi Logo"
-            },
-            "1": {
-                "image": "./images/EtherFiSoloStakerMeme.png",
-                "alt": "Ether.fi Solo Staker Meme"
-            }
-        }
-    },
-    {
-        "id": "IOYH4F",
-        "name": "EthStaker Knowledge Base",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "An unbiased, open-source collection of useful information and concepts about Ethereum staking.",
-        "startDate": "2022-10-20",
-        "endDate": "",
-        "externalLinks": {
-            "0": {
-                "url": "https://docs.ethstaker.cc/",
-                "label": "EthStaker KB",
-                "type": "website"
-            },
-            "1": {
-                "url": "https://github.com/eth-educators/ethstaker-knowledgebase",
-                "label": "Reop",
-                "type": "github"
-            }
-        },
-        "description": {
-            "0": ""
+            "0": "An interview with EthStaker talking about the educator role as well as what DVStakers is and a quick explanation of DVT."
         },
         "images": {
             "0": {
@@ -275,459 +154,8 @@
                 "alt": "EthStaker Logo"
             },
             "1": {
-                "image": "./images/EthStakerKB.png",
-                "alt": "EthStaker KB"
-            }
-        }
-    },
-    {
-        "id": "JGJLX1",
-        "name": "ETHDenver 2023",
-        "displayConfig": {
-            "cardType": "event"
-        },
-        "summary": "A conference in Denver where I attended the hackathon and worked on staking related projects.",
-        "startDate": "2023-02-24",
-        "endDate": "2023-03-05",
-        "externalLinks": {},
-        "description": {
-            "0": ""
-        },
-        "images": {
-            "0": {
-                "image": "./images/ETHDenverLogo.png",
-                "alt": "EthDenver Logo"
-            },
-            "1": {
-                "image": "./images/ETHDenver2023.png",
-                "alt": "Eth Denver 2023"
-            }
-        }
-    },
-    {
-        "id": "0CZ1GR",
-        "name": "DevCon 2022",
-        "displayConfig": {
-            "cardType": "event"
-        },
-        "summary": "Attended my first Ethereum conference in Bogota.",
-        "startDate": "2022-10-11",
-        "endDate": "2022-10-14",
-        "externalLinks": {
-            "0": {
-                "url": "https://twitter.com/EridianAlpha/status/1579900040394706944",
-                "label": "Opening Ceremony",
-                "type": "twitter"
-            },
-            "1": {
-                "url": "https://twitter.com/EridianAlpha/status/1579937614177906688?s=20",
-                "label": "Vitalik ZK Talk",
-                "type": "twitter"
-            }
-        },
-        "description": {
-            "0": ""
-        },
-        "images": {
-            "0": {
-                "image": "./images/DevCon2022Logo.png",
-                "alt": "DevCon 2022 Logo"
-            },
-            "1": {
-                "image": "./images/DevCon2022Cover.png",
-                "alt": "DevCon 2022 Cover"
-            }
-        }
-    },
-    {
-        "id": "H8KSFC",
-        "name": "Staking Summit 2022",
-        "displayConfig": {
-            "cardType": "event"
-        },
-        "summary": "A one day conference in Lisbon hosted by Staking Rewards all about Ethereum Staking.",
-        "startDate": "2022-11-08",
-        "endDate": "2022-11-08",
-        "externalLinks": {
-            "0": {
-                "url": "https://twitter.com/StakingRewards/status/1603673650716344320",
-                "label": "Interview Tweet",
-                "type": "twitter"
-            },
-            "1": {
-                "url": "https://www.youtube.com/watch?v=tUtXBvuVw1A",
-                "label": "Interview Video",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": ""
-        },
-        "images": {
-            "0": {
-                "image": "./images/StakingRewardsLogo.png",
-                "alt": "Staking Rewards Logo"
-            },
-            "1": {
-                "image": "./images/StakingSummit2022Cover.png",
-                "alt": "Staking Summit 2022"
-            },
-            "2": {
-                "image": "./images/StakingSummit2022Venue.png",
-                "alt": "Staking Summit 2022 Venue"
-            },
-            "3": {
-                "image": "./images/StakingSummit2022Eridian.png",
-                "alt": "Staking Summit 2022 Eridian"
-            }
-        }
-    },
-    {
-        "id": "P8HCUS",
-        "name": "EridianAlpha.com",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "This website 👀",
-        "startDate": "2023-04-18",
-        "endDate": "2023-05-31",
-        "externalLinks": {
-            "0": {
-                "url": "https://eridianalpha.com",
-                "label": "EridianAlpha Website",
-                "type": "website"
-            },
-            "1": {
-                "url": "https://github.com/EridianAlpha/eridianalpha.com",
-                "label": "Repo",
-                "type": "github"
-            }
-        },
-        "description": {
-            "0": ""
-        },
-        "images": {
-            "0": {
                 "image": "",
                 "alt": ""
-            },
-            "1": {
-                "image": "./images/DateSliderDesigns.png",
-                "alt": "Date Slider Designs"
-            }
-        }
-    },
-    {
-        "id": "RAX70W",
-        "name": "ETH+",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "A reward-generating Ethereum Liquid Staking Token basket with over-collateralized protection.",
-        "startDate": "2023-04-20",
-        "endDate": "2023-05-15",
-        "externalLinks": {
-            "0": {
-                "url": "https://register.app/#/overview?token=0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8",
-                "label": "Token Register",
-                "type": "website"
-            },
-            "1": {
-                "url": "https://twitter.com/ETHPlus_",
-                "label": "@ETHPlus_",
-                "type": "twitter"
-            },
-            "2": {
-                "url": "https://forum.reserve.org/t/rfc-introducing-eth/386/14",
-                "label": "ETH+ RFC",
-                "type": "website"
-            },
-            "3": {
-                "url": "https://twitter.com/EridianAlpha/status/1648779583406080003",
-                "label": "Twitter Spaces",
-                "type": "twitter"
-            }
-        },
-        "description": {
-            "0": "I started this project at the Reserve Hackathon in ETHDenver 2023. I won the hackathon presentation and continued to work on deploying the token. This was a great opportunity to learn about DeFi and LSTs."
-        },
-        "images": {
-            "0": {
-                "image": "./images/ETHPlus.png",
-                "alt": "ETHPlus Logo"
-            },
-            "1": {
-                "image": "/images/ETHPlusCoverImage.png",
-                "alt": "ETHPlus Mandate"
-            }
-        }
-    },
-    {
-        "id": "NURRGV",
-        "name": "lsdETH Hackathon",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "Reserve hackathon winner at ETHDenver 2023.",
-        "startDate": "2023-03-01",
-        "endDate": "2023-03-01",
-        "externalLinks": {
-            "0": {
-                "url": "https://docs.google.com/presentation/d/1GTvRFy6Cvpf4KwY-nVkl3xIgn81x7ehmZ0zyUJrBijg",
-                "label": "Presentation",
-                "type": "website"
-            },
-            "1": {
-                "url": "https://twitter.com/reserveprotocol/status/1631423393227763712?s=20",
-                "label": "1st Place Tweet",
-                "type": "twitter"
-            }
-        },
-        "description": {
-            "0": "I designed a community-supported Ethereum Liquid Staking Token (LST) basket."
-        },
-        "images": {
-            "0": {
-                "image": "./images/lsdETHLogo.png",
-                "alt": "lsdETH Logo"
-            },
-            "1": {
-                "image": "./images/lsdETHPresentation.png",
-                "alt": "lsdETH Presentation"
-            }
-        }
-    },
-    {
-        "id": "H0BEU5",
-        "name": "StakeWise V3 Testnet",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "Contributed to testing StakeWise V3 Vaults.",
-        "startDate": "2023-03-01",
-        "endDate": "2023-04-10",
-        "externalLinks": {
-            "0": {
-                "url": "https://twitter.com/EridianAlpha/status/1636027791228428289",
-                "label": "DVT Validator",
-                "type": "twitter"
-            },
-            "1": {
-                "url": "https://twitter.com/EridianAlpha/status/1636526676317470720",
-                "label": "Valut DVT attestations",
-                "type": "twitter"
-            }
-        },
-        "description": {
-            "0": "During this trial, I set up the vault \"Eridian Staked ETH\" with the token EridianETH. I then added a number of validators to the vault, each of which ran on a different platform. One ran on a vanilla validator on my home machine, one ran on a local Obol DVT cluster, and one ran on a distributed DVStakers Obol DVT cluster."
-        },
-        "images": {
-            "0": {
-                "image": "./images/StakeWiseLogo.png",
-                "alt": "StakeWise Logo"
-            },
-            "1": {
-                "image": "./images/StakeWiseV3TestnetCover.png",
-                "alt": "EridianETH Vault"
-            }
-        }
-    },
-    {
-        "id": "A6U2PC",
-        "name": "Lazy Multi-Block MEV",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "Profitable Censorship through Lazy Multi-Block MEV.",
-        "startDate": "2023-03-12",
-        "endDate": "2023-03-12",
-        "externalLinks": {
-            "0": {
-                "url": "https://eridianalpha.medium.com/profitable-censorship-through-lazy-multi-block-mev-ethereum-f43d009d3f4b",
-                "label": "Medium Post",
-                "type": "website"
-            },
-            "1": {
-                "url": "https://twitter.com/EridianAlpha/status/1635039986688098304",
-                "label": "Tweet Thread",
-                "type": "twitter"
-            },
-            "2": {
-                "url": "/blog/A6U2PC/",
-                "label": "Local Post",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": "I wrote this blog post after discussions I had at ETHDenver 2023 with @MTorgin and @austonst."
-        },
-        "images": {
-            "0": {
-                "image": "",
-                "alt": ""
-            },
-            "1": {
-                "image": "./images/MultiBlockMEVCover.png",
-                "alt": "Multi-block MEV Cover Image"
-            }
-        }
-    },
-    {
-        "id": "53SKFP",
-        "name": "Ethereum Solo Staking",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "Running Ethereum solo home staking validators.",
-        "startDate": "2022-07-22",
-        "endDate": "",
-        "externalLinks": {
-            "0": {
-                "url": "https://docs.ethstaker.cc/ethstaker-knowledge-base/hardware/hardware-examples/nuc-eridian",
-                "label": "Hardware Setup",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": ""
-        },
-        "images": {
-            "0": {
-                "image": "",
-                "alt": ""
-            },
-            "1": {
-                "image": "./images/HomeStakingNuc.png",
-                "alt": "Home Staking Nuc"
-            }
-        }
-    },
-    {
-        "id": "NANJJB",
-        "name": "NFT Image Locator",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "A simple React app using Chakra UI for finding the image location of an NFT.",
-        "startDate": "2023-02-06",
-        "endDate": "2023-02-23",
-        "externalLinks": {
-            "0": {
-                "url": "https://github.com/EridianAlpha/nft-image-locator-html",
-                "label": "Repo",
-                "type": "github"
-            },
-            "1": {
-                "url": "https://nft-image-locator-html.vercel.app",
-                "label": "Live App",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": ""
-        },
-        "images": {
-            "0": {
-                "image": "./images/NFTImageLocatorLogo.png",
-                "alt": "NFT Image Locator Logo"
-            },
-            "1": {
-                "image": "./images/NFTImageLocatorApp.png",
-                "alt": "NFT Image Locator App"
-            },
-            "2": {
-                "image": "./images/NFTImageLocatorResults.png",
-                "alt": "NFT Image Locator Results"
-            }
-        }
-    },
-    {
-        "id": "2OUY9K",
-        "name": "DVStakers - GPT4 Updater",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "Using Chat GPT-4 to automatically update the docker-compose.yaml image versions.",
-        "startDate": "2023-04-29",
-        "endDate": "2023-05-04",
-        "externalLinks": {
-            "0": {
-                "url": "https://github.com/DVStakers/gpt-updates",
-                "label": "Repo",
-                "type": "github"
-            }
-        },
-        "description": {
-            "0": ""
-        },
-        "images": {
-            "0": {
-                "image": "./images/DVStakersSquareBlackLogo.png",
-                "alt": "DVStakers Logo"
-            },
-            "1": {
-                "image": "./images/DVStakersGPT4Updater.png",
-                "alt": "GPT4 Prompt"
-            }
-        }
-    },
-    {
-        "id": "2PNOBX",
-        "name": "DVStakers - Charon Docker Fork",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "A customized fork of the Charon Docker cluster running a 6/9 threshold.",
-        "startDate": "2023-03-23",
-        "endDate": "2023-04-26",
-        "externalLinks": {
-            "0": {
-                "url": "https://github.com/DVStakers/charon-distributed-validator-cluster",
-                "label": "Repo",
-                "type": "github"
-            }
-        },
-        "description": {
-            "0": ""
-        },
-        "images": {
-            "0": {
-                "image": "./images/DVStakersSquareBlackLogo.png",
-                "alt": "DVStakers Logo"
-            },
-            "1": {
-                "image": "./images/DVStakersCharonDockerFork.png",
-                "alt": "DVStakers Charon Docker Fork"
-            }
-        }
-    },
-    {
-        "id": "JFVN21",
-        "name": "Ether.fi - Docs",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "Updating the Ether.fi Documentation GitBook.",
-        "startDate": "2023-05-18",
-        "endDate": "2023-07-15",
-        "externalLinks": {
-            "0": {
-                "url": "https://etherfi.gitbook.io/etherfi/operation-solo-staker",
-                "label": "Ether.fi Docs",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": "Mainly focused on Operation Solo Staker documentation, but I also updated the other pages and standardized the content style."
-        },
-        "images": {
-            "0": {
-                "image": "./images/EtherFiLogo.png",
-                "alt": "Ether.fi Logo"
-            },
-            "1": {
-                "image": "./images/EtherFiDocs.png",
-                "alt": "Ether.fi Docs"
             }
         }
     },
@@ -812,93 +240,88 @@
         }
     },
     {
-        "id": "0P0DRF",
-        "name": "EthStaker - Interview",
-        "displayConfig": {
-            "cardType": "tweet"
-        },
-        "summary": "Talking about the EthStaker Educator role & DVStakers.",
-        "startDate": "2023-06-18",
-        "endDate": "2023-06-18",
-        "externalLinks": {
-            "0": {
-                "url": "https://twitter.com/Didacticjd/status/1673000133527732224",
-                "label": "Full Interview",
-                "type": "twitter"
-            }
-        },
-        "description": {
-            "0": "An interview with EthStaker talking about the educator role as well as what DVStakers is and a quick explanation of DVT."
-        },
-        "images": {
-            "0": {
-                "image": "./images/EthStakerKBLogo.png",
-                "alt": "EthStaker Logo"
-            },
-            "1": {
-                "image": "",
-                "alt": ""
-            }
-        }
-    },
-    {
-        "id": "6R4D7J",
-        "name": "Diva - LST Spaces",
-        "displayConfig": {
-            "cardType": "tweet"
-        },
-        "summary": "Talking about DVT protocols and Diva.",
-        "startDate": "2023-06-28",
-        "endDate": "2023-06-28",
-        "externalLinks": {
-            "0": {
-                "url": "https://twitter.com/ethStaker/status/1673449840599269376",
-                "label": "Twitter Spaces",
-                "type": "twitter"
-            },
-            "1": {
-                "url": "https://twitter.com/divastaking/status/1671867930106277888",
-                "label": "Announcement Tweet",
-                "type": "twitter"
-            }
-        },
-        "description": {
-            "0": "A Twitter Spaces hosted by EthStaker talking about the launch of the Diva LST protocol."
-        },
-        "images": {
-            "0": {
-                "image": "./images/DivaLogo.png",
-                "alt": ""
-            },
-            "1": {
-                "image": "",
-                "alt": ""
-            }
-        }
-    },
-    {
-        "id": "CQEM2M",
-        "name": "DVStakers - Kenya Node 🇰🇪",
+        "id": "JFVN21",
+        "name": "Ether.fi - Docs",
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "Setting up an Ethereum node in Kenya.",
-        "startDate": "2023-07-02",
-        "endDate": "2023-07-09",
+        "summary": "Updating the Ether.fi Documentation GitBook.",
+        "startDate": "2023-05-18",
+        "endDate": "2023-07-15",
         "externalLinks": {
             "0": {
-                "url": "https://www.dvstakers.com/dvstakers-global/kenya-node",
-                "label": "Docs",
+                "url": "https://etherfi.gitbook.io/etherfi/operation-solo-staker",
+                "label": "Ether.fi Docs",
                 "type": "website"
-            },
-            "1": {
-                "url": "https://twitter.com/DVStakers/status/1676905275280744448",
-                "label": "Announcement Tweet",
-                "type": "twitter"
             }
         },
         "description": {
-            "0": "DVStakers helped to set up a proof of concept Ethereum DVT node in Nairobi."
+            "0": "Mainly focused on Operation Solo Staker documentation, but I also updated the other pages and standardized the content style."
+        },
+        "images": {
+            "0": {
+                "image": "./images/EtherFiLogo.png",
+                "alt": "Ether.fi Logo"
+            },
+            "1": {
+                "image": "./images/EtherFiDocs.png",
+                "alt": "Ether.fi Docs"
+            }
+        }
+    },
+    {
+        "id": "17DJZM",
+        "name": "Ether.fi - Operation Solo Staker",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "DVT Home Staking. Decentralizing Ethereum one node at a time!",
+        "startDate": "2023-05-12",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/ether_fi/status/1657028498786070531",
+                "label": "Announcement Tweet",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://etherfi.gitbook.io/etherfi/operation-solo-staker",
+                "label": "Documentation",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "As a Solo Staker ambassador for Ether.fi I wrote the documentation for the program."
+        },
+        "images": {
+            "0": {
+                "image": "./images/EtherFiLogo.png",
+                "alt": "Ether.fi Logo"
+            },
+            "1": {
+                "image": "./images/EtherFiSoloStakerMeme.png",
+                "alt": "Ether.fi Solo Staker Meme"
+            }
+        }
+    },
+    {
+        "id": "2OUY9K",
+        "name": "DVStakers - GPT4 Updater",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Using Chat GPT-4 to automatically update the docker-compose.yaml image versions.",
+        "startDate": "2023-04-29",
+        "endDate": "2023-05-04",
+        "externalLinks": {
+            "0": {
+                "url": "https://github.com/DVStakers/gpt-updates",
+                "label": "Repo",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": ""
         },
         "images": {
             "0": {
@@ -906,54 +329,227 @@
                 "alt": "DVStakers Logo"
             },
             "1": {
-                "image": "./images/DVStakersKenyaNode.png",
-                "alt": "DVStakers Kenya Node"
+                "image": "./images/DVStakersGPT4Updater.png",
+                "alt": "GPT4 Prompt"
             }
         }
     },
     {
-        "id": "GFRITX",
-        "name": "Ether.fi - Ether.fan Twitter Spaces",
+        "id": "RAX70W",
+        "name": "ETH+",
         "displayConfig": {
-            "cardType": "tweet"
+            "cardType": "project"
         },
-        "summary": "Twitter spaces launching ether.fan NFTs.",
-        "startDate": "2023-07-10",
-        "endDate": "2023-07-10",
+        "summary": "A reward-generating Ethereum Liquid Staking Token basket with over-collateralized protection.",
+        "startDate": "2023-04-20",
+        "endDate": "2023-05-15",
         "externalLinks": {
             "0": {
-                "url": "https://twitter.com/ethStaker/status/1676675908202123279",
+                "url": "https://register.app/#/overview?token=0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8",
+                "label": "Token Register",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/ETHPlus_",
+                "label": "@ETHPlus_",
+                "type": "twitter"
+            },
+            "2": {
+                "url": "https://forum.reserve.org/t/rfc-introducing-eth/386/14",
+                "label": "ETH+ RFC",
+                "type": "website"
+            },
+            "3": {
+                "url": "https://twitter.com/EridianAlpha/status/1648779583406080003",
                 "label": "Twitter Spaces",
                 "type": "twitter"
             }
         },
         "description": {
-            "0": "Speaking as a DVT solo staking community member on the Ether.fi Twitter Spaces for their ether.fan launch."
+            "0": "I started this project at the Reserve Hackathon in ETHDenver 2023. I won the hackathon presentation and continued to work on deploying the token. This was a great opportunity to learn about DeFi and LSTs."
         },
         "images": {
             "0": {
-                "image": "./images/EtherFiLogo.png",
-                "alt": "EtherFi Logo"
+                "image": "./images/ETHPlus.png",
+                "alt": "ETHPlus Logo"
             },
             "1": {
-                "image": "./images/EtherFanCover.png",
-                "alt": "EtherFan Cover"
+                "image": "/images/ETHPlusCoverImage.png",
+                "alt": "ETHPlus Mandate"
             }
         }
     },
     {
-        "id": "WUU2WI",
-        "name": "EthCC[6] - Paris",
+        "id": "P8HCUS",
+        "name": "EridianAlpha.com",
         "displayConfig": {
-            "cardType": "event"
+            "cardType": "project"
         },
-        "summary": "A week in Paris meeting teams focused on staking and DVT.",
-        "startDate": "2023-07-17",
-        "endDate": "2023-07-21",
+        "summary": "This website 👀",
+        "startDate": "2023-04-18",
+        "endDate": "2023-05-31",
         "externalLinks": {
             "0": {
-                "url": "https://twitter.com/EridianAlpha/status/1682030253781422082",
-                "label": "EthCC",
+                "url": "https://eridianalpha.com",
+                "label": "EridianAlpha Website",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://github.com/EridianAlpha/eridianalpha.com",
+                "label": "Repo",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/DateSliderDesigns.png",
+                "alt": "Date Slider Designs"
+            }
+        }
+    },
+    {
+        "id": "DLN6KN",
+        "name": "Staking Calculator",
+        "startDate": "2023-04-15",
+        "endDate": "2023-04-15",
+        "summary": "Comparing ETH staking rewards over 20 years by customizing the initial conditions.",
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./481368551588.png",
+                "alt": "Eridian Avatar"
+            },
+            "1": {
+                "image": "./images/StakingCalculator.png",
+                "alt": "Staking Calculator"
+            }
+        },
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1647367943724978181",
+                "label": "Tweet",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://docs.google.com/spreadsheets/d/1AexsOVWH-aBmJBIdkTD_qAtdVk_taeuNwpg-15kBLmA",
+                "label": "Staking Calculator",
+                "type": "website"
+            }
+        },
+        "displayConfig": {
+            "cardType": "project"
+        }
+    },
+    {
+        "id": "UB47BG",
+        "name": "Lido - SSV DVT Trial",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A community staker participating in a DVT trial.",
+        "startDate": "2023-04-13",
+        "endDate": "2023-07-14",
+        "externalLinks": {},
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoLogo.png",
+                "alt": "Lido Logo"
+            },
+            "1": {
+                "image": "./images/LidoSSVDVT.png",
+                "alt": "Lido SSV DVT"
+            }
+        }
+    },
+    {
+        "id": "2PNOBX",
+        "name": "DVStakers - Charon Docker Fork",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A customized fork of the Charon Docker cluster running a 6/9 threshold.",
+        "startDate": "2023-03-23",
+        "endDate": "2023-04-26",
+        "externalLinks": {
+            "0": {
+                "url": "https://github.com/DVStakers/charon-distributed-validator-cluster",
+                "label": "Repo",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/DVStakersSquareBlackLogo.png",
+                "alt": "DVStakers Logo"
+            },
+            "1": {
+                "image": "./images/DVStakersCharonDockerFork.png",
+                "alt": "DVStakers Charon Docker Fork"
+            }
+        }
+    },
+    {
+        "id": "DLV1A2",
+        "name": "Staking Spreadsheet",
+        "startDate": "2023-03-22",
+        "endDate": "2023-04-05",
+        "summary": "A grant from the EF to build a Spreadsheet showing all the staking options available on Ethereum.",
+        "description": {
+            "0": "Currently being reviewed by the EF."
+        },
+        "images": {
+            "0": {
+                "image": "./images/EFLogo.jpg",
+                "alt": "EF Logo"
+            },
+            "1": {
+                "image": "./images/StakingSpreadsheet.png",
+                "alt": "Staking Spreadsheet"
+            }
+        },
+        "externalLinks": {
+            "0": {
+                "url": "https://ethereum.org",
+                "label": "Ethereum.org",
+                "type": "website"
+            }
+        },
+        "tags": {
+            "0": "Staking",
+            "1": "DVT"
+        },
+        "displayConfig": {
+            "cardType": "project"
+        }
+    },
+    {
+        "id": "AEI23E",
+        "name": "Lido - Obol DVT Trial",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A community staker participating in a DVT trial.",
+        "startDate": "2023-03-14",
+        "endDate": "2023-05-25",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/DVStakers/status/1641095639399297025",
+                "label": "Community Trial",
                 "type": "twitter"
             }
         },
@@ -962,12 +558,416 @@
         },
         "images": {
             "0": {
-                "image": "./images/EthCCLogo.png",
-                "alt": "EthCC Logo"
+                "image": "./images/LidoLogo.png",
+                "alt": "Lido Logo"
             },
             "1": {
-                "image": "./images/EthCCCover.jpg",
-                "alt": "EthCC Cover"
+                "image": "./images/LidoObolDVTCover.png",
+                "alt": "Lido Obol DVT"
+            }
+        }
+    },
+    {
+        "id": "A6U2PC",
+        "name": "Lazy Multi-Block MEV",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Profitable Censorship through Lazy Multi-Block MEV.",
+        "startDate": "2023-03-12",
+        "endDate": "2023-03-12",
+        "externalLinks": {
+            "0": {
+                "url": "https://eridianalpha.medium.com/profitable-censorship-through-lazy-multi-block-mev-ethereum-f43d009d3f4b",
+                "label": "Medium Post",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/EridianAlpha/status/1635039986688098304",
+                "label": "Tweet Thread",
+                "type": "twitter"
+            },
+            "2": {
+                "url": "/blog/A6U2PC/",
+                "label": "Local Post",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "I wrote this blog post after discussions I had at ETHDenver 2023 with @MTorgin and @austonst."
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/MultiBlockMEVCover.png",
+                "alt": "Multi-block MEV Cover Image"
+            }
+        }
+    },
+    {
+        "id": "3UWCI6",
+        "name": "DVStakers",
+        "startDate": "2023-03-01",
+        "endDate": "",
+        "summary": "The journey of Ethereum solo stakers to distributed validator staking.",
+        "description": {
+            "0": "Join us on an adventure as dedicated Ethereum solo stakers prepare to run Distributed Validator Technology (DVT) on the Ethereum mainnet. We aim to document of our journey, offering valuable insights, sharing our experiences, and fostering a supportive community for enthusiasts and experts alike.",
+            "1": "We are long-time cryptocurrency enthusiasts and experienced Ethereum solo stakers. Our contributors write and maintain the EthStaker Knowledge Base, providing an unbiased, open-source collection of useful information and concepts about Ethereum staking."
+        },
+        "images": {
+            "0": {
+                "image": "./images/DVStakersSquareBlackLogo.png",
+                "alt": "DVStakers Logo"
+            },
+            "1": {
+                "image": "./images/DVStakers.png",
+                "alt": "DVStakers Infrastructure"
+            },
+            "2": {
+                "image": "./images/DVStakersGrafana.png",
+                "alt": "DVStakers Grafana"
+            }
+        },
+        "externalLinks": {
+            "0": {
+                "url": "https://www.dvstakers.com",
+                "label": "DVStakers.com",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/DVStakers",
+                "label": "@DVStakers",
+                "type": "twitter"
+            },
+            "2": {
+                "url": "https://discord.gg/VbVwqgSdFD",
+                "label": "DVStakers",
+                "type": "discord"
+            },
+            "3": {
+                "url": "https://github.com/DVStakers",
+                "label": "DVStakers",
+                "type": "github"
+            }
+        },
+        "tags": {
+            "0": "Staking"
+        },
+        "displayConfig": {
+            "cardType": "project"
+        }
+    },
+    {
+        "id": "NURRGV",
+        "name": "lsdETH Hackathon",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Reserve hackathon winner at ETHDenver 2023.",
+        "startDate": "2023-03-01",
+        "endDate": "2023-03-01",
+        "externalLinks": {
+            "0": {
+                "url": "https://docs.google.com/presentation/d/1GTvRFy6Cvpf4KwY-nVkl3xIgn81x7ehmZ0zyUJrBijg",
+                "label": "Presentation",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/reserveprotocol/status/1631423393227763712?s=20",
+                "label": "1st Place Tweet",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "I designed a community-supported Ethereum Liquid Staking Token (LST) basket."
+        },
+        "images": {
+            "0": {
+                "image": "./images/lsdETHLogo.png",
+                "alt": "lsdETH Logo"
+            },
+            "1": {
+                "image": "./images/lsdETHPresentation.png",
+                "alt": "lsdETH Presentation"
+            }
+        }
+    },
+    {
+        "id": "H0BEU5",
+        "name": "StakeWise V3 Testnet",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Contributed to testing StakeWise V3 Vaults.",
+        "startDate": "2023-03-01",
+        "endDate": "2023-04-10",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1636027791228428289",
+                "label": "DVT Validator",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://twitter.com/EridianAlpha/status/1636526676317470720",
+                "label": "Valut DVT attestations",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "During this trial, I set up the vault \"Eridian Staked ETH\" with the token EridianETH. I then added a number of validators to the vault, each of which ran on a different platform. One ran on a vanilla validator on my home machine, one ran on a local Obol DVT cluster, and one ran on a distributed DVStakers Obol DVT cluster."
+        },
+        "images": {
+            "0": {
+                "image": "./images/StakeWiseLogo.png",
+                "alt": "StakeWise Logo"
+            },
+            "1": {
+                "image": "./images/StakeWiseV3TestnetCover.png",
+                "alt": "EridianETH Vault"
+            }
+        }
+    },
+    {
+        "id": "JGJLX1",
+        "name": "ETHDenver 2023",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "A conference in Denver where I attended the hackathon and worked on staking related projects.",
+        "startDate": "2023-02-24",
+        "endDate": "2023-03-05",
+        "externalLinks": {},
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/ETHDenverLogo.png",
+                "alt": "EthDenver Logo"
+            },
+            "1": {
+                "image": "./images/ETHDenver2023.png",
+                "alt": "Eth Denver 2023"
+            }
+        }
+    },
+    {
+        "id": "913EJZ",
+        "name": "Obol Docs Review",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Updating Obol documentation.",
+        "startDate": "2023-02-10",
+        "endDate": "2023-03-20",
+        "externalLinks": {
+            "0": {
+                "url": "https://docs.obol.tech",
+                "label": "Obol Docs",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://github.com/ObolNetwork/obol-docs/pulls?q=is%3Apr+author%3Aeridianalpha",
+                "label": "GitHub PRs",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/ObolLogo.png",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/ObolDocsExample.png",
+                "alt": "Obol Docs Example"
+            }
+        }
+    },
+    {
+        "id": "NANJJB",
+        "name": "NFT Image Locator",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A simple React app using Chakra UI for finding the image location of an NFT.",
+        "startDate": "2023-02-06",
+        "endDate": "2023-02-23",
+        "externalLinks": {
+            "0": {
+                "url": "https://github.com/EridianAlpha/nft-image-locator-html",
+                "label": "Repo",
+                "type": "github"
+            },
+            "1": {
+                "url": "https://nft-image-locator-html.vercel.app",
+                "label": "Live App",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/NFTImageLocatorLogo.png",
+                "alt": "NFT Image Locator Logo"
+            },
+            "1": {
+                "image": "./images/NFTImageLocatorApp.png",
+                "alt": "NFT Image Locator App"
+            },
+            "2": {
+                "image": "./images/NFTImageLocatorResults.png",
+                "alt": "NFT Image Locator Results"
+            }
+        }
+    },
+    {
+        "id": "H8KSFC",
+        "name": "Staking Summit 2022",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "A one day conference in Lisbon hosted by Staking Rewards all about Ethereum Staking.",
+        "startDate": "2022-11-08",
+        "endDate": "2022-11-08",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/StakingRewards/status/1603673650716344320",
+                "label": "Interview Tweet",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://www.youtube.com/watch?v=tUtXBvuVw1A",
+                "label": "Interview Video",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/StakingRewardsLogo.png",
+                "alt": "Staking Rewards Logo"
+            },
+            "1": {
+                "image": "./images/StakingSummit2022Cover.png",
+                "alt": "Staking Summit 2022"
+            },
+            "2": {
+                "image": "./images/StakingSummit2022Venue.png",
+                "alt": "Staking Summit 2022 Venue"
+            },
+            "3": {
+                "image": "./images/StakingSummit2022Eridian.png",
+                "alt": "Staking Summit 2022 Eridian"
+            }
+        }
+    },
+    {
+        "id": "IOYH4F",
+        "name": "EthStaker Knowledge Base",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "An unbiased, open-source collection of useful information and concepts about Ethereum staking.",
+        "startDate": "2022-10-20",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://docs.ethstaker.cc/",
+                "label": "EthStaker KB",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://github.com/eth-educators/ethstaker-knowledgebase",
+                "label": "Reop",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/EthStakerKBLogo.png",
+                "alt": "EthStaker Logo"
+            },
+            "1": {
+                "image": "./images/EthStakerKB.png",
+                "alt": "EthStaker KB"
+            }
+        }
+    },
+    {
+        "id": "0CZ1GR",
+        "name": "DevCon 2022",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Attended my first Ethereum conference in Bogota.",
+        "startDate": "2022-10-11",
+        "endDate": "2022-10-14",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1579900040394706944",
+                "label": "Opening Ceremony",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://twitter.com/EridianAlpha/status/1579937614177906688?s=20",
+                "label": "Vitalik ZK Talk",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/DevCon2022Logo.png",
+                "alt": "DevCon 2022 Logo"
+            },
+            "1": {
+                "image": "./images/DevCon2022Cover.png",
+                "alt": "DevCon 2022 Cover"
+            }
+        }
+    },
+    {
+        "id": "53SKFP",
+        "name": "Ethereum Solo Staking",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Running Ethereum solo home staking validators.",
+        "startDate": "2022-07-22",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://docs.ethstaker.cc/ethstaker-knowledge-base/hardware/hardware-examples/nuc-eridian",
+                "label": "Hardware Setup",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/HomeStakingNuc.png",
+                "alt": "Home Staking Nuc"
             }
         }
     }
