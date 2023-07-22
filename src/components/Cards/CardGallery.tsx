@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react"
+import React, { useState, useMemo, useEffect } from "react"
 
 import Masonry from "react-masonry-css"
 
@@ -42,12 +42,21 @@ export default function CardGallery({
     selectedCard,
     setSelectedCard,
 }) {
+    const [cardsDisplayed, setCardsDisplayed] = useState(sortedCardData)
+    useEffect(() => {
+        if (selectedCard) {
+            setCardsDisplayed(sortedCardData.filter((card) => card.id == selectedCard))
+        } else {
+            setCardsDisplayed(sortedCardData)
+        }
+    }, [selectedCard])
+
     let breakpointCols
-    if (sortedCardData.length == 1) {
+    if (cardsDisplayed.length == 1) {
         breakpointCols = {
             default: 1,
         }
-    } else if (sortedCardData.length == 2) {
+    } else if (cardsDisplayed.length == 2) {
         breakpointCols = {
             default: 2,
         }
@@ -82,7 +91,7 @@ export default function CardGallery({
     return (
         <Box width="100%">
             <Masonry breakpointCols={breakpointCols} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
-                {sortedCardData.map((card, cardIndex) => (
+                {cardsDisplayed.map((card, cardIndex) => (
                     <Card
                         key={card.id}
                         ref={cardRefs[cardIndex]}

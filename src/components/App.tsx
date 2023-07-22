@@ -162,7 +162,11 @@ const App = () => {
                             windowSize={windowSize}
                             environment={environment}
                             cardData={cardData}
-                            sortedCardData={galleryCardData()}
+                            sortedCardData={cardData.sort((a, b) => {
+                                const dateA = new Date(a.startDate)
+                                const dateB = new Date(b.startDate)
+                                return dateB.getTime() - dateA.getTime()
+                            })}
                             isCardEditorOpen={isCardEditorOpen}
                             setIsCardEditorOpen={setIsCardEditorOpen}
                             cardEditorData={cardEditorData}
