@@ -1,5 +1,40 @@
 [
     {
+        "id": "J52YTC",
+        "name": "Lido - Community Lifeguards Coordinator",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Supporting diversification of the Lido node operator set.",
+        "startDate": "2023-07-27",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://research.lido.fi/t/lido-community-lifeguards-initiative/4678/20?u=eridianalpha",
+                "label": "Forum Announcement",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/EridianAlpha/status/1684582226678149120",
+                "label": "Tweet Announcement ",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "Lido LEGO Council selected me as the community representative for their Community Lifeguards Initiative. My goal is simple, to support the diversification of the Lido node operator set, enabling thousands of home stakers to participate in validating Ethereum.\n\nDoes that mean I work for Lido? No. I'm a community member who has received a grant from the Lido grants council so my views and content will always remain neutral, impartial, and my own."
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoLogo.png",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/LidoLifeguardsCover.png",
+                "alt": ""
+            }
+        }
+    },
+    {
         "id": "WUU2WI",
         "name": "EthCC[6] - Paris",
         "displayConfig": {

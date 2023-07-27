@@ -17,8 +17,12 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
 
     function navigateHome() {
         if (!isSSR) {
-            window.history.replaceState({}, "", `${window.location.pathname}`)
-            window.location.reload()
+            if (environment === "development") {
+                window.history.replaceState({}, "", `${window.location.pathname}`)
+                window.location.reload()
+            } else {
+                window.location.href = "https://eridianalpha.com"
+            }
         }
     }
 
@@ -34,7 +38,7 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                             sx={{ cursor: "pointer" }}
                             width={"40px"}
                             objectFit={"cover"}
-                            src={"./481368551588.png"}
+                            src={"/481368551588.png"}
                             borderRadius={"5px"}
                             alt={"Eridian Avatar"}
                         />
