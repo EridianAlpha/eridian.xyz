@@ -1,5 +1,70 @@
 [
     {
+        "id": "KSA04P",
+        "name": "SSV - Mainnet Limited Launch Call",
+        "displayConfig": {
+            "cardType": "tweet"
+        },
+        "summary": "Discussing how MEV works on SSV.",
+        "startDate": "2023-08-01",
+        "endDate": "2023-08-01",
+        "externalLinks": {
+            "0": {
+                "url": "https://youtu.be/SqRr-0PQ3aE?si=EObkOjMxPe_VGNyE",
+                "label": "Youtube Recording",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/SSVLogo.png",
+                "alt": "SSV Logo"
+            },
+            "1": {
+                "image": "./images/SSVMainnetCall.jpg",
+                "alt": "SSV Mainnet Call"
+            }
+        }
+    },
+    {
+        "id": "9VQAU2",
+        "name": "Blockswap Buzz - DVT Interview",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "DVT is the Future of Ethereum Staking",
+        "startDate": "2023-08-01",
+        "endDate": "2023-08-01",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.youtube.com/watch?v=F0y-AzIMQ_w",
+                "label": "Youtube Interview",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/blockswap_team/status/1686747430128353280",
+                "label": "Tweet",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/BlockswapBuzzLogo.jpg",
+                "alt": "Blockswap Buzz Logo"
+            },
+            "1": {
+                "image": "./images/BlockswapBuzzCover.jpg",
+                "alt": "Blockswap Buzz Cover"
+            }
+        }
+    },
+    {
         "id": "J52YTC",
         "name": "Lido - Community Lifeguards Coordinator",
         "displayConfig": {
@@ -1003,6 +1068,36 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
+            }
+        }
+    },
+    {
+        "id": "O44TIB",
+        "name": "DVStakers - Raspberry Pi Investigation",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Testing Raspberry Pi DVT clients with remote Beacon Nodes.",
+        "startDate": "2023-07-31",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1686122235273039873",
+                "label": "Investigation Tweet",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "Can @ObolNetwork and @ssv_network clusters run using @DAppNode on a Raspberry Pi... but with a remote Beacon Node? 📡\n\nWhat's the distance limit for DVT operators? Is validator effectiveness impacted?\n\nAs part of @ether_fi Operation Solo Staker, we're planning to find out 🧪"
+        },
+        "images": {
+            "0": {
+                "image": "./images/DVStakersSquareBlackLogo.png",
+                "alt": "DVStakers Logo"
+            },
+            "1": {
+                "image": "./images/DVStakersRaspberryPi.jpg",
+                "alt": "DVStakers Raspberry Pi"
             }
         }
     }
