@@ -1,5 +1,35 @@
 [
     {
+        "id": "142SGE",
+        "name": "Etherfi - Scaling Solo Staking",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "An X spaces with @nixorokish @sassal0x discussing DVT and how to scale solo staking on Ethereum.",
+        "startDate": "2023-09-06",
+        "endDate": "2023-09-06",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/MikeSilagadze/status/1699211253288186279",
+                "label": "X Recording",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/EtherFiLogo.png",
+                "alt": "Etherfi Logo"
+            },
+            "1": {
+                "image": "",
+                "alt": ""
+            }
+        }
+    },
+    {
         "id": "YG11PQ",
         "name": "Lido - Community Call Kenya Node",
         "displayConfig": {
@@ -1163,36 +1193,6 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
-            }
-        }
-    },
-    {
-        "id": "142SGE",
-        "name": "Etherfi - Scaling Solo Staking",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "An X spaces with @nixorokish @sassal0x discussing DVT and how to scale solo staking on Ethereum.",
-        "startDate": "2023-09-06",
-        "endDate": "2023-09-06",
-        "externalLinks": {
-            "0": {
-                "url": "https://twitter.com/MikeSilagadze/status/1699211253288186279",
-                "label": "X Recording",
-                "type": "twitter"
-            }
-        },
-        "description": {
-            "0": ""
-        },
-        "images": {
-            "0": {
-                "image": "./images/EtherfiLogo.png",
-                "alt": "Etherfi Logo"
-            },
-            "1": {
-                "image": "",
-                "alt": ""
             }
         }
     }
