@@ -1,5 +1,70 @@
 [
     {
+        "id": "YG11PQ",
+        "name": "Lido - Community Call Kenya Node",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Presenting the DVStakers Kenya Node.",
+        "startDate": "2023-08-29",
+        "endDate": "2023-08-29",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1696584592210166055",
+                "label": "Post",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://www.youtube.com/watch?v=9S_efowFfNE&t=632s",
+                "label": "YouTube Recording",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoLogo.png",
+                "alt": "Lido Logo"
+            },
+            "1": {
+                "image": "./images/LidoCommunityCallKenyaNode.png",
+                "alt": "Lido Community Call Kenya Node"
+            }
+        }
+    },
+    {
+        "id": "4LXF11",
+        "name": "First DVT Mainnet Block Proposal",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Operation Solo Staker proposed their first Ethereum mainnet block using DVT.",
+        "startDate": "2023-08-23",
+        "endDate": "2023-08-23",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1694134849244709341",
+                "label": "Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "This block was proposed using DVT validators with solo stakers running from home, with Obol and DAppNode, making it successful and easy!"
+        },
+        "images": {
+            "0": {
+                "image": "./images/EtherFiLogo.png",
+                "alt": "Ether.fi Logo"
+            },
+            "1": {
+                "image": "./images/EtherfiMainnetDVTBlock.png",
+                "alt": "Etherfi Mainnet DVT Block"
+            }
+        }
+    },
+    {
         "id": "KSA04P",
         "name": "SSV - Mainnet Limited Launch Call",
         "displayConfig": {
@@ -61,6 +126,36 @@
             "1": {
                 "image": "./images/BlockswapBuzzCover.jpg",
                 "alt": "Blockswap Buzz Cover"
+            }
+        }
+    },
+    {
+        "id": "O44TIB",
+        "name": "DVStakers - Raspberry Pi Investigation",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Testing Raspberry Pi DVT clients with remote Beacon Nodes.",
+        "startDate": "2023-07-31",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1686122235273039873",
+                "label": "Investigation Tweet",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "Can @ObolNetwork and @ssv_network clusters run using @DAppNode on a Raspberry Pi... but with a remote Beacon Node? 📡\n\nWhat's the distance limit for DVT operators? Is validator effectiveness impacted?\n\nAs part of @ether_fi Operation Solo Staker, we're planning to find out 🧪"
+        },
+        "images": {
+            "0": {
+                "image": "./images/DVStakersSquareBlackLogo.png",
+                "alt": "DVStakers Logo"
+            },
+            "1": {
+                "image": "./images/DVStakersRaspberryPi.jpg",
+                "alt": "DVStakers Raspberry Pi"
             }
         }
     },
@@ -1072,32 +1167,32 @@
         }
     },
     {
-        "id": "O44TIB",
-        "name": "DVStakers - Raspberry Pi Investigation",
+        "id": "142SGE",
+        "name": "Etherfi - Scaling Solo Staking",
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "Testing Raspberry Pi DVT clients with remote Beacon Nodes.",
-        "startDate": "2023-07-31",
-        "endDate": "",
+        "summary": "An X spaces with @nixorokish @sassal0x discussing DVT and how to scale solo staking on Ethereum.",
+        "startDate": "2023-09-06",
+        "endDate": "2023-09-06",
         "externalLinks": {
             "0": {
-                "url": "https://twitter.com/EridianAlpha/status/1686122235273039873",
-                "label": "Investigation Tweet",
+                "url": "https://twitter.com/MikeSilagadze/status/1699211253288186279",
+                "label": "X Recording",
                 "type": "twitter"
             }
         },
         "description": {
-            "0": "Can @ObolNetwork and @ssv_network clusters run using @DAppNode on a Raspberry Pi... but with a remote Beacon Node? 📡\n\nWhat's the distance limit for DVT operators? Is validator effectiveness impacted?\n\nAs part of @ether_fi Operation Solo Staker, we're planning to find out 🧪"
+            "0": ""
         },
         "images": {
             "0": {
-                "image": "./images/DVStakersSquareBlackLogo.png",
-                "alt": "DVStakers Logo"
+                "image": "./images/EtherfiLogo.png",
+                "alt": "Etherfi Logo"
             },
             "1": {
-                "image": "./images/DVStakersRaspberryPi.jpg",
-                "alt": "DVStakers Raspberry Pi"
+                "image": "",
+                "alt": ""
             }
         }
     }
