@@ -1,5 +1,40 @@
 [
     {
+        "id": "60TX79",
+        "name": "Lido - Community Staking Blog 1",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Is Lido good for Ethereum?",
+        "startDate": "2023-09-25",
+        "endDate": "2023-09-25",
+        "externalLinks": {
+            "0": {
+                "url": "https://research.lido.fi/t/is-lido-good-for-ethereum/5520",
+                "label": "Forum Post",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://twitter.com/EridianAlpha/status/1706236433608917109",
+                "label": "Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "Answering questions like \"What even is Lido?\" and \"Is Lido against solo stakers?\". This is the first post in the Lido Community Staking Contributor Series."
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoLogo.png",
+                "alt": "Lido Logo"
+            },
+            "1": {
+                "image": "./images/LidoBlogPostCover1.png",
+                "alt": "Lido Blog Post Cover 1"
+            }
+        }
+    },
+    {
         "id": "TMHXMX",
         "name": "Lido - Community Lifeguard Podcast 1",
         "displayConfig": {
@@ -36,7 +71,7 @@
     },
     {
         "id": "RTLURA",
-        "name": "SSV Grants Committee Member",
+        "name": "SSV - Grants Committee Member",
         "displayConfig": {
             "cardType": "project"
         },
@@ -161,7 +196,7 @@
     },
     {
         "id": "4LXF11",
-        "name": "First DVT Mainnet Block Proposal",
+        "name": "Ether.fi - First DVT Mainnet Block Proposal",
         "displayConfig": {
             "cardType": "project"
         },
@@ -1288,41 +1323,6 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
-            }
-        }
-    },
-    {
-        "id": "60TX79",
-        "name": "Lido - Community Staking Blog 1",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "Is Lido good for Ethereum?",
-        "startDate": "2023-09-25",
-        "endDate": "2023-09-25",
-        "externalLinks": {
-            "0": {
-                "url": "https://research.lido.fi/t/is-lido-good-for-ethereum/5520",
-                "label": "Forum Post",
-                "type": "website"
-            },
-            "1": {
-                "url": "https://twitter.com/EridianAlpha/status/1706236433608917109",
-                "label": "Post",
-                "type": "twitter"
-            }
-        },
-        "description": {
-            "0": "Answering questions like \"What even is Lido?\" and \"Is Lido against solo stakers?\". This is the first post in the Lido Community Staking Contributor Series."
-        },
-        "images": {
-            "0": {
-                "image": "./images/LidoLogo.png",
-                "alt": "Lido Logo"
-            },
-            "1": {
-                "image": "./images/LidoBlogPostCover1.png",
-                "alt": "Lido Blog Post Cover 1"
             }
         }
     }
