@@ -1,11 +1,11 @@
 [
     {
         "id": "60TX79",
-        "name": "Lido - Community Staking Blog 1",
+        "name": "Lido - Is Lido good for Ethereum?",
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "Is Lido good for Ethereum?",
+        "summary": "Community Staking Blog Series #1.",
         "startDate": "2023-09-25",
         "endDate": "2023-09-25",
         "externalLinks": {
@@ -36,27 +36,22 @@
     },
     {
         "id": "TMHXMX",
-        "name": "Lido - Community Lifeguard Podcast 1",
+        "name": "Lido - Community Staking Podcast Series",
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "An interview with Stakesaurus about Ethereum Staking.",
+        "summary": "An interview series about Ethereum Staking.",
         "startDate": "2023-09-20",
-        "endDate": "2023-09-20",
+        "endDate": "",
         "externalLinks": {
-            "0": {
-                "url": "https://twitter.com/LidoFinance/status/1704493271878156528",
-                "label": "Post",
-                "type": "twitter"
-            },
             "1": {
-                "url": "https://www.youtube.com/watch?v=tVX2NcKPc00",
-                "label": "YouTube Link",
+                "url": "https://www.youtube.com/playlist?list=PLhvXP1-8VKZQGEMRNteLRJ3xrxYvZlPEs",
+                "label": "YouTube Playlist",
                 "type": "website"
             }
         },
         "description": {
-            "0": "The first Community Staking podcast with Samuel Chong, founder of @stakesaurus, discusses Samuel’s unique experiences, challenges, and learnings from his travels across the Ethereum solo staking ecosystem."
+            "0": ""
         },
         "images": {
             "0": {
@@ -66,6 +61,36 @@
             "1": {
                 "image": "./images/LidoCommunityStakingPodcastCover.png",
                 "alt": "Lido Community Staking Podcast Cover"
+            }
+        }
+    },
+    {
+        "id": "J6535Y",
+        "name": "DVStakers - MEV Boost Cluster Code",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A docker-compose creation script for generating an Obol cluster.",
+        "startDate": "2023-09-16",
+        "endDate": "2023-10-08",
+        "externalLinks": {
+            "0": {
+                "url": "https://github.com/DVStakers/obol-cluster",
+                "label": "DVStakers obol-cluster Repo",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": "This script was written to allow any number of Obol nodes to be run on a single machine. It also supports MEV Boost using Teku as the VC."
+        },
+        "images": {
+            "0": {
+                "image": "./images/DVStakersSquareBlackLogo.png",
+                "alt": "DVStakers Logo"
+            },
+            "1": {
+                "image": "./images/DVStakersMEVBoostCover.png",
+                "alt": "DVStakers MEV Boost Cover Image"
             }
         }
     },
