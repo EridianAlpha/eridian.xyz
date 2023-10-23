@@ -209,7 +209,7 @@ export default function CardDateSlider({
                                 _hover={{ bg: isFilterOngoingSelected ? completedTheme : null, color: "white" }}
                                 variant="ghost"
                             >
-                                Done
+                                Complete
                             </Button>
                         </Stack>
                     </Flex>
