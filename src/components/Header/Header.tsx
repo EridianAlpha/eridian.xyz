@@ -45,7 +45,7 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                         <Box pr={2} minW="80px" fontWeight="bold" fontSize="xl" sx={{ cursor: "default" }}>
                             Eridian
                         </Box>
-                        {/* {environment === "development" && (
+                        {environment === "development" && (
                             <Button
                                 aria-label="Create new card"
                                 variant="outline"
@@ -85,7 +85,7 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                                     </Box>
                                 </Box>
                             </Button>
-                        )} */}
+                        )}
                     </Flex>
                     <Flex direction={"row"} gap={3} alignItems={"top"}>
                         <Flex direction={"row"} wrap={"wrap"} gap={2} justifyContent={"right"}>
