@@ -7,7 +7,7 @@ export default function ColorModeToggle(props: ButtonProps) {
     const { colorMode, toggleColorMode } = useColorMode()
 
     return (
-        <Flex h="100vh" justifyContent="center" alignItems="center">
+        <Flex justifyContent="center" alignItems="top">
             <Button
                 bg={useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)}
                 _hover={{ bg: useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark) }}
