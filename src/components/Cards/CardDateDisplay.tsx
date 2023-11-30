@@ -170,7 +170,7 @@ export default function CardDateDisplay({
                                 objectFit="contain"
                                 width="26px"
                                 height="26px"
-                                src={card?.images?.[0].image ? card?.images?.[0].image : "./481368551588.png"}
+                                src={card?.images?.[0].image ? card?.images?.[0].image : "./Eridian.png"}
                                 alt={card?.images?.[0].alt}
                                 borderLeftRadius={"8px"}
                             />

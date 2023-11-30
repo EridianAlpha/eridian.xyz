@@ -38,7 +38,7 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                             sx={{ cursor: "pointer" }}
                             width={"40px"}
                             objectFit={"cover"}
-                            src={"/481368551588.png"}
+                            src={"/Eridian.png"}
                             borderRadius={"5px"}
                             alt={"Eridian Avatar"}
                         />

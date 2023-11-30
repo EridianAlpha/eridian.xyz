@@ -479,7 +479,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                             key={`images-${key}-preview`}
                                             objectFit="contain"
                                             width="90px"
-                                            src={imageSrcs[key] || imageData.image || "./481368551588.png"}
+                                            src={imageSrcs[key] || imageData.image || "./Eridian.png"}
                                             alt={imageData.alt}
                                             borderRadius={"10px"}
                                         />

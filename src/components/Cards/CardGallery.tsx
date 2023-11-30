@@ -116,7 +116,7 @@ export default function CardGallery({
                                         objectFit="contain"
                                         width="100px"
                                         height="100px"
-                                        src={card?.images?.[0].image ? card?.images?.[0].image : "./481368551588.png"}
+                                        src={card?.images?.[0].image ? card?.images?.[0].image : "./Eridian.png"}
                                         alt={card?.images?.[0].alt}
                                         borderTopRightRadius={{ base: "0px" }}
                                         borderBottomRightRadius={{ base: "30px" }}
