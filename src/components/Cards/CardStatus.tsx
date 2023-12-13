@@ -67,7 +67,7 @@ export default function CardStatus({ cardData }) {
                             color={cardData?.endDate ? completedTheme : inProgressTheme}
                             fontFamily="monospace"
                         >
-                            {differenceInDays} days
+                            {differenceInDays + 1} days
                         </Text>
                         <Flex alignItems="baseline" flex={1}>
                             <Box
