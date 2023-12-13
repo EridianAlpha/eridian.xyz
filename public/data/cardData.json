@@ -35,12 +35,42 @@
         }
     },
     {
+        "id": "ZCAXKY",
+        "name": "Lido - SSV Workshop",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "SSV Validator Setup | Ep 1 | Lido Community Staking Series",
+        "startDate": "2023-12-06",
+        "endDate": "2023-12-06",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.youtube.com/watch?v=Wmdg6AksInE",
+                "label": "YouTube Recording",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoLogo.png",
+                "alt": "Lido Logo"
+            },
+            "1": {
+                "image": "./images/LidoSSVWorkshop.png",
+                "alt": "Lido SSV Workshop"
+            }
+        }
+    },
+    {
         "id": "UILXGC",
         "name": "Eridian Profile Pic Update",
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "Using AI to update the Eridian profile picture.",
+        "summary": "Using AI to update my profile picture.",
         "startDate": "2023-11-30",
         "endDate": "2023-11-30",
         "externalLinks": {},
@@ -55,6 +85,41 @@
             "1": {
                 "image": "./images/EridianImageUpdate1.png",
                 "alt": "Eridian Image Update 1"
+            }
+        }
+    },
+    {
+        "id": "2VYYMO",
+        "name": "Lido - Simple DVT Workshop",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Presenting a DVT workshop at the Lido Connect event in Istanbul.",
+        "startDate": "2023-11-16",
+        "endDate": "2023-11-16",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/LidoFinance/status/1727679510483476838",
+                "label": "Lido Post",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://www.youtube.com/watch?v=BCftzsU-FXo",
+                "label": "YouTube Recording",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoLogo.png",
+                "alt": "Lido Logo"
+            },
+            "1": {
+                "image": "./images/LidoSimpleDVTWorkshop.png",
+                "alt": "Lido Simple DVT Workshop"
             }
         }
     },
@@ -89,6 +154,36 @@
         }
     },
     {
+        "id": "D6OKL5",
+        "name": "Staking Gathering 2023 DVT Panel",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Hosting a panel discussing DVT protocols at the EthStaker Staking Gathering in Istanbul.",
+        "startDate": "2023-11-13",
+        "endDate": "2023-11-13",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.youtube.com/live/gnFIeW84SQk?t=23132",
+                "label": "YouTube Recording",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/StakingGathering2023DVTPanel.png",
+                "alt": "Staking Gathering 2023 DVT Panel"
+            }
+        }
+    },
+    {
         "id": "JM4UW1",
         "name": "DevConnect 2023 - Staking Summit",
         "displayConfig": {
@@ -115,6 +210,36 @@
             "1": {
                 "image": "./images/StakingSummit2023.png",
                 "alt": "Staking Summit 2023"
+            }
+        }
+    },
+    {
+        "id": "HYFP8P",
+        "name": "Lido - Simple DVT Trial Participant",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Participating in the Lido Simple DVT trial using both Obol and SSV.",
+        "startDate": "2023-11-03",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://blog.lido.fi/leveraging-distributed-validator-technology/",
+                "label": "Lido Simple DVT Post",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoLogo.png",
+                "alt": "Lido Logo"
+            },
+            "1": {
+                "image": "./images/LidoSimpleDVT.png",
+                "alt": "Lido Simple DVT"
             }
         }
     },
@@ -330,6 +455,36 @@
             "1": {
                 "image": "./images/DVStakersMEVBoostCover.png",
                 "alt": "DVStakers MEV Boost Cover Image"
+            }
+        }
+    },
+    {
+        "id": "DCKBV6",
+        "name": "DVStakers - Rural Kenya Node",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Setting up a Starlink Ethereum Validator in rural Kenya.",
+        "startDate": "2023-09-12",
+        "endDate": "2024-01-14",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/DVStakers/status/1701539770776613347",
+                "label": "Idea announcement ",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "Supported by grants from the Ethereum Foundation and Lido."
+        },
+        "images": {
+            "0": {
+                "image": "./images/DVStakersSquareBlackLogo.png",
+                "alt": "DVStakers Logo"
+            },
+            "1": {
+                "image": "./images/DVStakersKenyaStarlink.png",
+                "alt": "DVStakers Kenya Starlink"
             }
         }
     },
