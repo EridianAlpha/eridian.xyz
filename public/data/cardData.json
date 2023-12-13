@@ -1,5 +1,184 @@
 [
     {
+        "id": "F9B1T4",
+        "name": "EtherFi - Solo Staking Office Hours",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Final solo staker office hours call.",
+        "startDate": "2023-12-08",
+        "endDate": "2023-12-08",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.youtube.com/watch?v=S_HKO0tGsMY",
+                "label": "YouTube Recording",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://x.com/ether_fi/status/1733132408847774015",
+                "label": "Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "The final office hours call as the coordinator for Operation Solo Staker. I remain a participant but am handing over the coordination back to the EtherFi team."
+        },
+        "images": {
+            "0": {
+                "image": "./images/EtherFiLogo.png",
+                "alt": "EtherFi Logo"
+            },
+            "1": {
+                "image": "./images/EtherFiOfficeHours.png",
+                "alt": "EtherFi Office Hours"
+            }
+        }
+    },
+    {
+        "id": "UILXGC",
+        "name": "Eridian Profile Pic Update",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Using AI to update the Eridian profile picture.",
+        "startDate": "2023-11-30",
+        "endDate": "2023-11-30",
+        "externalLinks": {},
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/EridianImageUpdate1.png",
+                "alt": "Eridian Image Update 1"
+            }
+        }
+    },
+    {
+        "id": "8343S2",
+        "name": "DevConnect 2023 - Staking Gathering",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Staking focused event organized by EthStaker in Istanbul.",
+        "startDate": "2023-11-13",
+        "endDate": "2023-11-14",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1724149410416738421",
+                "label": "Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/DevConnect2023Logo.png",
+                "alt": "DevConnect 2023 Logo"
+            },
+            "1": {
+                "image": "./images/StakingGathering2023.png",
+                "alt": "Staking Gathering 2023"
+            }
+        }
+    },
+    {
+        "id": "JM4UW1",
+        "name": "DevConnect 2023 - Staking Summit",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Staking Rewards Staking Summit in Istanbul.",
+        "startDate": "2023-11-10",
+        "endDate": "2023-11-11",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/EridianAlpha/status/1722983796738339293",
+                "label": "Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/DevConnect2023Logo.png",
+                "alt": "DevConnect 2023 Logo"
+            },
+            "1": {
+                "image": "./images/StakingSummit2023.png",
+                "alt": "Staking Summit 2023"
+            }
+        }
+    },
+    {
+        "id": "6XAY13",
+        "name": "Eridian Public Docs",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Public documentation site for all my content.",
+        "startDate": "2023-11-02",
+        "endDate": "2023-11-09",
+        "externalLinks": {
+            "0": {
+                "url": "https://docs.eridianalpha.com/",
+                "label": "docs.eridianalpha.com",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/EridianDocs.png",
+                "alt": "Eridian Docs"
+            }
+        }
+    },
+    {
+        "id": "QLRAS0",
+        "name": "DVStakers - Mini Node",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A small machine capable of running only the DVT clients on Dappnode.",
+        "startDate": "2023-10-12",
+        "endDate": "2023-12-11",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/DVStakers/status/1734160003735425185",
+                "label": "Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "A small, low cost, Intel machine created by Homenode and developed in collaboration with DVStakers. This machine doesn't have the specs to run a full chain, but can connect to another machine that is running a full chain to participate in a DVT cluster."
+        },
+        "images": {
+            "0": {
+                "image": "./images/DVStakersSquareBlackLogo.png",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/DVStakersMiniNode.png",
+                "alt": "DVStakers Mini Node"
+            }
+        }
+    },
+    {
         "id": "3XDWWK",
         "name": "DVStakers - Mainnet 7/10 Cluster",
         "displayConfig": {
@@ -211,6 +390,36 @@
             "1": {
                 "image": "",
                 "alt": ""
+            }
+        }
+    },
+    {
+        "id": "HLJQRD",
+        "name": "Scaled Node Operators KB",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A section on the EthStaker Knowledge Base for large scale node operators.",
+        "startDate": "2023-09-01",
+        "endDate": "2023-12-31",
+        "externalLinks": {
+            "0": {
+                "url": "https://docs.ethstaker.cc/ethstaker-knowledge-base/scaled-node-operators/what-is-a-scaled-node-operator",
+                "label": "Knowledge Base",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Written in collaboration with GatewayFM this set of knowledge base articles is aimed at operators running a significant number of validators (approximately 100 or more)."
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/ScaledNodeOperatorsKB.png",
+                "alt": "Scaled Node Operators KB"
             }
         }
     },
