@@ -42,9 +42,17 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                             borderRadius={"5px"}
                             alt={"Eridian Avatar"}
                         />
-                        <Box pr={2} minW="80px" fontWeight="bold" fontSize="xl" sx={{ cursor: "default" }}>
+                        <Flex
+                            justifyContent={"center"}
+                            alignItems={"center"}
+                            pr={2}
+                            minW="80px"
+                            fontWeight="bold"
+                            fontSize="xl"
+                            sx={{ cursor: "default" }}
+                        >
                             Eridian
-                        </Box>
+                        </Flex>
                         {environment === "development" && (
                             <Button
                                 aria-label="Create new card"
