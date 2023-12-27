@@ -1,5 +1,59 @@
 [
     {
+        "id": "JE275N",
+        "name": "1000 Days In Crypto",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Marking 1000 days since I started in crypto.",
+        "startDate": "2023-12-27",
+        "endDate": "2023-12-27",
+        "externalLinks": {},
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/Eridian1000Days.png",
+                "alt": "Eridian 1000 Days"
+            }
+        }
+    },
+    {
+        "id": "HU5XDD",
+        "name": "Lido - Community Lifeguards Spaces",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Introducing Stakesaurus and Enti as two new Lido Community Lifeguards.",
+        "startDate": "2023-12-20",
+        "endDate": "2023-12-20",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/LidoFinance/status/1737541427305844929",
+                "label": "Spaces Recording",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoLogo.png",
+                "alt": "Lido Logo"
+            },
+            "1": {
+                "image": "./images/LidoCommunityLifeguardsIntroSpaces.png",
+                "alt": "Lido Community Lifeguards Intro Spaces"
+            }
+        }
+    },
+    {
         "id": "F9B1T4",
         "name": "EtherFi - Solo Staking Office Hours",
         "displayConfig": {
