@@ -1746,7 +1746,7 @@
             },
             "1": {
                 "url": "https://github.com/eth-educators/ethstaker-knowledgebase",
-                "label": "Reop",
+                "label": "Repo",
                 "type": "github"
             }
         },
