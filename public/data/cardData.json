@@ -1,5 +1,124 @@
 [
     {
+        "id": "ZR6FZ6",
+        "name": "Lido - Simple DVT Spaces",
+        "displayConfig": {
+            "cardType": "tweet"
+        },
+        "summary": "SimpleDVT & Solo Staking updates and discussion with the Lido Community Lifeguards.",
+        "startDate": "2024-02-01",
+        "endDate": "2024-02-01",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/LidoFinance/status/1752449067601310101",
+                "label": "Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoLogo.png",
+                "alt": "Lido Logo"
+            },
+            "1": {
+                "image": "./images/LidoSimpleDVTSpaces.png",
+                "alt": "Lido Simple DVT Spaces"
+            }
+        }
+    },
+    {
+        "id": "IG4BXQ",
+        "name": "Eridian Hub",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A new project under development...",
+        "startDate": "2024-01-22",
+        "endDate": "",
+        "externalLinks": {},
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/EridianHubLogo.png",
+                "alt": "Eridian Hub Logo"
+            }
+        }
+    },
+    {
+        "id": "Q0FBBI",
+        "name": "SSV - Mainnet Launch Call",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Discussing the SSV Incentivized Mainnet Program.",
+        "startDate": "2024-01-10",
+        "endDate": "2024-01-10",
+        "externalLinks": {
+            "0": {
+                "url": "https://twitter.com/ssv_network/status/1745083270352519523",
+                "label": "Post",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://youtu.be/kIrlJw7eh4k?si=CMvETCnGcudwmVUg&t=2043",
+                "label": "YouTube",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/SSVLogo.png",
+                "alt": "SSV Logo"
+            },
+            "1": {
+                "image": "./images/SSVMainnetLaunchCall.png",
+                "alt": "SSV Mainnet Launch Call"
+            }
+        }
+    },
+    {
+        "id": "F5290Y",
+        "name": "DVStakers - Kenya Phase 2",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Setting up an off-the-grid Ethereum node in Kenya.",
+        "startDate": "2024-01-01",
+        "endDate": "2024-01-20",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.dvstakers.com/dvstakers-global/kenya-node-phase-2",
+                "label": "Kenya Node - Phase 2",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Phase 2 Goal: To set up a fully off-the-grid Ethereum validator in a rural village in Kenya, supporting the local community through education."
+        },
+        "images": {
+            "0": {
+                "image": "./images/DVStakersSquareBlackLogo.png",
+                "alt": "DVStakers Logo"
+            },
+            "1": {
+                "image": "./images/DVStakersKenyaNodePhase2.png",
+                "alt": "DVStakers Kenya Node Phase 2"
+            }
+        }
+    },
+    {
         "id": "JE275N",
         "name": "1000 Days In Crypto",
         "displayConfig": {
@@ -54,6 +173,36 @@
         }
     },
     {
+        "id": "U73M4J",
+        "name": "Lido - Obol Workshop",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Obol Validator Setup - Episode 2 - Lido Community Staking Series.",
+        "startDate": "2023-12-15",
+        "endDate": "2023-12-15",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.youtube.com/watch?v=JhNqvM_zXJs",
+                "label": "YouTube",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoLogo.png",
+                "alt": "Lido Logo"
+            },
+            "1": {
+                "image": "./images/LidoObolWorkshop.png",
+                "alt": "Lido Obol Workshop"
+            }
+        }
+    },
+    {
         "id": "F9B1T4",
         "name": "EtherFi - Solo Staking Office Hours",
         "displayConfig": {
@@ -94,13 +243,18 @@
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "SSV Validator Setup | Ep 1 | Lido Community Staking Series.",
+        "summary": "SSV Validator Setup - Episode 1 - Lido Community Staking Series.",
         "startDate": "2023-12-06",
         "endDate": "2023-12-06",
         "externalLinks": {
             "0": {
                 "url": "https://www.youtube.com/watch?v=Wmdg6AksInE",
                 "label": "YouTube Recording",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://pitch.com/v/SSV-validator-setup-x9yrm6/26f0ef37-0dc7-4b38-a29c-b8c8b3291875",
+                "label": "Presentation",
                 "type": "website"
             }
         },
@@ -139,6 +293,41 @@
             "1": {
                 "image": "./images/EridianImageUpdate1.png",
                 "alt": "Eridian Image Update 1"
+            }
+        }
+    },
+    {
+        "id": "EWZYFA",
+        "name": "Foundry Solidity Course",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A comprehensive solidity course in Foundry.",
+        "startDate": "2023-11-25",
+        "endDate": "2024-02-26",
+        "externalLinks": {
+            "0": {
+                "url": "https://github.com/Cyfrin/foundry-full-course-f23",
+                "label": "Course Content",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://www.youtube.com/watch?v=umepbfKp5rI&t=0s",
+                "label": "YouTube",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/FoundryCourse.png",
+                "alt": "Foundry Course"
             }
         }
     },
