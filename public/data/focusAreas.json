@@ -3,13 +3,13 @@
         "title": "Staking",
         "icon": "faServer",
         "color": "#4025CD",
-        "count": 5
+        "count": 3
     },
     {
         "title": "DeFi",
         "icon": "faMoneyBill",
         "color": "#76b63a",
-        "count": 3
+        "count": 4
     },
     {
         "title": "NFTs",
@@ -21,7 +21,7 @@
         "title": "Coding",
         "icon": "faLaptopCode",
         "color": "#E53E3E",
-        "count": 4
+        "count": 5
     },
     {
         "title": "L2s",
