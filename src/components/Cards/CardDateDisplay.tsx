@@ -154,7 +154,7 @@ export default function CardDateDisplay({
                 clearSelectedCard()
             }}
         >
-            <Box ref={scrollBoxRef} onScroll={handleScroll} overflow={"auto"} maxH="403px">
+            <Box ref={scrollBoxRef} onScroll={handleScroll} overflow={"auto"} maxH="100%x">
                 {sortedCardData.map((card, cardIndex) => (
                     <Flex key={cardIndex} direction={"row"} justifyContent={"center"}>
                         <Flex
