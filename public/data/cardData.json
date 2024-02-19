@@ -44,11 +44,11 @@
         },
         "images": {
             "0": {
-                "image": "",
-                "alt": ""
+                "image": "./images/EridianHubLogo.png",
+                "alt": "Eridian Hub Logo"
             },
             "1": {
-                "image": "./images/EridianHubLogo.png",
+                "image": "./images/EridianHubCover.png",
                 "alt": "Eridian Hub Logo"
             }
         }
@@ -649,7 +649,7 @@
         },
         "summary": "An interview series about Ethereum Staking.",
         "startDate": "2023-09-20",
-        "endDate": "",
+        "endDate": "2024-02-28",
         "externalLinks": {
             "0": {
                 "url": "https://www.youtube.com/playlist?list=PLhvXP1-8VKZQGEMRNteLRJ3xrxYvZlPEs",
@@ -788,6 +788,41 @@
             "1": {
                 "image": "",
                 "alt": ""
+            }
+        }
+    },
+    {
+        "id": "YL11E0",
+        "name": "SSV - Incentivized Mainnet Program Administrator",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Performing the monthly calculations to produce the Merkle root.",
+        "startDate": "2023-09-06",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://forum.ssv.network/t/incentivized-mainnet-program/1203",
+                "label": "Program Overview",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://forum.ssv.network/t/incentivized-mainnet-program-distributions/1256",
+                "label": "Distributions",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/SSVLogo.png",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/SSVIncentivizedMainnetProgramDistributions.png",
+                "alt": "SSV Incentivized Mainnet Program Distributions"
             }
         }
     },
@@ -2026,7 +2061,7 @@
         },
         "summary": "Running Ethereum solo home staking validators.",
         "startDate": "2022-07-22",
-        "endDate": "",
+        "endDate": "2023-12-31",
         "externalLinks": {
             "0": {
                 "url": "https://docs.ethstaker.cc/ethstaker-knowledge-base/hardware/hardware-examples/nuc-eridian",
@@ -2035,7 +2070,7 @@
             }
         },
         "description": {
-            "0": ""
+            "0": "Update: From Solo Staking to... DVT Staking! Still using the same hardware at home 🏡"
         },
         "images": {
             "0": {
