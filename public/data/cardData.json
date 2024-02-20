@@ -1,5 +1,40 @@
 [
     {
+        "id": "TYTU53",
+        "name": "AavePM",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Aave Position Manager - Smart contract & bot.",
+        "startDate": "2024-02-19",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://github.com/EridianAlpha/aave-position-manager",
+                "label": "Smart Contract Repo",
+                "type": "github"
+            },
+            "1": {
+                "url": "https://github.com/EridianAlpha/aave-position-manager-html",
+                "label": "UI Repo",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": "A project to send ETH or wstETH to an address on any network (but initially just on mainnet or Base) and automatically convert it into a leveraged wstETH position on Aave on Base that rebalances to maintain a consistent Health Factor."
+        },
+        "images": {
+            "0": {
+                "image": "./images/AavePMLogo.png",
+                "alt": "Aave PM Logo"
+            },
+            "1": {
+                "image": "./images/AavePMDesign1.png",
+                "alt": "Aave PM Design 1"
+            }
+        }
+    },
+    {
         "id": "ZR6FZ6",
         "name": "Lido - Simple DVT Spaces",
         "displayConfig": {
@@ -35,12 +70,12 @@
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "A new project under development...",
+        "summary": "A personal dashboard to display on chain data.",
         "startDate": "2024-01-22",
         "endDate": "",
         "externalLinks": {},
         "description": {
-            "0": ""
+            "0": "This project isn't currently open source while it's under development. I'm using it as a testing platform for other integrations, so it wouldn't be very useful in its current state to anyone else. Once it gets to a more stable state I will make it open source."
         },
         "images": {
             "0": {
