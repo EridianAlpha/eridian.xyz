@@ -1,11 +1,11 @@
 [
     {
         "id": "TYTU53",
-        "name": "AavePM",
+        "name": "Aave Position Manager",
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "Aave Position Manager - Smart contract & bot.",
+        "summary": "Solidity smart contract & bot.",
         "startDate": "2024-02-19",
         "endDate": "",
         "externalLinks": {
@@ -21,7 +21,7 @@
             }
         },
         "description": {
-            "0": "A project to send ETH or wstETH to an address on any network (but initially just on mainnet or Base) and automatically convert it into a leveraged wstETH position on Aave on Base that rebalances to maintain a consistent Health Factor."
+            "0": "A project to send ETH to an address on any network (but initially just on mainnet or Base) and automatically convert it into a leveraged position on Aave on Base that rebalances to maintain a consistent Health Factor."
         },
         "images": {
             "0": {
@@ -774,7 +774,7 @@
         },
         "summary": "Joining the SSV Grants Committee to review and process grant applications for the SSV DAO.",
         "startDate": "2023-09-07",
-        "endDate": "",
+        "endDate": "2024-03-14",
         "externalLinks": {
             "0": {
                 "url": "https://forum.ssv.network/t/dip-5-grant-program-and-committee/1128",
