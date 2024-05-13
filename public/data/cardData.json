@@ -1,5 +1,35 @@
 [
     {
+        "id": "HZOSCG",
+        "name": "Alerting Docs",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Documentation showing how to configure machine alerting and monitoring.",
+        "startDate": "2024-04-10",
+        "endDate": "2024-04-20",
+        "externalLinks": {
+            "0": {
+                "url": "https://docs.eridianalpha.com/infrastructure-docs/alerting-and-monitoring",
+                "label": "Altering Docs",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/AlertingDocs.png",
+                "alt": "Alerting Docs"
+            }
+        }
+    },
+    {
         "id": "TYTU53",
         "name": "Aave Position Manager",
         "displayConfig": {
@@ -70,7 +100,7 @@
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "A personal dashboard to display on chain data.",
+        "summary": "A live dashboard to display on chain data.",
         "startDate": "2024-01-22",
         "endDate": "",
         "externalLinks": {},
