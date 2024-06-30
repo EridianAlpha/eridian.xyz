@@ -3,7 +3,7 @@
         "title": "Staking",
         "icon": "faServer",
         "color": "#4025CD",
-        "count": 3
+        "count": 2
     },
     {
         "title": "DeFi",
@@ -18,7 +18,7 @@
         "count": 1
     },
     {
-        "title": "Coding",
+        "title": "Solidity",
         "icon": "faLaptopCode",
         "color": "#E53E3E",
         "count": 5
@@ -27,6 +27,6 @@
         "title": "L2s",
         "icon": "faCodeFork",
         "color": "#ED8936",
-        "count": 2
+        "count": 3
     }
 ]
