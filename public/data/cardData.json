@@ -1,5 +1,175 @@
 [
     {
+        "id": "Q3XF0M",
+        "name": "Explainer Post - Ethereum Addresses",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A post and documentation explaining Ethereum addresses.",
+        "startDate": "2024-07-09",
+        "endDate": "2024-07-09",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/EridianAlpha/status/1810588326790893767",
+                "label": "X Post",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://docs.eridianalpha.com/ethereum-dev/ethereum-notes/ethereum-addresses",
+                "label": "Docs",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "What is an Ethereum address? How is it related to a Seed Phrase? All explained with code examples using Ethers."
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/EthereumAddressesPost.png",
+                "alt": "Ethereum Addresses Post"
+            }
+        }
+    },
+    {
+        "id": "M0JVU1",
+        "name": "Explainer Post - Why 0x?",
+        "displayConfig": {
+            "cardType": "tweet"
+        },
+        "summary": "A post and documentation explaining hexadecimal in Ethereum and Solidity.",
+        "startDate": "2024-07-04",
+        "endDate": "2024-07-04",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/EridianAlpha/status/1808943347731415478",
+                "label": "X Post",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://docs.eridianalpha.com/ethereum-dev/ethereum-notes/technical-basics#why-0x",
+                "label": "Docs",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "In Ethereum, and more broadly in the world of cryptography and blockchain technology, the prefix 0x is used everywhere... but why?"
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/Why0xPost.png",
+                "alt": "Why 0x Post"
+            }
+        }
+    },
+    {
+        "id": "3UZKQ7",
+        "name": "Solidity Audit Course",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Smart Contract Security and Auditing Course.",
+        "startDate": "2024-07-01",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://updraft.cyfrin.io/",
+                "label": "Updraft Cyfrin",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/CyfrinLogo.png",
+                "alt": "Cyfrin Logo"
+            },
+            "1": {
+                "image": "./images/CyfrinCourse.png",
+                "alt": "Cyfrin Course"
+            }
+        }
+    },
+    {
+        "id": "SDI2CD",
+        "name": "SDVT - SSV Token Top-ups",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Creating transactions to send SSV tokens to SDVT clusters.",
+        "startDate": "2024-06-24",
+        "endDate": "2024-07-08",
+        "externalLinks": {
+            "0": {
+                "url": "https://etherscan.io/tokentxns?a=0x438008602b55851E99c2086745B941fB4d4A77e0",
+                "label": "SSV Token Transfers",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "An initial 2.5 SSV tokens were sent to each cluster multisig so they could create their SSV cluster. Subsequent transfers were sent directly to their clusters."
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoSimpleDVTLogo.png",
+                "alt": "Lido SimpleDVT Logo"
+            },
+            "1": {
+                "image": "./images/SSVSimpleDVTTopups.png",
+                "alt": "SSV Simple DVT Topups"
+            }
+        }
+    },
+    {
+        "id": "CPFIT1",
+        "name": "SDVT - Splitter Deployment",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Deploying the splitter contracts for the SSV SDVT clusters.",
+        "startDate": "2024-06-01",
+        "endDate": "2024-06-14",
+        "externalLinks": {
+            "0": {
+                "url": "0x0b7f8a8af9d55cae5561ed917068eec53f0a086f",
+                "label": "Deployer Address",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://simple-dvt-split.vercel.app/",
+                "label": "Splitter Deployer UI",
+                "type": "website"
+            },
+            "2": {
+                "url": "https://github.com/ObolNetwork/obol-splits.git",
+                "label": "Splitter Repo",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": "As part of my administrator role for the SSV DAO for the Lido Simple DVT initiative, I was tasked with deploying the mainnet splitter contracts. These contracts are the reward splitters used to wrap and distribute the stETH rewards."
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoSimpleDVTLogo.png",
+                "alt": "Lido Simple DVT Logo"
+            },
+            "1": {
+                "image": "./images/LidoSimpleDVTSplitterDeployment.png",
+                "alt": "Lido SimpleDVT Splitter Deployment"
+            }
+        }
+    },
+    {
         "id": "P5ELH1",
         "name": "GitHub Foundry Docs",
         "displayConfig": {
@@ -96,6 +266,41 @@
             "2": {
                 "image": "./images/AavePMDesign1.png",
                 "alt": "AavePM Design"
+            }
+        }
+    },
+    {
+        "id": "Z4WJTY",
+        "name": "SSV - Lido SDVT Administrator",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Deploying splitter contracts and creating top-up transactions.",
+        "startDate": "2024-02-14",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://forum.ssv.network/t/ssv-x-lido-simple-dvt/1337",
+                "label": "Forum post",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://x.com/EridianAlpha/status/1752363981409288478",
+                "label": "Lido Multisig Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "In this administrator role I participate on the Lido SDVT multisig and support the SSV clusters. This includes deploying the splitter contracts for the SDVT SSV clusters as well as facilitating the cluster top-ups of SSV tokens."
+        },
+        "images": {
+            "0": {
+                "image": "./images/SSVLogo.png",
+                "alt": "SSV Logo"
+            },
+            "1": {
+                "image": "./images/SSVSimpleDVTMultisig.png",
+                "alt": "SSV Simple DVT Multisig"
             }
         }
     },
@@ -893,7 +1098,7 @@
     },
     {
         "id": "YL11E0",
-        "name": "SSV - Incentivized Mainnet Program Administrator",
+        "name": "SSV - Incentivized Mainnet Administrator",
         "displayConfig": {
             "cardType": "project"
         },
@@ -2180,36 +2385,6 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
-            }
-        }
-    },
-    {
-        "id": "3UZKQ7",
-        "name": "Solidity Audit Course",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "Smart Contract Security and Auditing Course.",
-        "startDate": "2024-07-01",
-        "endDate": "",
-        "externalLinks": {
-            "0": {
-                "url": "https://updraft.cyfrin.io/",
-                "label": "Updraft Cyfrin",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": ""
-        },
-        "images": {
-            "0": {
-                "image": "./images/CyfrinLogo.png",
-                "alt": "Cyfrin Logo"
-            },
-            "1": {
-                "image": "./images/CyfrinCourse.png",
-                "alt": "Cyfrin Course"
             }
         }
     }
