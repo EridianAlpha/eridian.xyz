@@ -1,5 +1,75 @@
 [
     {
+        "id": "349KPP",
+        "name": "SSV Rewards Claim UI",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "An open-source UI for claiming SSV rewards.",
+        "startDate": "2024-08-05",
+        "endDate": "2024-08-12",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.ssvrewards.com",
+                "label": "ssvrewards.com",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://etherscan.io/address/0xe16d6138B1D2aD4fD6603ACdb329ad1A6cD26D9f#code",
+                "label": "Rewards Contract",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "A standalone, open-source, UI for claiming SSV rewards for the Mainnet Incentives program. It will also support the future Lido vaults initiative when launched.\nIt works with Wallet Connect and allows people to claim with a different wallet to their rewards address, and it works on mobile."
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/SSVRewardsCover.png",
+                "alt": "SSV Rewards Cover"
+            }
+        }
+    },
+    {
+        "id": "0FQ46F",
+        "name": "Lido - Simple DVT Mainnet",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Running Mainnet Lido SDVT Validators.",
+        "startDate": "2024-07-29",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://blog.lido.fi/simpledvt-new-phase-for-lido-on-ethereum/",
+                "label": "Simple DVT",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://operators.lido.fi/module/2/27",
+                "label": "Obol Cluster",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Running mainnet Lido validators through the Simple DVT module for both Obol and SSV."
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoSimpleDVTLogo.png",
+                "alt": "Lido Simple DVT Logo"
+            },
+            "1": {
+                "image": "./images/LidoSimpleDVTOperatorObol.png",
+                "alt": "Lido Simple DVT Operator Obol"
+            }
+        }
+    },
+    {
         "id": "Q3XF0M",
         "name": "Explainer Post - Ethereum Addresses",
         "displayConfig": {
@@ -77,7 +147,7 @@
         },
         "summary": "Smart Contract Security and Auditing Course.",
         "startDate": "2024-07-01",
-        "endDate": "",
+        "endDate": "2024-08-01",
         "externalLinks": {
             "0": {
                 "url": "https://updraft.cyfrin.io/",
@@ -96,6 +166,36 @@
             "1": {
                 "image": "./images/CyfrinCourse.png",
                 "alt": "Cyfrin Course"
+            }
+        }
+    },
+    {
+        "id": "LW8096",
+        "name": "Lido - CSM Testnet",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Participating in the Lido CSM Holesky testnet.",
+        "startDate": "2024-07-01",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://operators-holesky.testnet.fi/module/4/7",
+                "label": "Operator 7",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Running 10 Holesky validators through Lido CSM."
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoCSMLogo.png",
+                "alt": "Lido CSM Logo"
+            },
+            "1": {
+                "image": "./images/LidoCSMTestnetOperator.png",
+                "alt": "Lido CSM Testnet Operator"
             }
         }
     },
@@ -137,10 +237,10 @@
         },
         "summary": "Deploying the splitter contracts for the SSV SDVT clusters.",
         "startDate": "2024-06-01",
-        "endDate": "2024-06-14",
+        "endDate": "2024-08-09",
         "externalLinks": {
             "0": {
-                "url": "0x0b7f8a8af9d55cae5561ed917068eec53f0a086f",
+                "url": "https://etherscan.io/address/0x0b7f8a8af9d55cae5561ed917068eec53f0a086f",
                 "label": "Deployer Address",
                 "type": "website"
             },
@@ -248,6 +348,11 @@
                 "url": "https://eridianalpha.github.io/aave-position-manager",
                 "label": "Docs",
                 "type": "github"
+            },
+            "2": {
+                "url": "https://basescan.org/address/0x1e232b7c8c2a9bf63507302b0876fa61b18611f5#code",
+                "label": "Base Deployment",
+                "type": "website"
             }
         },
         "description": {
@@ -345,7 +450,7 @@
         "endDate": "2024-06-30",
         "externalLinks": {},
         "description": {
-            "0": "This project isn't currently open source. I'm using it as a testing platform for other integrations so it wouldn't be very useful in its current state to anyone else. Once it gets to a more stable state I will make it open source."
+            "0": "This project isn't currently open-source. I'm using it as a testing platform for other integrations so it wouldn't be very useful in its current state to anyone else. Once it gets to a more stable state I will make it open-source."
         },
         "images": {
             "0": {
@@ -769,7 +874,7 @@
         },
         "summary": "Participating in the Lido Simple DVT trial using both Obol and SSV.",
         "startDate": "2023-11-03",
-        "endDate": "",
+        "endDate": "2024-08-12",
         "externalLinks": {
             "0": {
                 "url": "https://blog.lido.fi/leveraging-distributed-validator-technology/",
@@ -1253,6 +1358,41 @@
             "1": {
                 "image": "./images/EtherfiMainnetDVTBlock.png",
                 "alt": "Etherfi Mainnet DVT Block"
+            }
+        }
+    },
+    {
+        "id": "AZ9JTT",
+        "name": "Portal Network Homepage Design",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A quick mockup of a homepage for Portal Network.",
+        "startDate": "2023-08-10",
+        "endDate": "2023-08-10",
+        "externalLinks": {
+            "0": {
+                "url": "https://ethereum-portal-network.vercel.app/",
+                "label": "Design Mockup",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://www.ethportal.net/",
+                "label": "ethportal.net",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/PortalNetworkLogo.png",
+                "alt": "Portal NetworkL ogo"
+            },
+            "1": {
+                "image": "./images/PortalNetworkCover.png",
+                "alt": "Portal Network Cover"
             }
         }
     },
