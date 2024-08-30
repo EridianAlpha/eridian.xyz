@@ -1,5 +1,45 @@
 [
     {
+        "id": "M1B1KE",
+        "name": "Ethernaut - Foundry",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "All solutions to Ethernaut in Foundry.",
+        "startDate": "2024-08-25",
+        "endDate": "2024-08-30",
+        "externalLinks": {
+            "0": {
+                "url": "https://github.com/EridianAlpha/ethernaut-foundry",
+                "label": "Solution Repo",
+                "type": "github"
+            },
+            "1": {
+                "url": "https://docs.eridianalpha.com/ethereum-dev/defi-challenges/ethernaut",
+                "label": "Solution Docs",
+                "type": "website"
+            },
+            "2": {
+                "url": "https://ethernaut.openzeppelin.com/",
+                "label": "Ethernaut",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Solving all Ethernaut challenges using Foundry scripts. Solutions requiring understanding and manipulation of calldata were great learning points!"
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/Ethernaut.png",
+                "alt": "Ethernaut"
+            }
+        }
+    },
+    {
         "id": "349KPP",
         "name": "SSV Rewards Claim UI",
         "displayConfig": {
@@ -7,7 +47,7 @@
         },
         "summary": "An open-source UI for claiming SSV rewards.",
         "startDate": "2024-08-05",
-        "endDate": "",
+        "endDate": "2024-08-25",
         "externalLinks": {
             "0": {
                 "url": "https://www.ssvrewards.com",
@@ -51,12 +91,22 @@
             },
             "1": {
                 "url": "https://operators.lido.fi/module/2/27",
-                "label": "Obol Cluster",
+                "label": "Obol - Prancing Peacock",
+                "type": "website"
+            },
+            "2": {
+                "url": "https://explorer.ssv.network/operators/916",
+                "label": "SSV - Arid Anubis",
+                "type": "website"
+            },
+            "3": {
+                "url": "https://explorer.ssv.network/operators/938",
+                "label": "SSV - Thoughtful Tiger",
                 "type": "website"
             }
         },
         "description": {
-            "0": "Running mainnet Lido validators through the Simple DVT module for both Obol and SSV."
+            "0": "Actively contributing to the decentralization of Ethereum by staking from home using NUCs. Running Besu and Teku clients both Obol and SSV."
         },
         "images": {
             "0": {
