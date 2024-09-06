@@ -120,6 +120,46 @@
         }
     },
     {
+        "id": "6ICQLG",
+        "name": "Simple Swap",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A token swapping example project.",
+        "startDate": "2024-07-26",
+        "endDate": "2024-09-06",
+        "externalLinks": {
+            "0": {
+                "url": "https://github.com/EridianAlpha/simple-swap",
+                "label": "Repo",
+                "type": "github"
+            },
+            "1": {
+                "url": "https://eridianalpha.github.io/simple-swap/",
+                "label": "Docs",
+                "type": "website"
+            },
+            "2": {
+                "url": "https://basescan.org/tx/0x197082445fc66bfd28c6434bb76d3a0ead2328f18b92921dce0daa9aeb56c58d",
+                "label": "ETH -> USDC Swap Transaction (Base)",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "SimpleSwap is an example project for swapping tokens using Uniswap V3.\n\nThe contract structure is broken down into individual contracts, each inherited from the previous contract. This was done as an exercise to better understand smart contract inheritance and to highlight reusable code sections.\n\nImports ➜ Variables ➜ Getters ➜ ModifiersAndChecks ➜ Updates ➜ Core ➜ SimpleSwap.\n\nThis project builds on knowledge from the AavePM project.\n\nThe TokenSwap contract is a pure logic contract that can be used to swap ETH <-> USDC. It has no owner and is immutable."
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/SimpleSwapCover.png",
+                "alt": "Simple Swap Cover"
+            }
+        }
+    },
+    {
         "id": "Q3XF0M",
         "name": "Explainer Post - Ethereum Addresses",
         "displayConfig": {
