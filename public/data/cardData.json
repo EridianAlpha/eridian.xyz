@@ -121,7 +121,7 @@
     },
     {
         "id": "6ICQLG",
-        "name": "Simple Swap",
+        "name": "Simple Swap - Example Contract",
         "displayConfig": {
             "cardType": "project"
         },
@@ -140,8 +140,13 @@
                 "type": "website"
             },
             "2": {
-                "url": "https://basescan.org/tx/0x197082445fc66bfd28c6434bb76d3a0ead2328f18b92921dce0daa9aeb56c58d",
+                "url": "https://basescan.org/tx/0x779ed192d5d6c146ff7cd30593bffd5f77b6e031c879611dfd734f4676f137fc",
                 "label": "ETH -> USDC Swap Transaction (Base)",
+                "type": "website"
+            },
+            "3": {
+                "url": "https://basescan.org/address/0x9e1d6c46b68f5a26a7f90bba4202d1126802bb2c",
+                "label": "Deployed Contract - Proxy (Base)",
                 "type": "website"
             }
         },
