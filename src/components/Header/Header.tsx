@@ -21,7 +21,7 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                 window.history.replaceState({}, "", `${window.location.pathname}`)
                 window.location.reload()
             } else {
-                window.location.href = "https://eridianalpha.com"
+                window.location.href = "https://eridian.xyz"
             }
         }
     }
@@ -98,7 +98,7 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                     <Flex direction={"row"} gap={3} alignItems={"top"}>
                         <Flex direction={"row"} wrap={"wrap"} gap={2} justifyContent={"right"}>
                             <Flex gap={2}>
-                                <Link href={"https://docs.eridianalpha.com"} target="_blank">
+                                <Link href={"https://docs.eridian.xyz"} target="_blank">
                                     <IconButton
                                         bg={useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)}
                                         _hover={{
@@ -113,7 +113,7 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                                         <FontAwesomeIcon icon={faBook} size={"lg"} />
                                     </IconButton>
                                 </Link>
-                                <Link href={"https://github.com/EridianAlpha/eridianalpha.com"} target="_blank">
+                                <Link href={"https://github.com/EridianAlpha/eridian.xyz"} target="_blank">
                                     <IconButton
                                         bg={useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)}
                                         _hover={{

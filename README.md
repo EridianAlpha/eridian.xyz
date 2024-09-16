@@ -1,6 +1,6 @@
-# EridianAlpha.com
+# Eridian.xyz
 
-This is the source code for the [EridianAlpha.com](https://eridianalpha.com) website. The site is a Next.js static site.
+This is the source code for the [Eridian.xyz](https://eridian.xyz) website. The site is a Next.js static site.
 
 ## Development
 
