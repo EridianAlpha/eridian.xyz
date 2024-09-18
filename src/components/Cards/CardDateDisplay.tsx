@@ -175,7 +175,8 @@ export default function CardDateDisplay({
                                 borderLeftRadius={"8px"}
                             />
                             <Text
-                                px={"15px"}
+                                pr={"15px"}
+                                pl={card.displayConfig.cardType == "highlight" ? "5px" : "28px"}
                                 py={"1px"}
                                 bg={getBackground(cardIndex)}
                                 fontWeight={"bold"}
@@ -186,7 +187,7 @@ export default function CardDateDisplay({
                                 textColor={card?.endDate ? completedTheme : inProgressTheme}
                                 cursor={"pointer"}
                             >
-                                {card.name}
+                                {card.displayConfig.cardType == "highlight" ? "⭐️" : null} {card.name}
                             </Text>
                             {selectedCard == card.id && (
                                 <Box

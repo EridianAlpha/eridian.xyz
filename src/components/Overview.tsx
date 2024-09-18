@@ -71,7 +71,7 @@ export default function Overview({ windowSize, environment }) {
                                         </HStack>
                                     </Flex>
                                 </Flex>
-                                <Text>A public tracker of my past and current Ethereum ecosystem projects and ideas.</Text>
+                                <Text>This website is a public tracker of my past and current Ethereum ecosystem projects and ideas.</Text>
                                 <VStack pt="20px">
                                     <Divider borderColor={useColorModeValue("gray.700", "gray.100")} />
                                     <Heading

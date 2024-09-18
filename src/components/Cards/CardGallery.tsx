@@ -95,7 +95,6 @@ export default function CardGallery({
                     <Card
                         key={card.id}
                         ref={cardRefs[cardIndex]}
-                        // maxW={sortedCardData?.length > 1 ? "100%" : { base: "100%", lg: "80%", xl: "75%" }}
                         maxW="100%"
                         bg={contentBackground}
                         overflow="hidden"
@@ -107,25 +106,28 @@ export default function CardGallery({
                                 ? { base: "0px", sm: "10px", md: "20px", xl: "30px" }
                                 : { base: "0px", sm: "10px", md: "10%", xl: "15%" }
                         }
+                        border={card.displayConfig.cardType == "highlight" ? "3px solid gold" : null}
                     >
                         <Flex alignItems="center" justifyContent="center" flexDirection={{ base: "column", md: "row" }} width={"100%"}>
                             <Stack flexGrow={1} width="100%">
                                 <HStack alignItems={"top"}>
                                     <Image
                                         bg={"#102026"}
-                                        objectFit="contain"
                                         width="100px"
                                         height="100px"
                                         src={card?.images?.[0].image ? card?.images?.[0].image : "./Eridian.png"}
                                         alt={card?.images?.[0].alt}
                                         borderTopRightRadius={{ base: "0px" }}
-                                        borderBottomRightRadius={{ base: "30px" }}
+                                        borderBottomRightRadius={"30px"}
                                         borderBottomLeftRadius={{ base: "0px" }}
                                     />
                                     <Flex direction={"column"} grow={1} width="100%">
                                         <Flex direction={"row"} justifyContent={"space-between"}>
                                             <Heading size="md" color={headingColor} pt={3} px={1} pb={2}>
-                                                {card.name}
+                                                <HStack gap={0}>
+                                                    {card.displayConfig.cardType == "highlight" ? <Text cursor={"default"}>⭐️</Text> : null}
+                                                    <Text>{card.name}</Text>
+                                                </HStack>
                                             </Heading>
                                             {(environment === "development" || selectedCard == card.id) && (
                                                 <IconButton

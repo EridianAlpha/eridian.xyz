@@ -146,6 +146,7 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
             <>
                 <InputLabel htmlFor={"cardType"}>Type</InputLabel>
                 <Select id="cardType" ref={cardTypeRef} defaultValue={cardEditorData.displayConfig.cardType}>
+                    <option value="highlight">Highlight</option>
                     <option value="project">Project</option>
                     <option value="tweet">Tweet</option>
                     <option value="event">Event</option>
