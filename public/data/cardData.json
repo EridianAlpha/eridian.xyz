@@ -1,5 +1,35 @@
 [
     {
+        "id": "A9OZFR",
+        "name": "Ethereum Settlers",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "An Ethereum Settlement NFT for anyone who feels at home as part of the Ethereum ecosystem.",
+        "startDate": "2024-09-09",
+        "endDate": "2024-09-20",
+        "externalLinks": {
+            "0": {
+                "url": "https://settlers.eridian.xyz/",
+                "label": "settlers.eridian.xyz",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "An ERC20 token called Ethereum Settler (SETTLER) and an ERC721 NFT token called Ethereum Settlement (SETTLEMENT).\n\nMinting a Settlement NFT is free and can be done by anyone. The only cost is the gas fee for the transaction.\n\nHolding a Settlement NFT earns the holder a newly minted SETTLER tokens every second."
+        },
+        "images": {
+            "0": {
+                "image": "./images/EthereumSettlersIcon.png",
+                "alt": "Ethereum Settlers Icon"
+            },
+            "1": {
+                "image": "./images/EthereumSettlersCover.png",
+                "alt": "Ethereum Settlers Cover"
+            }
+        }
+    },
+    {
         "id": "M1B1KE",
         "name": "Ethernaut - Foundry",
         "displayConfig": {
@@ -30,8 +60,8 @@
         },
         "images": {
             "0": {
-                "image": "",
-                "alt": ""
+                "image": "./images/EthernautLogo.png",
+                "alt": "EthernautLogo"
             },
             "1": {
                 "image": "./images/Ethernaut.png",
@@ -65,8 +95,8 @@
         },
         "images": {
             "0": {
-                "image": "",
-                "alt": ""
+                "image": "./images/SSVRewardsLogo.png",
+                "alt": "SSV Rewards Logo"
             },
             "1": {
                 "image": "./images/SSVRewardsCover.png",
@@ -155,8 +185,8 @@
         },
         "images": {
             "0": {
-                "image": "",
-                "alt": ""
+                "image": "./images/SimpleSwapLogo.png",
+                "alt": "Simple Swap Logo"
             },
             "1": {
                 "image": "./images/SimpleSwapCover.png",
@@ -827,8 +857,8 @@
         },
         "images": {
             "0": {
-                "image": "",
-                "alt": ""
+                "image": "./images/CyfrinLogo.png",
+                "alt": "CyfrinLogo"
             },
             "1": {
                 "image": "./images/FoundryCourse.png",
@@ -1352,8 +1382,8 @@
         },
         "images": {
             "0": {
-                "image": "",
-                "alt": ""
+                "image": "./images/ScaledNodeOperatorsIcon.png",
+                "alt": "Scaled Node Operators Icon"
             },
             "1": {
                 "image": "./images/ScaledNodeOperatorsKB.png",
@@ -2620,36 +2650,6 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
-            }
-        }
-    },
-    {
-        "id": "A9OZFR",
-        "name": "Ethereum Settlers",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "An Ethereum Settlement NFT for anyone who feels at home as part of the Ethereum ecosystem.",
-        "startDate": "2024-09-09",
-        "endDate": "2024-09-20",
-        "externalLinks": {
-            "0": {
-                "url": "https://settlers.eridian.xyz/",
-                "label": "settlers.eridian.xyz",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": "An ERC20 token called Ethereum Settler (SETTLER) and an ERC721 NFT token called Ethereum Settlement (SETTLEMENT).\n\nMinting a Settlement NFT is free and can be done by anyone. The only cost is the gas fee for the transaction.\n\nHolding a Settlement NFT earns the holder a newly minted SETTLER tokens every second."
-        },
-        "images": {
-            "0": {
-                "image": "./images/EthereumSettlersIcon.png",
-                "alt": "Ethereum Settlers Icon"
-            },
-            "1": {
-                "image": "./images/EthereumSettlersCover.png",
-                "alt": "Ethereum Settlers Cover"
             }
         }
     }
