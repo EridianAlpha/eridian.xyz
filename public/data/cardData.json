@@ -2622,5 +2622,35 @@
                 "alt": "Home Staking Nuc"
             }
         }
+    },
+    {
+        "id": "A9OZFR",
+        "name": "Ethereum Settlers",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "An Ethereum Settlement NFT for anyone who feels at home as part of the Ethereum ecosystem.",
+        "startDate": "2024-09-09",
+        "endDate": "2024-09-20",
+        "externalLinks": {
+            "0": {
+                "url": "https://settlers.eridian.xyz/",
+                "label": "settlers.eridian.xyz",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "An ERC20 token called Ethereum Settler (SETTLER) and an ERC721 NFT token called Ethereum Settlement (SETTLEMENT).\n\nMinting a Settlement NFT is free and can be done by anyone. The only cost is the gas fee for the transaction.\n\nHolding a Settlement NFT earns the holder a newly minted SETTLER tokens every second."
+        },
+        "images": {
+            "0": {
+                "image": "./images/EthereumSettlersIcon.png",
+                "alt": "Ethereum Settlers Icon"
+            },
+            "1": {
+                "image": "./images/EthereumSettlersCover.png",
+                "alt": "Ethereum Settlers Cover"
+            }
+        }
     }
 ]
