@@ -3,7 +3,7 @@ import cardDataTemplate from "../../../public/data/cardDataTemplate.json"
 import { useTheme, useBreakpointValue, Box, Flex, HStack, IconButton, useColorModeValue, Image, Button, Text } from "@chakra-ui/react"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGithub, faTelegram, faTwitter } from "@fortawesome/free-brands-svg-icons"
+import { faDiscord, faGithub, faTelegram, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { faBook, faCirclePlus } from "@fortawesome/free-solid-svg-icons"
 
 import ColorModeToggle from "./ColorModeToggle"
@@ -130,6 +130,21 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                                 </Link>
                             </Flex>
                             <Flex gap={2}>
+                                <Link href={"https://discordapp.com/users/844144351315755009"} target="_blank">
+                                    <IconButton
+                                        bg={useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)}
+                                        _hover={{
+                                            bg: useColorModeValue(
+                                                customTheme.contentBackground.hoverColor.light,
+                                                customTheme.contentBackground.hoverColor.dark
+                                            ),
+                                        }}
+                                        borderRadius={"20px"}
+                                        aria-label={"Eridian Discord Profile"}
+                                    >
+                                        <FontAwesomeIcon icon={faDiscord} size={"lg"} />
+                                    </IconButton>
+                                </Link>
                                 <Link href={"https://t.me/eridianalpha"} target="_blank">
                                     <IconButton
                                         bg={useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)}
