@@ -7,7 +7,7 @@
         },
         "summary": "An Ethereum Settlement NFT for anyone who feels at home as part of the Ethereum ecosystem.",
         "startDate": "2024-09-09",
-        "endDate": "2024-09-20",
+        "endDate": "2024-09-28",
         "externalLinks": {
             "0": {
                 "url": "https://settlers.eridian.xyz/",
@@ -24,6 +24,10 @@
                 "alt": "Ethereum Settlers Icon"
             },
             "1": {
+                "image": "./images/EthereumSettlersGallery.png",
+                "alt": "Ethereum Settlers Gallery"
+            },
+            "2": {
                 "image": "./images/EthereumSettlersCover.png",
                 "alt": "Ethereum Settlers Cover"
             }
