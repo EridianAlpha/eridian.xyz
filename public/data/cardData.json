@@ -1,5 +1,40 @@
 [
     {
+        "id": "TSEJ9P",
+        "name": "Lido - CSM Committee",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Multi-sig to manage less critical and non-essential features of Lido CSM.",
+        "startDate": "2024-09-10",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://research.lido.fi/t/csm-committee-creation/8333",
+                "label": "Forum post",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://app.safe.global/transactions/history?safe=eth:0xC52fC3081123073078698F1EAc2f1Dc7Bd71880f",
+                "label": "Safe multi-sig",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "The Community Staking Module is approaching the mainnet. Most of the CSM features are designed to function automatically and permissionlessly. While critical management functions like creating or updating bond curves, setting charge penalty recipient, and others are controlled by the on-chain voting to ensure protocol security and reliability, the committee multi-sig can control some less critical and non-essential features."
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoCSMLogo.png",
+                "alt": "Lido CSM Logo"
+            },
+            "1": {
+                "image": "",
+                "alt": ""
+            }
+        }
+    },
+    {
         "id": "A9OZFR",
         "name": "Ethereum Settlers",
         "displayConfig": {
@@ -16,7 +51,9 @@
             }
         },
         "description": {
-            "0": "An ERC20 token called Ethereum Settler (SETTLER) and an ERC721 NFT token called Ethereum Settlement (SETTLEMENT).\n\nMinting a Settlement NFT is free and can be done by anyone. The only cost is the gas fee for the transaction.\n\nHolding a Settlement NFT earns the holder a newly minted SETTLER tokens every second."
+            "0": "An ERC20 token called Ethereum Settler (SETTLER) and an ERC721 NFT token called Ethereum Settlement (SETTLEMENT).\n\nMinting a Settlement NFT is free and can be done by anyone. The only cost is the gas fee for the transaction.\n\nHolding a Settlement NFT earns the holder a newly minted SETTLER tokens every second.",
+            "1": "Minting a Settlement NFT is free and can be done by anyone. The only cost is the gas fee for the transaction.\n\nHolding a Settlement NFT gives the holder a newly minted SETTLER tokens every second.",
+            "2": "A Settlement NFT can only be held by one address at a time, but there is nothing stopping multiple addresses from each holding a different Settlement NFT. This means that the SETTLER token can have no monetary value, as it is not a scarce resource and an unlimited amount can be created simply by minting more Settlement NFTs."
         },
         "images": {
             "0": {
@@ -112,7 +149,7 @@
         "id": "0FQ46F",
         "name": "Lido - Simple DVT Mainnet",
         "displayConfig": {
-            "cardType": "project"
+            "cardType": "highlight"
         },
         "summary": "Running Mainnet Lido SDVT Validators.",
         "startDate": "2024-07-29",
