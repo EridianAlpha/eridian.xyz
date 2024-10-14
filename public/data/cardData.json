@@ -1,5 +1,45 @@
 [
     {
+        "id": "PW02Y7",
+        "name": "Pool Playground",
+        "displayConfig": {
+            "cardType": "highlight"
+        },
+        "summary": "An interactive educational playground for visualizing and learning Uniswap V2 mechanics.",
+        "startDate": "2024-09-30",
+        "endDate": "2024-10-18",
+        "externalLinks": {
+            "0": {
+                "url": "https://pool.eridian.xyz/",
+                "label": "Pool Playground",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://github.com/EridianAlpha/pool-playground",
+                "label": "Smart Contract Repo",
+                "type": "github"
+            },
+            "2": {
+                "url": "https://github.com/EridianAlpha/pool-playground-ui",
+                "label": "UI Repo",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": "The Pool Playground was built by Eridian after completing the Cyfrin Updraft Uniswap V2 course. The course provides an excellent introduction to Uniswap V2 and arbitrage, and this playground serves as an interactive educational tool to visualize the concepts from the course. The Cyfrin Updraft course is completely free (as is all their content), and I created this resource to deepen my understanding of Uniswap V2, smart contract UI building, and contract interactions, while also helping others learn."
+        },
+        "images": {
+            "0": {
+                "image": "./images/PoolPlaygroundIcon.png",
+                "alt": "Pool Playground Icon"
+            },
+            "1": {
+                "image": "./images/PoolPlaygroundCover.png",
+                "alt": "Pool Playground Cover"
+            }
+        }
+    },
+    {
         "id": "TSEJ9P",
         "name": "Lido - CSM Committee",
         "displayConfig": {
