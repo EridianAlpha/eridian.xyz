@@ -1,5 +1,65 @@
 [
     {
+        "id": "X6UN2O",
+        "name": "EthGlobal Hackathon - Bangkok",
+        "displayConfig": {
+            "cardType": "highlight"
+        },
+        "summary": "My first Ethereum hackathon event.",
+        "startDate": "2024-11-15",
+        "endDate": "2024-11-17",
+        "externalLinks": {
+            "0": {
+                "url": "https://ethglobal.com/events/bangkok",
+                "label": "ethglobal.com",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/EthGlobalLogo.png",
+                "alt": "EthGlobal Logo"
+            },
+            "1": {
+                "image": "./images/EthGlobal2024BangkokCover.png",
+                "alt": "EthGlobal 2024 Bangkok Cover"
+            }
+        }
+    },
+    {
+        "id": "PQAW41",
+        "name": "DevCon 2024",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "SEA DevCon in Bangkok - Thailand 🇹🇭",
+        "startDate": "2024-11-08",
+        "endDate": "2024-11-15",
+        "externalLinks": {
+            "0": {
+                "url": "https://devcon.org",
+                "label": "devcon.org",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/DevCon2024Logo.png",
+                "alt": "DevCon 2024 Logo"
+            },
+            "1": {
+                "image": "./images/DevCon2024Cover.png",
+                "alt": "DevCon 2024 Cover"
+            }
+        }
+    },
+    {
         "id": "PW02Y7",
         "name": "Pool Playground",
         "displayConfig": {
@@ -189,7 +249,7 @@
         "id": "0FQ46F",
         "name": "Lido - Simple DVT Mainnet",
         "displayConfig": {
-            "cardType": "highlight"
+            "cardType": "project"
         },
         "summary": "Running Mainnet Lido SDVT Validators.",
         "startDate": "2024-07-29",
@@ -383,7 +443,7 @@
         },
         "summary": "Participating in the Lido CSM Holesky testnet.",
         "startDate": "2024-07-01",
-        "endDate": "",
+        "endDate": "2024-12-31",
         "externalLinks": {
             "0": {
                 "url": "https://operators-holesky.testnet.fi/module/4/7",
@@ -2010,7 +2070,7 @@
         },
         "summary": "DVT Home Staking. Decentralizing Ethereum one node at a time!",
         "startDate": "2023-05-12",
-        "endDate": "",
+        "endDate": "2024-09-01",
         "externalLinks": {
             "0": {
                 "url": "https://twitter.com/ether_fi/status/1657028498786070531",
@@ -2118,7 +2178,7 @@
         "displayConfig": {
             "cardType": "highlight"
         },
-        "summary": "This website 👀",
+        "summary": "This website 👀 (Updated to be at eridian.xyz)",
         "startDate": "2023-04-18",
         "endDate": "2023-05-31",
         "externalLinks": {
@@ -2344,7 +2404,7 @@
         "id": "3UWCI6",
         "name": "DVStakers",
         "startDate": "2023-03-01",
-        "endDate": "",
+        "endDate": "2024-12-31",
         "summary": "The journey of Ethereum solo stakers to distributed validator staking.",
         "description": {
             "0": "Join us on an adventure as dedicated Ethereum solo stakers prepare to run Distributed Validator Technology (DVT) on the Ethereum mainnet. We aim to document of our journey, offering valuable insights, sharing our experiences, and fostering a supportive community for enthusiasts and experts alike.",
