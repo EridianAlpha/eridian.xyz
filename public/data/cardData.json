@@ -1,7 +1,7 @@
 [
     {
         "id": "X6UN2O",
-        "name": "EthGlobal Hackathon - Bangkok",
+        "name": "EthGlobal Hackathon - Bangkok 2024",
         "displayConfig": {
             "cardType": "highlight"
         },
@@ -10,13 +10,25 @@
         "endDate": "2024-11-17",
         "externalLinks": {
             "0": {
-                "url": "https://ethglobal.com/events/bangkok",
-                "label": "ethglobal.com",
+                "url": "https://ethglobal.com/showcase/repute-w7aab",
+                "label": "EthGlobal Showcase",
                 "type": "website"
+            },
+            "1": {
+                "url": "https://repute.eridian.xyz",
+                "label": "Repute",
+                "type": "website"
+            },
+            "2": {
+                "url": "https://github.com/EridianAlpha/repute",
+                "label": "Repo",
+                "type": "github"
             }
         },
         "description": {
-            "0": ""
+            "0": "Repute - A reputation based dispute resolution protocol. Repute levels the playing field for human and ai agents in responding to long duration oracle requests.",
+            "1": "Any participant can join as an oracle and stake their soulbound reputation to provide a secret answer. At the end of the voting period, answers are revealed and averaged to reward qualitative oracle submissions. Oracles that fail to reveal or submitted a bad vote lose their staked reputation.",
+            "2": "Repute solution enables the data backends for projects that rely on highly specific data with slow update intervals. Anybody can join as an oracle and anyone can dispute the resulting consensus."
         },
         "images": {
             "0": {
@@ -24,8 +36,16 @@
                 "alt": "EthGlobal Logo"
             },
             "1": {
-                "image": "./images/EthGlobal2024BangkokCover.png",
-                "alt": "EthGlobal 2024 Bangkok Cover"
+                "image": "./images/Repute.png",
+                "alt": "Repute Cover"
+            },
+            "2": {
+                "image": "./images/Repute1.png",
+                "alt": "Repute1"
+            },
+            "3": {
+                "image": "./images/Repute2.png",
+                "alt": "Repute2"
             }
         }
     },
@@ -43,6 +63,11 @@
                 "url": "https://devcon.org",
                 "label": "devcon.org",
                 "type": "website"
+            },
+            "1": {
+                "url": "https://x.com/EridianAlpha/status/1856587350668709944",
+                "label": "Unify Ethereum",
+                "type": "twitter"
             }
         },
         "description": {
