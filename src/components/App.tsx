@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import styles from "./App.module.css"
 import VersionDrawer from "./VersionDrawer"
 import Header from "./Header/Header"
 import Overview from "./Overview"
@@ -107,10 +106,10 @@ const App = () => {
             <Container
                 maxW="100%"
                 bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}
-                px={{ base: "16px", xl: "60px" }}
+                px={{ base: "16px", xl: "30px" }}
                 pb={"100px"}
             >
-                {environment === "development" && <VersionDrawer windowSize={windowSize} />}
+                {/* {environment === "development" && <VersionDrawer windowSize={windowSize} />} */}
                 <Flex direction="column" justifyContent="center" alignItems="center">
                     <Box width="100%" maxW="1400px">
                         <Header

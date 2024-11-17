@@ -101,11 +101,7 @@ export default function CardGallery({
                         variant="outline"
                         borderRadius={"30px"}
                         borderWidth={0}
-                        mx={
-                            sortedCardData?.length > 1
-                                ? { base: "0px", sm: "10px", md: "20px", xl: "30px" }
-                                : { base: "0px", sm: "10px", md: "10%", xl: "15%" }
-                        }
+                        mx={sortedCardData?.length > 1 ? { base: "0px", sm: "10px", md: "20px" } : { base: "0px", sm: "10px", md: "10%", xl: "15%" }}
                         border={card.displayConfig.cardType == "highlight" ? "3px solid gold" : null}
                     >
                         <Flex alignItems="center" justifyContent="center" flexDirection={{ base: "column", md: "row" }} width={"100%"}>
