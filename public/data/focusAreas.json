@@ -9,24 +9,18 @@
         "title": "DeFi",
         "icon": "faMoneyBill",
         "color": "#76b63a",
-        "count": 4
-    },
-    {
-        "title": "NFTs",
-        "icon": "faImage",
-        "color": "#36A2EB",
-        "count": 1
+        "count": 3
     },
     {
         "title": "Solidity",
         "icon": "faLaptopCode",
         "color": "#E53E3E",
-        "count": 5
+        "count": 4
     },
     {
-        "title": "L2s",
+        "title": "Based Rollups",
         "icon": "faCodeFork",
         "color": "#ED8936",
-        "count": 3
+        "count": 5
     }
 ]
