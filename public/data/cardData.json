@@ -5,7 +5,7 @@
         "displayConfig": {
             "cardType": "highlight"
         },
-        "summary": "My first Ethereum hackathon event.",
+        "summary": "Repute - A reputation based dispute resolution protocol.",
         "startDate": "2024-11-15",
         "endDate": "2024-11-17",
         "externalLinks": {
@@ -26,7 +26,7 @@
             }
         },
         "description": {
-            "0": "Repute - A reputation based dispute resolution protocol. Repute levels the playing field for human and ai agents in responding to long duration oracle requests.",
+            "0": "Repute levels the playing field for human and ai agents in responding to long duration oracle requests.",
             "1": "Any participant can join as an oracle and stake their soulbound reputation to provide a secret answer. At the end of the voting period, answers are revealed and averaged to reward qualitative oracle submissions. Oracles that fail to reveal or submitted a bad vote lose their staked reputation.",
             "2": "Repute solution enables the data backends for projects that rely on highly specific data with slow update intervals. Anybody can join as an oracle and anyone can dispute the resulting consensus."
         },
@@ -2816,6 +2816,36 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
+            }
+        }
+    },
+    {
+        "id": "T8VEJ8",
+        "name": "Based Rollup Docs",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Docs explaining everything an Ethereum validator needs to know about Based Rollups.",
+        "startDate": "2024-11-22",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://based.eridian.xyz/",
+                "label": "based.eridian.xyz",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "⏱️ Based Rollups in 60 seconds. 🤔 Why should I care about Based Rollups as an Ethereum Validator? 💊 It's time to get Base Rollup pilled!"
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/BasedRollupDocsCover.png",
+                "alt": "Based Rollup DocsCover"
             }
         }
     }
