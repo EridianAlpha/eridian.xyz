@@ -62,8 +62,8 @@ export default function CardDateSlider({
     const earliestStartDate = findEarliestDate()
     const sliderMax = dayDiff(earliestStartDate, new Date())
     const [sliderValues, setSliderValues] = useState([
-        // Show past 200 days by default
-        sliderMax - 200,
+        // Show 50% of available range on initial render
+        sliderMax - dayDiff(earliestStartDate, new Date()) / 2,
         sliderMax,
     ])
 
