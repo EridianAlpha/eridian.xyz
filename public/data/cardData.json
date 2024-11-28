@@ -1,5 +1,35 @@
 [
     {
+        "id": "T8VEJ8",
+        "name": "Based Rollup Docs",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Docs explaining everything an Ethereum validator needs to know about Based Rollups.",
+        "startDate": "2024-11-22",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://based.eridian.xyz/",
+                "label": "based.eridian.xyz",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "⏱️ Based Rollups in 60 seconds. 🤔 Why should I care about Based Rollups as an Ethereum Validator? 💊 It's time to get Base Rollup pilled!"
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/BasedRollupDocsCover.png",
+                "alt": "Based Rollup DocsCover"
+            }
+        }
+    },
+    {
         "id": "X6UN2O",
         "name": "EthGlobal Hackathon - Bangkok 2024",
         "displayConfig": {
@@ -126,7 +156,7 @@
     },
     {
         "id": "TSEJ9P",
-        "name": "Lido - CSM Committee",
+        "name": "Lido - CSM Committee Multisig",
         "displayConfig": {
             "cardType": "project"
         },
@@ -146,7 +176,7 @@
             }
         },
         "description": {
-            "0": "The Community Staking Module is approaching the mainnet. Most of the CSM features are designed to function automatically and permissionlessly. While critical management functions like creating or updating bond curves, setting charge penalty recipient, and others are controlled by the on-chain voting to ensure protocol security and reliability, the committee multi-sig can control some less critical and non-essential features."
+            "0": "The Community Staking Module is approaching the mainnet. Most of the CSM features are designed to function automatically and permissionlessly. While critical management functions like creating or updating bond curves, setting charge penalty recipient, and others are controlled by the on-chain voting to ensure protocol security and reliability, the committee multi-sig can control some less critical and non-essential features. Not a paid position."
         },
         "images": {
             "0": {
@@ -2816,36 +2846,6 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
-            }
-        }
-    },
-    {
-        "id": "T8VEJ8",
-        "name": "Based Rollup Docs",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "Docs explaining everything an Ethereum validator needs to know about Based Rollups.",
-        "startDate": "2024-11-22",
-        "endDate": "",
-        "externalLinks": {
-            "0": {
-                "url": "https://based.eridian.xyz/",
-                "label": "based.eridian.xyz",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": "⏱️ Based Rollups in 60 seconds. 🤔 Why should I care about Based Rollups as an Ethereum Validator? 💊 It's time to get Base Rollup pilled!"
-        },
-        "images": {
-            "0": {
-                "image": "",
-                "alt": ""
-            },
-            "1": {
-                "image": "./images/BasedRollupDocsCover.png",
-                "alt": "Based Rollup DocsCover"
             }
         }
     }
