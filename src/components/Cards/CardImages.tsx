@@ -76,7 +76,7 @@ export default function CardImages({
                 maxH={"30vh"}
                 src={image.image}
                 alt={image.alt}
-                borderTopRadius={roundedCorners[cardIndex]?.[imageIndex] ? "30px" : "0px"}
+                borderTopRadius={roundedCorners[cardIndex]?.[imageIndex] ? "10px" : "0px"}
                 borderBottomRadius={
                     (imageIndex === imageArray.length - 1 &&
                         Object.values(card?.description || {})?.length < Object.values(card?.images || {})?.length) ||
