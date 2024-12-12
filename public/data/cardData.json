@@ -1,5 +1,35 @@
 [
     {
+        "id": "RGPG75",
+        "name": "Uniswap Pool Tx Viewer",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "A UI to view transactions from a Uniswap pool in real time.",
+        "startDate": "2024-12-13",
+        "endDate": "2024-12-15",
+        "externalLinks": {
+            "0": {
+                "url": "https://app.uniswap.org/explore/pools/base/0xd0b53D9277642d899DF5C87A3966A349A798F224",
+                "label": "Example from Uniswap UI",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/UniswapPoolViewer.png",
+                "alt": "Uniswap Pool Viewer"
+            }
+        }
+    },
+    {
         "id": "WO4FZ2",
         "name": "Commit Boost Docs",
         "displayConfig": {
