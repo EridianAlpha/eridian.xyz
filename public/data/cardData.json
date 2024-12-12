@@ -1,31 +1,72 @@
 [
     {
+        "id": "WO4FZ2",
+        "name": "Commit Boost Docs",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Updating commit-boost documentation site.",
+        "startDate": "2024-11-27",
+        "endDate": "2024-12-12",
+        "externalLinks": {
+            "0": {
+                "url": "https://commit-boost.github.io/commit-boost-client/",
+                "label": "commit-boost-client docs",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://github.com/Commit-Boost/commit-boost-client/commit/d420d65f5b4c00b3a55046fdf5860f9bd4d04dd6",
+                "label": "Updates",
+                "type": "github"
+            }
+        },
+        "description": {
+            "0": "Working with the commit-boost team to update their documentation, add diagrams, and standardize content."
+        },
+        "images": {
+            "0": {
+                "image": "./images/CommitBoostLogo.png",
+                "alt": "Commit Boost Logo"
+            },
+            "1": {
+                "image": "./images/CommitBoostCover.png",
+                "alt": "Commit Boost Cover"
+            }
+        }
+    },
+    {
         "id": "T8VEJ8",
         "name": "Based Rollup Docs",
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "Docs explaining everything an Ethereum validator needs to know about Based Rollups.",
+        "summary": "Creating a documentation site for Spire for based rollups.",
         "startDate": "2024-11-22",
         "endDate": "",
         "externalLinks": {
             "0": {
-                "url": "https://based.eridian.xyz/",
-                "label": "based.eridian.xyz",
+                "url": "https://docs.spire.dev",
+                "label": "docs.spire.dev",
                 "type": "website"
             }
         },
         "description": {
-            "0": "⏱️ Based Rollups in 60 seconds. 🤔 Why should I care about Based Rollups as an Ethereum Validator? 💊 It's time to get Base Rollup pilled!"
+            "0": "⏱️ Based Rollups in 60 seconds. 🤔 Why should I care about Based Rollups? 💊 It's time to get Base Rollup pilled!",
+            "1": "Ethereum is the most credibly neutral and censorship-resistant shared consensus protocol humanity has ever created. It's the geographically, economically, and culturally diverse validator set that makes this possible. Rollups can be an extension of Ethereum, but currently, nearly all rollups use their own validator set, usually a single centralized sequencer. This limits composability and causes liquidity fragmentation, creating \"island nations\" rather than a unified Ethereum.",
+            "2": "Based rollups solve this problem by giving the power to sequence transactions in a rollup to the Ethereum L1 validators. This arrangement can create significant benefits for Ethereum, such as synchronous atomic composability, preconfirmations, and more!"
         },
         "images": {
             "0": {
-                "image": "",
-                "alt": ""
+                "image": "./images/SpireLogo.png",
+                "alt": "Spire Logo"
             },
             "1": {
-                "image": "./images/BasedRollupDocsCover.png",
-                "alt": "Based Rollup DocsCover"
+                "image": "./images/BasedRollupDocsCover1.png",
+                "alt": "Based Rollup Docs Cover 1"
+            },
+            "2": {
+                "image": "./images/BasedRollupDocsCover2.png",
+                "alt": "Based Rollup Docs Cover 2"
             }
         }
     },
