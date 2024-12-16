@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react"
 import { Box, Image } from "@chakra-ui/react"
 
+import Zoom from "react-medium-image-zoom"
+import "react-medium-image-zoom/dist/styles.css"
+
 export default function CardImages({
     windowSize,
     card,
@@ -69,24 +72,26 @@ export default function CardImages({
 
     return (
         <Box width="100%" display="flex" alignItems="center" justifyContent="center">
-            <Image
-                ref={imageRefs[cardIndex][imageIndex]}
-                key={imageIndex}
-                objectFit="contain"
-                maxH={"30vh"}
-                src={image.image}
-                alt={image.alt}
-                borderTopRadius={roundedCorners[cardIndex]?.[imageIndex] ? "10px" : "0px"}
-                borderBottomRadius={
-                    (imageIndex === imageArray.length - 1 &&
-                        Object.values(card?.description || {})?.length < Object.values(card?.images || {})?.length) ||
-                    (imageIndex === 1 && !showMore[cardIndex])
-                        ? "0px"
-                        : roundedCorners[cardIndex]?.[imageIndex]
-                        ? "30px"
-                        : "0px"
-                }
-            />
+            <Zoom classDialog="custom-zoom">
+                <Image
+                    ref={imageRefs[cardIndex][imageIndex]}
+                    key={imageIndex}
+                    objectFit="contain"
+                    maxH={"30vh"}
+                    src={image.image}
+                    alt={image.alt}
+                    borderTopRadius={roundedCorners[cardIndex]?.[imageIndex] ? "10px" : "0px"}
+                    borderBottomRadius={
+                        (imageIndex === imageArray.length - 1 &&
+                            Object.values(card?.description || {})?.length < Object.values(card?.images || {})?.length) ||
+                        (imageIndex === 1 && !showMore[cardIndex])
+                            ? "0px"
+                            : roundedCorners[cardIndex]?.[imageIndex]
+                            ? "30px"
+                            : "0px"
+                    }
+                />
+            </Zoom>
         </Box>
     )
 }

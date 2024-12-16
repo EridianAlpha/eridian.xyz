@@ -2,8 +2,8 @@
     box-sizing: border-box;
 }
 
-.hideUntilReady {
-    visibility: hidden;
+.custom-zoom [data-rmiz-modal-overlay="visible"] {
+    background-color: rgba(19, 24, 39, 0.95);
 }
 
 body {
