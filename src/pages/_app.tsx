@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 
 import "../styles/globals.css"
 
-import { ChakraProvider, ColorModeScript, useColorModeValue } from "@chakra-ui/react"
+import { ChakraProvider, ColorModeScript, Spinner, useColorModeValue } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react"
 
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -71,7 +71,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     useEffect(() => {
         if (isColorModeReady) {
             const appElement = document.getElementById("app")
+            const placeHolderElement = document.getElementById("placeholder")
             if (appElement) {
+                placeHolderElement?.classList.add("hideUntilReady")
+                placeHolderElement?.classList.remove("backgroundPlaceholder")
                 appElement.classList.remove("hideUntilReady")
             }
         }
@@ -81,6 +84,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ChakraProvider theme={customTheme}>
             <HtmlBackgroundColor />
             <ColorModeScript initialColorMode="dark" />
+            <div id="placeholder" className="backgroundPlaceholder">
+                <Spinner />
+                <text>Loading eridian.xyz</text>
+            </div>
             <div id="app" className="hideUntilReady">
                 <Component {...pageProps} />
                 <Analytics />

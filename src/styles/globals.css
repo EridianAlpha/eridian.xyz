@@ -2,8 +2,24 @@
     box-sizing: border-box;
 }
 
+.hideUntilReady {
+    visibility: hidden;
+    height: 0;
+}
+
 .custom-zoom [data-rmiz-modal-overlay="visible"] {
     background-color: rgba(19, 24, 39, 0.95);
+}
+
+.backgroundPlaceholder {
+    background-color: #131827;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 body {
