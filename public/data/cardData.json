@@ -1,5 +1,29 @@
 [
     {
+        "id": "JEZ3AG",
+        "name": "SendFox",
+        "displayConfig": {
+            "cardType": "highlight"
+        },
+        "summary": "Project under development...",
+        "startDate": "2024-12-25",
+        "endDate": "",
+        "externalLinks": {},
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "",
+                "alt": ""
+            }
+        }
+    },
+    {
         "id": "RGPG75",
         "name": "Uniswap Pool Tx Viewer",
         "displayConfig": {
