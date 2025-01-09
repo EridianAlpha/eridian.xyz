@@ -90,18 +90,28 @@
     },
     {
         "id": "T8VEJ8",
-        "name": "Based Rollup Docs",
+        "name": "Spire - Devrel",
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "Creating the Spire documentation site for based rollups.",
+        "summary": "Creating Spire based rollup documentation and supporting their developers.",
         "startDate": "2024-11-22",
         "endDate": "",
         "externalLinks": {
             "0": {
+                "url": "https://spire.dev",
+                "label": "spire.dev",
+                "type": "website"
+            },
+            "1": {
                 "url": "https://docs.spire.dev",
                 "label": "docs.spire.dev",
                 "type": "website"
+            },
+            "2": {
+                "url": "https://x.com/Spire_Labs",
+                "label": "Spire Labs",
+                "type": "twitter"
             }
         },
         "description": {
