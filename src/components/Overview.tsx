@@ -3,19 +3,18 @@ import { useTheme, Container, Flex, HStack, useColorModeValue, Image, Card, Stac
 import focusAreasDataImport from "../../public/data/focusAreas.json" // Import the JSON data
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMoneyBill, faServer, faImage, faLaptopCode, faCodeFork } from "@fortawesome/free-solid-svg-icons"
+import { faMoneyBill, faServer, faImage, faLaptopCode, faCompassDrafting } from "@fortawesome/free-solid-svg-icons"
 
 const focusAreaIconMapping = {
     faServer,
     faMoneyBill,
     faImage,
     faLaptopCode,
-    faCodeFork,
+    faCompassDrafting,
 }
 
-export default function Overview({ windowSize, environment }) {
+export default function Overview() {
     const customTheme = useTheme()
-    const isSSR = typeof window === "undefined"
 
     const focusAreasData = focusAreasDataImport.map((item) => ({
         ...item,
@@ -81,7 +80,14 @@ export default function Overview({ windowSize, environment }) {
                                     >
                                         Current Areas of Focus
                                     </Heading>
-                                    <Flex flexDirection={"row"} wrap={"wrap"} columnGap={"20px"} rowGap={"20px"} justifyContent={"space-around"}>
+                                    <Flex
+                                        flexDirection={"row"}
+                                        wrap={"wrap"}
+                                        columnGap={"20px"}
+                                        rowGap={"20px"}
+                                        justifyContent={"space-around"}
+                                        w={"100%"}
+                                    >
                                         {focusAreasData
                                             .sort((a, b) => b.count - a.count)
                                             .map(({ title, icon, color, count }) => (

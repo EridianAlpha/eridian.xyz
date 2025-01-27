@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import VersionDrawer from "./VersionDrawer"
 import Header from "./Header/Header"
 import Overview from "./Overview"
 import CardDateSlider from "./Cards/CardDateSlider"
@@ -118,7 +117,7 @@ const App = () => {
                             setIsCardEditorOpen={setIsCardEditorOpen}
                             setCardEditorData={setCardEditorData}
                         />
-                        <Overview windowSize={windowSize} environment={environment} />
+                        <Overview />
                     </Box>
                     {shouldRenderDateComponents ? (
                         <>
