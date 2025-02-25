@@ -6,7 +6,7 @@
             "cardType": "highlight"
         },
         "summary": "Project under development...",
-        "startDate": "2024-12-25",
+        "startDate": "2025-02-01",
         "endDate": "",
         "externalLinks": {},
         "description": {
@@ -31,7 +31,7 @@
         },
         "summary": "A UI to view transactions from a Uniswap pool in real time.",
         "startDate": "2024-12-13",
-        "endDate": "2024-12-15",
+        "endDate": "2024-12-18",
         "externalLinks": {
             "0": {
                 "url": "https://app.uniswap.org/explore/pools/base/0xd0b53D9277642d899DF5C87A3966A349A798F224",
