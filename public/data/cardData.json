@@ -1,5 +1,40 @@
 [
     {
+        "id": "V1GNPB",
+        "name": "ChakraUI V3 Template",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "An updated next.js template project using ChakraUI V3",
+        "startDate": "2025-02-28",
+        "endDate": "2025-03-01",
+        "externalLinks": {
+            "0": {
+                "url": "https://github.com/EridianAlpha/chakra-ui-v3-template",
+                "label": "Repo",
+                "type": "github"
+            },
+            "1": {
+                "url": "https://chakra-ui-v3-template.vercel.app",
+                "label": "Example Site",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/ChakraUIV3Template.png",
+                "alt": "ChakraUI V3 Template"
+            }
+        }
+    },
+    {
         "id": "JEZ3AG",
         "name": "SendFox",
         "displayConfig": {
@@ -20,6 +55,66 @@
             "1": {
                 "image": "",
                 "alt": ""
+            }
+        }
+    },
+    {
+        "id": "6OOOMU",
+        "name": "What are we waiting for?",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Blog post comparing Ethereum L1 and L2 block times.",
+        "startDate": "2025-01-03",
+        "endDate": "2025-01-06",
+        "externalLinks": {
+            "0": {
+                "url": "https://docs.spire.dev/readme/what-are-we-waiting-for",
+                "label": "What are we waiting for",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/SpireLogo.png",
+                "alt": "Spire Logo"
+            },
+            "1": {
+                "image": "./images/SpireWhatAreWeWaitingFor.png",
+                "alt": "Spire What Are We Waiting For"
+            }
+        }
+    },
+    {
+        "id": "34YB8N",
+        "name": "Based Rollup Timeline",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Resources for Ethereum based rollups in date order.",
+        "startDate": "2024-12-20",
+        "endDate": "2024-12-23",
+        "externalLinks": {
+            "0": {
+                "url": "https://docs.spire.dev/readme/based-resources",
+                "label": "Based Resources",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/SpireLogo.png",
+                "alt": "Spire Logo"
+            },
+            "1": {
+                "image": "./images/SpireBasedRollupResources.png",
+                "alt": "Spire Based Rollup Resources"
             }
         }
     },
