@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars } from "@fortawesome/free-solid-svg-icons"
+import { faBars, faCalendarDays } from "@fortawesome/free-solid-svg-icons"
 
 import {
     useTheme,
@@ -134,8 +134,8 @@ export default function CardDateSlider({
         <Box width="100%">
             <Flex direction={"row"} justifyContent={"center"} alignItems="center">
                 <Flex direction="row" width="21%" justifyContent={"end"}>
-                    <Heading pr={"30px"} color={headingColor} fontSize={"2xl"} display={"flex"} alignItems={"center"}>
-                        🗓️ Timeline View
+                    <Heading pr={"12px"} fontSize={"2xl"} display={"flex"} alignItems={"center"} gap={2}>
+                        <FontAwesomeIcon icon={faCalendarDays} /> Timeline View
                     </Heading>
                 </Flex>
                 <Flex direction="row" width="79%" bg={contentBackground} borderRadius={"30px"} py={"12px"} px={"150px"} height={"50px"}>
