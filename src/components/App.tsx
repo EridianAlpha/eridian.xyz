@@ -5,6 +5,7 @@ import CardDateSlider from "./Cards/CardDateSlider"
 import CardDateDisplay from "./Cards/CardDateDisplay"
 import CardGallery from "./Cards/CardGallery"
 import cardData from "../../public/data/cardData.json"
+import Footer from "../components/Footer"
 
 import { useTheme, useColorModeValue, Container, Box, Flex, Card, Text } from "@chakra-ui/react"
 
@@ -175,6 +176,7 @@ const App = () => {
                     </Box>
                 </Flex>
             </Container>
+            <Footer />
         </Box>
     )
 }
