@@ -86,7 +86,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <ColorModeScript initialColorMode="dark" />
             <div id="placeholder" className="backgroundPlaceholder">
                 <Spinner />
-                <text>Loading eridian.xyz</text>
+                <text style={{ fontWeight: "bold" }}>Loading eridian.xyz</text>
             </div>
             <div id="app" className="hideUntilReady">
                 <Component {...pageProps} />
