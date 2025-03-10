@@ -3,7 +3,7 @@ import cardDataTemplate from "../../../public/data/cardDataTemplate.json"
 import { useTheme, useBreakpointValue, Box, Flex, HStack, IconButton, useColorModeValue, Image, Button, Text } from "@chakra-ui/react"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faDiscord, faGithub, faTelegram, faTwitter } from "@fortawesome/free-brands-svg-icons"
+import { faDiscord, faGithub, faTelegram, faXTwitter } from "@fortawesome/free-brands-svg-icons"
 import { faBook, faCirclePlus } from "@fortawesome/free-solid-svg-icons"
 
 import ColorModeToggle from "./ColorModeToggle"
@@ -113,7 +113,7 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                                         <FontAwesomeIcon icon={faBook} size={"lg"} />
                                     </IconButton>
                                 </Link>
-                                <Link href={"https://github.com/EridianAlpha/eridian.xyz"} target="_blank">
+                                <Link href={"https://github.com/EridianAlpha"} target="_blank">
                                     <IconButton
                                         bg={useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)}
                                         _hover={{
@@ -123,7 +123,7 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                                             ),
                                         }}
                                         borderRadius={"20px"}
-                                        aria-label={"View GitHub Source"}
+                                        aria-label={"Eridian GitHub"}
                                     >
                                         <FontAwesomeIcon icon={faGithub} size={"lg"} />
                                     </IconButton>
@@ -160,7 +160,7 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                                         <FontAwesomeIcon icon={faTelegram} size={"lg"} />
                                     </IconButton>
                                 </Link>
-                                <Link href={"https://twitter.com/EridianAlpha"} target="_blank">
+                                <Link href={"https://x.com/EridianAlpha"} target="_blank">
                                     <IconButton
                                         bg={useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)}
                                         _hover={{
@@ -170,9 +170,9 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                                             ),
                                         }}
                                         borderRadius={"20px"}
-                                        aria-label={"Eridian Twitter Profile"}
+                                        aria-label={"Eridian X Profile"}
                                     >
-                                        <FontAwesomeIcon icon={faTwitter} size={"lg"} />
+                                        <FontAwesomeIcon icon={faXTwitter} size={"lg"} />
                                     </IconButton>
                                 </Link>
                             </Flex>
