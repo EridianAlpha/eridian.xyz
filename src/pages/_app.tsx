@@ -9,6 +9,9 @@ import { extendTheme } from "@chakra-ui/react"
 
 import { config } from "@fortawesome/fontawesome-svg-core"
 import "@fortawesome/fontawesome-svg-core/styles.css"
+
+import GoogleAnalytics from "@/components/GoogleAnalytics"
+
 config.autoAddCss = false
 
 // Custom theme colors
@@ -89,6 +92,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <text style={{ fontWeight: "bold" }}>Loading eridian.xyz</text>
             </div>
             <div id="app" className="hideUntilReady">
+                <GoogleAnalytics />
                 <Component {...pageProps} />
                 <Analytics />
             </div>
