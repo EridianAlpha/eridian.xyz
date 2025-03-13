@@ -4,7 +4,7 @@ import { useTheme, useBreakpointValue, Box, Flex, HStack, IconButton, useColorMo
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faDiscord, faGithub, faTelegram, faXTwitter } from "@fortawesome/free-brands-svg-icons"
-import { faBook, faCirclePlus } from "@fortawesome/free-solid-svg-icons"
+import { faBook, faChartSimple, faCirclePlus } from "@fortawesome/free-solid-svg-icons"
 
 import ColorModeToggle from "./ColorModeToggle"
 import Link from "next/link"
@@ -111,6 +111,21 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
                                         aria-label={"Eridian Docs"}
                                     >
                                         <FontAwesomeIcon icon={faBook} size={"lg"} />
+                                    </IconButton>
+                                </Link>
+                                <Link href={"https://stats.eridian.xyz"} target="_blank">
+                                    <IconButton
+                                        bg={useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)}
+                                        _hover={{
+                                            bg: useColorModeValue(
+                                                customTheme.contentBackground.hoverColor.light,
+                                                customTheme.contentBackground.hoverColor.dark
+                                            ),
+                                        }}
+                                        borderRadius={"20px"}
+                                        aria-label={"Eridian Stats"}
+                                    >
+                                        <FontAwesomeIcon icon={faChartSimple} size={"lg"} />
                                     </IconButton>
                                 </Link>
                                 <Link href={"https://github.com/EridianAlpha"} target="_blank">
