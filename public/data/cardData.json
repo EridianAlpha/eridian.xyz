@@ -1,5 +1,35 @@
 [
     {
+        "id": "FU0AX7",
+        "name": "Eridian Stats",
+        "displayConfig": {
+            "cardType": "highlight"
+        },
+        "summary": "Public stats for website views and repo commits.",
+        "startDate": "2025-03-10",
+        "endDate": "2025-03-14",
+        "externalLinks": {
+            "0": {
+                "url": "https://stats.eridian.xyz",
+                "label": "stats.eridian.xyz",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Built as a personal hackathon project. The goal was to see if multiple data sources could be displayed in a GitHub style \"green dot map\" to show correlations between events. For example, seeing if website views increase after a feature release."
+        },
+        "images": {
+            "0": {
+                "image": "./images/EridianStats.png",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/EridianStatsCover.png",
+                "alt": ""
+            }
+        }
+    },
+    {
         "id": "V1GNPB",
         "name": "ChakraUI V3 Template",
         "displayConfig": {
