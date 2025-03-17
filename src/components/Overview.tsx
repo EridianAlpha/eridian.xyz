@@ -1,17 +1,34 @@
-import { useTheme, Container, Flex, HStack, useColorModeValue, Image, Card, Stack, CardBody, Heading, Text, VStack, Divider } from "@chakra-ui/react"
+import {
+    useTheme,
+    Container,
+    Flex,
+    HStack,
+    useColorModeValue,
+    Image,
+    Card,
+    Stack,
+    CardBody,
+    Heading,
+    Text,
+    VStack,
+    Divider,
+    Link,
+} from "@chakra-ui/react"
 
 import focusAreasDataImport from "../../public/data/focusAreas.json" // Import the JSON data
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMoneyBill, faServer, faImage, faLaptopCode, faCompassDrafting } from "@fortawesome/free-solid-svg-icons"
+import { faMoneyBill, faServer, faImage, faRobot, faChartPie } from "@fortawesome/free-solid-svg-icons"
 
 const focusAreaIconMapping = {
     faServer,
     faMoneyBill,
     faImage,
-    faLaptopCode,
-    faCompassDrafting,
+    faRobot,
+    faChartPie,
 }
+
+import NextLink from "next/link"
 
 export default function Overview() {
     const customTheme = useTheme()
@@ -30,23 +47,23 @@ export default function Overview() {
                 pb={"50px"}
             >
                 <Card
-                    direction={{ base: "column", md: "row" }}
+                    direction={{ base: "column", lg: "row" }}
                     overflow="hidden"
                     variant="outline"
                     borderRadius={"30px"}
                     borderWidth={0}
                     bg={useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)}
                 >
-                    <Flex alignItems="center" justifyContent="center" flexDirection={{ base: "column", md: "row" }} width={"100%"}>
+                    <Flex alignItems="center" justifyContent="center" flexDirection={{ base: "column", lg: "row" }} width={"100%"}>
                         <Image
                             objectFit="cover"
-                            maxW={{ base: "100%", sm: "200px", md: "280px" }}
+                            maxW={{ base: "100%", md: "300px", lg: "350px", xl: "410px" }}
                             src="./Eridian.png"
                             alt="Eridian Avatar"
-                            borderBottomRadius={{ base: "0px", sm: "30px", md: "30px" }}
-                            borderTopRightRadius={{ base: "0px", sm: "0px", md: "30px" }}
-                            borderBottomRightRadius={{ base: "0px", sm: "30px", md: "30px" }}
-                            borderBottomLeftRadius={{ base: "0px", sm: "30px", md: "0px" }}
+                            borderBottomRadius={{ base: "0px", sm: "30px", lg: "30px" }}
+                            borderTopRightRadius={{ base: "0px", sm: "0px", lg: "30px" }}
+                            borderBottomRightRadius={{ base: "0px", sm: "30px", lg: "30px" }}
+                            borderBottomLeftRadius={{ base: "0px", sm: "30px", lg: "0px" }}
                         />
 
                         <Stack flexGrow={1}>
@@ -70,7 +87,26 @@ export default function Overview() {
                                         </HStack>
                                     </Flex>
                                 </Flex>
-                                <Text>Full-Stack Ethereum Developer 💻</Text>
+                                <VStack alignItems={"start"} gap={1}>
+                                    <Text fontWeight={"bold"}>Full-Stack Ethereum Developer 💻</Text>
+                                    <Text>
+                                        Hey 👋 I&apos;m Eridian and I&apos;m a full-stack Ethereum developer. I have experience in Ethereum staking,
+                                        web app design and coding, educational content, writing Solidity smart contracts, community creation and data
+                                        visualizations. This portfolio website shows my projects, skills and experiences since I joined the Ethereum
+                                        community.
+                                    </Text>
+                                    <Text>
+                                        I&apos;m always exploring new projects so reach out to me on{" "}
+                                        <Link as={NextLink} href={"https://t.me/eridianalpha"} textDecoration={"underline"} target="_blank">
+                                            TG
+                                        </Link>{" "}
+                                        or{" "}
+                                        <Link as={NextLink} href={"https://x.com/EridianAlpha"} textDecoration={"underline"} target="_blank">
+                                            X
+                                        </Link>{" "}
+                                        if you want to connect!
+                                    </Text>
+                                </VStack>
                                 <VStack pt="20px">
                                     <Divider borderColor={useColorModeValue("gray.700", "gray.100")} />
                                     <Heading

@@ -3,24 +3,24 @@
         "title": "Staking",
         "icon": "faServer",
         "color": "#4025CD",
-        "count": 1
+        "count": 2
     },
     {
         "title": "DeFi",
         "icon": "faMoneyBill",
         "color": "#76b63a",
-        "count": 5
-    },
-    {
-        "title": "Solidity",
-        "icon": "faLaptopCode",
-        "color": "#E53E3E",
         "count": 3
     },
     {
-        "title": "UX",
-        "icon": "faCompassDrafting",
-        "color": "#ED8936",
+        "title": "AI Tools",
+        "icon": "faRobot",
+        "color": "#E53E3E",
         "count": 4
+    },
+    {
+        "title": "Data Visualization",
+        "icon": "faChartPie",
+        "color": "#ED8936",
+        "count": 5
     }
 ]

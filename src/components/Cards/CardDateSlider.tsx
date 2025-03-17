@@ -171,7 +171,7 @@ export default function CardDateSlider({
                                 }}
                                 size="sm"
                                 borderRadius={"20px"}
-                                variant={isFilterOngoingSelected && isFilterDoneSelected ? "solid" : "ghost"}
+                                variant={isFilterOngoingSelected && isFilterDoneSelected ? "solid" : "outline"}
                             >
                                 All
                             </Button>
@@ -186,7 +186,7 @@ export default function CardDateSlider({
                                 color={isFilterDoneSelected ? inProgressTheme : "white"}
                                 bg={isFilterOngoingSelected && !isFilterDoneSelected ? inProgressTheme : null}
                                 _hover={{ bg: isFilterDoneSelected ? inProgressTheme : null, color: "white" }}
-                                variant="ghost"
+                                variant="outline"
                             >
                                 Ongoing
                             </Button>
@@ -201,7 +201,7 @@ export default function CardDateSlider({
                                 color={isFilterOngoingSelected ? completedTheme : "white"}
                                 bg={!isFilterOngoingSelected && isFilterDoneSelected ? completedTheme : null}
                                 _hover={{ bg: isFilterOngoingSelected ? completedTheme : null, color: "white" }}
-                                variant="ghost"
+                                variant="outline"
                             >
                                 Complete
                             </Button>
