@@ -1,5 +1,35 @@
 [
     {
+        "id": "3ABEV1",
+        "name": "AirDrip",
+        "displayConfig": {
+            "cardType": "highlight"
+        },
+        "summary": "Loyalty you can trust.",
+        "startDate": "2025-03-17",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://airdrip.club",
+                "label": "AirDrip",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Active project under development 🏗️"
+        },
+        "images": {
+            "0": {
+                "image": "./images/AirDripLogo.png",
+                "alt": "AirDrip Logo"
+            },
+            "1": {
+                "image": "./images/AirDripCover.png",
+                "alt": "AirDrip Cover"
+            }
+        }
+    },
+    {
         "id": "FU0AX7",
         "name": "Eridian Stats",
         "displayConfig": {
@@ -66,13 +96,13 @@
     },
     {
         "id": "JEZ3AG",
-        "name": "SendFox",
+        "name": "Ideas Maze - SendFox",
         "displayConfig": {
-            "cardType": "highlight"
+            "cardType": "project"
         },
-        "summary": "Project under development...",
+        "summary": "Researching ideas to build 🤔",
         "startDate": "2025-02-01",
-        "endDate": "",
+        "endDate": "2025-03-17",
         "externalLinks": {},
         "description": {
             "0": ""
@@ -83,8 +113,8 @@
                 "alt": ""
             },
             "1": {
-                "image": "",
-                "alt": ""
+                "image": "./images/IdeaMaze.png",
+                "alt": "Idea Maze"
             }
         }
     },

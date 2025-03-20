@@ -18,14 +18,14 @@ import {
 import focusAreasDataImport from "../../public/data/focusAreas.json" // Import the JSON data
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMoneyBill, faServer, faImage, faRobot, faChartPie } from "@fortawesome/free-solid-svg-icons"
+import { faMoneyBill, faServer, faImage, faRobot, faDroplet } from "@fortawesome/free-solid-svg-icons"
 
 const focusAreaIconMapping = {
     faServer,
     faMoneyBill,
     faImage,
     faRobot,
-    faChartPie,
+    faDroplet,
 }
 
 import NextLink from "next/link"
@@ -91,9 +91,9 @@ export default function Overview() {
                                     <Text fontWeight={"bold"}>Full-Stack Ethereum Developer 💻</Text>
                                     <Text>
                                         Hey 👋 I&apos;m Eridian and I&apos;m a full-stack Ethereum developer. I have experience in Ethereum staking,
-                                        web app design and coding, educational content, writing Solidity smart contracts, community creation and data
-                                        visualizations. This portfolio website shows my projects, skills and experiences since I joined the Ethereum
-                                        community.
+                                        web app design and coding, educational content, writing Solidity smart contracts, community creation,
+                                        incentives and rewards programs. This portfolio website shows my projects, skills, and experiences since I
+                                        joined the Ethereum community.
                                     </Text>
                                     <Text>
                                         I&apos;m always exploring new projects so reach out to me on{" "}

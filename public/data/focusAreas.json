@@ -18,9 +18,9 @@
         "count": 4
     },
     {
-        "title": "Data Visualization",
-        "icon": "faChartPie",
-        "color": "#ED8936",
+        "title": "AirDrip",
+        "icon": "faDroplet",
+        "color": "#63B3ED",
         "count": 5
     }
 ]
