@@ -24,8 +24,8 @@
                 "alt": "AirDrip Logo"
             },
             "1": {
-                "image": "./images/AirDripCover.png",
-                "alt": "AirDrip Cover"
+                "image": "",
+                "alt": ""
             }
         }
     },
