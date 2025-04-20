@@ -18,9 +18,9 @@
         "count": 4
     },
     {
-        "title": "AirDrip",
-        "icon": "faDroplet",
-        "color": "#63B3ED",
+        "title": "High Signal",
+        "icon": "faCircleUp",
+        "color": "#FF5400",
         "count": 5
     }
 ]

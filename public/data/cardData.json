@@ -1,17 +1,22 @@
 [
     {
         "id": "3ABEV1",
-        "name": "AirDrip",
+        "name": "High Signal",
         "displayConfig": {
             "cardType": "highlight"
         },
-        "summary": "Play long-term games.",
+        "summary": "Shape the narrative.",
         "startDate": "2025-03-17",
         "endDate": "",
         "externalLinks": {
             "0": {
-                "url": "https://airdrip.club",
-                "label": "AirDrip",
+                "url": "https://highsignal.xyz",
+                "label": "Website",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://app.highsignal.xyz",
+                "label": "App",
                 "type": "website"
             }
         },
@@ -20,7 +25,7 @@
         },
         "images": {
             "0": {
-                "image": "./images/AirDripLogo.png",
+                "image": "./images/HighSignalLogo.png",
                 "alt": "AirDrip Logo"
             },
             "1": {
