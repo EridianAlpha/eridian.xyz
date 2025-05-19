@@ -1,11 +1,46 @@
 [
     {
+        "id": "XEWTUA",
+        "name": "SSV Rewards Claim UI - Lido Update",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Update SSV rewards UI to add Lido rewards.",
+        "startDate": "2025-04-16",
+        "endDate": "2025-04-22",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.ssvrewards.com",
+                "label": "ssvrewards.com",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://etherscan.io/address/0x13006e447608bb62383d1d59bb11a93e957be7cf#code",
+                "label": "Lido Rewards Contract",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "An update to the ssvrewards.com UI to enable the Lido rewards claim tab."
+        },
+        "images": {
+            "0": {
+                "image": "./images/SSVRewardsLogo.png",
+                "alt": "SSV Rewards Logo"
+            },
+            "1": {
+                "image": "./images/SSVRewardsLidoUpdate.png",
+                "alt": "SSV Rewards Lido Update.png"
+            }
+        }
+    },
+    {
         "id": "3ABEV1",
         "name": "High Signal",
         "displayConfig": {
             "cardType": "highlight"
         },
-        "summary": "Shape the narrative.",
+        "summary": "Find the voices that matter.",
         "startDate": "2025-03-17",
         "endDate": "",
         "externalLinks": {
@@ -21,7 +56,7 @@
             }
         },
         "description": {
-            "0": "Active project under development 🏗️"
+            "0": "Project under development 🏗️"
         },
         "images": {
             "0": {
