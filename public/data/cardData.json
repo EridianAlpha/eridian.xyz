@@ -1,5 +1,100 @@
 [
     {
+        "id": "ULVFJ0",
+        "name": "High Signal - Lido ICS Launch",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "High Signal launches with the Lido Identified Community Stakers program.",
+        "startDate": "2025-08-27",
+        "endDate": "2025-08-27",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/LidoFinance/status/1960667626922713167",
+                "label": "Lido Post",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://blog.lido.fi/unlock-exclusive-benefits-as-an-identified-community-staker/",
+                "label": "Lido Blog",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/HighSignalLogo.png",
+                "alt": "High Signal Logo"
+            },
+            "1": {
+                "image": "./images/HighSignalICSLaunch.png",
+                "alt": "High Signal ICS Launch"
+            }
+        }
+    },
+    {
+        "id": "URZPF1",
+        "name": "ETH All Time High",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "ETH finally reclaims its ATH value 💸",
+        "startDate": "2025-08-22",
+        "endDate": "2025-08-22",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/i/broadcasts/1vAxRQnDbDzJl",
+                "label": "Livestream",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/EthereumLogo.svg",
+                "alt": "Ethereum Logo"
+            },
+            "1": {
+                "image": "./images/ETHAllTimeHigh.png",
+                "alt": "ETH All Time High"
+            }
+        }
+    },
+    {
+        "id": "A8VC9U",
+        "name": "Ethereum London Meetup",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "The 10th Birthday Part for Ethereum 🥳",
+        "startDate": "2025-07-30",
+        "endDate": "2025-07-30",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.meetup.com/ethereum/",
+                "label": "meetup.com",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "The relaunch event for the Ethereum London meetup was held on the 10th anniversary of the launch of Ethereum. "
+        },
+        "images": {
+            "0": {
+                "image": "./images/EthereumLondonMeetupLogo.png",
+                "alt": "Ethereum London Meetup"
+            },
+            "1": {
+                "image": "./images/EthereumLondonMeetup10Birthday.png",
+                "alt": "Ethereum London Meetup 10 Birthday"
+            }
+        }
+    },
+    {
         "id": "XEWTUA",
         "name": "SSV Rewards Claim UI - Lido Update",
         "displayConfig": {
@@ -56,7 +151,7 @@
             }
         },
         "description": {
-            "0": "Project under development 🏗️"
+            "0": "High Signal identifies and rewards authentic, high-quality engagement 💯"
         },
         "images": {
             "0": {
@@ -3146,6 +3241,36 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
+            }
+        }
+    },
+    {
+        "id": "F0AZRO",
+        "name": "Lido - CSM Operator Mainnet",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Running operator 10 on Lido CSM mainnet.",
+        "startDate": "2024-010-07",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://beaconcha.in/validator/0x8aef605c533173f024f2733bab686c9edab462452a7c25f3ce2f87a9c2ea636dddeea914b7bf2bb181356b127760aa0a",
+                "label": "Beaconcha.in",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Running a vanilla validator from home on Geth and Lighthouse."
+        },
+        "images": {
+            "0": {
+                "image": "./images/CSMLogo.png",
+                "alt": "CSM Logo"
+            },
+            "1": {
+                "image": "./images/CSMValidator7Blocks.png",
+                "alt": "CSM Validator 7 Blocks"
             }
         }
     }
