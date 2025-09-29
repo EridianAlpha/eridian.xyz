@@ -46,6 +46,19 @@ const customTheme = extendTheme({
             dark: "#76b63a",
         },
     },
+    styles: {
+        global: {
+            html: {
+                backgroundColor: "#131827",
+            },
+            body: {
+                backgroundColor: "transparent",
+            },
+            "#__next": {
+                minHeight: "100%",
+            },
+        },
+    },
 })
 
 // Set the HTML background color to match the Chakra UI background color
