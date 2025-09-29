@@ -6,10 +6,13 @@
     "commits": "./dev/build_all_commits.sh",
     "dev": "node server.js",
     "dev-commits": "./dev/build_all_commits.sh && node server.js",
+    "prebuild": "yarn optimize-images",
     "build": "next build",
     "export": "next export",
+    "prestart": "yarn optimize-images",
     "start": "next build && next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "optimize-images": "node --experimental-modules ./dev/optimize-images.mjs"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.17",
@@ -45,6 +48,7 @@
     "typescript": "4.9.5"
   },
   "devDependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "sharp": "^0.34.4"
   }
 }

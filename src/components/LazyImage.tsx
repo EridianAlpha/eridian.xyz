@@ -49,7 +49,15 @@ const LazyImage = React.forwardRef<HTMLImageElement, LazyImageProps>(function La
         }
     }, [rootMargin])
 
-    return <Image ref={combinedRef} src={isVisible ? (src as string | undefined) : undefined} alt={alt} loading={loading} {...rest} />
+    const webpSrc = typeof src === "string" ? src.replace(/\.(png|jpg|jpeg)$/i, ".webp") : undefined
+
+    // Prefer WebP if present; fall back to original
+    return (
+        <picture ref={combinedRef as unknown as React.RefObject<HTMLImageElement>}>
+            {isVisible && webpSrc ? <source srcSet={webpSrc} type="image/webp" /> : null}
+            <Image src={isVisible ? (src as string | undefined) : undefined} alt={alt} loading={loading} {...rest} />
+        </picture>
+    )
 })
 
 export default LazyImage
