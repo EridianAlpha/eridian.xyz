@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 
 import { useTheme, useColorModeValue, Box, Image, Flex, Text } from "@chakra-ui/react"
+import LazyImage from "../LazyImage"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
@@ -165,7 +166,8 @@ export default function CardDateDisplay({
                                 handleRangeClick(card.id)
                             }}
                         >
-                            <Image
+                            <LazyImage
+                                eager
                                 bg={"#102026"}
                                 objectFit="contain"
                                 width="26px"
