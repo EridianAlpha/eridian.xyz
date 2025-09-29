@@ -5,23 +5,7 @@ import Masonry from "react-masonry-css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit, faXmark } from "@fortawesome/free-solid-svg-icons"
 
-import {
-    useTheme,
-    useColorModeValue,
-    Card,
-    Box,
-    Heading,
-    CardBody,
-    Image,
-    Flex,
-    Stack,
-    HStack,
-    Text,
-    Collapse,
-    IconButton,
-    Button,
-    Container,
-} from "@chakra-ui/react"
+import { useTheme, useColorModeValue, Card, Box, Heading, CardBody, Flex, Stack, HStack, Text, Collapse, IconButton } from "@chakra-ui/react"
 
 import CardDescription from "./CardDescription"
 import CardLinks from "./CardLinks"
@@ -29,6 +13,7 @@ import CardImages from "./CardImages"
 import CardStatus from "./CardStatus"
 import CardShowMoreButton from "./CardShowMoreButton"
 import CardEditor from "./CardEditor"
+import LazyImage from "../LazyImage"
 
 export default function CardGallery({
     windowSize,
@@ -107,7 +92,7 @@ export default function CardGallery({
                         <Flex alignItems="center" justifyContent="center" flexDirection={{ base: "column", md: "row" }} width={"100%"}>
                             <Stack flexGrow={1} width="100%">
                                 <HStack alignItems={"top"}>
-                                    <Image
+                                    <LazyImage
                                         bg={"#102026"}
                                         width="100px"
                                         height="100px"

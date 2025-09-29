@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react"
-import { Box, Image } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
+import LazyImage from "../LazyImage"
 
 import Zoom from "react-medium-image-zoom"
 import "react-medium-image-zoom/dist/styles.css"
@@ -73,11 +74,12 @@ export default function CardImages({
     return (
         <Box width="100%" display="flex" alignItems="center" justifyContent="center">
             <Zoom classDialog="custom-zoom">
-                <Image
+                <LazyImage
                     ref={imageRefs[cardIndex][imageIndex]}
                     key={imageIndex}
                     objectFit="contain"
                     maxH={"30vh"}
+                    loading="lazy"
                     src={image.image}
                     alt={image.alt}
                     borderTopRadius={roundedCorners[cardIndex]?.[imageIndex] ? "10px" : "0px"}
