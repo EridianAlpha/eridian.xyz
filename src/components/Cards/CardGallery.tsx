@@ -34,7 +34,7 @@ export default function CardGallery({
         } else {
             setCardsDisplayed(sortedCardData)
         }
-    }, [selectedCard])
+    }, [selectedCard, sortedCardData])
 
     let breakpointCols
     if (cardsDisplayed.length == 1) {

@@ -86,7 +86,7 @@ export default function CardDateSlider({
     useEffect(() => {
         setDateDisplayStartDate(addDays(earliestStartDate, sliderValues[0]))
         setDateDisplayEndDate(addDays(earliestStartDate, sliderValues[1]))
-    }, [])
+    }, [earliestStartDate, setDateDisplayEndDate, setDateDisplayStartDate, sliderValues])
 
     const addDays = (date: Date, days: number): Date => {
         const newDate = new Date(date)
