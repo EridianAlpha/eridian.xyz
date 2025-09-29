@@ -6,6 +6,7 @@ export default function Document() {
         <Html lang="en">
             <Head>
                 <link rel="icon" href="/favicon.ico" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/Eridian.png" />
             </Head>
             <body>
                 <ColorModeScript initialColorMode="dark" />
