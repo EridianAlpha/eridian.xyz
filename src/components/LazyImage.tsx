@@ -1,13 +1,40 @@
 import React, { useEffect, useRef, useState } from "react"
 import { Image, ImageProps } from "@chakra-ui/react"
 
+// Reuse observers per margin to reduce CPU load with many images
+type ObserverBundle = {
+    observer: IntersectionObserver
+    callbacks: WeakMap<Element, () => void>
+}
+const observerBundles: Map<string, ObserverBundle> = new Map()
+
+function getObserverBundle(margin: string): ObserverBundle {
+    const existing = observerBundles.get(margin)
+    if (existing) return existing
+    const callbacks: WeakMap<Element, () => void> = new WeakMap()
+    const observer = new IntersectionObserver(
+        (entries) => {
+            for (const entry of entries) {
+                if (entry.isIntersecting) {
+                    const cb = callbacks.get(entry.target)
+                    if (cb) cb()
+                }
+            }
+        },
+        { root: null, rootMargin: margin, threshold: 0 }
+    )
+    const bundle = { observer, callbacks }
+    observerBundles.set(margin, bundle)
+    return bundle
+}
+
 type LazyImageProps = ImageProps & {
     rootMargin?: string
     eager?: boolean
 }
 
 const LazyImage = React.forwardRef<HTMLImageElement, LazyImageProps>(function LazyImage(
-    { src, alt = "", rootMargin = "300px", loading = "lazy", eager = false, ...rest },
+    { src, alt = "", rootMargin, loading = "lazy", eager = false, ...rest },
     ref
 ) {
     const localRef = useRef<HTMLImageElement | null>(null)
@@ -24,44 +51,44 @@ const LazyImage = React.forwardRef<HTMLImageElement, LazyImageProps>(function La
 
     useEffect(() => {
         if (eager) return
-        if (!localRef.current) return
+        const el = localRef.current
+        if (!el) return
 
         if (typeof IntersectionObserver === "undefined") {
-            // Fallback: load immediately on environments without IntersectionObserver
             setIsVisible(true)
             return
         }
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setIsVisible(true)
-                        observer.disconnect()
-                    }
-                })
-            },
-            { root: null, rootMargin, threshold: 0.01 }
-        )
+        const marginString = rootMargin ?? "3000px 0px 3000px 0px"
+        const { observer, callbacks } = getObserverBundle(marginString)
+        const onIntersect = () => {
+            setIsVisible(true)
+            observer.unobserve(el)
+            callbacks.delete(el)
+        }
 
-        observer.observe(localRef.current)
+        callbacks.set(el, onIntersect)
+        observer.observe(el)
 
         return () => {
-            observer.disconnect()
+            callbacks.delete(el)
+            observer.unobserve(el)
         }
     }, [rootMargin, eager])
 
     const webpSrc = typeof src === "string" ? src.replace(/\.(png|jpg|jpeg)$/i, ".webp") : undefined
 
-    // Prefer WebP if present; fall back to original
+    // Prefer WebP if present; fall back to original. Use display: contents so wrapper doesn't affect layout/styling.
     return (
-        <picture>
+        <picture style={{ display: "contents" }}>
             {isVisible && webpSrc ? <source srcSet={webpSrc} type="image/webp" /> : null}
             <Image
                 ref={combinedRef}
                 src={isVisible ? (src as string | undefined) : undefined}
                 alt={alt}
                 loading={eager ? "eager" : loading}
+                objectFit={(rest as any)?.objectFit ?? "cover"}
+                objectPosition={(rest as any)?.objectPosition ?? "center"}
                 {...rest}
             />
         </picture>

@@ -167,12 +167,11 @@ export default function CardDateDisplay({
                             }}
                         >
                             <LazyImage
-                                eager
                                 bg={"#102026"}
                                 objectFit="contain"
                                 width="26px"
                                 height="26px"
-                                src={card?.images?.[0].image ? card?.images?.[0].image : "./Eridian.png"}
+                                src={card?.images?.[0].image ? card?.images?.[0].image : "./Eridian.webp"}
                                 alt={card?.images?.[0].alt}
                                 borderLeftRadius={"8px"}
                             />

@@ -58,7 +58,7 @@ export default function Overview() {
                         <Image
                             objectFit="cover"
                             maxW={{ base: "100%", md: "300px", lg: "350px", xl: "410px" }}
-                            src="./Eridian.png"
+                            src="./Eridian.webp"
                             alt="Eridian Avatar"
                             borderBottomRadius={{ base: "0px", sm: "30px", lg: "30px" }}
                             borderTopRightRadius={{ base: "0px", sm: "0px", lg: "30px" }}

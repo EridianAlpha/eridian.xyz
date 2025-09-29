@@ -96,7 +96,7 @@ export default function CardGallery({
                                         bg={"#102026"}
                                         width="100px"
                                         height="100px"
-                                        src={card?.images?.[0].image ? card?.images?.[0].image : "./Eridian.png"}
+                                        src={card?.images?.[0].image ? card?.images?.[0].image : "./Eridian.webp"}
                                         alt={card?.images?.[0].alt}
                                         borderTopRightRadius={{ base: "0px" }}
                                         borderBottomRightRadius={"30px"}
