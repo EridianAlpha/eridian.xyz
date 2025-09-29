@@ -162,7 +162,7 @@ export default function CardDateSlider({
             <Box width="100%" px={"15px"}>
                 <Flex direction={"row"} justifyContent={"center"} height={"40px"}>
                     <Flex direction="row" width="20%" justifyContent={"end"}>
-                        <Stack direction="row" pr={"25px"}>
+                        <Stack direction="row" pr={{ lg: "0px", xl: "25px" }}>
                             <Button
                                 onClick={() => {
                                     setIsFilterOngoingSelected(true)

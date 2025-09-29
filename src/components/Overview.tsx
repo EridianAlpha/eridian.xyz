@@ -43,7 +43,8 @@ export default function Overview() {
             <Container
                 bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}
                 maxW="1200px"
-                padding={5}
+                py={5}
+                px={{ base: 0, lg: 5 }}
                 pb={"50px"}
             >
                 <Card
