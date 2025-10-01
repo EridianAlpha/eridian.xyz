@@ -70,7 +70,7 @@
         "displayConfig": {
             "cardType": "event"
         },
-        "summary": "The 10th Birthday Part for Ethereum 🥳",
+        "summary": "The 10th Birthday Party for Ethereum 🥳",
         "startDate": "2025-07-30",
         "endDate": "2025-07-30",
         "externalLinks": {
@@ -81,7 +81,7 @@
             }
         },
         "description": {
-            "0": "The relaunch event for the Ethereum London meetup was held on the 10th anniversary of the launch of Ethereum. "
+            "0": "Attended the relaunch event for the Ethereum London meetup, which was held on the 10th anniversary of Ethereum's launch. "
         },
         "images": {
             "0": {
@@ -506,6 +506,36 @@
             "1": {
                 "image": "./images/DevCon2024Cover.png",
                 "alt": "DevCon 2024 Cover"
+            }
+        }
+    },
+    {
+        "id": "F0AZRO",
+        "name": "Lido - CSM Operator Mainnet",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Running operator 10 on Lido CSM mainnet.",
+        "startDate": "2024-010-07",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://beaconcha.in/validator/0x8aef605c533173f024f2733bab686c9edab462452a7c25f3ce2f87a9c2ea636dddeea914b7bf2bb181356b127760aa0a",
+                "label": "Beaconcha.in",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Running a vanilla validator from home on Geth and Lighthouse."
+        },
+        "images": {
+            "0": {
+                "image": "./images/CSMLogo.png",
+                "alt": "CSM Logo"
+            },
+            "1": {
+                "image": "./images/CSMValidator7Blocks.png",
+                "alt": "CSM Validator 7 Blocks"
             }
         }
     },
@@ -2104,7 +2134,7 @@
         "images": {
             "0": {
                 "image": "./images/PortalNetworkLogo.png",
-                "alt": "Portal NetworkL ogo"
+                "alt": "Portal Network Logo"
             },
             "1": {
                 "image": "./images/PortalNetworkCover.png",
@@ -3241,36 +3271,6 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
-            }
-        }
-    },
-    {
-        "id": "F0AZRO",
-        "name": "Lido - CSM Operator Mainnet",
-        "displayConfig": {
-            "cardType": "project"
-        },
-        "summary": "Running operator 10 on Lido CSM mainnet.",
-        "startDate": "2024-010-07",
-        "endDate": "",
-        "externalLinks": {
-            "0": {
-                "url": "https://beaconcha.in/validator/0x8aef605c533173f024f2733bab686c9edab462452a7c25f3ce2f87a9c2ea636dddeea914b7bf2bb181356b127760aa0a",
-                "label": "Beaconcha.in",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": "Running a vanilla validator from home on Geth and Lighthouse."
-        },
-        "images": {
-            "0": {
-                "image": "./images/CSMLogo.png",
-                "alt": "CSM Logo"
-            },
-            "1": {
-                "image": "./images/CSMValidator7Blocks.png",
-                "alt": "CSM Validator 7 Blocks"
             }
         }
     }
