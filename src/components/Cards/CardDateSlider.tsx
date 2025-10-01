@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useMemo } from "react"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faCalendarDays } from "@fortawesome/free-solid-svg-icons"
@@ -38,16 +38,6 @@ export default function CardDateSlider({
     const inProgressTheme = useColorModeValue(customTheme.statusColors.inProgress.light, customTheme.statusColors.inProgress.dark)
     const completedTheme = useColorModeValue(customTheme.statusColors.completed.light, customTheme.statusColors.completed.dark)
 
-    const findEarliestDate = () => {
-        let earliestDate = new Date(cardData[0].startDate)
-
-        cardData.forEach((card) => {
-            const cardStartDate = new Date(card.startDate)
-            cardStartDate < earliestDate ? (earliestDate = cardStartDate) : null
-        })
-        return earliestDate
-    }
-
     const formatDate = (date: Date) => {
         return date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
     }
@@ -59,7 +49,15 @@ export default function CardDateSlider({
         return days
     }
 
-    const earliestStartDate = findEarliestDate()
+    const earliestStartDate = useMemo(() => {
+        let earliestDate = new Date(cardData[0].startDate)
+        cardData.forEach((card) => {
+            const cardStartDate = new Date(card.startDate)
+            cardStartDate < earliestDate ? (earliestDate = cardStartDate) : null
+        })
+        console.log("earliestDate", earliestDate)
+        return earliestDate
+    }, [cardData])
     const sliderMax = dayDiff(earliestStartDate, new Date())
     const [sliderValues, setSliderValues] = useState([
         // Show 50% of available range on initial render
@@ -86,7 +84,9 @@ export default function CardDateSlider({
     useEffect(() => {
         setDateDisplayStartDate(addDays(earliestStartDate, sliderValues[0]))
         setDateDisplayEndDate(addDays(earliestStartDate, sliderValues[1]))
-    }, [earliestStartDate, setDateDisplayEndDate, setDateDisplayStartDate, sliderValues])
+        // run only once
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const addDays = (date: Date, days: number): Date => {
         const newDate = new Date(date)
