@@ -55,7 +55,6 @@ export default function CardDateSlider({
             const cardStartDate = new Date(card.startDate)
             cardStartDate < earliestDate ? (earliestDate = cardStartDate) : null
         })
-        console.log("earliestDate", earliestDate)
         return earliestDate
     }, [cardData])
     const sliderMax = dayDiff(earliestStartDate, new Date())
