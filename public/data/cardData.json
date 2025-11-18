@@ -1,5 +1,35 @@
 [
     {
+        "id": "11DIJA",
+        "name": "Devconnect 2025 - Argentina",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Attending Devconnect in Buenos Aires.",
+        "startDate": "2025-11-15",
+        "endDate": "2025-11-22",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/EridianAlpha/status/1990495411757522961",
+                "label": "Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/Devconnect2025Logo.png",
+                "alt": "Devconnect 2025 Logo"
+            },
+            "1": {
+                "image": "./images/Devconnect2025.png",
+                "alt": "Devconnect 2025"
+            }
+        }
+    },
+    {
         "id": "ULVFJ0",
         "name": "High Signal - Lido ICS Launch",
         "displayConfig": {
@@ -264,7 +294,7 @@
         "endDate": "2025-01-06",
         "externalLinks": {
             "0": {
-                "url": "https://docs.spire.dev/readme/what-are-we-waiting-for",
+                "url": "https://docs.spire.dev/education-hub/what-are-we-waiting-for",
                 "label": "What are we waiting for",
                 "type": "website"
             }
@@ -294,7 +324,7 @@
         "endDate": "2024-12-23",
         "externalLinks": {
             "0": {
-                "url": "https://docs.spire.dev/readme/based-resources",
+                "url": "https://docs.spire.dev/education-hub/based-resources",
                 "label": "Based Resources",
                 "type": "website"
             }
