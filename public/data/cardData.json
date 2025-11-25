@@ -11,12 +11,18 @@
         "externalLinks": {
             "0": {
                 "url": "https://x.com/EridianAlpha/status/1990495411757522961",
-                "label": "Post",
+                "label": "Devconnect Post",
+                "type": "twitter"
+            },
+            "1": {
+                "url": "https://x.com/EridianAlpha/status/1992986812881510811",
+                "label": "Bankless Summit Post",
                 "type": "twitter"
             }
         },
         "description": {
-            "0": ""
+            "0": "After 1,700 days in the Ethereum ecosystem, this Devconnect was an opportunity for me to reconnect with the core principles and beliefs of the community. After a week of talks, side-events, and evening meetups, I'm more confident than ever in the future of Ethereum and my small role in pushing its progress forward.",
+            "1": "A highlight of Devconnect was the Bankless Summit with Danny Ryan talking about his Ethereum journey, from helping with EIPs to playing an instrumental role in the Merge 🐼 As a solo home staker through the Merge, it was a great perspective to hear."
         },
         "images": {
             "0": {
@@ -26,6 +32,10 @@
             "1": {
                 "image": "./images/Devconnect2025.png",
                 "alt": "Devconnect 2025"
+            },
+            "2": {
+                "image": "./images/BanklessSummit2025.png",
+                "alt": "Bankless Summit 2025"
             }
         }
     },
@@ -51,7 +61,8 @@
             }
         },
         "description": {
-            "0": ""
+            "0": "ICS is a mechanism that allows operators to identify themselves as individuals. Those who qualify as an Identified Community Staker (ICS) and run validators using CSM (Community Staking Module), can unlock enhanced parameters compared to general permissionless operators.",
+            "1": "High Signal is used in the \"Proof-of-Engagement\" category and is instrumental in determining the Lido community involvement of applicants."
         },
         "images": {
             "0": {
@@ -61,6 +72,10 @@
             "1": {
                 "image": "./images/HighSignalICSLaunch.png",
                 "alt": "High Signal ICS Launch"
+            },
+            "2": {
+                "image": "./images/LidoIcsCategories.png",
+                "alt": "LidoIcsCategories"
             }
         }
     },
@@ -81,7 +96,7 @@
             }
         },
         "description": {
-            "0": ""
+            "0": "It might not have lasted long... but it's still a milestone to be celebrated! 🎉"
         },
         "images": {
             "0": {
@@ -167,7 +182,7 @@
         },
         "summary": "Find the voices that matter.",
         "startDate": "2025-03-17",
-        "endDate": "",
+        "endDate": "2025-12-31",
         "externalLinks": {
             "0": {
                 "url": "https://highsignal.xyz",
@@ -181,7 +196,10 @@
             }
         },
         "description": {
-            "0": "High Signal identifies and rewards authentic, high-quality engagement 💯"
+            "0": "High Signal is an AI-powered community engagement platform for protocols in the Ethereum ecosystem. Measuring and rewarding high-quality participation by real users, not bots or airdrop chasers. Combining on-chain identity, sentiment analysis, and loyalty mechanics, High Signal helps leading protocols identify and amplify their most valuable community members.",
+            "1": "High Signal applies advanced behavioral models and sentiment analysis to community data across Discord and forum activity to surface high signal contributors. Awarding a single score (‘Signal’) that can be leveraged in a multitude of ways to increase the signal-to-noise ratio in a community.",
+            "2": "Live activity charts show how user activity changes over time in both quality and frequency.",
+            "3": "High Signal turns fragmented community chatter into a reputation graph you can trust."
         },
         "images": {
             "0": {
@@ -189,8 +207,16 @@
                 "alt": "AirDrip Logo"
             },
             "1": {
-                "image": "",
-                "alt": ""
+                "image": "./images/HighSignalOverview.png",
+                "alt": "High Signal Overview"
+            },
+            "2": {
+                "image": "./images/HighSignalLeaderboard.png",
+                "alt": "High Signal Leaderboard"
+            },
+            "3": {
+                "image": "./images/HighSignalCharts.png",
+                "alt": "High Signal Charts"
             }
         }
     },
@@ -1985,7 +2011,7 @@
         },
         "summary": "Performing the monthly calculations to produce the Merkle root.",
         "startDate": "2023-09-06",
-        "endDate": "",
+        "endDate": "2025-12-31",
         "externalLinks": {
             "0": {
                 "url": "https://forum.ssv.network/t/incentivized-mainnet-program/1203",
