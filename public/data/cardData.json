@@ -224,7 +224,7 @@
         "id": "FU0AX7",
         "name": "Eridian Stats",
         "displayConfig": {
-            "cardType": "highlight"
+            "cardType": "project"
         },
         "summary": "Public stats for website views and repo commits.",
         "startDate": "2025-03-10",
@@ -3327,6 +3327,36 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
+            }
+        }
+    },
+    {
+        "id": "B0EHCS",
+        "name": "Neutral Finance",
+        "displayConfig": {
+            "cardType": "highlight"
+        },
+        "summary": "Stable by design, neutral by nature.",
+        "startDate": "2025-11-19",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://neutral.finance",
+                "label": "neutral.finance",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Project under development..."
+        },
+        "images": {
+            "0": {
+                "image": "./images/NeutralFinanceLogo.png",
+                "alt": "Neutral Finance Logo"
+            },
+            "1": {
+                "image": "",
+                "alt": ""
             }
         }
     }

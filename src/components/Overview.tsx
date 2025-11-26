@@ -18,7 +18,7 @@ import {
 import focusAreasDataImport from "../../public/data/focusAreas.json"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMoneyBill, faServer, faImage, faRobot, faCircleUp } from "@fortawesome/free-solid-svg-icons"
+import { faMoneyBill, faServer, faImage, faRobot, faCircleUp, faNetworkWired } from "@fortawesome/free-solid-svg-icons"
 
 const focusAreaIconMapping = {
     faServer,
@@ -26,6 +26,7 @@ const focusAreaIconMapping = {
     faImage,
     faRobot,
     faCircleUp,
+    faNetworkWired,
 }
 
 import NextLink from "next/link"
