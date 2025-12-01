@@ -79,7 +79,7 @@ export default function Overview() {
                                         eridian.eth
                                     </Heading>
                                     <Flex py="25px" flexWrap="wrap" gap="10px">
-                                        <Text as="b">🏡 Ethereum Settler:</Text>
+                                        <Text as="b">🗓️ Journey Started:</Text>
                                         <HStack spacing={3}>
                                             <Text>April 2021</Text>
                                             <Text>
@@ -90,12 +90,11 @@ export default function Overview() {
                                     </Flex>
                                 </Flex>
                                 <VStack alignItems={"start"} gap={1}>
-                                    <Text fontWeight={"bold"}>Full-Stack Ethereum Developer 💻</Text>
+                                    <Text fontWeight={"bold"}>Full-Stack Developer 💻</Text>
                                     <Text>
-                                        Hey 👋 I&apos;m Eridian and I&apos;m a full-stack Ethereum developer. I have experience in Ethereum staking,
-                                        web app design and coding, educational content, writing Solidity smart contracts, community creation,
-                                        incentives and rewards programs. This portfolio website shows my projects, skills, and experiences since I
-                                        joined the Ethereum community.
+                                        Hey 👋 I&apos;m Eridian and I&apos;m a full-stack developer. I have experience in web app design, educational
+                                        content, writing smart contracts, community creation, incentives and rewards programs. This portfolio website
+                                        shows my projects, skills, and experiences since I joined the Ethereum community.
                                     </Text>
                                     <Text>
                                         I&apos;m always exploring new projects so reach out to me on{" "}

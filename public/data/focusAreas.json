@@ -9,7 +9,7 @@
         "title": "DeFi",
         "icon": "faMoneyBill",
         "color": "#76b63a",
-        "count": 4
+        "count": 3
     },
     {
         "title": "AI Tools",
@@ -21,6 +21,6 @@
         "title": "DePIN",
         "icon": "faNetworkWired",
         "color": "#0697b6",
-        "count": 3
+        "count": 4
     }
 ]

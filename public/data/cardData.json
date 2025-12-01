@@ -1,5 +1,35 @@
 [
     {
+        "id": "B0EHCS",
+        "name": "Neutral Finance",
+        "displayConfig": {
+            "cardType": "highlight"
+        },
+        "summary": "Stable by design, neutral by nature.",
+        "startDate": "2025-11-19",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://neutral.finance",
+                "label": "neutral.finance",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Project under development..."
+        },
+        "images": {
+            "0": {
+                "image": "./images/NeutralFinanceLogo.png",
+                "alt": "Neutral Finance Logo"
+            },
+            "1": {
+                "image": "",
+                "alt": ""
+            }
+        }
+    },
+    {
         "id": "11DIJA",
         "name": "Devconnect 2025 - Argentina",
         "displayConfig": {
@@ -21,7 +51,7 @@
             }
         },
         "description": {
-            "0": "After 1,700 days in the Ethereum ecosystem, this Devconnect was an opportunity for me to reconnect with the core principles and beliefs of the community. After a week of talks, side-events, and evening meetups, I'm more confident than ever in the future of Ethereum and my small role in pushing its progress forward.",
+            "0": "After 1,700 days in the Ethereum ecosystem, this Devconnect was an opportunity for me to reflect on my time and experiences. ",
             "1": "A highlight of Devconnect was the Bankless Summit with Danny Ryan talking about his Ethereum journey, from helping with EIPs to playing an instrumental role in the Merge 🐼 As a solo home staker through the Merge, it was a great perspective to hear."
         },
         "images": {
@@ -76,36 +106,6 @@
             "2": {
                 "image": "./images/LidoIcsCategories.png",
                 "alt": "LidoIcsCategories"
-            }
-        }
-    },
-    {
-        "id": "URZPF1",
-        "name": "ETH All Time High",
-        "displayConfig": {
-            "cardType": "event"
-        },
-        "summary": "ETH finally reclaims its ATH value 💸",
-        "startDate": "2025-08-22",
-        "endDate": "2025-08-22",
-        "externalLinks": {
-            "0": {
-                "url": "https://x.com/i/broadcasts/1vAxRQnDbDzJl",
-                "label": "Livestream",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": "It might not have lasted long... but it's still a milestone to be celebrated! 🎉"
-        },
-        "images": {
-            "0": {
-                "image": "./images/EthereumLogo.svg",
-                "alt": "Ethereum Logo"
-            },
-            "1": {
-                "image": "./images/ETHAllTimeHigh.png",
-                "alt": "ETH All Time High"
             }
         }
     },
@@ -802,12 +802,12 @@
                 "type": "website"
             },
             "2": {
-                "url": "https://explorer.ssv.network/operators/916",
+                "url": "https://ssvscan.io/operator/916",
                 "label": "SSV - Arid Anubis",
                 "type": "website"
             },
             "3": {
-                "url": "https://explorer.ssv.network/operators/938",
+                "url": "https://ssvscan.io/operator/938",
                 "label": "SSV - Thoughtful Tiger",
                 "type": "website"
             }
@@ -980,13 +980,6 @@
         "summary": "Participating in the Lido CSM Holesky testnet.",
         "startDate": "2024-07-01",
         "endDate": "2024-12-31",
-        "externalLinks": {
-            "0": {
-                "url": "https://operators-holesky.testnet.fi/module/4/7",
-                "label": "Operator 7",
-                "type": "website"
-            }
-        },
         "description": {
             "0": "Running 10 Holesky validators through Lido CSM."
         },
@@ -3327,36 +3320,6 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
-            }
-        }
-    },
-    {
-        "id": "B0EHCS",
-        "name": "Neutral Finance",
-        "displayConfig": {
-            "cardType": "highlight"
-        },
-        "summary": "Stable by design, neutral by nature.",
-        "startDate": "2025-11-19",
-        "endDate": "",
-        "externalLinks": {
-            "0": {
-                "url": "https://neutral.finance",
-                "label": "neutral.finance",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": "Project under development..."
-        },
-        "images": {
-            "0": {
-                "image": "./images/NeutralFinanceLogo.png",
-                "alt": "Neutral Finance Logo"
-            },
-            "1": {
-                "image": "",
-                "alt": ""
             }
         }
     }
