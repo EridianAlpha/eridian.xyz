@@ -1,5 +1,35 @@
 [
     {
+        "id": "66T7CE",
+        "name": "AI Dev Docs",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Docs about AI... written by AI 🤖",
+        "startDate": "2025-12-01",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://docs.eridian.xyz/ai-dev",
+                "label": "Docs",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/EridianAiAvatar.png",
+                "alt": "Eridian AI Avatar"
+            },
+            "1": {
+                "image": "./images/AiDocsCover.png",
+                "alt": "AI Dev Docs"
+            }
+        }
+    },
+    {
         "id": "B0EHCS",
         "name": "Neutral Finance",
         "displayConfig": {
@@ -209,7 +239,7 @@
         "images": {
             "0": {
                 "image": "./images/HighSignalLogo.png",
-                "alt": "AirDrip Logo"
+                "alt": "High Signal Logo"
             },
             "1": {
                 "image": "./images/HighSignalOverview.png",
@@ -292,16 +322,22 @@
     },
     {
         "id": "JEZ3AG",
-        "name": "Ideas Maze - SendFox",
+        "name": "Ideas Maze - SendFox & AirDrip",
         "displayConfig": {
             "cardType": "project"
         },
         "summary": "Researching ideas to build 🤔",
         "startDate": "2025-02-01",
         "endDate": "2025-03-17",
-        "externalLinks": {},
+        "externalLinks": {
+            "0": {
+                "url": "https://airdrip.eridian.xyz",
+                "label": "AirDrip Website",
+                "type": "website"
+            }
+        },
         "description": {
-            "0": ""
+            "0": "AirDrip was a concept for a new way to manage airdrops and post-TGE communities. This idea later evolved into High Signal."
         },
         "images": {
             "0": {
@@ -309,8 +345,8 @@
                 "alt": ""
             },
             "1": {
-                "image": "./images/IdeaMaze.png",
-                "alt": "Idea Maze"
+                "image": "./images/AirDrip.png",
+                "alt": "AirDrip"
             }
         }
     },
@@ -2172,7 +2208,7 @@
         "endDate": "2023-08-10",
         "externalLinks": {
             "0": {
-                "url": "https://ethereum-portal-network.vercel.app/",
+                "url": "https://portalnetwork.eridian.xyz",
                 "label": "Design Mockup",
                 "type": "website"
             },
