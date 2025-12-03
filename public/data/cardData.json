@@ -193,6 +193,11 @@
                 "url": "https://app.highsignal.xyz",
                 "label": "App",
                 "type": "website"
+            },
+            "2": {
+                "url": "https://highsignal.eridian.xyz",
+                "label": "Snapshot Archive",
+                "type": "website"
             }
         },
         "description": {
