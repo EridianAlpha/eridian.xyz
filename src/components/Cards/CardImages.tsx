@@ -82,16 +82,7 @@ export default function CardImages({
                     loading="lazy"
                     src={image.image}
                     alt={image.alt}
-                    borderTopRadius={roundedCorners[cardIndex]?.[imageIndex] ? "10px" : "0px"}
-                    borderBottomRadius={
-                        (imageIndex === imageArray.length - 1 &&
-                            Object.values(card?.description || {})?.length < Object.values(card?.images || {})?.length) ||
-                        (imageIndex === 1 && !showMore[cardIndex])
-                            ? "0px"
-                            : roundedCorners[cardIndex]?.[imageIndex]
-                            ? "30px"
-                            : "0px"
-                    }
+                    borderRadius="10px"
                 />
             </Zoom>
         </Box>

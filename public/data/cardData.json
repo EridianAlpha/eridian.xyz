@@ -234,7 +234,7 @@
             "0": "High Signal is an AI-powered community engagement platform for protocols in the Ethereum ecosystem. Measuring and rewarding high-quality participation by real users, not bots or airdrop chasers. Combining on-chain identity, sentiment analysis, and loyalty mechanics, High Signal helps leading protocols identify and amplify their most valuable community members.",
             "1": "High Signal applies advanced behavioral models and sentiment analysis to community data across Discord and forum activity to surface high signal contributors. Awarding a single score (‘Signal’) that can be leveraged in a multitude of ways to increase the signal-to-noise ratio in a community.",
             "2": "Live activity charts show how user activity changes over time in both quality and frequency.",
-            "3": "High Signal turns fragmented community chatter into a reputation graph you can trust."
+            "3": "High Signal turns fragmented community chatter into a reputation graph you can trust. \n\nThe following images detail the design process for High Signal."
         },
         "images": {
             "0": {
@@ -252,6 +252,22 @@
             "3": {
                 "image": "./images/HighSignalCharts.png",
                 "alt": "High Signal Charts"
+            },
+            "4": {
+                "image": "./images/HighSignalDesigns1.png",
+                "alt": "High Signal Designs 1"
+            },
+            "5": {
+                "image": "./images/HighSignalDesigns2.png",
+                "alt": "High Signal Designs 2"
+            },
+            "6": {
+                "image": "./images/HighSignalDesigns3.png",
+                "alt": "High Signal Designs 3"
+            },
+            "7": {
+                "image": "./images/HighSignalDesigns4.png",
+                "alt": "High Signal Designs 4"
             }
         }
     },

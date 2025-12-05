@@ -80,7 +80,7 @@ export default function CardGallery({
                     <Card
                         key={card.id}
                         ref={cardRefs[cardIndex]}
-                        maxW="100%"
+                        maxW="600px"
                         bg={contentBackground}
                         overflow="hidden"
                         variant="outline"
