@@ -15,6 +15,8 @@ import CardShowMoreButton from "./CardShowMoreButton"
 import CardEditor from "./CardEditor"
 import LazyImage from "../LazyImage"
 
+import ElectricBorder from "./ElectricBorder"
+
 export default function CardGallery({
     windowSize,
     environment,
@@ -76,163 +78,177 @@ export default function CardGallery({
     return (
         <Box width="100%">
             <Masonry breakpointCols={breakpointCols} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
-                {cardsDisplayed.map((card, cardIndex) => (
-                    <Card
-                        key={card.id}
-                        ref={cardRefs[cardIndex]}
-                        maxW="600px"
-                        bg={contentBackground}
-                        overflow="hidden"
-                        variant="outline"
-                        borderRadius={"30px"}
-                        borderWidth={0}
-                        mx={sortedCardData?.length > 1 ? { base: "0px", sm: "10px", md: "20px" } : { base: "0px", sm: "10px", md: "10%", xl: "15%" }}
-                        border={card.displayConfig.cardType == "highlight" ? "3px solid gold" : null}
-                    >
-                        <Flex alignItems="center" justifyContent="center" flexDirection={{ base: "column", md: "row" }} width={"100%"}>
-                            <Stack flexGrow={1} width="100%">
-                                <HStack alignItems={"top"}>
-                                    <LazyImage
-                                        bg={"#102026"}
-                                        width="100px"
-                                        height="100px"
-                                        src={card?.images?.[0].image ? card?.images?.[0].image : "./Eridian.webp"}
-                                        alt={card?.images?.[0].alt}
-                                        borderTopRightRadius={{ base: "0px" }}
-                                        borderBottomRightRadius={"30px"}
-                                        borderBottomLeftRadius={{ base: "0px" }}
-                                    />
-                                    <Flex direction={"column"} grow={1} width="100%">
-                                        <Flex direction={"row"} justifyContent={"space-between"}>
-                                            <Heading size="md" color={headingColor} pt={3} px={1} pb={2}>
-                                                <HStack gap={0}>
-                                                    {card.displayConfig.cardType == "highlight" ? <Text cursor={"default"}>⭐️</Text> : null}
-                                                    <Text>{card.name}</Text>
-                                                </HStack>
-                                            </Heading>
-                                            {(environment === "development" || selectedCard == card.id) && (
-                                                <IconButton
-                                                    bg={backgroundColor}
-                                                    _hover={{
-                                                        bg: contentBackgroundHover,
-                                                    }}
-                                                    borderBottomLeftRadius={"10px"}
-                                                    borderTopRightRadius={"30px"}
-                                                    borderTopLeftRadius={"0px"}
-                                                    borderBottomRightRadius={"0px"}
-                                                    borderTop={"6px solid"}
-                                                    borderRight={"6px solid"}
-                                                    borderColor={contentBackground}
-                                                    aria-label={"Edit card"}
-                                                    onClick={() => {
-                                                        if (environment != "development" && selectedCard == card.id) {
-                                                            setSelectedCard(null)
-                                                        } else {
-                                                            setIsCardEditorOpen(true)
-                                                            setCardEditorData(card)
-                                                        }
-                                                    }}
-                                                >
-                                                    <Box mt={1} mr={1}>
-                                                        {environment != "development" && selectedCard == card.id ? (
-                                                            <FontAwesomeIcon icon={faXmark} size={"lg"} />
-                                                        ) : (
-                                                            <FontAwesomeIcon icon={faEdit} size={"lg"} />
-                                                        )}
-                                                    </Box>
-                                                </IconButton>
-                                            )}
-                                        </Flex>
-                                        <Box pl={1} pr={3} pt={1}>
-                                            <Text fontWeight={"medium"}>{card?.summary}</Text>
-                                        </Box>
-                                    </Flex>
-                                </HStack>
-                                <Box px={2} pt={5}>
-                                    <CardStatus cardData={card} />
-                                </Box>
-                                {card?.externalLinks?.[0] || card?.description?.[0] ? (
-                                    <CardBody>
-                                        {card?.externalLinks?.[0] && (
-                                            <Box>
-                                                <CardLinks cardData={card} backgroundColor={backgroundColor} linkHoverColor={linkHoverColor} />
-                                            </Box>
-                                        )}
-                                        {card?.description?.[0] && (
-                                            <Box pt={5} mt={2}>
-                                                <CardDescription index={0} cardData={card} />
-                                            </Box>
-                                        )}
-                                    </CardBody>
-                                ) : null}
-                                {card?.images?.[1] && (
-                                    <CardImages
-                                        windowSize={windowSize}
-                                        cardIndex={cardIndex}
-                                        card={card}
-                                        imageIndex={1}
-                                        image={card?.images?.[1]}
-                                        imageArray={Object.values(card?.images || {})}
-                                        cardRefs={cardRefs}
-                                        imageRefs={imageRefs}
-                                        sortedCardData={sortedCardData}
-                                        showMore={showMore}
-                                        imageWidths={imageWidths}
-                                        setImageWidths={setImageWidths}
-                                    />
-                                )}
-                                {(Object.entries(card?.description || {}).some(([key]) => key !== "0") ||
-                                    Object.entries(card?.images || {}).some(([key]) => key !== "0" && key !== "1")) && (
-                                    <>
-                                        <Collapse in={showMore[cardIndex]} style={{ marginTop: 0 }}>
-                                            {Array.from({
-                                                length: Math.max(
-                                                    Object.values(card?.description || {})?.length || 0,
-                                                    Object.values(card?.images || {})?.length - 2 || 0
-                                                ),
-                                            }).map((_, index) => (
-                                                <React.Fragment key={index}>
-                                                    {card?.description?.[index + 1] && (
-                                                        <CardBody>
-                                                            <CardDescription index={index + 1} cardData={card} />
-                                                        </CardBody>
-                                                    )}
-                                                    {card?.images?.[index + 2] && (
-                                                        <CardImages
-                                                            key={index + 2}
-                                                            windowSize={windowSize}
-                                                            card={card}
-                                                            cardIndex={cardIndex}
-                                                            imageIndex={index + 2}
-                                                            image={card?.images[index + 2]}
-                                                            imageArray={Object.values(card?.images || {})}
-                                                            cardRefs={cardRefs}
-                                                            imageRefs={imageRefs}
-                                                            sortedCardData={sortedCardData}
-                                                            showMore={showMore}
-                                                            imageWidths={imageWidths}
-                                                            setImageWidths={setImageWidths}
-                                                        />
-                                                    )}
-                                                </React.Fragment>
-                                            ))}
-                                        </Collapse>
-                                        <CardShowMoreButton
-                                            cardIndex={cardIndex}
-                                            imageWidths={imageWidths}
-                                            windowSize={windowSize}
-                                            backgroundColor={backgroundColor}
-                                            linkHoverColor={linkHoverColor}
-                                            showMore={showMore}
-                                            setShowMore={setShowMore}
-                                            setCollapseReRender={setCollapseReRender}
+                {cardsDisplayed.map((card, cardIndex) => {
+                    const isHighlight = card.displayConfig.cardType === "highlight"
+                    const marginX =
+                        sortedCardData?.length > 1 ? { base: "0px", sm: "10px", md: "20px" } : { base: "0px", sm: "10px", md: "10%", xl: "15%" }
+                    const cardContent = (
+                        <Card
+                            key={card.id}
+                            ref={cardRefs[cardIndex]}
+                            maxW="600px"
+                            bg={contentBackground}
+                            overflow="hidden"
+                            variant="outline"
+                            borderRadius={"30px"}
+                            borderWidth={0}
+                            mx={isHighlight ? null : marginX}
+                            border={null}
+                        >
+                            <Flex alignItems="center" justifyContent="center" flexDirection={{ base: "column", md: "row" }} width={"100%"}>
+                                <Stack flexGrow={1} width="100%">
+                                    <HStack alignItems={"top"}>
+                                        <LazyImage
+                                            bg={"#102026"}
+                                            width="100px"
+                                            height="100px"
+                                            src={card?.images?.[0].image ? card?.images?.[0].image : "./Eridian.webp"}
+                                            alt={card?.images?.[0].alt}
+                                            borderTopRightRadius={{ base: "0px" }}
+                                            borderBottomRightRadius={"30px"}
+                                            borderBottomLeftRadius={{ base: "0px" }}
                                         />
-                                    </>
-                                )}
-                            </Stack>
-                        </Flex>
-                    </Card>
-                ))}
+                                        <Flex direction={"column"} grow={1} width="100%">
+                                            <Flex direction={"row"} justifyContent={"space-between"}>
+                                                <Heading size="md" color={headingColor} pt={3} px={1} pb={2}>
+                                                    <HStack gap={0}>
+                                                        {card.displayConfig.cardType == "highlight" ? <Text cursor={"default"}>⭐️</Text> : null}
+                                                        <Text>{card.name}</Text>
+                                                    </HStack>
+                                                </Heading>
+                                                {(environment === "development" || selectedCard == card.id) && (
+                                                    <IconButton
+                                                        bg={backgroundColor}
+                                                        _hover={{
+                                                            bg: contentBackgroundHover,
+                                                        }}
+                                                        borderBottomLeftRadius={"10px"}
+                                                        borderTopRightRadius={"30px"}
+                                                        borderTopLeftRadius={"0px"}
+                                                        borderBottomRightRadius={"0px"}
+                                                        borderTop={"6px solid"}
+                                                        borderRight={"6px solid"}
+                                                        borderColor={contentBackground}
+                                                        aria-label={"Edit card"}
+                                                        onClick={() => {
+                                                            if (environment != "development" && selectedCard == card.id) {
+                                                                setSelectedCard(null)
+                                                            } else {
+                                                                setIsCardEditorOpen(true)
+                                                                setCardEditorData(card)
+                                                            }
+                                                        }}
+                                                    >
+                                                        <Box mt={1} mr={1}>
+                                                            {environment != "development" && selectedCard == card.id ? (
+                                                                <FontAwesomeIcon icon={faXmark} size={"lg"} />
+                                                            ) : (
+                                                                <FontAwesomeIcon icon={faEdit} size={"lg"} />
+                                                            )}
+                                                        </Box>
+                                                    </IconButton>
+                                                )}
+                                            </Flex>
+                                            <Box pl={1} pr={3} pt={1}>
+                                                <Text fontWeight={"medium"}>{card?.summary}</Text>
+                                            </Box>
+                                        </Flex>
+                                    </HStack>
+                                    <Box px={2} pt={5}>
+                                        <CardStatus cardData={card} />
+                                    </Box>
+                                    {card?.externalLinks?.[0] || card?.description?.[0] ? (
+                                        <CardBody>
+                                            {card?.externalLinks?.[0] && (
+                                                <Box>
+                                                    <CardLinks cardData={card} backgroundColor={backgroundColor} linkHoverColor={linkHoverColor} />
+                                                </Box>
+                                            )}
+                                            {card?.description?.[0] && (
+                                                <Box pt={5} mt={2}>
+                                                    <CardDescription index={0} cardData={card} />
+                                                </Box>
+                                            )}
+                                        </CardBody>
+                                    ) : null}
+                                    {card?.images?.[1] && (
+                                        <CardImages
+                                            windowSize={windowSize}
+                                            cardIndex={cardIndex}
+                                            card={card}
+                                            imageIndex={1}
+                                            image={card?.images?.[1]}
+                                            imageArray={Object.values(card?.images || {})}
+                                            cardRefs={cardRefs}
+                                            imageRefs={imageRefs}
+                                            sortedCardData={sortedCardData}
+                                            showMore={showMore}
+                                            imageWidths={imageWidths}
+                                            setImageWidths={setImageWidths}
+                                        />
+                                    )}
+                                    {(Object.entries(card?.description || {}).some(([key]) => key !== "0") ||
+                                        Object.entries(card?.images || {}).some(([key]) => key !== "0" && key !== "1")) && (
+                                        <>
+                                            <Collapse in={showMore[cardIndex]} style={{ marginTop: 0 }}>
+                                                {Array.from({
+                                                    length: Math.max(
+                                                        Object.values(card?.description || {})?.length || 0,
+                                                        Object.values(card?.images || {})?.length - 2 || 0
+                                                    ),
+                                                }).map((_, index) => (
+                                                    <React.Fragment key={index}>
+                                                        {card?.description?.[index + 1] && (
+                                                            <CardBody>
+                                                                <CardDescription index={index + 1} cardData={card} />
+                                                            </CardBody>
+                                                        )}
+                                                        {card?.images?.[index + 2] && (
+                                                            <CardImages
+                                                                key={index + 2}
+                                                                windowSize={windowSize}
+                                                                card={card}
+                                                                cardIndex={cardIndex}
+                                                                imageIndex={index + 2}
+                                                                image={card?.images[index + 2]}
+                                                                imageArray={Object.values(card?.images || {})}
+                                                                cardRefs={cardRefs}
+                                                                imageRefs={imageRefs}
+                                                                sortedCardData={sortedCardData}
+                                                                showMore={showMore}
+                                                                imageWidths={imageWidths}
+                                                                setImageWidths={setImageWidths}
+                                                            />
+                                                        )}
+                                                    </React.Fragment>
+                                                ))}
+                                            </Collapse>
+                                            <CardShowMoreButton
+                                                cardIndex={cardIndex}
+                                                imageWidths={imageWidths}
+                                                windowSize={windowSize}
+                                                backgroundColor={backgroundColor}
+                                                linkHoverColor={linkHoverColor}
+                                                showMore={showMore}
+                                                setShowMore={setShowMore}
+                                                setCollapseReRender={setCollapseReRender}
+                                            />
+                                        </>
+                                    )}
+                                </Stack>
+                            </Flex>
+                        </Card>
+                    )
+                    return isHighlight ? (
+                        <Box key={card.id} mx={marginX}>
+                            <ElectricBorder thickness={3} style={{ borderRadius: "30px", maxWidth: "600px" }}>
+                                {cardContent}
+                            </ElectricBorder>
+                        </Box>
+                    ) : (
+                        cardContent
+                    )
+                })}
             </Masonry>
             {environment === "development" && (
                 <CardEditor
