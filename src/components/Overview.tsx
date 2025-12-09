@@ -18,7 +18,7 @@ import {
 import focusAreasDataImport from "../../public/data/focusAreas.json"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMoneyBill, faServer, faImage, faRobot, faCircleUp, faNetworkWired } from "@fortawesome/free-solid-svg-icons"
+import { faMoneyBill, faServer, faImage, faRobot, faCircleUp, faObjectGroup } from "@fortawesome/free-solid-svg-icons"
 
 const focusAreaIconMapping = {
     faServer,
@@ -26,7 +26,7 @@ const focusAreaIconMapping = {
     faImage,
     faRobot,
     faCircleUp,
-    faNetworkWired,
+    faObjectGroup,
 }
 
 import NextLink from "next/link"
@@ -70,31 +70,49 @@ export default function Overview() {
 
                         <Stack flexGrow={1}>
                             <CardBody>
-                                <Flex direction={"row"} wrap={"wrap"} justifyContent={"space-between"} alignItems={"baseline"}>
+                                <Flex
+                                    direction={"row"}
+                                    wrap={"wrap"}
+                                    justifyContent={"space-between"}
+                                    alignItems={"baseline"}
+                                    pb={{ base: "20px", md: "0px" }}
+                                >
                                     <Heading
                                         color={useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)}
-                                        size="xl"
-                                        pr="30px"
+                                        size={{ base: "4xl", md: "2xl" }}
+                                        pr={{ base: "0px", md: "30px" }}
+                                        w={{ base: "100%", md: "auto" }}
                                     >
-                                        eridian.eth
+                                        Eridian
                                     </Heading>
-                                    <Flex py="25px" flexWrap="wrap" gap="10px">
-                                        <Text as="b">🗓️ Journey Started:</Text>
+                                    <Flex py="10px" flexWrap="wrap" columnGap="10px" alignItems={"center"}>
+                                        <HStack gap={0} justifyContent={"start"}>
+                                            <Text fontWeight="bold">Journey Started</Text>
+                                            <Text fontSize={"25px"}>⏱️</Text>
+                                        </HStack>
                                         <HStack spacing={3}>
                                             <Text>April 2021</Text>
-                                            <Text>
-                                                ({Math.floor((new Date().getTime() - new Date("2021-04-01").getTime()) / (1000 * 60 * 60 * 24))} days
-                                                ago)
+                                            <Text
+                                                bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}
+                                                px={2}
+                                                borderRadius={"full"}
+                                            >
+                                                {Math.floor((new Date().getTime() - new Date("2021-04-01").getTime()) / (1000 * 60 * 60 * 24))} days
+                                                ago
                                             </Text>
                                         </HStack>
                                     </Flex>
                                 </Flex>
-                                <VStack alignItems={"start"} gap={1}>
-                                    <Text fontWeight={"bold"}>Full-Stack Developer 💻</Text>
+                                <VStack alignItems={"start"} gap={0}>
+                                    {/* <Text fontWeight={"bold"}>Full-Stack Developer 💻</Text> */}
+                                    <HStack gap={0} justifyContent={"start"}>
+                                        <Text fontWeight="bold">Full-Stack Developer</Text>
+                                        <Text fontSize={"25px"}>💻</Text>
+                                    </HStack>
                                     <Text>
-                                        Hey 👋 I&apos;m Eridian and I&apos;m a full-stack developer. I have experience in web app design, educational
-                                        content, writing smart contracts, community creation, incentives and rewards programs. This portfolio website
-                                        shows my projects, skills, and experiences since I joined the Ethereum community.
+                                        Hey 👋 I&apos;m Eridian and I&apos;m a full-stack developer. I have experience in web app design, creating
+                                        educational content, writing smart contracts, community creation, and incentives and rewards programs. This
+                                        portfolio website shows my projects, skills, and experiences.
                                     </Text>
                                     <Text>
                                         I&apos;m always exploring new projects so reach out to me on{" "}
