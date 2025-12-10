@@ -1,16 +1,16 @@
 [
     {
         "id": "66T7CE",
-        "name": "AI Dev Docs",
+        "name": "Design Docs",
         "displayConfig": {
             "cardType": "project"
         },
-        "summary": "Docs about AI... written by AI 🤖",
+        "summary": "React component design docs.",
         "startDate": "2025-12-01",
         "endDate": "",
         "externalLinks": {
             "0": {
-                "url": "https://docs.eridian.xyz/ai-dev",
+                "url": "https://docs.eridian.xyz/design-dev",
                 "label": "Docs",
                 "type": "website"
             }
@@ -20,12 +20,12 @@
         },
         "images": {
             "0": {
-                "image": "./images/EridianAiAvatar.png",
-                "alt": "Eridian AI Avatar"
+                "image": "",
+                "alt": ""
             },
             "1": {
-                "image": "./images/AiDocsCover.png",
-                "alt": "AI Dev Docs"
+                "image": "./images/DesignDocsCover.png",
+                "alt": "Design Docs"
             }
         }
     },
