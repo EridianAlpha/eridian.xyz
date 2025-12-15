@@ -1,5 +1,35 @@
 [
     {
+        "id": "LC6GOD",
+        "name": "The Future Looks Good",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Blog post about the growing importance of good UI design.",
+        "startDate": "2025-12-15",
+        "endDate": "2025-12-15",
+        "externalLinks": {
+            "0": {
+                "url": "./blog/the-future-looks-good/",
+                "label": "Blog Post",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/TheFutureLooksGood.png",
+                "alt": "The Future Looks Good"
+            }
+        }
+    },
+    {
         "id": "66T7CE",
         "name": "Design Docs",
         "displayConfig": {
@@ -2967,7 +2997,7 @@
                 "type": "twitter"
             },
             "2": {
-                "url": "/blog/A6U2PC/",
+                "url": "/blog/profitable-censorship-through-lazy-multi-block-mev-ethereum/",
                 "label": "Local Post",
                 "type": "website"
             }

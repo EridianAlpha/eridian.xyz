@@ -70,9 +70,7 @@ There would be some optimization needed, as significantly overbidding would like
 
 ### 3. Profit generating strategies
 
-Pausing the chain completely
-
-> This already happens, when a validator misses a block proposal.
+Pausing the chain completely. This already happens, when a validator misses a block proposal.
 
 -   Remove all transactions from the block, proposing a valid, but empty block.
 -   This is the most expensive form of attack as you are paying to win the MEV auction, but not recovering any of the costs from including even some transaction tips.

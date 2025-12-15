@@ -2,7 +2,7 @@ import fs from "fs"
 import path from "path"
 import ReactMarkdown from "react-markdown"
 import ChakraUIRenderer from "chakra-ui-markdown-renderer"
-import { Link } from "@chakra-ui/react"
+import { Link, Image } from "@chakra-ui/react"
 import Header from "@/components/Header/Header"
 import { Container, useColorModeValue, useTheme, Box } from "@chakra-ui/react"
 
@@ -21,11 +21,12 @@ export default function BlogPost({ content, windowSize, environment, setIsCardEd
                 {props.children}
             </Link>
         ),
+        img: (props) => <Image src={props.src ?? ""} alt={props.alt ?? ""} borderRadius="16px" my={4} maxW="100%" />,
     })
 
     return (
         <Box w={"100vw"} bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}>
-            <Container maxW="1000px" pb={20} bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}>
+            <Container maxW="800px" pb={20} bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}>
                 <Header
                     windowSize={windowSize}
                     environment={environment}
