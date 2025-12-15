@@ -31,15 +31,20 @@
     },
     {
         "id": "66T7CE",
-        "name": "Design Docs",
+        "name": "DesignedTo.Work",
         "displayConfig": {
-            "cardType": "project"
+            "cardType": "highlight"
         },
-        "summary": "React component design docs.",
+        "summary": "Animated component designs.",
         "startDate": "2025-12-01",
         "endDate": "",
         "externalLinks": {
             "0": {
+                "url": "https://DesignedTo.Work",
+                "label": "DesignedTo.Work",
+                "type": "website"
+            },
+            "1": {
                 "url": "https://docs.eridian.xyz/design-dev",
                 "label": "Docs",
                 "type": "website"
@@ -54,38 +59,8 @@
                 "alt": ""
             },
             "1": {
-                "image": "./images/DesignDocsCover.png",
-                "alt": "Design Docs"
-            }
-        }
-    },
-    {
-        "id": "B0EHCS",
-        "name": "Neutral Finance",
-        "displayConfig": {
-            "cardType": "highlight"
-        },
-        "summary": "Stable by design, neutral by nature.",
-        "startDate": "2025-11-19",
-        "endDate": "",
-        "externalLinks": {
-            "0": {
-                "url": "https://neutral.finance",
-                "label": "neutral.finance",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": "Project under development..."
-        },
-        "images": {
-            "0": {
-                "image": "./images/NeutralFinanceLogo.png",
-                "alt": "Neutral Finance Logo"
-            },
-            "1": {
-                "image": "",
-                "alt": ""
+                "image": "./images/DesignedToWork.gif",
+                "alt": "Designed To Work"
             }
         }
     },

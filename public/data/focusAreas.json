@@ -15,12 +15,12 @@
         "title": "AI Tools",
         "icon": "faRobot",
         "color": "#FF5400",
-        "count": 5
+        "count": 4
     },
     {
         "title": "UI Design",
         "icon": "faObjectGroup",
         "color": "#0697b6",
-        "count": 4
+        "count": 5
     }
 ]

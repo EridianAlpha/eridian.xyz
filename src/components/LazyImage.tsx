@@ -76,7 +76,8 @@ const LazyImage = React.forwardRef<HTMLImageElement, LazyImageProps>(function La
         }
     }, [rootMargin, eager])
 
-    const webpSrc = typeof src === "string" ? src.replace(/\.(png|jpg|jpeg)$/i, ".webp") : undefined
+    // For any PNG/JPG/JPEG/GIF source, prefer a sibling .webp file if it exists
+    const webpSrc = typeof src === "string" ? src.replace(/\.(png|jpg|jpeg|gif)$/i, ".webp") : undefined
 
     // Prefer WebP if present; fall back to original. Use display: contents so wrapper doesn't affect layout/styling.
     return (
