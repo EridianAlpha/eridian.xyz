@@ -18,7 +18,8 @@ import {
 import focusAreasDataImport from "../../public/data/focusAreas.json"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMoneyBill, faServer, faImage, faRobot, faCircleUp, faObjectGroup } from "@fortawesome/free-solid-svg-icons"
+import { faMoneyBill, faServer, faImage, faRobot, faCircleUp } from "@fortawesome/free-solid-svg-icons"
+import { faEthereum } from "@fortawesome/free-brands-svg-icons"
 
 const focusAreaIconMapping = {
     faServer,
@@ -26,7 +27,7 @@ const focusAreaIconMapping = {
     faImage,
     faRobot,
     faCircleUp,
-    faObjectGroup,
+    faEthereum,
 }
 
 import NextLink from "next/link"
@@ -83,7 +84,7 @@ export default function Overview() {
                                         pr={{ base: "0px", md: "30px" }}
                                         w={{ base: "100%", md: "auto" }}
                                     >
-                                        Eridian
+                                        eridian.eth
                                     </Heading>
                                     <Flex py="10px" flexWrap="wrap" columnGap="10px" alignItems={"center"}>
                                         <HStack gap={0} justifyContent={"start"}>
@@ -106,13 +107,15 @@ export default function Overview() {
                                 <VStack alignItems={"start"} gap={0}>
                                     {/* <Text fontWeight={"bold"}>Full-Stack Developer 💻</Text> */}
                                     <HStack gap={0} justifyContent={"start"}>
-                                        <Text fontWeight="bold">Full-Stack Developer</Text>
-                                        <Text fontSize={"25px"}>💻</Text>
+                                        <Text fontWeight="bold">Ethereum Settler</Text>
+                                        <Text pb={"10px"} fontSize={"40px"} display="inline-block" lineHeight={0.8} verticalAlign="baseline">
+                                            🏕️
+                                        </Text>
                                     </HStack>
                                     <Text>
-                                        Hey 👋 I&apos;m Eridian and I&apos;m a full-stack developer. I have experience in web app design, creating
-                                        educational content, writing smart contracts, community creation, and incentives and rewards programs. This
-                                        portfolio website shows my projects, skills, and experiences.
+                                        Hey 👋 I&apos;m Eridian and Ethereum is my home. I have experience in web app design, creating educational
+                                        content, writing smart contracts, community creation, and incentives and rewards programs. This portfolio
+                                        website shows my projects, skills, and experiences.
                                     </Text>
                                     <Text>
                                         I&apos;m always exploring new projects so reach out to me on{" "}
@@ -156,6 +159,7 @@ export default function Overview() {
                                                                 size={"lg"}
                                                                 color={index < count ? color : "gray"}
                                                                 opacity={index < count ? "1" : "0.3"}
+                                                                style={{ minWidth: "20px", minHeight: "20px" }}
                                                             />
                                                         ))}
                                                     </HStack>

@@ -1,5 +1,35 @@
 [
     {
+        "id": "OYHXQE",
+        "name": "ETHGas",
+        "displayConfig": {
+            "cardType": "highlight"
+        },
+        "summary": "Working with ETHGas to bring Real Time Ethereum to the world.",
+        "startDate": "2026-01-12",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.ethgas.com/",
+                "label": "ethgas.com",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/ETHGasLogo.png",
+                "alt": "ETHGas Logo"
+            },
+            "1": {
+                "image": "./images/ETHGas.png",
+                "alt": "ETHGas"
+            }
+        }
+    },
+    {
         "id": "LC6GOD",
         "name": "The Future Looks Good",
         "displayConfig": {
@@ -33,25 +63,20 @@
         "id": "66T7CE",
         "name": "DesignedTo.Work",
         "displayConfig": {
-            "cardType": "highlight"
+            "cardType": "project"
         },
         "summary": "Animated component designs.",
         "startDate": "2025-12-01",
-        "endDate": "",
+        "endDate": "2025-12-05",
         "externalLinks": {
             "0": {
                 "url": "https://DesignedTo.Work",
                 "label": "DesignedTo.Work",
                 "type": "website"
-            },
-            "1": {
-                "url": "https://docs.eridian.xyz/design-dev",
-                "label": "Docs",
-                "type": "website"
             }
         },
         "description": {
-            "0": ""
+            "0": "A short, end-of-year project to learn more about React component animation and design. Using tools including Motion and GSAP."
         },
         "images": {
             "0": {
