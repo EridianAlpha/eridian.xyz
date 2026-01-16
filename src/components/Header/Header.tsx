@@ -33,13 +33,13 @@ export default function Header({ windowSize, environment, setIsCardEditorOpen, s
             <Box bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}>
                 <Flex h={"fit-content"} pt={4} pb={2} justifyContent={"space-between"} alignItems={"start"}>
                     <Flex gap={3} flexWrap={"wrap"}>
-                        <Flex gap={3} onClick={navigateHome} cursor={"pointer"}>
+                        <Flex gap={3} onClick={navigateHome} cursor={"pointer"} flexWrap={"wrap"}>
                             <Image
                                 sx={{ cursor: "pointer" }}
                                 width={"40px"}
                                 objectFit={"cover"}
                                 src={"/Eridian.webp"}
-                                borderRadius={"5px"}
+                                borderRadius={"8px"}
                                 alt={"Eridian Avatar"}
                             />
                             <Flex justifyContent={"center"} alignItems={"center"} pr={2} minW="80px" fontWeight="bold" fontSize="xl">
