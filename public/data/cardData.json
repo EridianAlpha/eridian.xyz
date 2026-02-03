@@ -1,5 +1,35 @@
 [
     {
+        "id": "ADUV6Y",
+        "name": "Ethereum Hong Kong",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Attended the first Ethereum Hong Kong meetup.",
+        "startDate": "2026-01-24",
+        "endDate": "2026-01-24",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/ethereumhkhub/status/2015711074721599727",
+                "label": "Event post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": "Highlights from the event:\n🔥 Deep dive on Programmable Privacy & Compliance\n💼 Real talk on Institutions & RWA adoption\n🛠️ BUIDLing the future of DeFi on Layer2"
+        },
+        "images": {
+            "0": {
+                "image": "./images/EthereumHongKongLogo.png",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/EthereumHongKong20260124.png",
+                "alt": "Ethereum Hong Kong"
+            }
+        }
+    },
+    {
         "id": "OYHXQE",
         "name": "ETHGas",
         "displayConfig": {
@@ -76,7 +106,7 @@
             }
         },
         "description": {
-            "0": "A short, end-of-year project to learn more about React component animation and design. Using tools including Motion and GSAP."
+            "0": "A short, end-of-year project to learn more about React component animation and design. Using the tools Motion.dev and GSAP."
         },
         "images": {
             "0": {
