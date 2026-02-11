@@ -1,5 +1,65 @@
 [
     {
+        "id": "WZZ32T",
+        "name": "EthStaker Community Call #62",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Explaining the ETHGas marketplace and validator onboarding to solo stakers.",
+        "startDate": "2026-02-10",
+        "endDate": "2026-02-10",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.youtube.com/watch?v=iTgyuzUnYBM&t=780s",
+                "label": "YouTube Recording",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/EthStakerKBLogo.png",
+                "alt": "EthStaker Logo"
+            },
+            "1": {
+                "image": "./images/EthStakerCommunityCallEthGasCover.png",
+                "alt": "EthStaker CommunityCall ETHGas Cover"
+            }
+        }
+    },
+    {
+        "id": "OGJP26",
+        "name": "Ethereum Engineering Group Podcast",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Presenting how ETHGas can be used by solo stakers.",
+        "startDate": "2026-02-04",
+        "endDate": "2026-02-04",
+        "externalLinks": {
+            "0": {
+                "url": "https://www.youtube.com/watch?v=m-jP9no7YDk&t",
+                "label": "YouTube Recording",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/EthEngGroupLogo.png",
+                "alt": "ETHGas Logo"
+            },
+            "1": {
+                "image": "./images/EthEngCallCover.png",
+                "alt": "Eth Eng Call Cover"
+            }
+        }
+    },
+    {
         "id": "ADUV6Y",
         "name": "Ethereum Hong Kong",
         "displayConfig": {
