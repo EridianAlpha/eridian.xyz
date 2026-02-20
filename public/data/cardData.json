@@ -1,5 +1,35 @@
 [
     {
+        "id": "UCC476",
+        "name": "ETHDenver 2026",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Attended ETHDenver 2026.",
+        "startDate": "2026-02-16",
+        "endDate": "2026-02-20",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/EridianAlpha/status/2024930124324311253",
+                "label": "X Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/ETHDenverLogo.png",
+                "alt": "ETHDenver Logo"
+            },
+            "1": {
+                "image": "./images/ETHDenver2026.png",
+                "alt": "ETHDenver 2026"
+            }
+        }
+    },
+    {
         "id": "WZZ32T",
         "name": "EthStaker Community Call #62",
         "displayConfig": {
@@ -3497,6 +3527,36 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
+            }
+        }
+    },
+    {
+        "id": "VKSOQ9",
+        "name": "Builder Nights Panel Speaker",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Speaking on the Scaling Ethereum panel at Builder Nights.",
+        "startDate": "2026-02-17",
+        "endDate": "2026-02-17",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/MetaMask/status/2022399235057172971",
+                "label": "X Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/MetaMaskLogo.png",
+                "alt": "MetaMask Logo"
+            },
+            "1": {
+                "image": "./images/BuilderNights2026.png",
+                "alt": "Builder Nights 2026"
             }
         }
     }
