@@ -1,5 +1,35 @@
 [
     {
+        "id": "VKSOQ9",
+        "name": "Builder Nights Panel Speaker",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Speaking on the Scaling Ethereum panel at Builder Nights.",
+        "startDate": "2026-02-17",
+        "endDate": "2026-02-17",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/MetaMask/status/2022399235057172971",
+                "label": "X Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/MetaMaskLogo.png",
+                "alt": "MetaMask Logo"
+            },
+            "1": {
+                "image": "./images/BuilderNights2026.png",
+                "alt": "Builder Nights 2026"
+            }
+        }
+    },
+    {
         "id": "UCC476",
         "name": "ETHDenver 2026",
         "displayConfig": {
@@ -3531,32 +3561,32 @@
         }
     },
     {
-        "id": "VKSOQ9",
-        "name": "Builder Nights Panel Speaker",
+        "id": "VH5LBB",
+        "name": "Neutral Finance",
         "displayConfig": {
-            "cardType": "event"
+            "cardType": "highlight"
         },
-        "summary": "Speaking on the Scaling Ethereum panel at Builder Nights.",
-        "startDate": "2026-02-17",
-        "endDate": "2026-02-17",
+        "summary": "Stable by design, neutral by nature.",
+        "startDate": "2025-11-19",
+        "endDate": "",
         "externalLinks": {
             "0": {
-                "url": "https://x.com/MetaMask/status/2022399235057172971",
-                "label": "X Post",
-                "type": "twitter"
+                "url": "https://neutral.finance",
+                "label": "neutral.finance",
+                "type": "website"
             }
         },
         "description": {
-            "0": ""
+            "0": "Project under development..."
         },
         "images": {
             "0": {
-                "image": "./images/MetaMaskLogo.png",
-                "alt": "MetaMask Logo"
+                "image": "./images/NeutralFinanceLogo.png",
+                "alt": "Neutral Finance Logo"
             },
             "1": {
-                "image": "./images/BuilderNights2026.png",
-                "alt": "Builder Nights 2026"
+                "image": "",
+                "alt": ""
             }
         }
     }
