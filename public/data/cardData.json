@@ -1,7 +1,139 @@
 [
     {
+        "id": "9W9I8J",
+        "name": "ETHCapital Summit - Seoul 2026",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Attended the first ETHCapital Summit in Seoul 🇰🇷",
+        "startDate": "2026-04-15",
+        "endDate": "2026-04-15",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/EridianAlpha/status/2044609761736282463",
+                "label": "X Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/ETHCapitalLogo.png",
+                "alt": "ETHCapital Logo"
+            },
+            "1": {
+                "image": "./images/ETHCapitalSummit2026-1.png",
+                "alt": "ETHCapital Summit 2026 1"
+            },
+            "2": {
+                "image": "./images/ETHCapitalSummit2026-2.png",
+                "alt": "ETHCapital Summit 2026 2"
+            },
+            "3": {
+                "image": "./images/ETHCapitalSummit2026-3.png",
+                "alt": "ETHCapital Summit 2026 3"
+            }
+        }
+    },
+    {
+        "id": "DM73AY",
+        "name": "Lido Day - Cannes 2026",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Attended Lido Day in Cannes, watching panels covering CSM, ICS, and SDVT.",
+        "startDate": "2026-03-31",
+        "endDate": "2026-03-31",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/LidoFinance/status/2039675052329705740",
+                "label": "X Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/LidoLogo.png",
+                "alt": "Lido Logo"
+            },
+            "1": {
+                "image": "./images/LidoDayCannes2026.png",
+                "alt": "Lido Day Cannes 2026"
+            },
+            "2": {
+                "image": "./images/LidoDayCannes2026Pannel.png",
+                "alt": "Lido Day Cannes 2026 Pannel"
+            }
+        }
+    },
+    {
+        "id": "2TLNAL",
+        "name": "ETHCC - Builder Nights Panel Speaker - 2026",
+        "displayConfig": {
+            "cardType": "project"
+        },
+        "summary": "Topic: Who sets and what are the Agent Guardrails?",
+        "startDate": "2026-03-30",
+        "endDate": "2026-03-30",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/ETHGasOfficial/status/2038964532949729463",
+                "label": "X Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/MetaMaskLogo.png",
+                "alt": "MetaMask Logo"
+            },
+            "1": {
+                "image": "./images/BuilderNightsCannes2026.png",
+                "alt": "Builder Nights Cannes 2026"
+            }
+        }
+    },
+    {
+        "id": "E8YRQR",
+        "name": "ETHCC 2026",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Attended ETHCC 2026 in Cannes.",
+        "startDate": "2026-03-30",
+        "endDate": "2026-04-02",
+        "externalLinks": {
+            "0": {
+                "url": "https://x.com/EthCC/status/2038495699168342151",
+                "label": "X Post",
+                "type": "twitter"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/ETHCCLogo2026.png",
+                "alt": "ETHCC Logo 2026"
+            },
+            "1": {
+                "image": "./images/ETHCC2026.png",
+                "alt": "ETHCC 2026"
+            }
+        }
+    },
+    {
         "id": "VKSOQ9",
-        "name": "Builder Nights Panel Speaker",
+        "name": "ETHDenver - Builder Nights Panel Speaker - 2026",
         "displayConfig": {
             "cardType": "event"
         },
@@ -236,6 +368,36 @@
             "1": {
                 "image": "./images/DesignedToWork.gif",
                 "alt": "Designed To Work"
+            }
+        }
+    },
+    {
+        "id": "VH5LBB",
+        "name": "Neutral Finance",
+        "displayConfig": {
+            "cardType": "highlight"
+        },
+        "summary": "Stable by design, neutral by nature.",
+        "startDate": "2025-11-19",
+        "endDate": "",
+        "externalLinks": {
+            "0": {
+                "url": "https://neutral.finance",
+                "label": "neutral.finance",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Project under development..."
+        },
+        "images": {
+            "0": {
+                "image": "./images/NeutralFinanceLogo.png",
+                "alt": "Neutral Finance Logo"
+            },
+            "1": {
+                "image": "",
+                "alt": ""
             }
         }
     },
@@ -3557,36 +3719,6 @@
             "1": {
                 "image": "./images/HomeStakingNuc.png",
                 "alt": "Home Staking Nuc"
-            }
-        }
-    },
-    {
-        "id": "VH5LBB",
-        "name": "Neutral Finance",
-        "displayConfig": {
-            "cardType": "highlight"
-        },
-        "summary": "Stable by design, neutral by nature.",
-        "startDate": "2025-11-19",
-        "endDate": "",
-        "externalLinks": {
-            "0": {
-                "url": "https://neutral.finance",
-                "label": "neutral.finance",
-                "type": "website"
-            }
-        },
-        "description": {
-            "0": "Project under development..."
-        },
-        "images": {
-            "0": {
-                "image": "./images/NeutralFinanceLogo.png",
-                "alt": "Neutral Finance Logo"
-            },
-            "1": {
-                "image": "",
-                "alt": ""
             }
         }
     }
