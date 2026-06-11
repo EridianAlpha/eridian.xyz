@@ -1,6 +1,13 @@
 "use client"
 
-import React, { CSSProperties, PropsWithChildren, useEffect, useId, useRef } from "react"
+import React, { CSSProperties, PropsWithChildren, useEffect, useId, useRef, useState } from "react"
+
+/** WebKit browsers without Chromium use SVG filters that paint black compositor artifacts. */
+function isSafariWebKit(): boolean {
+    if (typeof navigator === "undefined") return true
+    const ua = navigator.userAgent
+    return /AppleWebKit/i.test(ua) && !/Chrome|CriOS|Chromium/i.test(ua)
+}
 
 type ElectricBorderProps = PropsWithChildren<{
     color?: string
@@ -11,15 +18,39 @@ type ElectricBorderProps = PropsWithChildren<{
     style?: CSSProperties
 }>
 
-const ElectricBorder: React.FC<ElectricBorderProps> = ({
+function StaticElectricBorder({
     children,
-    color = "#7df9ff",
-    speed = 0.4,
-    chaos = 0.5,
-    thickness = 2,
+    color,
+    thickness,
     className,
     style,
-}: ElectricBorderProps) => {
+}: Required<Pick<ElectricBorderProps, "color" | "thickness">> & Pick<ElectricBorderProps, "className" | "style" | "children">) {
+    return (
+        <div
+            className={`electric-border-fallback ${className ?? ""}`}
+            style={{
+                ...style,
+                ["--electric-border-color" as string]: color,
+                borderWidth: thickness,
+                borderStyle: "solid",
+                borderColor: color,
+            }}
+        >
+            {children}
+        </div>
+    )
+}
+
+function AnimatedElectricBorder({
+    children,
+    color,
+    speed,
+    chaos,
+    thickness,
+    className,
+    style,
+}: Required<Pick<ElectricBorderProps, "color" | "speed" | "chaos" | "thickness">> &
+    Pick<ElectricBorderProps, "className" | "style" | "children">) {
     const rawId = useId().replace(/[:]/g, "")
     const filterId = `turbulent-displace-${rawId}`
     const svgRef = useRef<SVGSVGElement | null>(null)
@@ -137,6 +168,39 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
 
             <div className="eb-content">{children}</div>
         </div>
+    )
+}
+
+const ElectricBorder: React.FC<ElectricBorderProps> = ({
+    children,
+    color = "#7df9ff",
+    speed = 0.4,
+    chaos = 0.5,
+    thickness = 2,
+    className,
+    style,
+}: ElectricBorderProps) => {
+    // Default to static border so SSR and Safari's first paint match (no hydration mismatch).
+    const [useAnimatedFilter, setUseAnimatedFilter] = useState(false)
+
+    useEffect(() => {
+        if (!isSafariWebKit()) {
+            setUseAnimatedFilter(true)
+        }
+    }, [])
+
+    if (!useAnimatedFilter) {
+        return (
+            <StaticElectricBorder color={color} thickness={thickness} className={className} style={style}>
+                {children}
+            </StaticElectricBorder>
+        )
+    }
+
+    return (
+        <AnimatedElectricBorder color={color} speed={speed} chaos={chaos} thickness={thickness} className={className} style={style}>
+            {children}
+        </AnimatedElectricBorder>
     )
 }
 

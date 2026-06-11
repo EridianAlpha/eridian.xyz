@@ -87,7 +87,12 @@ ul {
     margin-bottom: 60px;
 }
 
-/* Electric Border */
+/* Electric Border — static fallback for Safari (SVG displacement filters paint black there) */
+.electric-border-fallback {
+    box-sizing: border-box;
+    box-shadow: 0 0 14px color-mix(in srgb, var(--electric-border-color) 35%, transparent);
+}
+
 .electric-border {
     --electric-light-color: oklch(from var(--electric-border-color) l c h);
     --eb-border-width: 2px;
