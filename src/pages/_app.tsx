@@ -1,10 +1,11 @@
 import type { AppProps } from "next/app"
+import Head from "next/head"
 import { Analytics } from "@vercel/analytics/react"
 import { useState, useEffect } from "react"
 
 import "../styles/globals.css"
 
-import { ChakraProvider, ColorModeScript, Spinner, useColorModeValue } from "@chakra-ui/react"
+import { ChakraProvider, Spinner, useColorModeValue } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react"
 
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -98,11 +99,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     return (
         <ChakraProvider theme={customTheme}>
+            <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+            </Head>
             <HtmlBackgroundColor />
-            <ColorModeScript initialColorMode="dark" />
             <div id="placeholder" className="backgroundPlaceholder">
                 <Spinner />
-                <text style={{ fontWeight: "bold" }}>Loading eridian.xyz</text>
+                <span style={{ fontWeight: "bold" }}>Loading eridian.xyz</span>
             </div>
             <div id="app" className="hideUntilReady">
                 <GoogleAnalytics />

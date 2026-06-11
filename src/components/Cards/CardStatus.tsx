@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useRef } from "react"
-import { useTheme, Box, Circle, Flex, HStack, Spacer, Text, border, useColorModeValue, VStack } from "@chakra-ui/react"
+import React from "react"
+import { useTheme, Box, Flex, Text, useColorModeValue } from "@chakra-ui/react"
+
+import { formatDisplayDate, parseCardDate } from "@/utils/formatDisplayDate"
 
 export default function CardStatus({ cardData }) {
     const customTheme = useTheme()
 
     const currentDate = new Date()
-    const startDate = new Date(cardData.startDate)
-    const endDate = new Date(cardData.endDate)
-    const targetDate = endDate && endDate.getTime() ? endDate : currentDate
-    const differenceInDays = Math.ceil((targetDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))
-
-    const formatDate = (date: Date) => {
-        return date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
-    }
+    const startDate = parseCardDate(cardData.startDate)
+    const endDate = parseCardDate(cardData.endDate)
+    const targetDate = endDate ?? currentDate
+    const differenceInDays = startDate
+        ? Math.ceil((targetDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))
+        : 0
 
     const backgroundColor = useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)
     const inProgressTheme = useColorModeValue(customTheme.statusColors.inProgress.light, customTheme.statusColors.inProgress.dark)
@@ -31,7 +31,7 @@ export default function CardStatus({ cardData }) {
                         borderColor={cardData?.endDate ? completedTheme : inProgressTheme}
                     >
                         <Text align={"center"} fontFamily="monospace" fontWeight="bold" fontSize={"sm"}>
-                            {formatDate(startDate)}
+                            {formatDisplayDate(cardData.startDate)}
                         </Text>
                     </Box>
                 </Box>
@@ -48,7 +48,7 @@ export default function CardStatus({ cardData }) {
                                 borderColor={cardData?.endDate ? completedTheme : inProgressTheme}
                             >
                                 <Text align={"center"} fontFamily="monospace" fontWeight="bold" fontSize={"sm"}>
-                                    {formatDate(startDate)}
+                                    {formatDisplayDate(cardData.startDate)}
                                 </Text>
                             </Box>
                             <Box
@@ -88,7 +88,7 @@ export default function CardStatus({ cardData }) {
                                 borderColor={cardData?.endDate ? completedTheme : inProgressTheme}
                             >
                                 <Text align={"center"} fontFamily="monospace" fontWeight="bold" fontSize={"sm"}>
-                                    {cardData?.endDate ? formatDate(endDate) : "Ongoing"}
+                                    {cardData?.endDate ? formatDisplayDate(cardData.endDate) : "Ongoing"}
                                 </Text>
                             </Box>
                         </Flex>

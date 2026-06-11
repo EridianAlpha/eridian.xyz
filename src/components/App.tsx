@@ -15,9 +15,6 @@ const App = () => {
     // Import custom color theme
     const customTheme = useTheme()
 
-    // Check if the current render is on the server (Server Side Render) or client
-    const isSSR = typeof window === "undefined"
-
     // Allow card editor to be opened and closed from the header
     // TODO: Is this something that Redux could handle?
     const [isCardEditorOpen, setIsCardEditorOpen] = useState(false)
@@ -29,20 +26,12 @@ const App = () => {
 
     // Rerender when window size changes and save
     // window size to state to allow conditional rendering
-    const [windowSize, setWindowSize] = useState({
-        width: isSSR ? 0 : window.innerWidth,
-        height: isSSR ? 0 : window.innerHeight,
-    })
+    const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
     useEffect(() => {
         const handleResizeWindow = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight })
-        // subscribe to window resize event "onComponentDidMount"
+        handleResizeWindow()
         window.addEventListener("resize", handleResizeWindow)
-        window.addEventListener("load", handleResizeWindow)
-        return () => {
-            // unsubscribe "onComponentDestroy"
-            window.removeEventListener("resize", handleResizeWindow)
-            window.removeEventListener("load", handleResizeWindow)
-        }
+        return () => window.removeEventListener("resize", handleResizeWindow)
     }, [])
 
     const [isFilterOngoingSelected, setIsFilterOngoingSelected] = useState(true)
@@ -96,10 +85,7 @@ const App = () => {
         }
     }
 
-    const [shouldRenderDateComponents, setShouldDateRenderComponents] = useState(true)
-    useEffect(() => {
-        setShouldDateRenderComponents(windowSize.width >= 1100)
-    }, [windowSize.width])
+    const shouldRenderDateComponents = windowSize.width === 0 || windowSize.width >= 1100
 
     return (
         <Box minH="100vh" minW="100vw" bg={useColorModeValue(customTheme.pageBackground.light, customTheme.pageBackground.dark)}>

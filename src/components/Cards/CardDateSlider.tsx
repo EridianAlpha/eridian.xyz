@@ -18,6 +18,8 @@ import {
     Button,
 } from "@chakra-ui/react"
 
+import { formatDisplayDate, parseCardDate } from "@/utils/formatDisplayDate"
+
 export default function CardDateSlider({
     windowSize,
     environment,
@@ -38,10 +40,6 @@ export default function CardDateSlider({
     const inProgressTheme = useColorModeValue(customTheme.statusColors.inProgress.light, customTheme.statusColors.inProgress.dark)
     const completedTheme = useColorModeValue(customTheme.statusColors.completed.light, customTheme.statusColors.completed.dark)
 
-    const formatDate = (date: Date) => {
-        return date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
-    }
-
     const dayDiff = (date1: Date, date2: Date): number => {
         const oneDayInMilliseconds = 24 * 60 * 60 * 1000
         const diffInMilliseconds = Math.abs(date2.getTime() - date1.getTime())
@@ -50,10 +48,12 @@ export default function CardDateSlider({
     }
 
     const earliestStartDate = useMemo(() => {
-        let earliestDate = new Date(cardData[0].startDate)
+        let earliestDate = parseCardDate(cardData[0].startDate) ?? new Date()
         cardData.forEach((card) => {
-            const cardStartDate = new Date(card.startDate)
-            cardStartDate < earliestDate ? (earliestDate = cardStartDate) : null
+            const cardStartDate = parseCardDate(card.startDate)
+            if (cardStartDate && cardStartDate < earliestDate) {
+                earliestDate = cardStartDate
+            }
         })
         return earliestDate
     }, [cardData])
@@ -113,7 +113,7 @@ export default function CardDateSlider({
                     alignItems="center"
                     justifyContent={"center"}
                 >
-                    {formatDate(date)}
+                    {formatDisplayDate(date)}
                 </Text>
             </Box>
         )

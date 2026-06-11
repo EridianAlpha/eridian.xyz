@@ -16,7 +16,6 @@ export default function Document() {
                 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
                 <meta name="theme-color" content="#131827" media="(prefers-color-scheme: dark)" />
                 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
             </Head>
             <body>
                 <ColorModeScript initialColorMode="dark" />
