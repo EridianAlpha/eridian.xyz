@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import axios from "axios"
 import { unset, cloneDeep } from "lodash"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTrashCan, faRefresh } from "@fortawesome/free-solid-svg-icons"
+import { faTrashCan, faRefresh, faUpload, faPaste } from "@fortawesome/free-solid-svg-icons"
 
 import {
     useTheme,
@@ -79,6 +79,224 @@ function compareObjects(obj1, obj2, parentKey = "") {
     return differences
 }
 
+function fileToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.onload = () => {
+            const result = reader.result as string
+            resolve(result.split(",")[1])
+        }
+        reader.onerror = reject
+        reader.readAsDataURL(file)
+    })
+}
+
+const MIME_TO_EXTENSION: Record<string, string> = {
+    "image/png": "png",
+    "image/jpeg": "jpg",
+    "image/gif": "gif",
+    "image/webp": "webp",
+    "image/svg+xml": "svg",
+    "image/tiff": "tiff",
+    "image/bmp": "bmp",
+}
+
+const PREFERRED_CLIPBOARD_IMAGE_TYPES = ["image/png", "image/jpeg", "image/webp", "image/gif", "image/tiff", "image/bmp", "image/svg+xml"]
+
+function isAllowedImageFile(file: File): boolean {
+    if (file.type.startsWith("image/")) {
+        return true
+    }
+
+    // macOS paste events sometimes omit the MIME type even for valid image data.
+    return file.size > 0
+}
+
+function normalizeImageFile(file: File, isPasted = false): File {
+    if (file.type.startsWith("image/")) {
+        return file
+    }
+
+    return new File([file], getDefaultImageFilename(file, isPasted), { type: "image/png" })
+}
+
+function getExtensionFromFile(file: File): string {
+    if (file.type && MIME_TO_EXTENSION[file.type]) {
+        return `.${MIME_TO_EXTENSION[file.type]}`
+    }
+
+    const extensionMatch = file.name.match(/\.[a-zA-Z0-9]+$/)
+    if (extensionMatch) {
+        return extensionMatch[0].toLowerCase()
+    }
+
+    return ".png"
+}
+
+function sanitizeFilenameInput(filename: string): string {
+    return filename.trim().replace(/[^a-zA-Z0-9._-]/g, "")
+}
+
+function resolveUploadFilename(filename: string, file: File): string | null {
+    const sanitizedBase = sanitizeFilenameInput(filename)
+
+    if (!sanitizedBase) {
+        return null
+    }
+
+    const hasExtension = /\.[a-zA-Z0-9]+$/.test(sanitizedBase)
+    const resolvedFilename = hasExtension ? sanitizedBase : `${sanitizedBase}${getExtensionFromFile(file)}`
+    const extension = resolvedFilename.slice(resolvedFilename.lastIndexOf(".")).toLowerCase()
+    const allowedExtensions = [".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg", ".tiff", ".bmp"]
+
+    if (!allowedExtensions.includes(extension) || !/^[a-zA-Z0-9._-]+$/.test(resolvedFilename)) {
+        return null
+    }
+
+    return resolvedFilename
+}
+
+function getDefaultImageFilename(file: File, isPasted = false): string {
+    if (file.name && !isPasted) {
+        const sanitizedName = sanitizeFilenameInput(file.name)
+        if (!sanitizedName) {
+            return `pasted-image${getExtensionFromFile(file)}`
+        }
+
+        if (/\.[a-zA-Z0-9]+$/.test(sanitizedName)) {
+            return sanitizedName
+        }
+
+        return `${sanitizedName}${getExtensionFromFile(file)}`
+    }
+
+    const extension = MIME_TO_EXTENSION[file.type] || "png"
+    return `pasted-image.${extension}`
+}
+
+function dataUrlToFile(dataUrl: string): File | null {
+    const match = dataUrl.match(/^data:(image\/[^;]+);base64,([\s\S]+)$/)
+    if (!match) {
+        return null
+    }
+
+    const mimeType = match[1]
+    const base64 = match[2]
+    const binary = atob(base64)
+    const bytes = new Uint8Array(binary.length)
+
+    for (let index = 0; index < binary.length; index++) {
+        bytes[index] = binary.charCodeAt(index)
+    }
+
+    return new File([bytes], getDefaultImageFilename(new File([bytes], "", { type: mimeType }), true), { type: mimeType })
+}
+
+function blobToImageFile(blob: Blob, type: string): File | null {
+    if (!type.startsWith("image/") || blob.size === 0) {
+        return null
+    }
+
+    return new File([blob], getDefaultImageFilename(new File([blob], "", { type }), true), { type })
+}
+
+async function getImageFileFromClipboardItems(clipboardItems: ClipboardItem[]): Promise<File | null> {
+    for (const clipboardItem of clipboardItems) {
+        for (const type of PREFERRED_CLIPBOARD_IMAGE_TYPES) {
+            if (clipboardItem.types.includes(type)) {
+                const file = blobToImageFile(await clipboardItem.getType(type), type)
+                if (file) {
+                    return file
+                }
+            }
+        }
+
+        for (const type of clipboardItem.types) {
+            if (type.startsWith("image/") && !PREFERRED_CLIPBOARD_IMAGE_TYPES.includes(type)) {
+                const file = blobToImageFile(await clipboardItem.getType(type), type)
+                if (file) {
+                    return file
+                }
+            }
+        }
+    }
+
+    for (const clipboardItem of clipboardItems) {
+        if (clipboardItem.types.includes("text/html")) {
+            const html = await (await clipboardItem.getType("text/html")).text()
+            const dataUrlMatch = html.match(/src=["'](data:image\/[^"']+)["']/i)
+            if (dataUrlMatch) {
+                const file = dataUrlToFile(dataUrlMatch[1])
+                if (file) {
+                    return file
+                }
+            }
+        }
+
+        if (clipboardItem.types.includes("text/plain")) {
+            const text = (await (await clipboardItem.getType("text/plain")).text()).trim()
+            if (text.startsWith("data:image/")) {
+                const file = dataUrlToFile(text)
+                if (file) {
+                    return file
+                }
+            }
+        }
+    }
+
+    return null
+}
+
+function getImageFileFromPasteEvent(event: ClipboardEvent): File | null {
+    const clipboardData = event.clipboardData
+    if (!clipboardData) {
+        return null
+    }
+
+    if (clipboardData.files.length > 0) {
+        for (const file of Array.from(clipboardData.files)) {
+            if (isAllowedImageFile(file)) {
+                return file
+            }
+        }
+    }
+
+    for (const type of PREFERRED_CLIPBOARD_IMAGE_TYPES) {
+        const item = Array.from(clipboardData.items).find((clipboardItem) => clipboardItem.type === type)
+        const file = item?.getAsFile()
+        if (file && isAllowedImageFile(file)) {
+            return file
+        }
+    }
+
+    for (const item of Array.from(clipboardData.items)) {
+        if (item.type.startsWith("image/")) {
+            const file = item.getAsFile()
+            if (file && isAllowedImageFile(file)) {
+                return file
+            }
+        }
+    }
+
+    const html = clipboardData.getData("text/html")
+    if (html) {
+        const dataUrlMatch = html.match(/src=["'](data:image\/[^"']+)["']/i)
+        if (dataUrlMatch) {
+            const file = dataUrlToFile(dataUrlMatch[1])
+            if (file) {
+                return file
+            }
+        }
+    }
+
+    const plainText = clipboardData.getData("text/plain").trim()
+    if (plainText.startsWith("data:image/")) {
+        return dataUrlToFile(plainText)
+    }
+
+    return null
+}
+
 function customSet(obj, path, value) {
     const pathParts = Array.isArray(path) ? path : path.split(".")
 
@@ -100,12 +318,145 @@ function customSet(obj, path, value) {
 export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData, setCardEditorData, cardData }) {
     const [inputVisibility, setInputVisibility] = React.useState<{ [key: string]: boolean }>({})
     const [imageSrcs, setImageSrcs] = useState({})
+    const [uploadImageKey, setUploadImageKey] = useState<string | null>(null)
+    const [imageUploadModal, setImageUploadModal] = useState<{ isOpen: boolean; file: File | null; filename: string }>({
+        isOpen: false,
+        file: null,
+        filename: "",
+    })
+    const [isUploading, setIsUploading] = useState(false)
+    const [isWaitingForPaste, setIsWaitingForPaste] = useState(false)
+    const [pasteTargetKey, setPasteTargetKey] = useState<string | null>(null)
+    const fileInputRef = useRef<HTMLInputElement>(null)
     const toast = useToast()
 
     const customTheme = useTheme()
     const contentBackground = useColorModeValue(customTheme.contentBackground.color.light, customTheme.contentBackground.color.dark)
     const contentBackgroundLighter = useColorModeValue(customTheme.contentBackground.hoverColor.light, customTheme.contentBackground.hoverColor.dark)
     const labelColor = useColorModeValue(customTheme.headingText.color.light, customTheme.headingText.color.dark)
+
+    const handleRefreshImage = (key: string, src: string) => {
+        setImageSrcs((prevSrcs) => ({
+            ...prevSrcs,
+            [key]: src,
+        }))
+    }
+
+    const handleUploadClick = (key: string) => {
+        setUploadImageKey(key)
+        fileInputRef.current?.click()
+    }
+
+    const openImageSaveModal = (file: File, isPasted = false) => {
+        setImageUploadModal({
+            isOpen: true,
+            file,
+            filename: getDefaultImageFilename(file, isPasted),
+        })
+    }
+
+    const processImageFile = (file: File | null, imageKey: string | null, isPasted = false): boolean => {
+        if (!file || !imageKey) {
+            return false
+        }
+
+        if (!isAllowedImageFile(file)) {
+            toast({
+                title: "Invalid file type",
+                status: "error",
+                isClosable: true,
+                position: "top",
+                description: "Please use a PNG, JPG, GIF, WebP, SVG, TIFF, or BMP image.",
+                duration: 3000,
+            })
+            return false
+        }
+
+        setUploadImageKey(imageKey)
+        setIsWaitingForPaste(false)
+        setPasteTargetKey(null)
+        openImageSaveModal(normalizeImageFile(file, isPasted), isPasted)
+        return true
+    }
+
+    const startWaitingForPaste = (key: string) => {
+        setPasteTargetKey(key)
+        setUploadImageKey(key)
+        setIsWaitingForPaste(true)
+        toast({
+            title: "Paste image",
+            status: "info",
+            isClosable: true,
+            position: "top",
+            description: "Press Cmd+V (or Ctrl+V) to paste from your clipboard.",
+            duration: 5000,
+        })
+    }
+
+    useEffect(() => {
+        if (!isWaitingForPaste || !pasteTargetKey) {
+            return
+        }
+
+        const handleDocumentPaste = (event: ClipboardEvent) => {
+            const file = getImageFileFromPasteEvent(event)
+
+            if (!file) {
+                setIsWaitingForPaste(false)
+                setPasteTargetKey(null)
+                toast({
+                    title: "No image in clipboard",
+                    status: "warning",
+                    isClosable: true,
+                    position: "top",
+                    description: "Copy an image first, then try again.",
+                    duration: 3000,
+                })
+                return
+            }
+
+            if (processImageFile(file, pasteTargetKey, true)) {
+                event.preventDefault()
+            }
+        }
+
+        document.addEventListener("paste", handleDocumentPaste)
+        return () => document.removeEventListener("paste", handleDocumentPaste)
+    }, [isWaitingForPaste, pasteTargetKey, toast])
+
+    const handleFileSelected = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0]
+        event.target.value = ""
+
+        if (!file) {
+            return
+        }
+
+        processImageFile(file, uploadImageKey)
+    }
+
+    const handlePasteClick = async (key: string) => {
+        setIsWaitingForPaste(false)
+        setPasteTargetKey(null)
+
+        try {
+            const clipboardItems = await navigator.clipboard.read()
+            const file = await getImageFileFromClipboardItems(clipboardItems)
+
+            if (file && processImageFile(file, key, true)) {
+                return
+            }
+        } catch {
+            // Fall through to keyboard paste, which is more reliable in many browsers.
+        }
+
+        startWaitingForPaste(key)
+    }
+
+    const closeImageUploadModal = () => {
+        setImageUploadModal({ isOpen: false, file: null, filename: "" })
+        setUploadImageKey(null)
+    }
 
     const renderInputs = (cardEditorData) => {
         if (!cardEditorData) {
@@ -421,12 +772,6 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                 },
             }))
         }
-        const handleRefreshImage = (key: string, src: string) => {
-            setImageSrcs((prevSrcs) => ({
-                ...prevSrcs,
-                [key]: src,
-            }))
-        }
         const deleteImage = (key: string, imageRef: React.RefObject<HTMLInputElement>, altRef: React.RefObject<HTMLInputElement>) => {
             imageRef.current ? (imageRef.current.value = "") : null
             altRef.current ? (altRef.current.value = "") : null
@@ -494,17 +839,26 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                                             <Text pl={3}>Refresh image</Text>
                                         </Button>
                                     </Flex>
-                                    <InputGroup>
-                                        <InputLeftAddon width="90px">Source</InputLeftAddon>
-                                        <Input
-                                            id={`images-${key}`}
-                                            key={`images-${key}`}
-                                            ref={imageRef}
-                                            placeholder={`Add image ${key}...`}
-                                            defaultValue={imageData.image}
-                                            mb="8px"
-                                        />
-                                    </InputGroup>
+                                    <Flex alignItems="center" mb="8px" gap={2}>
+                                        <InputGroup flex={1}>
+                                            <InputLeftAddon width="90px">Source</InputLeftAddon>
+                                            <Input
+                                                id={`images-${key}`}
+                                                key={`images-${key}-${imageData.image}`}
+                                                ref={imageRef}
+                                                placeholder={`Add image ${key}...`}
+                                                defaultValue={imageData.image}
+                                            />
+                                        </InputGroup>
+                                        <Button size="sm" borderRadius="20px" onClick={() => handleUploadClick(key)}>
+                                            <FontAwesomeIcon icon={faUpload} size={"lg"} />
+                                            <Text pl={3}>Upload</Text>
+                                        </Button>
+                                        <Button size="sm" borderRadius="20px" onClick={() => handlePasteClick(key)}>
+                                            <FontAwesomeIcon icon={faPaste} size={"lg"} />
+                                            <Text pl={3}>Paste</Text>
+                                        </Button>
+                                    </Flex>
                                     <InputGroup>
                                         <InputLeftAddon width="90px">Alt Text</InputLeftAddon>
                                         <Input
@@ -544,6 +898,80 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
     }
 
     const { inputs, inputRefs } = renderInputs(cardEditorData)
+
+    const handleImageUploadConfirm = async () => {
+        const { file, filename } = imageUploadModal
+
+        if (!file || !filename.trim() || !uploadImageKey) {
+            return
+        }
+
+        const resolvedFilename = resolveUploadFilename(filename, file)
+        if (!resolvedFilename) {
+            toast({
+                title: "Invalid filename",
+                status: "error",
+                isClosable: true,
+                position: "top",
+                description: "Use letters, numbers, dots, dashes, and underscores. Extension is added automatically if omitted.",
+                duration: 4000,
+            })
+            return
+        }
+
+        setIsUploading(true)
+
+        try {
+            const data = await fileToBase64(file)
+            const response = await axios.post("/api/uploadImage", {
+                filename: resolvedFilename,
+                data,
+            })
+
+            const imagePath = response.data.path
+            const imageRef = inputRefs.get(`images.${uploadImageKey}.image`)
+
+            setCardEditorData((prevState) => ({
+                ...prevState,
+                images: {
+                    ...(prevState?.images || {}),
+                    [uploadImageKey]: {
+                        ...(typeof prevState?.images?.[uploadImageKey] === "object" && prevState.images[uploadImageKey] !== null
+                            ? prevState.images[uploadImageKey]
+                            : { image: "", alt: "" }),
+                        image: imagePath,
+                    },
+                },
+            }))
+
+            if (imageRef?.current) {
+                imageRef.current.value = imagePath
+            }
+
+            handleRefreshImage(uploadImageKey, imagePath)
+            closeImageUploadModal()
+
+            toast({
+                title: "Image uploaded",
+                status: "success",
+                isClosable: true,
+                position: "top",
+                description: `Saved as ${resolvedFilename}`,
+                duration: 3000,
+            })
+        } catch (error) {
+            toast({
+                title: "Error uploading image",
+                status: "error",
+                isClosable: true,
+                position: "top",
+                description: error.response?.data?.error || error.message || "Unknown error. Please try again.",
+                duration: 4000,
+            })
+        } finally {
+            setIsUploading(false)
+        }
+    }
 
     const updatedCardIndexes = (cardData, inputRefs, cardEditorData) => {
         const updatedCardData = cloneDeep(cardData)
@@ -682,11 +1110,53 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
         toast.closeAll()
         setImageSrcs({})
         setInputVisibility({})
+        setIsWaitingForPaste(false)
+        setPasteTargetKey(null)
         onClose()
     }
 
     return (
-        <Modal
+        <>
+            <input ref={fileInputRef} type="file" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml" hidden onChange={handleFileSelected} />
+            <Modal isOpen={imageUploadModal.isOpen} onClose={closeImageUploadModal} isCentered size="md">
+                <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
+                <ModalContent bg={contentBackground} borderRadius="30px">
+                    <ModalHeader bg={contentBackgroundLighter} borderTopRadius="30px">
+                        Save image as
+                    </ModalHeader>
+                    <ModalBody>
+                        <Text mb={2} fontSize="sm" color={labelColor}>
+                            Selected file: {imageUploadModal.file?.name}
+                        </Text>
+                        <Text as="label" htmlFor="image-upload-filename" fontSize="lg" fontWeight="bold" color={labelColor} mb="8px" display="block">
+                            Filename
+                        </Text>
+                        <Input
+                            id="image-upload-filename"
+                            value={imageUploadModal.filename}
+                            onChange={(event) =>
+                                setImageUploadModal((prevState) => ({
+                                    ...prevState,
+                                    filename: event.target.value,
+                                }))
+                            }
+                            placeholder="MyImage.png (extension optional)"
+                        />
+                        <Text mt={3} fontSize="sm" color={labelColor}>
+                            Image will be saved to public/images/. The source field will be set to ./images/your-filename
+                        </Text>
+                    </ModalBody>
+                    <ModalFooter bg={contentBackgroundLighter} borderBottomRadius="30px">
+                        <Button mr={3} onClick={closeImageUploadModal}>
+                            Cancel
+                        </Button>
+                        <Button colorScheme="green" onClick={handleImageUploadConfirm} isLoading={isUploading}>
+                            Upload
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+            <Modal
             isCentered
             closeOnOverlayClick={true}
             onClose={() => {
@@ -803,5 +1273,6 @@ export default function CardEditor({ windowSize, isOpen, onClose, cardEditorData
                 </ModalFooter>
             </ModalContent>
         </Modal>
+        </>
     )
 }
