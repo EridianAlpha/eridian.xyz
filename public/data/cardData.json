@@ -1,5 +1,35 @@
 [
     {
+        "id": "6JPSX5",
+        "name": "ETHGas Onsite - Hong Kong",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "A week with the ETHGas team working on Ethereum scaling.",
+        "startDate": "2026-06-11",
+        "endDate": "2026-06-19",
+        "externalLinks": {
+            "0": {
+                "url": "https://ethgas.com",
+                "label": "ETHGas.com",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/ETHGasLogo.png",
+                "alt": "ETHGas Logo"
+            },
+            "1": {
+                "image": "./images/HongKongCover.png",
+                "alt": "Hong Kong Cover"
+            }
+        }
+    },
+    {
         "id": "Q7C4MS",
         "name": "Tech Week - New York 2026",
         "displayConfig": {
