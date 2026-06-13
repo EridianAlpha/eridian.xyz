@@ -1,5 +1,122 @@
 [
     {
+        "id": "Q7C4MS",
+        "name": "Tech Week - New York 2026",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Attended Agentic Finance Summit, Vault Summit and ETHConf.",
+        "startDate": "2026-06-03",
+        "endDate": "2026-06-10",
+        "externalLinks": {
+            "0": {
+                "url": "https://nyc.agenticfinance.xyz",
+                "label": "Agentic Finance Summit",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://vaultsummit.xyz",
+                "label": "Vault Summit",
+                "type": "website"
+            },
+            "2": {
+                "url": "https://web.archive.org/web/20260527114403/https://ethconf.com",
+                "label": "ETHConf",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/ETHConfLogo.png",
+                "alt": "ETHConf Logo"
+            },
+            "1": {
+                "image": "./images/ETHConfCover2026.png",
+                "alt": "ETHConf Cover 2026"
+            },
+            "2": {
+                "image": "./images/VaultSummit2026.png",
+                "alt": "Vault Summit 2026"
+            },
+            "3": {
+                "image": "./images/AgenticFinanceSummit2026.png",
+                "alt": "Agentic Finance Summit 2026"
+            }
+        }
+    },
+    {
+        "id": "HZORS7",
+        "name": "Web3 Festival - Hong Kong 2026",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Attended the Web3 Festival in Hong Kong.",
+        "startDate": "2026-04-20",
+        "endDate": "2026-04-23",
+        "externalLinks": {
+            "0": {
+                "url": "https://luma.com/calendar/cal-gK9fISLigRcQDpo",
+                "label": "Web3 Festival Event",
+                "type": "website"
+            },
+            "1": {
+                "url": "https://luma.com/uf5v6joa",
+                "label": "Ethereum Hub Opening Event",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": "Vitalik fireside chat at the Hong Kong Ethereum Hub."
+        },
+        "images": {
+            "0": {
+                "image": "./images/Web3FestivalLogo.png",
+                "alt": "Web3 Festival Logo"
+            },
+            "1": {
+                "image": "./images/Web3FestivalVitalik.png",
+                "alt": "Web3 Festival Vitalik"
+            },
+            "2": {
+                "image": "./images/Web3Festival2026.png",
+                "alt": "Web3 Festival Cover 2026"
+            }
+        }
+    },
+    {
+        "id": "PVM44P",
+        "name": "CIS Retail Festival - Korea 2026",
+        "displayConfig": {
+            "cardType": "event"
+        },
+        "summary": "Attended the Korea Crypto Investment Show Retail Festival as a speaker and was interviewed by 3proTV.",
+        "startDate": "2026-04-18",
+        "endDate": "2026-04-19",
+        "externalLinks": {
+            "0": {
+                "url": "https://youtu.be/KEriHGR21zM?si=2-pLqkag97DqCfAK&t=1386",
+                "label": "YouTube Interview",
+                "type": "website"
+            }
+        },
+        "description": {
+            "0": ""
+        },
+        "images": {
+            "0": {
+                "image": "./images/KoreaCISRetailFestival2026Logo.png",
+                "alt": ""
+            },
+            "1": {
+                "image": "./images/KoreaCISRetailFestival2026.png",
+                "alt": "Korea CIS Retail Festival 2026"
+            }
+        }
+    },
+    {
         "id": "9W9I8J",
         "name": "ETHCapital Summit - Seoul 2026",
         "displayConfig": {

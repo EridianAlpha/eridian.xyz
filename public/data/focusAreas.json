@@ -3,22 +3,22 @@
         "title": "Staking",
         "icon": "faServer",
         "color": "#54199B",
-        "count": 4
+        "count": 2
     },
     {
         "title": "DeFi",
         "icon": "faMoneyBill",
         "color": "#76b63a",
-        "count": 2
+        "count": 3
     },
     {
         "title": "AI Tools",
         "icon": "faRobot",
         "color": "#FF5400",
-        "count": 3
+        "count": 4
     },
     {
-        "title": "Ethereum Infra",
+        "title": "Ethereum Scaling",
         "icon": "faEthereum",
         "color": "#0697b6",
         "count": 5

@@ -107,13 +107,13 @@ export default function Overview() {
                                 <VStack alignItems={"start"} gap={0}>
                                     {/* <Text fontWeight={"bold"}>Full-Stack Developer 💻</Text> */}
                                     <HStack gap={0} justifyContent={"start"}>
-                                        <Text fontWeight="bold">Ethereum Settler</Text>
+                                        <Text fontWeight="bold">Crypto Native</Text>
                                         <Text pb={"10px"} fontSize={"40px"} display="inline-block" lineHeight={0.8} verticalAlign="baseline">
                                             🏕️
                                         </Text>
                                     </HStack>
                                     <Text>
-                                        Hey 👋 I&apos;m Eridian and Ethereum is my home. I have experience in web app design, creating educational
+                                        Hey 👋 I&apos;m Eridian. I have experience in web app design, creating educational
                                         content, writing smart contracts, community creation, and incentives and rewards programs. This portfolio
                                         website shows my projects, skills, and experiences.
                                     </Text>
